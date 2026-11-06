@@ -17,6 +17,13 @@ jobs:
           node --check data/campaign.js
           node --check novel/chapters.js
           node --check novel/relationships.js
+          node --check novel/editorial-policy.js
+          node --check novel/continuity.js
+          node --check novel/chapters/index.js
+          for file in novel/chapters/*.js; do node --check "$file"; done
+          node --check art/catalog.js
+          node --check scripts/add-chapter.mjs
+          node --check scripts/register-art.mjs
           node --check novel/narrative-engine.js
           node --check art-manifest.js
           node --check scripts/save-core.mjs

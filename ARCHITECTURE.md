@@ -37,3 +37,10 @@ La verdad del **guardado del juego** y el **canon literario** son capas distinta
 **Fase 2 (propuesta de importación):** `scripts/save-core.mjs` valida y compara guardados v26; `scripts/compare-saves.mjs` crea informes y borradores sin publicar. `data/save-baseline.json` identifica el último guardado aprobado. Véase `docs/IMPORTADOR.md`. Las nuevas fichas, el canon literario y los acontecimientos narrativos siguen requiriendo revisión.
 
 No subir credenciales, guardados privados ni datos sensibles al repositorio público.
+
+## Fase 3 — Continuidad y arte
+
+Capítulos independientes bajo novel/chapters/ y cargados en orden desde index.html. novel/chapters.js se conserva solo como testigo histórico.
+Reglas editoriales en novel/editorial-policy.js, perfiles y continuidad en novel/continuity.js; novel/narrative-engine.js preserva la API de la Mesa del Escriba.
+El catálogo art/catalog.js identifica recursos aprobados y borradores. art-manifest.js publica solamente los aprobados sin cambiar los retratos históricos.
+Véase docs/SISTEMA_EDITORIAL.md para los comandos incrementales de capítulos e imágenes.

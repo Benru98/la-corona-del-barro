@@ -15,7 +15,8 @@ function run(paths,expression){
   for(const p of paths)vm.runInContext(read(p),ctx,{filename:p,timeout:5000});
   return JSON.parse(vm.runInContext('JSON.stringify('+expression+')',ctx));
 }
-const modules=['data/campaign.js','novel/chapters.js','novel/relationships.js','novel/narrative-engine.js'];
+const scripts=[...read('index.html').matchAll(/<script\s+src="([^"]+)"/g)].map(x=>x[1]);
+const modules=scripts.filter(p=>p!=='art/catalog.js'&&p!=='art-manifest.js'&&p!=='app.js');
 test('El libro modular conserva estructura y canon separado',()=>{
   const b=run(modules,'BOOK');
   assert.equal(b.bookId,'la-corona-de-barro');
@@ -37,12 +38,23 @@ test('Las reglas narrativas conservan íntegramente el motor original',()=>{
 });
 test('El HTML carga los módulos antes de la aplicación',()=>{
   const html=read('index.html');
-  const scripts=[...html.matchAll(/<script\s+src="([^"]+)"/g)].map(x=>x[1]);
-  assert.deepEqual(scripts,[...modules,'art-manifest.js','app.js']);
+  const actual=[...html.matchAll(/<script\s+src="([^"]+)"/g)].map(x=>x[1]);
+  assert.deepEqual(actual,scripts);
+  assert.equal(scripts[0],'data/campaign.js');
+  assert.equal(scripts[1],'novel/chapters/index.js');
+  const chapterPaths=scripts.filter(p=>p.startsWith('novel/chapters/')&&p!=='novel/chapters/index.js');
+  assert.ok(chapterPaths.length>=4);
+  assert.deepEqual(chapterPaths.slice(0,4),[
+    'novel/chapters/prologo-corona.js','novel/chapters/primer-certamen.js',
+    'novel/chapters/lo-que-vuelve.js','novel/chapters/interludio-iv-la-partida-que-no-termina.js']);
+  assert.deepEqual(scripts.slice(-7),[
+    'novel/relationships.js','novel/editorial-policy.js','novel/continuity.js',
+    'novel/narrative-engine.js','art/catalog.js','art-manifest.js','app.js']);
+  assert.equal(new Set(scripts).size,scripts.length,'Scripts duplicados');
   for(const file of scripts)assert.ok(existsSync(join(root,file)),file+' missing');
 });
 test('Todas las imágenes mencionadas existen en el repositorio',()=>{
-  const manifest=run(['art-manifest.js'],'ART');
+  const manifest=run(['art/catalog.js','art-manifest.js'],'ART');
   for(const [name,p] of Object.entries(manifest)){
     assert.ok(!p.startsWith('assets/'),'Ruta heredada: '+name);
     assert.ok(existsSync(join(root,p)),'Imagen ausente: '+name+' -> '+p);

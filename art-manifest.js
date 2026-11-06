@@ -1,2 +1,2 @@
-/* Retratos aprobados: rutas de archivos, no base64. */
-const ART={"groupCover":"portada-grupal.webp","Luna":"luna.webp","Belzar de la Ofrenda":"belzar.webp","Ulf Vallehondo":"ulf.webp","Velasco Rivadeneira":"velasco.webp","Jaro":"jaro.webp","Brugo":"brugo.webp","Íñigo Guzmán":"inigo.webp","Ruc":"ruc.webp","Xara del Cuerno":"xara.webp","cover":"portada-antigua.webp","crest":"escudo.svg","placeholder":"placeholder.svg","Yvaldo Guardapuerto":"yvaldo.webp","Turca de la Tormenta":"turca.webp","maestre":"maestre.webp","maestreDialogue":"maestre-dialogo.webp"};
+/* Adaptador de claves de retratos para la interfaz existente. Catálogo: art/catalog.js */
+const ART=Object.fromEntries(ART_CATALOG.items.filter(item=>item.status==='approved'&&typeof item.legacyKey==='string').map(item=>[item.legacyKey,item.src]));
