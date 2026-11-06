@@ -91,7 +91,7 @@ test('La proyección aprobada permite comparar el próximo guardado sin el JSON 
  const proposal=prepareCampaignUpdate(book,approved,next,'siguiente-guardado.json');
  assert.equal(proposal.campaign.stats.gold,book.stats.gold+42);
  assert.equal(proposal.campaign.meta.day,book.meta.day+1);
- assert.equal(proposal.campaign.chapters,undefined);
+ assert.deepEqual(proposal.campaign.chapters,book.chapters,'El motor conserva íntegros los capítulos durante el importado');
 });
 test('La función de proyección no conserva atributos ocultos ni publica un archivo de juego completo',()=>{
  const fake=structuredClone(approved);
