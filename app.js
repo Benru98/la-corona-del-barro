@@ -68,7 +68,8 @@ function renderDialogue(text,speakerId,chapter,sceneIndex,paragraphIndex){
  const name=actor?actor.name:'Maestro del gremio';
  const src=actor?PORTRAIT_LIBRARY.resolve(actor.id,chapter,sceneIndex,paragraphIndex,portrait(actor)):artUrl('maestreDialogue');
  const avatar=actor?`<button type="button" class="dialogue-avatar" data-hero="${esc(actor.id)}" title="Abrir ficha de ${esc(name)}" aria-label="Abrir biografía de ${esc(name)}"><img src="${src}" alt="" loading="lazy"/></button>`:`<span class="dialogue-avatar is-master" title="Retrato literario del maestre de La Corona de Barro"><img src="${src}" alt=""/></span>`;
- return `<div class="dialogue-entry" data-speaker="${esc(speakerId)}">${avatar}<div class="dialogue-copy"><span class="dialogue-speaker">${esc(name)}</span><p class="dialogue-text">${esc(text)}</p></div></div>`;
+ const brief=String(text).length<=76;
+ return `<div class="dialogue-entry${brief?' dialogue-entry-brief':''}" data-speaker="${esc(speakerId)}">${avatar}<div class="dialogue-copy"><span class="dialogue-speaker">${esc(name)}</span><p class="dialogue-text">${esc(text)}</p></div></div>`;
 }
 function reader(){
  if(!BOOK.chapters.length)return saga();
