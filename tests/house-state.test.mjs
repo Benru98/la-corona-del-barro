@@ -15,18 +15,21 @@ const clone=()=>structuredClone(campaign);
 const brugo='adv_w21f5zhwf7li',luna='adv_xvecyci8knko';
 test('El estado compartido concilia la edición publicada',()=>{
  const h=HouseEngine.create(campaign);
- assert.equal(h.counts.living,10);
+ assert.equal(h.counts.living,11);
  assert.equal(h.counts.fallen,1);
- assert.equal(h.counts.total,11);
+ assert.equal(h.counts.total,12);
  assert.ok(!h.availableIds.has(brugo));
  assert.ok(h.featured.every(r=>r.people.every(id=>typeof id==='string')));
  assert.deepEqual(HouseEngine.audit(campaign),[]);
+ assert.equal(h.counts.available,7);
+ assert.equal(h.expedition.heroIds.length,4);
+ assert.equal(h.expedition.returnsDay,50);
 });
 test('Una muerte y una expedición concurrente producen un error verificable',()=>{
  const b=clone(),c=b.characters.find(c=>c.id===luna);
  c.status='caído';c.death={year:1,day:40,place:'La Niebla'};c.away=null;
  b.world.fallen.push({id:luna,year:1,day:40,place:'La Niebla'});
- b.stats.members=9;b.stats.dead=2;
+ b.stats.members=10;b.stats.dead=2;
  b.world.guildRosterAlive=b.world.guildRosterAlive.filter(id=>id!==luna);
  b.world.activeExpedition={name:'La Niebla',heroIds:[luna],returnsDay:41};
  assert.equal(HouseEngine.create(b).counts.fallen,2);
@@ -79,7 +82,7 @@ test('Dos bajas simultáneas se reflejan en todos los contadores y sin perder su
  b.world.guildRosterAlive=b.world.guildRosterAlive.filter(id=>!victims.some(c=>c.id===id));
  if(b.world.activeExpedition)b.world.activeExpedition.heroIds=b.world.activeExpedition.heroIds.filter(id=>!victims.some(c=>c.id===id));
  const h=HouseEngine.create(b);
- assert.equal(h.counts.living,8);
+ assert.equal(h.counts.living,9);
  assert.equal(h.counts.fallen,3);
  assert.equal(h.counts.total,11);
  assert.ok(victims.every(c=>!h.availableIds.has(c.id)));
