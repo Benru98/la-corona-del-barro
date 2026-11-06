@@ -5,6 +5,7 @@
  */
 import fs from 'node:fs';
 import path from 'node:path';
+import {fileURLToPath} from 'node:url';
 import {validateSave} from './save-core.mjs';
 
 const heroFields=['id','name','level','experience','morale','condition','stress','fatigue','oathWage','post',
@@ -47,7 +48,7 @@ function args(argv){
  const out={};for(let i=0;i<argv.length;i+=2){if(!argv[i]?.startsWith('--')||!argv[i+1])throw Error('Uso: --input guardado.json --out proyeccion.json');out[argv[i].slice(2)]=argv[i+1]}
  return out;
 }
-if(process.argv[1]&&path.resolve(process.argv[1])===path.resolve(new URL(import.meta.url).pathname)){
+if(process.argv[1]&&path.resolve(process.argv[1])===fileURLToPath(import.meta.url)){
  try{
   const a=args(process.argv.slice(2));if(!a.input||!a.out)throw Error('Falta --input o --out');
   if(fs.statSync(a.input).size>25*1024*1024)throw Error('Archivo demasiado grande');
