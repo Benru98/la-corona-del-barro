@@ -68,3 +68,21 @@ test('Los componentes no mantienen listas manuales de personajes destacados',()=
  assert.ok(!app.includes("const featuredPairs=[['Velasco Rivadeneira'"));
  assert.ok(!app.includes('La Corona de Barro lidera Villorio'));
 });
+
+test('Dos bajas simultáneas se reflejan en todos los contadores y sin perder sus fichas',()=>{
+ const b=clone(),victims=b.characters.filter(c=>!c.death).slice(0,2);
+ for(const c of victims){
+  c.status='caído';c.death={year:1,day:40,place:'El Paso del Norte'};c.away=null;
+  b.world.fallen.push({id:c.id,year:1,day:40,place:'El Paso del Norte'});
+ }
+ b.stats.members-=2;b.stats.dead+=2;
+ b.world.guildRosterAlive=b.world.guildRosterAlive.filter(id=>!victims.some(c=>c.id===id));
+ const h=HouseEngine.create(b);
+ assert.equal(h.counts.living,8);
+ assert.equal(h.counts.fallen,3);
+ assert.equal(h.counts.total,11);
+ assert.ok(victims.every(c=>!h.availableIds.has(c.id)));
+ assert.deepEqual(HouseEngine.audit(b),[]);
+ b.stats.dead=1;
+ assert.ok(HouseEngine.audit(b).some(i=>i.code==='dead-mismatch'));
+});
