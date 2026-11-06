@@ -68,7 +68,7 @@ ${pulseHome()}
 ${dead.length?`<section class="home-memorial" aria-label="Memoria de nuestros caídos"><span class="home-memorial-sigil" aria-hidden="true">✦</span><div><small>EN MEMORIA · AÑO ${esc(BOOK.meta.year||1)}</small><h2>Hay nombres que no regresan, pero permanecen.</h2><p>${esc(dead.map(c=>c.name).join(' · '))} · ${dead.length} ${dead.length===1?'vida recordada':'vidas recordadas'} por la Casa.</p></div><button type="button" class="btn secondary small" data-nav="legacy">Visitar el memorial ↗</button></section>`:''}
 <section class="gallery-section" aria-label="Galería de personajes"><div class="section-heading-row"><div><div class="eyebrow">✦ EL REPARTO DE NUESTRA HISTORIA</div><h2>Los rostros de la Casa</h2><p class="source-note">La portada cede todo el protagonismo a la compañía; debajo quedan las cifras y, a continuación, el archivo vivo de la casa.</p></div><div class="rail-controls"><button type="button" class="rail-arrow" data-action="scroll-cards-left" aria-label="Desplazar retratos a la izquierda">‹</button><button type="button" class="rail-arrow" data-action="scroll-cards-right" aria-label="Desplazar retratos a la derecha">›</button><button type="button" class="btn small secondary" data-nav="heroes">Ver fichas ↗</button></div></div>
 <div class="featured-rail" id="featuredRail" role="region" aria-label="Archivo de retratos, incluidos los fallecidos" tabindex="0">${members.map(c=>`<button type="button" class="featured-card ${isFallen(c)?'is-fallen':''}" data-hero="${esc(c.id)}" aria-label="Abrir ficha de ${esc(c.name)}"><span class="featured-image"><img src="${portrait(c)}" alt="Retrato de ${esc(c.name)}" loading="lazy"/>${deathRibbon(c)}</span><span class="featured-card-body"><small>${isFallen(c)?'† CAÍDO · ':''}${esc(c.roleLabel)} · ${esc(c.race)}</small><strong>${esc(c.name)}</strong><span class="featured-home-line">${esc(c.homeLine||c.epithet)}</span></span></button>`).join('')}</div></section>
-<section class="history-panels"><div class="panel"><div class="panel-head"><div><span class="eyebrow">CRÓNICAS DEL PRIMER AÑO</span><h3>Las páginas escritas</h3></div><button class="btn small secondary" data-nav="saga">Todos los capítulos ↗</button></div><div class="chapter-peek">${BOOK.chapters.map((c,i)=>`<button type="button" data-chapter="${i}" class="latest-card"><span class="latest-icon">${i===0?'❦':'✦'}</span><span><span>${esc(c.chapter)} · ${esc(c.years)}</span><b>${esc(c.title)}</b><span>${esc(c.lead)}</span></span><span class="peek-arrow">›</span></button>`).join('')}</div></div><div class="panel events-panel"><div class="panel-head"><div><span class="eyebrow">REGISTRO DEL ESCRIBA</span><h3>Las últimas noticias</h3></div><button class="btn small secondary" data-nav="archive">Archivo ↗</button></div><div class="inline-list">${recent.map(t=>`<div class="quiet-event"><strong>Día ${esc(t.day)} · ${esc(t.title)}</strong><p>${esc(t.description)}</p></div>`).join('')}</div></div></section>
+<section class="history-panels"><div class="panel"><div class="panel-head"><div><span class="eyebrow">CRÓNICAS DEL PRIMER AÑO</span><h3>Las páginas escritas</h3></div><button class="btn small secondary" data-nav="saga">Todos los capítulos ↗</button></div><div class="chapter-peek">${BOOK.chapters.map((c,i)=>`<button type="button" data-chapter="${i}" class="latest-card"><span><span>${esc(c.chapter)} · ${esc(c.years)}</span><b>${esc(c.title)}</b><span>${esc(c.lead)}</span></span><span class="peek-arrow">›</span></button>`).join('')}</div></div><div class="panel events-panel"><div class="panel-head"><div><span class="eyebrow">REGISTRO DEL ESCRIBA</span><h3>Las últimas noticias</h3></div><button class="btn small secondary" data-nav="archive">Archivo ↗</button></div><div class="inline-list">${recent.map(t=>`<div class="quiet-event"><strong>Día ${esc(t.day)} · ${esc(t.title)}</strong><p>${esc(t.description)}</p></div>`).join('')}</div></div></section>
 <section class="oath-panel"><div class="oath-insignia">♛</div><div><span class="eyebrow">EL JURAMENTO DEL BARRO</span><h2>Una corona que no se compra</h2><p>${esc(BOOK.meta.oath).replace(/\n/g,'<br>')}</p></div></section>
 <section class="maestre-codex" aria-label="El maestre de La Corona de Barro"><img src="${artUrl('maestre')}" alt="Retrato narrativo del anciano maestre de la casa" loading="lazy"/><div><div class="eyebrow">LA VOZ DEL MAESTRE · VETERANÍA DE LA SIMA</div><h2>Quien abrió las puertas de la Casa</h2><p>Un veterano curtido guía esta fundación independiente. Su retrato es nuestra representación literaria del director del gremio: no añade una raza, estadísticas ni acontecimientos al guardado.</p><button class="btn secondary small" data-nav="saga">Escuchar su voz en las crónicas ↗</button></div></section>
 <div class="notice">✧ ${esc(BOOK.meta.notice)}<br><b>Nota:</b> Los hechos proceden del guardado; las conversaciones son recreaciones literarias.</div>`}
@@ -219,12 +219,13 @@ function bonds(){
  const svg=placed.map(x=>{const v=strength(x),dX=x.x-500,dY=x.y-290;return `<line x1="${500+dX*.16}" y1="${290+dY*.16}" x2="${500+dX*.77}" y2="${290+dY*.77}" stroke="${tone(x)}" stroke-width="${(2+v*1.25).toFixed(1)}" stroke-opacity="${(.36+Math.min(v,5)*.12).toFixed(2)}" stroke-linecap="round"/>`}).join('');
  const nodes=placed.map(x=>{const c=byId(x.other),l=primary(x),v=strength(x);return `<button class="atlas-node rel-v1-node rel-calm-node ${isFallen(c)?'is-fallen':''}" type="button" data-bondfocus="${esc(c.id)}" title="Ver relaciones de ${esc(c.name)}" style="left:${x.x/10}%;top:${x.y/5.8}%;--tone:${tone(x)};--strength-scale:${v/5}"><img src="${portrait(c)}" alt="Retrato de ${esc(c.name)}"/><strong>${esc(c.name)}${isFallen(c)?' †':''}</strong>${l?`<span class="rel-node-label family-${esc(l.family)}">${esc(REL_CATEGORIES[l.family]?.icon||'✧')} ${esc(l.label)}</span>`:''}<small>${x.game?esc(formatBondValue(x.game.strength))+' · juego':'Vínculo literario'}</small></button>`}).join('');
  const center=`<button class="atlas-node focus ${isFallen(root)?'is-fallen':''}" type="button" data-hero="${esc(root.id)}" title="Abrir biografía de ${esc(root.name)}" style="left:50%;top:50%;--tone:#b38a4e"><img src="${portrait(root)}" alt="Retrato de ${esc(root.name)}"/><strong>${esc(root.name)}${isFallen(root)?' †':''}</strong><small>Ver biografía ↗</small></button>`;
- const cards=connections.map(x=>{const c=byId(x.other),l=primary(x),v=strength(x);return `<div class="atlas-item rel-simple-row" style="--linkcolor:${tone(x)}">
+ const cards=connections.map(x=>{const c=byId(x.other),l=primary(x),v=strength(x);return `<div class="atlas-item rel-simple-row" data-rel-detail="${esc(c.id)}" style="--linkcolor:${tone(x)}" title="Pulsa para leer la relación completa">
  <button type="button" class="rel-record-face ${isFallen(c)?'is-fallen':''}" data-bondfocus="${esc(c.id)}" aria-label="Centrar en ${esc(c.name)}"><img src="${portrait(c)}" alt=""/></button>
  <div class="rel-simple-main"><button type="button" class="rel-person-name" data-bondfocus="${esc(c.id)}">${esc(c.name)}${isFallen(c)?' · En memoria':''} ↗</button>
  <div class="rel-simple-chips">${l?litBadge(l,true):'<span class="game-mech-pill">Afinidad</span>'}<span class="rel-simple-num">${x.game?esc(formatBondValue(x.game.strength))+' juego':'Solo novela'}</span></div>
  <div class="rel-simple-track" title="Intensidad de esta relación"><i style="width:${Math.round(v/5*100)}%;background:${tone(x)}"></i></div>
  ${l?`<p>${esc(l.notes)}</p>`:x.game?.note?`<p>${esc(x.game.note)}</p>`:''}
+ <button type="button" class="rel-open-detail" data-rel-detail="${esc(c.id)}" aria-haspopup="dialog" aria-label="Leer la relación completa entre ${esc(root.name)} y ${esc(c.name)}">Leer relación completa <span aria-hidden="true">↗</span></button>
  </div></div>`}).join('');
  const rivals=(BOOK.world.rivalries||[]).filter(r=>r.characterId===root.id);
  return `${heading('LA RED DE LA CASA','Los lazos','Quién se acerca, quién se protege y quién empieza a importar.')}<section class="atlas-panel rel-simple-panel">
@@ -236,6 +237,60 @@ function bonds(){
  <p class="rel-simple-footnote">Las posibilidades futuras no se dibujan aquí: puedes consultarlas en la biografía de cada personaje. Una etiqueta literaria no modifica las afinidades del juego.</p>
  </div></section>`;
 }
+/* Una ficha de relación se abre en su propio diálogo, sin recortar los textos
+   literarios ni confundir afinidad mecánica con vínculos narrativos. */
+let relationDialogOpener=null;
+function closeRelationDetail(){
+ const modal=document.getElementById('relationDetailDialog');
+ if(modal?.open)modal.close();
+}
+function openRelationDetail(otherId,opener){
+ const central=byId(state.bond),other=byId(otherId);
+ if(!central||!other||central.id===other.id)return;
+ const rel=combinedRelationships(central.id).find(x=>x.other===otherId);
+ if(!rel)return;
+ relationDialogOpener=opener;
+ const stories=rel.lit.filter(l=>l.status!=='semilla');
+ const game=rel.game;
+ const t=stories.length?'RELACIÓN LITERARIA Y JUEGO':'RELACIÓN DEL JUEGO';
+ const storyHTML=stories.map(l=>{
+  const perspectives=Object.entries(l.perspectives||{}).filter(([id,v])=>!!v&&!!byId(id))
+    .map(([id,v])=>`<p><strong>${esc(byId(id).name)}:</strong> ${esc(v)}</p>`).join('');
+  const evolution=(l.evolution||[]).map(e=>`<li>${esc(e.summary||e.text||'Episodio registrado')}${e.chapterId?` <small>· ${esc(BOOK.chapters.find(ch=>ch.id===e.chapterId)?.title||e.chapterId)}</small>`:''}</li>`).join('');
+  return `<section class="relation-dialog-section">
+    <div class="relation-dialog-type">${litBadge(l,true)} <span>${esc(l.status==='vivido'?'Escena vivida':l.status==='anclado'?'Anclado en el juego':l.status)}</span></div>
+    <p class="relation-dialog-prose">${esc(l.notes||'Sin descripción adicional.')}</p>
+    ${perspectives?`<h4>La mirada de cada uno</h4><div class="relation-dialog-perspectives">${perspectives}</div>`:''}
+    ${evolution?`<h4>Lo que han vivido</h4><ul class="relation-dialog-evolution">${evolution}</ul>`:''}
+    ${l.boundaries?`<p class="relation-dialog-hint"><b>Continuidad:</b> ${esc(l.boundaries)}</p>`:''}
+   </section>`;
+ }).join('');
+ const dialogue=document.getElementById('relationDetailDialog')||document.createElement('dialog');
+ dialogue.id='relationDetailDialog';
+ dialogue.className='relation-detail-dialog';
+ if(!dialogue.isConnected)document.body.appendChild(dialogue);
+ dialogue.innerHTML=`<div class="relation-dialog-top">
+   <span class="eyebrow">${t} · EL LIBRO DE LOS LAZOS</span>
+   <button class="relation-dialog-close" type="button" data-action="close-relation" aria-label="Cerrar detalle de relación">×</button></div>
+   <div class="relation-dialog-heading">
+      <img src="${portrait(central)}" alt="Retrato de ${esc(central.name)}" loading="lazy"/>
+      <span class="relation-dialog-join" aria-hidden="true">✦</span>
+      <img src="${portrait(other)}" alt="Retrato de ${esc(other.name)}" loading="lazy"/>
+   </div>
+   <h2 id="relationDetailTitle">${esc(central.name)} <span>y</span> ${esc(other.name)}</h2>
+   <p class="relation-dialog-mechanic">${game?`Afinidad en el juego: <strong>${esc(formatBondValue(game.strength))}</strong>`:'Sin vínculo mecánico registrado · relación literaria'}</p>
+   ${storyHTML}
+   ${game?.note?`<section class="relation-dialog-section relation-dialog-game"><h4>Nota del juego</h4><p class="relation-dialog-prose">${esc(game.note)}</p></section>`:''}
+   <div class="relation-dialog-footer"><span>El canon literario no altera los datos de la partida.</span><button class="btn secondary small" type="button" data-action="close-relation">Cerrar</button></div>`;
+ dialogue.setAttribute('aria-labelledby','relationDetailTitle');
+ if(!dialogue.dataset.bound){
+   dialogue.addEventListener('click',ev=>{if(ev.target===dialogue)closeRelationDetail()});
+   dialogue.addEventListener('close',()=>{if(relationDialogOpener?.isConnected)relationDialogOpener.focus();relationDialogOpener=null});
+   dialogue.dataset.bound='true';
+ }
+ dialogue.showModal();
+}
+
 function legacy(){
  const fallen=fallenMembers(),alive=livingMembers();
  const prospects=house().prospects;
@@ -282,7 +337,9 @@ body.reading-night .searchbox input{color:#f0dbbb}body.reading-night .filter.act
 body.reading-night .footer{color:#d8bf91}body.reading-night .maestre-codex{background:#233f37;border-color:#a4875a}body.reading-night .maestre-codex h2{color:#f3deb8}body.reading-night .maestre-codex p{color:#d1bf9e}
 body.reading-night .atlas-panel{background:#2c4439;color:#eedbb8}body.reading-night .atlas-canvas{background:radial-gradient(circle,#e6d1a9,#bfa57e)}
 `:''}
-document.addEventListener('click',ev=>{const x=ev.target.closest('[data-open-bond],[data-nav],[data-chapter],[data-hero],[data-filter],[data-era],[data-action],[data-bondfocus],[data-bondtype],[data-bondview]');if(!x)return;
+document.addEventListener('click',ev=>{const x=ev.target.closest('[data-open-bond],[data-nav],[data-chapter],[data-hero],[data-filter],[data-era],[data-action],[data-bondfocus],[data-bondtype],[data-bondview],[data-rel-detail]');if(!x)return;
+ if(x.hasAttribute('data-rel-detail')){openRelationDetail(x.getAttribute('data-rel-detail'),x);return}
+ if(x.getAttribute('data-action')==='close-relation'){closeRelationDetail();return}
  if(x.hasAttribute('data-open-bond')){state.bond=x.getAttribute('data-open-bond');state.bondType='all';state.reader=false;state.hero=null;go('bonds');return}
  if(x.hasAttribute('data-bondfocus')){state.bond=x.getAttribute('data-bondfocus');state.bondType='all';render();return}
  if(x.hasAttribute('data-bondview')){state.bondView=x.getAttribute('data-bondview');state.bondType='all';render();return}
