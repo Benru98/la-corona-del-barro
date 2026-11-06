@@ -3,11 +3,11 @@
   "game": "Dungeons & Dynasties",
   "guild": "La Corona de Barro",
   "gameVersion": 26,
-  "lastApprovedVisibleDay": 39,
-  "lastApprovedInternalDay": 38,
-  "lastApprovedSaveSignature": "bhuy7i.79hz3a",
-  "lastApprovedSource": "La Corona de Barro 2026-11-06 11-24.json",
-  "note": "Estado aprobado del día 39. Solo identidad y proyección reducida; el JSON original nunca se publica.",
+  "lastApprovedVisibleDay": 40,
+  "lastApprovedInternalDay": 39,
+  "lastApprovedSaveSignature": "57oqwd.1577imj",
+  "lastApprovedSource": "La Corona de Barro 2026-11-06 12-39.json",
+  "note": "Estado aprobado del día 40. Incluye notas personales en la proyección; el JSON bruto no se publica.",
   "projectionFile": "data/approved-save-projection.json",
   "comparisonMethod": "published-campaign-to-next-save"
 }
