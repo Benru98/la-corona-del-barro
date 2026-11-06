@@ -1,0 +1,23 @@
+name: Validar La Corona de Barro
+on:
+  pull_request:
+  push:
+    branches: [main]
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Verificar sintaxis
+        run: |
+          node --check app.js
+          node --check data/campaign.js
+          node --check novel/chapters.js
+          node --check novel/relationships.js
+          node --check novel/narrative-engine.js
+          node --check art-manifest.js
+      - name: Comprobar integridad de datos y recursos
+        run: node --test tests/structure.test.mjs
