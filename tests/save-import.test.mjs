@@ -19,10 +19,10 @@ function fixture() {
  for(const rel of book.relationships) bonds[rel.a+'|'+rel.b]={value:rel.rawValue??rel.strength};
  return {version:26,sig:'test-baseline',guild:{
   name:book.meta.guild,day:book.meta.day-1,gold:book.stats.gold,renown:book.stats.renown,
-  roster:book.characters.map(h=>({id:h.id,name:h.name,level:h.level,experience:h.experience,
+  roster:book.characters.filter(h=>h.status!=='caído').map(h=>({id:h.id,name:h.name,level:h.level,experience:h.experience,
     morale:h.morale,stress:h.stress,condition:h.condition,fatigue:h.fatigue,
     oathWage:h.salary,attributes:clone(h.attributes)})),
-  fallen:[],bonds,
+  fallen:book.characters.filter(h=>h.status==='caído').map(h=>({id:h.id,name:h.name})),bonds,
   league:{playerTier:6},tally:{delves:book.stats.delves,cleared:book.stats.delves},
   activeJobs:[],meetings:[],questLog:[],hall:{level:book.world.hallLevel,facilities:clone(book.world.buildings)}
  }};
@@ -64,7 +64,7 @@ test('Prepara campos seguros sin reescribir canon narrativo',()=>{
  assert.equal(proposal.campaign.stats.gold,book.stats.gold+33);
  assert.equal(proposal.campaign.meta.day,book.meta.day+1);
  assert.equal(proposal.campaign.characters[0].fatigue,book.characters[0].fatigue+2);
- assert.equal(proposal.campaign.chapters,undefined);
+ assert.deepEqual(proposal.campaign.chapters,book.chapters);
  assert.deepEqual(proposal.campaign.editions,book.editions);
  assert.deepEqual(proposal.campaign.timeline,book.timeline);
  assert.deepEqual(proposal.campaign.marginalia,book.marginalia);
