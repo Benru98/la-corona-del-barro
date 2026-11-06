@@ -1,0 +1,27 @@
+name: Auditoría funcional en navegador
+on:
+  pull_request:
+  workflow_dispatch:
+jobs:
+  browser-smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Instalar navegador de pruebas
+        run: |
+          npm install --no-save playwright@1.56.1
+          command -v google-chrome
+      - name: Arrancar servidor web local
+        run: |
+          python3 -m http.server 8765 --bind 127.0.0.1 > /tmp/corona-server.log 2>&1 &
+          sleep 2
+      - name: Recorrer interfaz, imágenes y controles móviles
+        run: node tests/browser-smoke.mjs
+      - name: Comprobar la versión pública de Cloudflare Pages
+        env:
+          BASE_URL: https://la-corona-del-barro.pages.dev/
+        run: node tests/browser-smoke.mjs
