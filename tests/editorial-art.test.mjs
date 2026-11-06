@@ -45,7 +45,7 @@ test('El ensamblador narrativo conserva todas las claves y fuentes de continuida
 test('Las ilustraciones aprobadas conservan las rutas de producción',()=>{
  const catalog=evaluate(artFiles,'ART_CATALOG'),manifest=evaluate(artFiles,'ART');
  const book=evaluate(['data/campaign.js'],'BOOK');
- assert.equal(catalog.schemaVersion,'1.0.0');
+ assert.equal(catalog.schemaVersion,'1.1.0');
  assert.ok(catalog.items.length>=17);
  assert.equal(new Set(catalog.items.map(x=>x.id)).size,catalog.items.length);
  const keys=catalog.items.filter(x=>typeof x.legacyKey==='string').map(x=>x.legacyKey);
@@ -60,7 +60,8 @@ test('Las ilustraciones aprobadas conservan las rutas de producción',()=>{
   }
   if(item.characterId)assert.ok(book.characters.some(c=>c.id===item.characterId),'Desconocido: '+item.characterId);
  }
- assert.equal(manifest.groupCover,'portada-grupal.webp');
+ assert.equal(manifest.groupCover,'corona-grupal-v2.webp');
+ assert.equal(manifest.cover,'cronicas-fantasia-v2.webp');
  assert.equal(manifest['Velasco Rivadeneira'],'velasco.webp');
  assert.equal(manifest.maestreDialogue,'maestre-dialogo.webp');
 });

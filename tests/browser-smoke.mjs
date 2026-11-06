@@ -43,6 +43,40 @@ try{
    const result=await desktop.request.get(new URL(asset,base).href);
    assert.equal(result.status(),200,'Imagen ausente: '+asset);
  }
+
+ if(!base.includes('pages.dev')){
+   // La prueba de la nueva versión se hace contra el código de la PR; la URL pública
+   // puede seguir mostrando la edición anterior hasta que se fusione.
+   await desktop.locator('#sideNav [data-nav="home"]').click();
+   const cover=await desktop.locator('.cover-fullbleed .cover-art').evaluate(img=>({
+     src:img.currentSrc,naturalWidth:img.naturalWidth,fit:getComputedStyle(img).objectFit
+   }));
+   assert.match(cover.src,/corona-grupal-v2\.webp$/,'Debe aparecer la portada panorámica V2');
+   assert.ok(cover.naturalWidth>1000,'La portada no se ha cargado');
+   assert.equal(cover.fit,'contain','La portada no debe recortarse');
+   await desktop.locator('#sideNav [data-nav="saga"]').click();
+   await desktop.locator('.chapter-tile').first().click();
+   const cards=desktop.locator('.prose .dialogue-entry');
+   assert.ok(await cards.count()>=2,'No se muestran diálogos ilustrados');
+   const portraits=await cards.evaluateAll(nodes=>nodes.map(node=>{
+     const image=node.querySelector('.dialogue-avatar img');
+     const frame=node.querySelector('.dialogue-avatar');
+     const r=frame.getBoundingClientRect();
+     return {width:r.width,height:r.height,brief:node.classList.contains('dialogue-entry-brief'),
+       master:node.dataset.speaker==='guildmaster',
+       src:image.currentSrc,fit:getComputedStyle(image).objectFit,naturalWidth:image.naturalWidth};
+   }));
+   assert.ok(portraits.some(p=>!p.brief&&p.width>=100),'Retratos principales demasiado pequeños');
+   assert.ok(portraits.some(p=>p.brief&&p.width>=76),'Retratos cortos demasiado pequeños');
+   assert.ok(portraits.filter(p=>!p.master).every(p=>p.fit==='contain'),'Retratos de aventureros recortados');
+   // Las imágenes fuera de la pantalla usan loading=lazy: solo exigimos decodificar
+   // la primera imagen después de desplazarla a la zona visible.
+   const firstImage=desktop.locator('.prose .dialogue-entry img').first();
+   await firstImage.scrollIntoViewIfNeeded();
+   const firstLoaded=await firstImage.evaluate(async img=>{await img.decode();return img.naturalWidth>0;});
+   assert.ok(firstLoaded,'El primer retrato no se pudo cargar');
+   console.log('Diálogos de escritorio:',JSON.stringify({count:portraits.length,regular:portraits.find(p=>!p.brief),brief:portraits.find(p=>p.brief)}));
+ }
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
  await mobile.goto(base,{waitUntil:'networkidle',timeout:30000});
  await mobile.locator('.mobile-menu-button').click();
@@ -50,5 +84,18 @@ try{
  await mobile.locator('.drawer-close').click();
  assert.equal(await mobile.locator('#mobileDrawer').getAttribute('aria-hidden'),'true','Menú móvil no cierra');
  assert.ok((await mobile.locator('#content').innerText()).length>60);
+ if(!base.includes('pages.dev')){
+   await mobile.evaluate(()=>document.querySelector('#sideNav [data-nav="saga"]').click());
+   await mobile.locator('.chapter-tile').first().click();
+   const portraits=await mobile.locator('.prose .dialogue-entry').evaluateAll(nodes=>nodes.map(n=>{
+     const a=n.querySelector('.dialogue-avatar'),r=a.getBoundingClientRect();
+     return {width:r.width,height:r.height,brief:n.classList.contains('dialogue-entry-brief')};
+   }));
+   assert.ok(portraits.some(p=>p.width>=64),'Retratos móviles demasiado pequeños');
+   const overflow=await mobile.locator('.reading').evaluate(el=>({scroll:el.scrollWidth,client:el.clientWidth}));
+   assert.ok(overflow.scroll<=overflow.client+3,'Desbordamiento horizontal de la lectura móvil');
+   console.log('Diálogos móviles:',JSON.stringify({count:portraits.length,overflow}));
+ }
+
  console.log(JSON.stringify({ok:true,findings,chapters:chapters.length,artResources:art.length,mobileMenu:'OK'},null,2));
 }finally{await browser.close()}
