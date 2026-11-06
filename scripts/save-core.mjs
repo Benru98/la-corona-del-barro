@@ -1,0 +1,189 @@
+import {createHash} from 'node:crypto';
+
+/*
+ * Adapter para guardados REALES de Dungeons & Dynasties v26.
+ * Nunca modifica el guardado original ni publica JSON crudos.
+ */
+export const SAVE_VERSION = 26;
+const isObj = v => !!v && typeof v === 'object' && !Array.isArray(v);
+const assert = (ok,message) => {if(!ok) throw new Error(message);};
+const unique = items => new Set(items).size === items.length;
+const num = (v,name) => {assert(typeof v === 'number' && Number.isFinite(v), name + ': número inválido');return v;};
+const normBondKey = key => key.split('|').sort().join('|');
+const byId = arr => new Map(arr.map(x=>[x.id,x]));
+const sorted = arr => [...arr].sort((a,b)=>a.localeCompare(b,'es'));
+const sum = v => JSON.stringify(v);
+export const fingerprint = data => createHash('sha256').update(typeof data==='string'?data:JSON.stringify(data)).digest('hex');
+export function validateSave(save) {
+  assert(isObj(save) && save.version === SAVE_VERSION, 'Formato de guardado desconocido (se espera versión 26)');
+  const g = save.guild;
+  assert(isObj(g) && typeof g.name === 'string' && g.name.length>0,'Falta guild.name');
+  assert(Number.isInteger(g.day) && g.day>=0,'guild.day inválido');
+  assert(Array.isArray(g.roster) && Array.isArray(g.fallen),'Faltan roster/fallen');
+  assert(isObj(g.bonds) && isObj(g.hall) && isObj(g.league),'Faltan estructuras clave');
+  assert(isObj(g.tally) && Array.isArray(g.activeJobs) && Array.isArray(g.meetings),'Estructura incompleta');
+  assert(unique(g.roster.map(h=>h.id)) && g.roster.every(h=>typeof h.id==='string' && typeof h.name==='string'),'IDs de personajes inválidos o duplicados');
+  assert(g.roster.length<1000,'Número de héroes inesperado');
+  num(g.gold,'gold');num(g.renown,'renown');
+  return g;
+}
+function relationValues(g) {
+  const result = new Map();
+  for(const [pair,bond] of Object.entries(g.bonds)){
+    assert(pair.split('|').length===2 && isObj(bond),'Vínculo inválido: '+pair);
+    const key=normBondKey(pair);
+    assert(!result.has(key),'Vínculo duplicado invertido: '+pair);
+    result.set(key,num(bond.value,'bond '+pair));
+  }
+  return result;
+}
+function indexList(items,identity) {
+  const m=new Map();
+  for(const item of items){
+    const key=identity(item);
+    assert(!m.has(key),'Registro repetido: '+key);
+    m.set(key,item);
+  }
+  return m;
+}
+const jobKey = j => String(j.id??j.posting?.id??'');
+const meetingKey = m => [m.day,m.oppId??m.oppName??'',m.kind??''].join('|');
+const questKey = q => String(q.id??[q.day,q.title,q.kind].join('|'));
+function stats(g) {
+  return {day:g.day+1,gold:g.gold,renown:g.renown,members:g.roster.length,dead:g.fallen.length,
+    delves:g.tally.delves??0,cleared:g.tally.cleared??0,
+    leagueTier:g.league.playerTier,meetings:g.meetings.length,quests:(g.questLog??[]).length,bonds:Object.keys(g.bonds).length,
+    activeJobs:g.activeJobs.length};
+}
+const equal = (a,b)=>JSON.stringify(a)===JSON.stringify(b);
+function listDiff(oldItems,newItems,identify){
+  const a=indexList(oldItems,identify),b=indexList(newItems,identify);
+  return {added:[...b.keys()].filter(k=>!a.has(k)).map(k=>b.get(k)),
+    removed:[...a.keys()].filter(k=>!b.has(k)).map(k=>a.get(k))};
+}
+export function compareSaves(previous,next) {
+  const a=validateSave(previous),b=validateSave(next);
+  assert(a.name===b.name,'Los guardados pertenecen a gremios distintos');
+  assert(b.day>=a.day,'Guardado anterior al de referencia: operación rechazada');
+  const before=stats(a),after=stats(b);
+  const metricChanges=Object.keys(after).filter(key=>!equal(before[key],after[key])).map(key=>({field:key,before:before[key],after:after[key],delta:typeof after[key]==='number'?after[key]-before[key]:null}));
+  const heroesA=byId(a.roster),heroesB=byId(b.roster);
+  const roster=listDiff(a.roster,b.roster,x=>x.id);
+  const characterChanges=[];
+  const tracked=['name','level','experience','morale','condition','stress','fatigue','oathWage','post','away','injury','attributes','traitIds','stakes'];
+  for(const [id,now] of heroesB) {
+    const old=heroesA.get(id);if(!old)continue;
+    const fields=tracked.filter(k=>!equal(old[k],now[k])).map(k=>({field:k,before:old[k]??null,after:now[k]??null}));
+    if(fields.length)characterChanges.push({id,name:now.name,fields});
+  }
+  const bondsA=relationValues(a),bondsB=relationValues(b);
+  const bonds=[];
+  for(const k of sorted(new Set([...bondsA.keys(),...bondsB.keys()]))) {
+    const beforeValue=bondsA.get(k),afterValue=bondsB.get(k);
+    if(beforeValue!==afterValue)bonds.push({pair:k,before:beforeValue??null,after:afterValue??null,delta:beforeValue!==undefined&&afterValue!==undefined?afterValue-beforeValue:null,status:beforeValue===undefined?'new':afterValue===undefined?'removed':'changed'});
+  }
+  const jobs=listDiff(a.activeJobs,b.activeJobs,jobKey);
+  const meetings=listDiff(a.meetings,b.meetings,meetingKey);
+  const quests=listDiff(a.questLog??[],b.questLog??[],questKey);
+  const fallen=listDiff(a.fallen,b.fallen,x=>x.id);
+  const facilities={};
+  for(const k of sorted(new Set([...Object.keys(a.hall.facilities??{}),...Object.keys(b.hall.facilities??{})]))) {
+    if(a.hall.facilities?.[k]!==b.hall.facilities?.[k]) facilities[k]={before:a.hall.facilities?.[k]??null,after:b.hall.facilities?.[k]??null};
+  }
+  const review=[];
+  if(roster.added.length)review.push('Altas: crear fichas, retratos y biografías antes de publicar');
+  if(roster.removed.length||fallen.added.length)review.push('Bajas o fallecimientos: revisar el canon y la continuidad');
+  if(bonds.some(x=>x.status!=='changed'))review.push('Vínculos nuevos/desaparecidos: asignar categoría y contexto manualmente');
+  if(jobs.removed.length)review.push('Encargos terminados/desaparecidos: el cambio no prueba su resultado');
+  if(meetings.added.length||quests.added.length)review.push('Nuevos encuentros o misiones: validar sus resultados antes de narrarlos');
+  if(before.leagueTier!==after.leagueTier)review.push('Cambio de división: revisar nombre, ascenso y clasificación');
+  if(b.day===a.day && !equal(a,b))review.push('Dos guardados del mismo día: revisar orden cronológico');
+  return {format:'corona-save-diff/v1',guild:b.name,gameVersion:SAVE_VERSION,fromDay:before.day,toDay:after.day,
+    summary:{before,after,metrics:metricChanges},
+    roster:{added:roster.added.map(x=>({id:x.id,name:x.name})),removed:roster.removed.map(x=>({id:x.id,name:x.name})),changed:characterChanges},
+    bonds,jobs:{added:jobs.added,removed:jobs.removed},meetings,quests,fallen:{added:fallen.added.map(x=>({id:x.id,name:x.name})),removed:fallen.removed.map(x=>({id:x.id,name:x.name}))},
+    facilities,review,requiresEditorialReview:review.length>0};
+}
+const scalarCharacterFields={level:'level',experience:'experience',morale:'morale',condition:'condition',stress:'stress',fatigue:'fatigue',oathWage:'salary'};
+function safeNumField(v,name){return num(v,name);}
+function bondMap(book){const out=new Map();for(const r of book.relationships??[])out.set(normBondKey(r.a+'|'+r.b),r);return out;}
+export function prepareCampaignUpdate(book, previous, next, sourceName='guardado.json') {
+  const diff=compareSaves(previous,next);
+  const g=next.guild,base=previous.guild;
+  assert(isObj(book)&&book.bookId==='la-corona-de-barro','El documento no es el libro esperado');
+  assert(book.meta?.guild===g.name,'El nombre de la Casa no coincide');
+  assert(book.meta.day===base.day+1,'El libro publicado no coincide con el guardado anterior (día)');
+  const bookIds=new Set((book.characters??[]).map(x=>x.id));
+  const oldIds=new Set(base.roster.map(x=>x.id));
+  assert(oldIds.size===bookIds.size && [...oldIds].every(id=>bookIds.has(id)),
+    'El libro no coincide con la plantilla anterior de personajes. Revisión manual requerida');
+  const result=structuredClone(book);
+  const changes=[];
+  function replace(obj,key,value,path) {
+    if(!equal(obj[key],value)){changes.push({path,before:obj[key]??null,after:value});obj[key]=value;}
+  }
+  replace(result.meta,'day',g.day+1,'meta.day');
+  const mapping={gold:g.gold,renown:g.renown,members:g.roster.length,dead:g.fallen.length,delves:g.tally.delves,
+    clearRate:g.tally.delves?Math.round(100*g.tally.cleared/g.tally.delves):0,day:g.day+1,bonds:Object.keys(g.bonds).length};
+  for(const [key,value] of Object.entries(mapping))replace(result.stats,key,safeNumField(value,key),'stats.'+key);
+  for(const hero of result.characters) {
+    const fresh=g.roster.find(x=>x.id===hero.id);
+    if(!fresh)continue; // removals are manually reviewed; never delete a historical character
+    for(const [raw,dest] of Object.entries(scalarCharacterFields))
+      if(typeof fresh[raw]==='number')replace(hero,dest,safeNumField(fresh[raw],raw),'characters.'+hero.id+'.'+dest);
+    if(isObj(fresh.attributes))replace(hero,'attributes',structuredClone(fresh.attributes),'characters.'+hero.id+'.attributes');
+  }
+  const existing=bondMap(result);
+  for(const [key,v] of relationValues(g)){
+    const item=existing.get(key);if(!item)continue; // new bonds need editorial classification
+    replace(item,'rawValue',v,'relationships.'+key+'.rawValue');
+    replace(item,'strength',v,'relationships.'+key+'.strength');
+    if(item.before!==undefined) replace(item,'change',v-item.before,'relationships.'+key+'.change');
+  }
+  if(isObj(g.hall.facilities)) replace(result.world,'buildings',structuredClone(g.hall.facilities),'world.buildings');
+  if(typeof g.hall.level==='number')replace(result.world,'hallLevel',g.hall.level,'world.hallLevel');
+  const projectedJobs=g.activeJobs.map(j=>({
+    name:j.posting?.title??j.name??'Encargo sin título',
+    heroIds:Array.isArray(j.heroIds)?[...j.heroIds]:[],
+    startDay:typeof j.sentDay==='number'?j.sentDay+1:null,
+    returnsDay:typeof j.returnsDay==='number'?j.returnsDay+1:null
+  }));
+  replace(result.world,'activeJobs',projectedJobs,'world.activeJobs');
+  if(g.day>base.day) {
+    const snapshot={year:result.meta.year,day:g.day+1,renown:result.stats.renown,gold:result.stats.gold,
+      members:result.stats.members,delves:result.stats.delves,dead:result.stats.dead,
+      titles:result.stats.titles,promotion:result.stats.promotion,relegation:result.stats.relegation,
+      championships:result.stats.championships,league:result.world.division,
+      leaguePoints:result.stats.leaguePoints,leaguePosition:result.stats.leaguePosition,bonds:result.stats.bonds};
+    if(!result.snapshots.some(s=>s.year===snapshot.year && s.day===snapshot.day))result.snapshots.push(snapshot);
+  }
+  // Nunca sobrescribir textos, memorias, escenas ni el atlas literario desde un JSON mecánico.
+  for(const key of ['chapters','literaryRelationships','literaryTagCatalog','editions','timeline','marginalia'])
+    assert(equal(result[key],book[key]),'Cambio no autorizado en canon: '+key);
+  const blocking=diff.review.length>0;
+  const warnings=[
+    'Borrador no publicado: revisar y aprobar antes de sustituir data/campaign.js.',
+    'Cálculos de clasificación, hazañas, encuentros, biografías y cronología requieren revisión editorial.',
+    ...diff.review
+  ];
+  return {format:'corona-campaign-proposal/v1',source:sourceName,gameVersion:SAVE_VERSION,fromDay:base.day+1,toDay:g.day+1,
+    updatedPaths:changes.map(x=>x.path),changes,blocking,review:warnings,campaign:result};
+}
+export function reportMarkdown(diff,proposal) {
+  const lines=['# Informe de guardados — '+diff.guild,'','**Día visible:** '+diff.fromDay+' → '+diff.toDay,
+    '**Versión del juego:** '+diff.gameVersion,'','## Indicadores'];
+  for(const m of diff.summary.metrics)lines.push('- '+m.field+': '+m.before+' → '+m.after);
+  lines.push('','## Aventureros','- Altas: '+diff.roster.added.map(x=>x.name).join(', '),
+    '- Salidas: '+diff.roster.removed.map(x=>x.name).join(', '),
+    '- Fichas modificadas: '+diff.roster.changed.length,'','## Vínculos',
+    '- Cambios: '+diff.bonds.length,'','## Actividad',
+    '- Nuevos encuentros: '+diff.meetings.added.length,
+    '- Nuevos registros de misión: '+diff.quests.added.length,
+    '- Encargos abiertos: '+diff.jobs.added.length,
+    '- Encargos desaparecidos: '+diff.jobs.removed.length,
+    '','## Revisión obligatoria');
+  for(const s of (proposal?.review??diff.review))lines.push('- '+s);
+  if(proposal)lines.push('','## Propuesta de actualización','- Campos mecánicos propuestos: '+proposal.changes.length,
+    '- Publicación automática: NO. Es necesaria revisión.');
+  return lines.join('\n')+'\n';
+}
