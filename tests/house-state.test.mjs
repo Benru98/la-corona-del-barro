@@ -84,7 +84,7 @@ test('Dos bajas simultáneas se reflejan en todos los contadores y sin perder su
  const h=HouseEngine.create(b);
  assert.equal(h.counts.living,9);
  assert.equal(h.counts.fallen,3);
- assert.equal(h.counts.total,11);
+ assert.equal(h.counts.total,12);
  assert.ok(victims.every(c=>!h.availableIds.has(c.id)));
  assert.deepEqual(HouseEngine.audit(b),[]);
  b.stats.dead=1;
