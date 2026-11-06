@@ -38,7 +38,7 @@ test('Las reglas narrativas conservan íntegramente el motor original',()=>{
 });
 test('El HTML carga los módulos antes de la aplicación',()=>{
   const html=read('index.html');
-  const scripts=[...html.matchAll(/<script\s+src="([^"]+)"/g)].map(x=>x[1]);
+  const actual=[...html.matchAll(/<script\s+src="([^"]+)"/g)].map(x=>x[1]);
   assert.deepEqual(actual,scripts);
   for(const file of scripts)assert.ok(existsSync(join(root,file)),file+' missing');
 });
