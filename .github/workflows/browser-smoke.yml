@@ -1,9 +1,6 @@
 name: Auditoría funcional en navegador
 on:
   pull_request:
-    paths:
-      - 'tests/browser-smoke.mjs'
-      - '.github/workflows/browser-smoke.yml'
   workflow_dispatch:
 jobs:
   browser-smoke:
