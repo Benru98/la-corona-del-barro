@@ -80,7 +80,7 @@ try{
    await desktop.locator('#sideNav [data-nav="saga"]').click();
    await desktop.locator('.chapter-tile').last().click();
    const novel=await desktop.locator('.reading').innerText();
-   assert.ok(novel.includes('La medida de una victoria'),'Capítulo V ausente del lector');
+   assert.equal((await desktop.locator('.reader-hero h2').innerText()).trim(),'La medida de una victoria','Capítulo V ausente del lector');
    assert.ok(novel.includes('Belzar')&&novel.includes('Jaro'),'Faltan protagonistas del capítulo V');
    assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=40,'Faltan diálogos del capítulo V');
    const sources=await desktop.locator('.prose .dialogue-entry img').evaluateAll(
