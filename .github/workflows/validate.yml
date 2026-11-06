@@ -19,5 +19,7 @@ jobs:
           node --check novel/relationships.js
           node --check novel/narrative-engine.js
           node --check art-manifest.js
+          node --check scripts/save-core.mjs
+          node --check scripts/compare-saves.mjs
       - name: Comprobar integridad de datos y recursos
-        run: node --test tests/structure.test.mjs
+        run: node --test tests/*.test.mjs

@@ -1,0 +1,10 @@
+# Guardados de partida e informes locales: nunca publicar por accidente
+revisiones/
+*.save.json
+*.proposed.js
+*.proposed.json
+.env
+.env.*
+!*.example
+node_modules/
+.DS_Store
