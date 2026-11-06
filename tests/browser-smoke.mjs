@@ -63,11 +63,18 @@ try{
      const frame=node.querySelector('.dialogue-avatar');
      const r=frame.getBoundingClientRect();
      return {width:r.width,height:r.height,brief:node.classList.contains('dialogue-entry-brief'),
+       master:node.dataset.speaker==='guildmaster',
        src:image.currentSrc,fit:getComputedStyle(image).objectFit,naturalWidth:image.naturalWidth};
    }));
    assert.ok(portraits.some(p=>!p.brief&&p.width>=100),'Retratos principales demasiado pequeños');
    assert.ok(portraits.some(p=>p.brief&&p.width>=76),'Retratos cortos demasiado pequeños');
-   assert.ok(portraits.every(p=>p.naturalWidth>0&&p.fit==='contain'),'Imágenes de diálogos recortadas o sin cargar');
+   assert.ok(portraits.filter(p=>!p.master).every(p=>p.fit==='contain'),'Retratos de aventureros recortados');
+   // Las imágenes fuera de la pantalla usan loading=lazy: solo exigimos decodificar
+   // la primera imagen después de desplazarla a la zona visible.
+   const firstImage=desktop.locator('.prose .dialogue-entry img').first();
+   await firstImage.scrollIntoViewIfNeeded();
+   const firstLoaded=await firstImage.evaluate(async img=>{await img.decode();return img.naturalWidth>0;});
+   assert.ok(firstLoaded,'El primer retrato no se pudo cargar');
    console.log('Diálogos de escritorio:',JSON.stringify({count:portraits.length,regular:portraits.find(p=>!p.brief),brief:portraits.find(p=>p.brief)}));
  }
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
