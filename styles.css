@@ -634,3 +634,20 @@ body.reading-night .pulse-head h2{color:#f3deb7}
 body.reading-night .pulse-entry:hover,body.reading-night .pulse-entry:focus-visible{background:#365548}
 body.reading-night .pulse-footer{background:#2a453b;color:#ead8b5;border-color:#ac8753}
 body.reading-night .pulse-stat:not(:first-child){background:linear-gradient(145deg,#2d4b41,#1d362f);color:#f3ddb7;border-color:#9c8154}
+/* Retratos de aventureros: mostrar ilustraciones verticales completas (3:4).
+ * No recortar cabezas ni los marcos ornamentales originales. */
+.hero-card img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  object-position: center top;
+  background: #e7d6b6;
+}
+.portrait-large {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 3 / 4;
+  object-fit: contain;
+  object-position: center top;
+}
