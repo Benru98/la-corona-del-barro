@@ -1,5 +1,6 @@
 import {createHash} from 'node:crypto';
 import {fallenId,fallenName,reconcileCasualties} from './mortality-core.mjs';
+import HouseEngine from '../data/house-state.js';
 
 /*
  * Adapter para guardados REALES de Dungeons & Dynasties v26.
@@ -105,7 +106,7 @@ export function compareSaves(previous,next) {
     summary:{before,after,metrics:metricChanges},
     roster:{added:roster.added.map(x=>({id:x.id,name:x.name})),removed:roster.removed.map(x=>({id:x.id,name:x.name})),changed:characterChanges},
     bonds,jobs:{added:jobs.added,removed:jobs.removed},meetings,quests,fallen:{added:fallen.added.map(x=>({id:fallenId(x),name:fallenName(x)})),removed:fallen.removed.map(x=>({id:fallenId(x),name:fallenName(x)}))},
-    facilities,review,requiresEditorialReview:review.length>0};
+    facilities,review,requiresEditorialReview:review.length>0,events:HouseEngine.eventsFromDiff({fallen:{added:fallen.added.map(x=>({id:fallenId(x),name:fallenName(x)}))},roster:{added:roster.added,changed:characterChanges},bonds,jobs,facilities,summary:{before,after}})};
 }
 const scalarCharacterFields={level:'level',experience:'experience',morale:'morale',condition:'condition',stress:'stress',fatigue:'fatigue',oathWage:'salary'};
 function safeNumField(v,name){return num(v,name);}
@@ -174,7 +175,7 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
     ...diff.review
   ];
   return {format:'corona-campaign-proposal/v1',source:sourceName,gameVersion:SAVE_VERSION,fromDay:base.day+1,toDay:g.day+1,
-    updatedPaths:changes.map(x=>x.path),changes,blocking,review:warnings,campaign:result};
+    updatedPaths:changes.map(x=>x.path),changes,blocking,review:warnings,events:diff.events,campaign:result,audit:HouseEngine.audit(result)};
 }
 export function reportMarkdown(diff,proposal) {
   const lines=['# Informe de guardados — '+diff.guild,'','**Día visible:** '+diff.fromDay+' → '+diff.toDay,
