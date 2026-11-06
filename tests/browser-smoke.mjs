@@ -59,8 +59,8 @@ try{
    const artCatalog=await desktop.evaluate(()=>ART_CATALOG.items);
    assert.ok(artCatalog.some(x=>x.id==='cover-group'&&x.src==='portada-casa.webp'),'El catálogo no apunta a la portada institucional');
    assert.ok(artCatalog.some(x=>x.id==='cover-group-v2-historical'&&x.src==='corona-grupal-v2.webp'),'Se ha perdido el mural de los fundadores');
-   assert.ok(artCatalog.some(x=>x.id==='portrait-pending-half-orc-paladin'&&x.status==='draft'),'No se ha guardado el retrato pendiente del nuevo paladín');
-   assert.equal((await desktop.request.get(new URL('paladin-semiorco-pendiente.webp',base).href)).status(),200,'Retrato del paladín ausente');
+   assert.ok(artCatalog.some(x=>x.id==='portrait-adv_efelp4o01ks4'&&x.status==='approved'&&x.characterId==='adv_efelp4o01ks4'),'Retrato oficial de Iligar sin aprobar');
+   assert.equal((await desktop.request.get(new URL('iligar-rompehuesos.webp',base).href)).status(),200,'Retrato del paladín ausente');
    await desktop.locator('#sideNav [data-nav="saga"]').click();
    await desktop.locator('.chapter-tile').first().click();
    const cards=desktop.locator('.prose .dialogue-entry');
@@ -111,6 +111,16 @@ try{
    const newProse=await desktop.locator('.reading').innerText();
    assert.ok(newProse.includes('Ulf')&&newProse.includes('Xara'),'Falta la relación central del interludio');
    assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=30,'Faltan intervenciones retratadas en el interludio');
+   await desktop.locator('#sideNav [data-nav="saga"]').click();
+   await desktop.locator('.chapter-tile').nth(8).click();
+   assert.equal((await desktop.locator('.reader-hero h2').innerText()).trim(),'La voz que no se llevaron','Interludio IX ausente');
+   assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=20,'Faltan las voces en el interludio IX');
+   await desktop.locator('#sideNav [data-nav="saga"]').click();
+   await desktop.locator('.chapter-tile').nth(9).click();
+   assert.equal((await desktop.locator('.reader-hero h2').innerText()).trim(),'El juramento fresco','Interludio X ausente');
+   assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=30,'Faltan las voces en el interludio X');
+   const iligarImages=await desktop.locator('.prose .dialogue-entry[data-speaker="adv_efelp4o01ks4"] img').count();
+   assert.ok(iligarImages>=1,'Los diálogos de Iligar deben mostrar su retrato');
    // Corrección UI: la tarjeta abre notas completas y el diálogo responde a ESC y cierre.
    await desktop.locator('#sideNav [data-nav="home"]').click();
    assert.equal(await desktop.locator('.chapter-peek .latest-icon').count(),0,'Quedan mini-portadas decorativas sin ilustración');
@@ -148,8 +158,14 @@ try{
    await desktop.locator('#sideNav [data-nav="heroes"]').click();
    await desktop.locator('[data-filter="caidos"]').click();
    assert.equal(await desktop.locator('.hero-card.is-fallen').count(),1,'Filtro de caídos incorrecto');
+   await desktop.locator('[data-filter="all"]').click();
+   const iligarCard=desktop.locator('[data-hero="adv_efelp4o01ks4"]').first();
+   assert.ok(await iligarCard.count(),'Iligar no aparece en la galería');
+   await iligarCard.click();
+   assert.ok((await desktop.locator('#content').innerText()).includes('Una Tumba que Responder'),'Falta su voto en la ficha');
+   assert.ok((await desktop.locator('.founder-note').innerText()).includes('honorable'),'Falta la nota literal sobre Iligar');
    await desktop.locator('#sideNav [data-nav="patrols"]').click();
-   assert.equal(await desktop.locator('.patrol-row').count(),10,'Los diez vivos han regresado y deben estar disponibles en patrullas');
+   assert.equal(await desktop.locator('.patrol-row').count(),7,'Cuatro siguen de expedición: deben quedar siete disponibles');
    assert.ok(!(await desktop.locator('.patrol-row .patrol-name strong').allTextContents()).includes('Brugo'),'Brugo no puede figurar en patrulla');
    await desktop.locator('#sideNav [data-nav="archive"]').click();
    const archiveNow=await desktop.locator('#content').innerText();
