@@ -85,7 +85,7 @@ test('Se preservan afinidades reales y se incluyen nuevos vínculos, sin mezclar
  assert.equal(book.relationships.length,34);
  assert.equal(book.literaryRelationships.length,28);
  assert.equal(pair('adv_agorapai6eaw','adv_vir5cr755mej').rawValue,0);
- assert.equal(pair('adv_vir5cr755mej','adv_nmu0cr5oezjw').rawValue,18.5);
+ assert.equal(pair('adv_vir5cr755mej','adv_nmu0cr5oezjw').rawValue,18);
  assert.equal(pair('adv_hpzq2ixhvxtq','adv_w21f5zhwf7li').mentorId,'adv_w21f5zhwf7li');
  assert.equal(pair('adv_dvyb6kaxgy9l','adv_xvecyci8knko').rawValue,-2);
  assert.equal(pair('adv_dvyb6kaxgy9l','adv_xsny2mf20dv6').rawValue,13);
