@@ -104,6 +104,25 @@ try{
    const newProse=await desktop.locator('.reading').innerText();
    assert.ok(newProse.includes('Ulf')&&newProse.includes('Xara'),'Falta la relación central del interludio');
    assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=30,'Faltan intervenciones retratadas en el interludio');
+   // Corrección UI: la tarjeta abre notas completas y el diálogo responde a ESC y cierre.
+   await desktop.locator('#sideNav [data-nav="home"]').click();
+   assert.equal(await desktop.locator('.chapter-peek .latest-icon').count(),0,'Quedan mini-portadas decorativas sin ilustración');
+   assert.equal(await desktop.locator('.chapter-peek .latest-card').count(),chapters.length,'Faltan capítulos en la portada');
+   await desktop.locator('#sideNav [data-nav="bonds"]').click();
+   const relRow=desktop.locator('.rel-simple-row[data-rel-detail]').first();
+   assert.ok(await relRow.count(),'Faltan tarjetas de vínculos');
+   const relExcerpt=(await relRow.locator('.rel-simple-main p').first().textContent()).trim();
+   await relRow.locator('.rel-simple-track').click();
+   const relDialog=desktop.locator('#relationDetailDialog');
+   assert.ok(await relDialog.evaluate(el=>el.open),'No se abre el diálogo al pulsar la tarjeta');
+   assert.ok((await relDialog.innerText()).includes(relExcerpt),'El diálogo debe conservar el texto completo');
+   assert.notEqual(await relDialog.locator('.relation-dialog-prose').first().evaluate(el=>getComputedStyle(el).webkitLineClamp),'2','El texto del diálogo sigue truncado');
+   await desktop.keyboard.press('Escape');
+   assert.ok(!(await relDialog.evaluate(el=>el.open)),'ESC no cierra el diálogo');
+   await relRow.locator('.rel-open-detail').click();
+   assert.ok(await relDialog.evaluate(el=>el.open),'El botón Leer relación completa no abre el diálogo');
+   await relDialog.locator('[data-action="close-relation"]').first().click();
+   assert.ok(!(await relDialog.evaluate(el=>el.open)),'La X no cierra el diálogo');
    // Primera muerte registrada: portada, memorial, ficha y patrullas deben coincidir.
    await desktop.locator('#sideNav [data-nav="home"]').click();
    assert.equal(await desktop.locator('.home-memorial').count(),1,'No aparece la noticia de duelo en portada');
@@ -142,6 +161,13 @@ try{
  assert.equal(await mobile.locator('#mobileDrawer').getAttribute('aria-hidden'),'true','Menú móvil no cierra');
  assert.ok((await mobile.locator('#content').innerText()).length>60);
  if(!base.includes('pages.dev')){
+   await mobile.evaluate(()=>document.querySelector('#sideNav [data-nav="bonds"]').click());
+   await mobile.locator('.rel-simple-row .rel-open-detail').first().click();
+   const mobileRel=mobile.locator('#relationDetailDialog');
+   assert.ok(await mobileRel.evaluate(el=>el.open),'La relación no se abre en móvil');
+   const dialogSizing=await mobileRel.evaluate(el=>({w:el.getBoundingClientRect().width,h:el.getBoundingClientRect().height,vw:innerWidth,vh:innerHeight}));
+   assert.ok(dialogSizing.w<=dialogSizing.vw&&dialogSizing.h<=dialogSizing.vh,'El diálogo sobresale de la pantalla móvil');
+   await mobileRel.locator('[data-action="close-relation"]').first().click();
    await mobile.evaluate(()=>document.querySelector('#sideNav [data-nav="saga"]').click());
    await mobile.locator('.chapter-tile').first().click();
    const portraits=await mobile.locator('.prose .dialogue-entry').evaluateAll(nodes=>nodes.map(n=>{

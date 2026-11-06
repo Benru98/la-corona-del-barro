@@ -934,3 +934,56 @@ body.reading-night .pulse-stat:not(:first-child){background:linear-gradient(145d
 .founder-note blockquote{font-family:Georgia,serif;font-size:1.05em;line-height:1.75;color:inherit;margin:12px 0;white-space:pre-wrap}
 .founder-note .eyebrow{letter-spacing:.11em}
 .founder-note .source-note{font-size:.79em;margin:10px 0 0}
+
+/* Corrección de usabilidad · Relaciones y lista de capítulos.
+   Los capítulos no presentan miniaturas fingidas: tipografía y jerarquía editorial. */
+.chapter-peek .latest-card{min-height:76px;padding:13px 10px;gap:16px;align-items:center;border-left:3px solid transparent}
+.chapter-peek .latest-card:hover,.chapter-peek .latest-card:focus-visible{border-left-color:#a87a45;background:#fff3da9e}
+.chapter-peek .latest-card>span:first-child{display:flex;flex-direction:column;gap:3px;min-width:0;flex:1}
+.chapter-peek .latest-card>span:first-child>span:first-child{font-weight:700;letter-spacing:.025em;color:#8f744e}
+.chapter-peek .latest-card>span:first-child>span:last-child{line-height:1.5}
+.chapter-peek .latest-card .peek-arrow{flex:0 0 auto}
+.rel-simple-row{cursor:pointer;transition:box-shadow .17s,background .17s,transform .17s}
+.rel-simple-row:hover{background:linear-gradient(120deg,#fff9ea,#f6ebda);box-shadow:0 5px 13px #6a48251f;transform:translateY(-1px)}
+.rel-simple-row:focus-within{outline:2px solid #b68a4c;outline-offset:2px}
+.rel-open-detail{display:inline-flex;align-items:center;gap:7px;color:#795331;font:700 12px var(--sans);background:none;border:0;border-bottom:1px solid currentColor;padding:3px 0;margin-top:8px;cursor:pointer}
+.rel-open-detail:hover{text-decoration:none;color:#994e35}
+.relation-detail-dialog{position:fixed;inset:0;margin:auto;padding:26px clamp(18px,4vw,38px) 20px;width:min(670px,calc(100vw - 28px));max-width:670px;max-height:min(86dvh,850px);overflow-y:auto;overscroll-behavior:contain;border:2px solid #ba9661;border-radius:15px;background:linear-gradient(145deg,#fcf4e4,#f0e1c8);box-shadow:0 27px 80px #20180f7c;color:#463522}
+.relation-detail-dialog::backdrop{background:rgba(17,23,26,.76);backdrop-filter:blur(4px)}
+.relation-dialog-top{display:flex;justify-content:space-between;align-items:center;gap:16px;border-bottom:1px solid #cbb18a;padding-bottom:12px}
+.relation-dialog-top .eyebrow{color:#915b3d}
+.relation-dialog-close{width:38px;height:38px;flex-shrink:0;border:1px solid #bc9c6a;border-radius:9px;background:#fff9ec;color:#644528;font:30px/1 var(--serif)}
+.relation-dialog-close:hover{background:#ead6b7}
+.relation-dialog-heading{display:flex;align-items:center;justify-content:center;gap:15px;margin:23px 0 12px}
+.relation-dialog-heading img{width:72px;height:90px;object-fit:cover;object-position:center 15%;border-radius:8px;border:2px solid #b9955d;box-shadow:0 6px 15px #58432726}
+.relation-dialog-join{font:30px var(--serif);color:#ac8350}
+.relation-detail-dialog h2{text-align:center;font:clamp(24px,4vw,33px)/1.2 var(--serif);margin:5px 0 9px;color:#503721}
+.relation-detail-dialog h2 span{font-weight:400;color:#ab8a60;font-style:italic}
+.relation-dialog-mechanic{text-align:center;font:13px/1.5 var(--sans);color:#8b6b49;margin:0 0 22px}
+.relation-dialog-mechanic strong{color:#6f4c32}
+.relation-dialog-section{padding:15px 0;border-top:1px solid #dac6a7}
+.relation-dialog-type{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font:12px var(--sans);color:#887052;margin-bottom:11px}
+.relation-dialog-prose,.relation-dialog-perspectives p{white-space:pre-wrap;overflow-wrap:anywhere;font:16px/1.72 var(--serif);color:#4e3c2e;margin:0 0 10px}
+.relation-detail-dialog h4{font:700 17px/1.3 var(--serif);color:#805832;margin:16px 0 9px}
+.relation-dialog-perspectives{border-left:3px solid #b69b70;padding-left:15px}
+.relation-dialog-perspectives p{font-size:15px}
+.relation-dialog-evolution{margin:0 0 8px;padding-left:21px}
+.relation-dialog-evolution li{margin:7px 0;font:15px/1.6 var(--serif);color:#503d2c}
+.relation-dialog-evolution small{color:#9b7a56}
+.relation-dialog-hint{font:13px/1.6 var(--sans);color:#826c55;background:#f2e6d2;padding:12px;border-radius:7px}
+.relation-dialog-footer{display:flex;align-items:center;justify-content:space-between;gap:13px;border-top:1px solid #cbb18a;padding-top:16px;margin-top:5px}
+.relation-dialog-footer>span{font:12px/1.5 var(--sans);color:#937a5a;max-width:365px}
+body.reading-night .relation-detail-dialog{background:linear-gradient(145deg,#29453b,#17332f);color:#ecdbbd;border-color:#b69a6e}
+body.reading-night .relation-detail-dialog h2,body.reading-night .relation-dialog-prose,body.reading-night .relation-dialog-perspectives p,body.reading-night .relation-dialog-evolution li{color:#f3e4cb}
+body.reading-night .relation-dialog-mechanic,body.reading-night .relation-dialog-mechanic strong,body.reading-night .relation-dialog-footer>span,body.reading-night .relation-dialog-evolution small{color:#dec49a}
+body.reading-night .relation-dialog-hint{background:#315147;color:#ecd8b8}
+body.reading-night .rel-open-detail{color:#e7c790}
+body.reading-night .rel-simple-row:hover{background:linear-gradient(115deg,#31564b,#24463d)}
+@media(max-width:600px){
+ .relation-detail-dialog{width:calc(100vw - 14px);max-height:94dvh;padding:17px 17px 15px;border-radius:11px}
+ .relation-dialog-heading img{width:62px;height:80px}
+ .relation-dialog-footer{align-items:stretch;flex-direction:column}
+ .relation-dialog-footer button{align-self:flex-end}
+ .chapter-peek .latest-card{min-height:75px;padding:12px 6px}
+}
+@media(prefers-reduced-motion:reduce){.rel-simple-row{transition:none;transform:none!important}}
