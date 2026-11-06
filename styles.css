@@ -923,3 +923,8 @@ body.reading-night .pulse-stat:not(:first-child){background:linear-gradient(145d
  .memorial-person,.death-biography,.home-memorial{break-inside:avoid;box-shadow:none}
  .death-ribbon{box-shadow:none}
 }
+
+/* Los lazos con un difunto permanecen legibles, sin presentarlos como vínculo activo. */
+.atlas-node.is-fallen img,.rel-record-face.is-fallen img{filter:grayscale(.78) sepia(.2)}
+.atlas-node.is-fallen{border-color:#8f7667!important}
+.rel-record-face.is-fallen{border-color:#8f7667}
