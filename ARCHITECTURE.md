@@ -34,6 +34,6 @@ Cloudflare Pages está configurado con `main`, framework `None`, build `exit 0`,
 
 La verdad del **guardado del juego** y el **canon literario** son capas distintas. Un cambio mecánico no autoriza inventar su causa. Conservar IDs estables y capítulos publicados; no sobrescribir imágenes aprobadas sin instrucción explícita.
 
-**Pendiente de fase 2:** importar guardados y comparar diferencias automáticamente. El archivo `data/campaign.js` todavía se mantiene manualmente.
+**Fase 2 (propuesta de importación):** `scripts/save-core.mjs` valida y compara guardados v26; `scripts/compare-saves.mjs` crea informes y borradores sin publicar. `data/save-baseline.json` identifica el último guardado aprobado. Véase `docs/IMPORTADOR.md`. Las nuevas fichas, el canon literario y los acontecimientos narrativos siguen requiriendo revisión.
 
 No subir credenciales, guardados privados ni datos sensibles al repositorio público.
