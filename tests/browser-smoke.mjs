@@ -93,6 +93,33 @@ try{
    assert.equal((await desktop.locator('.reader-hero h2').innerText()).trim(),'Lo que no regresó de Ashfall','Capítulo VI no cargado');
    assert.ok((await desktop.locator('.reading').innerText()).includes('Enterraron a Brugo'),'El entierro de Brugo no figura en la crónica');
    assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=20,'Faltan diálogos del capítulo VI');
+   // Primera muerte registrada: portada, memorial, ficha y patrullas deben coincidir.
+   await desktop.locator('#sideNav [data-nav="home"]').click();
+   assert.equal(await desktop.locator('.home-memorial').count(),1,'No aparece la noticia de duelo en portada');
+   assert.ok((await desktop.locator('.home-memorial').innerText()).includes('Brugo'));
+   assert.equal(await desktop.locator('.featured-card.is-fallen').count(),1,'Retrato sin marca de caído en portada');
+   await desktop.locator('#sideNav [data-nav="legacy"]').click();
+   assert.equal(await desktop.locator('.memorial-person').count(),1,'Memorial no actualizado');
+   assert.ok((await desktop.locator('.legacy-opening').innerText()).includes('ausencias'));
+   assert.ok((await desktop.locator('.memorial-person').innerText()).includes('Brugo'));
+   assert.ok((await desktop.locator('.memorial-person').innerText()).includes('Velasco'));
+   await desktop.locator('.memorial-person [data-hero]').click();
+   assert.equal(await desktop.locator('.death-biography').count(),1,'La ficha no refleja la muerte');
+   assert.ok((await desktop.locator('.death-biography').innerText()).includes('día 34'));
+   assert.ok((await desktop.locator('.death-biography').innerText()).includes('literaria'));
+   await desktop.locator('#sideNav [data-nav="heroes"]').click();
+   await desktop.locator('[data-filter="caidos"]').click();
+   assert.equal(await desktop.locator('.hero-card.is-fallen').count(),1,'Filtro de caídos incorrecto');
+   await desktop.locator('#sideNav [data-nav="patrols"]').click();
+   assert.equal(await desktop.locator('.patrol-row').count(),10,'Las patrullas no cuentan los diez supervivientes');
+   assert.ok(!(await desktop.locator('.patrol-list').innerText()).includes('Brugo'),'Brugo no puede figurar en patrulla');
+   await desktop.locator('#sideNav [data-nav="archive"]').click();
+   const archiveNow=await desktop.locator('#content').innerText();
+   assert.ok(archiveNow.includes('65'),'El archivo no refleja el renombre vigente');
+   assert.ok(archiveNow.includes('1 caído'),'El archivo no refleja la baja');
+   assert.ok(!archiveNow.includes('6 / 6 · ninguna muerte'),'Aún se muestran cifras históricas como actuales');
+   console.log('Memorial, fichas, patrullas y archivo: sincronizados con el día 39');
+
 
  }
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
