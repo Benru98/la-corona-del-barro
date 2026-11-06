@@ -165,6 +165,19 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
       leaguePoints:result.stats.leaguePoints,leaguePosition:result.stats.leaguePosition,bonds:result.stats.bonds};
     if(!result.snapshots.some(s=>s.year===snapshot.year && s.day===snapshot.day))result.snapshots.push(snapshot);
   }
+  // El registro técnico de acontecimientos es distinto de los capítulos y de la cronología literaria.
+  // Nunca atribuir éxitos ni motivaciones que no constan en el guardado.
+  const titleFor={death:'Fallecimiento registrado',recruitment:'Nueva incorporación',promotion:'Ascenso de nivel',departure:'Salida de la Casa',return:'Regreso a la Casa',injury:'Cambio de lesión',division_changed:'Cambio de división',building_changed:'Instalaciones actualizadas',bond_changed:'Vínculo actualizado',job_started:'Nuevo encargo',job_ended:'Encargo cerrado o desaparecido',post_changed:'Cambio de puesto',assignment_changed:'Cambio de destino'};
+  const previousEvents=Array.isArray(result.world.systemEvents)?result.world.systemEvents:[];
+  const generated=diff.events.map((e,i)=>({
+    id:[result.meta.year,g.day+1,e.kind,e.subjectId||'casa',i].join(':'),
+    year:result.meta.year,day:g.day+1,kind:e.kind,subjectId:e.subjectId,
+    title:titleFor[e.kind]||'Cambio en la Casa',
+    description:(e.details?.name?e.details.name+' · ':'')+(e.requiresEditorialReview?'Pendiente de interpretación editorial.':'Cambio registrado en el guardado.'),
+    needsEditorialReview:e.requiresEditorialReview,
+    details:e.details
+  }));
+  replace(result.world,'systemEvents',[...previousEvents,...generated],'world.systemEvents');
   // Nunca sobrescribir textos, memorias, escenas ni el atlas literario desde un JSON mecánico.
   for(const key of ['chapters','literaryRelationships','literaryTagCatalog','editions','timeline','marginalia'])
     assert(equal(result[key],book[key]),'Cambio no autorizado en canon: '+key);
