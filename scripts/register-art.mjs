@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /* Registra ilustraciones ya disponibles en el repositorio como borrador.
  * node scripts/register-art.mjs --id scene-... --src assets/scenes/....webp --kind scene
- * Opcional: --character-id adv_... o --legacy-key claveNueva
+ * Opcional: --character-id adv_... --label 'Pensativo' --moods 'reflexivo,sereno' --edition v3
  */
 import fs from 'node:fs';
 import path from 'node:path';
@@ -25,7 +25,16 @@ try{
   const book=JSON.parse(vm.runInContext('JSON.stringify(BOOK)',bc));
   if(!book.characters.some(c=>c.id===args['character-id']))throw Error('Personaje desconocido');
  }
- const entry={id,src,kind,status:'draft',...(args['legacy-key']?{legacyKey:args['legacy-key']}:{ }),...(args['character-id']?{characterId:args['character-id']}:{})};
+ const label=args.label?.trim();
+ if(label&&label.length>120)throw Error('Etiqueta demasiado larga');
+ const moods=args.moods?.split(',').map(x=>x.trim()).filter(Boolean)||[];
+ if(moods.length>5||moods.some(x=>!/^[a-z][a-z0-9_-]{1,30}$/.test(x)))throw Error('Emociones inválidas: usar palabras sencillas separadas por comas');
+ const edition=args.edition?.trim();
+ if(edition&&!/^v[0-9]{1,3}$/.test(edition))throw Error('Edición inválida (ejemplo: v3)');
+ const entry={id,src,kind,status:'draft',
+  ...(args['legacy-key']?{legacyKey:args['legacy-key']}:{ }),
+  ...(args['character-id']?{characterId:args['character-id']}:{ }),
+  ...(label?{label}:{ }),...(moods.length?{moods}:{ }),...(edition?{edition}:{ })};
  catalog.items.push(entry);
  fs.writeFileSync(catalogPath,'/* Catálogo canónico de arte aprobado y borradores; IDs estables. */\nconst ART_CATALOG='+JSON.stringify(catalog)+';\n');
  console.log('Ilustración registrada como borrador (no visible hasta aprobar): '+id);
