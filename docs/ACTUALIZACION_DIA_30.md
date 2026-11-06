@@ -41,6 +41,8 @@
 - **Íñigo:** continúa cedido a La Guardia de Conchamuelle; regreso previsto el **día visible 37**.
 - **Sin fallecidos ni nuevas incorporaciones al plantel**, aunque existen candidatos a contratación.
 
+Se conservan también **34 noticias nuevas** y **15 hitos narrativos** del intervalo mediante identificadores estables en `BOOK.world.eventLog` y `BOOK.world.storyBeats`. Se mantiene abierta la trama de las Marcas Cenicientas sin atribuirle desenlace.
+
 ## Cambios personales destacados
 
 | Personaje | Nivel | Moral | Tensión | Fatiga | Nota |
