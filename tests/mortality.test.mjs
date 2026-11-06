@@ -16,10 +16,10 @@ const luna='adv_xvecyci8knko';
 const who=id=>book.characters.find(x=>x.id===id);
 
 test('Un caído sigue en el códice, pero no cuenta como aventurero vivo',()=>{
- assert.equal(book.stats.day,45);
- assert.equal(current.guild.roster.length,10);
+ assert.equal(book.stats.day,49);
+ assert.equal(current.guild.roster.length,11);
  assert.equal(current.guild.fallen.length,1);
- assert.equal(book.characters.length,11);
+ assert.equal(book.characters.length,12);
  assert.equal(who(brugo).status,'caído');
  assert.equal(who(brugo).death.day,34);
  assert.equal(who(brugo).death.place,'El Asalto de Ashfall');
@@ -28,7 +28,7 @@ test('Un caído sigue en el códice, pero no cuenta como aventurero vivo',()=>{
  assert.ok(who(brugo).memorial.literaryDeath.includes('versión literaria'));
  assert.ok(who(brugo).bio.includes('Murió en El Asalto de Ashfall'));
  assert.equal(book.stats.dead,1);
- assert.equal(book.stats.members,10);
+ assert.equal(book.stats.members,11);
  assert.ok(!book.world.guildRosterAlive.includes(brugo));
 });
 
@@ -46,12 +46,12 @@ test('Un futuro fallecimiento activa la conciliación sin eliminar retrato, biog
  const props=prepareCampaignUpdate(book,current,next,'futuro.json');
  const after=props.campaign;
  const c=after.characters.find(x=>x.id===luna);
- assert.equal(after.characters.length,11,'No se borran personajes históricos');
+ assert.equal(after.characters.length,12,'No se borran personajes históricos');
  assert.equal(c.status,'caído');
- assert.equal(c.death.day,45);
+ assert.equal(c.death.day,49);
  assert.equal(c.death.place,'El Paso de la Niebla');
  assert.equal(c.away,null);
- assert.equal(after.stats.members,9);
+ assert.equal(after.stats.members,10);
  assert.equal(after.stats.dead,2);
  assert.equal(after.world.fallen.length,2);
  assert.ok(!after.world.guildRosterAlive.includes(luna));
