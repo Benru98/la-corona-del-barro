@@ -59,7 +59,7 @@ try{
    const artCatalog=await desktop.evaluate(()=>ART_CATALOG.items);
    assert.ok(artCatalog.some(x=>x.id==='cover-group'&&x.src==='portada-casa.webp'),'El catálogo no apunta a la portada institucional');
    assert.ok(artCatalog.some(x=>x.id==='cover-group-v2-historical'&&x.src==='corona-grupal-v2.webp'),'Se ha perdido el mural de los fundadores');
-   assert.ok(artCatalog.some(x=>x.id==='portrait-pending-half-orc-paladin'&&x.status==='pending'),'No se ha guardado el retrato pendiente del nuevo paladín');
+   assert.ok(artCatalog.some(x=>x.id==='portrait-pending-half-orc-paladin'&&x.status==='draft'),'No se ha guardado el retrato pendiente del nuevo paladín');
    assert.equal((await desktop.request.get(new URL('paladin-semiorco-pendiente.webp',base).href)).status(),200,'Retrato del paladín ausente');
    await desktop.locator('#sideNav [data-nav="saga"]').click();
    await desktop.locator('.chapter-tile').first().click();
