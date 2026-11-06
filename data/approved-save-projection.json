@@ -2,12 +2,12 @@
   "format": "corona-approved-save-projection/v1",
   "projectionNote": "SOLO CAMPOS DE DIFERENCIA APROBADOS. Guardado original no incluido; no contiene atributos ocultos ni todos los historiales.",
   "version": 26,
-  "sig": "m4zmqy.1lfupms",
+  "sig": "bhuy7i.79hz3a",
   "guild": {
     "name": "La Corona de Barro",
-    "day": 29,
-    "gold": 2485,
-    "renown": 26,
+    "day": 38,
+    "gold": 2186,
+    "renown": 65,
     "roster": [
       {
         "id": "adv_xvecyci8knko",
@@ -15,17 +15,11 @@
         "level": 2,
         "experience": 11,
         "morale": 100,
-        "condition": 94,
-        "stress": 16,
-        "fatigue": 21,
+        "condition": 100,
+        "stress": 11,
+        "fatigue": 12,
         "oathWage": 19,
         "post": "secondWatch",
-        "away": {
-          "jobId": "delve_28",
-          "returnsDay": 33,
-          "delve": true,
-          "region": "elderwood"
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -163,18 +157,12 @@
         "name": "Belzar de la Ofrenda",
         "level": 6,
         "experience": 54,
-        "morale": 64,
-        "condition": 94,
-        "stress": 42,
-        "fatigue": 32,
+        "morale": 34,
+        "condition": 100,
+        "stress": 23,
+        "fatigue": 21,
         "oathWage": 24,
-        "post": "secondWatch",
-        "away": {
-          "jobId": "delve_28",
-          "returnsDay": 33,
-          "delve": true,
-          "region": "elderwood"
-        },
+        "post": "vanguard",
         "injury": null,
         "attributes": {
           "weaponSkill": 10,
@@ -285,6 +273,18 @@
             "value": 81,
             "tier": 1,
             "quality": 1.0906828651204705
+          },
+          "trinket": {
+            "id": "it_fk_s_founding-1793874176816-909579_2_2979_1109",
+            "name": "Colgante Vital",
+            "slot": "trinket",
+            "rarity": "common",
+            "mods": {
+              "hpPct": 0.09270374867250211
+            },
+            "value": 40,
+            "tier": 1,
+            "quality": 1.0300416519166902
           }
         }
       },
@@ -292,13 +292,13 @@
         "id": "adv_xsny2mf20dv6",
         "name": "Ulf Vallehondo",
         "level": 2,
-        "experience": 9,
-        "morale": 63,
+        "experience": 12,
+        "morale": 66,
         "condition": 100,
-        "stress": 34,
-        "fatigue": 24,
+        "stress": 23,
+        "fatigue": 19,
         "oathWage": 15,
-        "post": "vanguard",
+        "post": "secondWatch",
         "injury": null,
         "attributes": {
           "weaponSkill": 2,
@@ -416,11 +416,11 @@
         "id": "adv_hpzq2ixhvxtq",
         "name": "Velasco Rivadeneira",
         "level": 5,
-        "experience": 44,
-        "morale": 57,
+        "experience": 47,
+        "morale": 60,
         "condition": 100,
-        "stress": 55,
-        "fatigue": 38,
+        "stress": 37,
+        "fatigue": 29,
         "oathWage": 26,
         "post": "vanguard",
         "injury": null,
@@ -540,19 +540,13 @@
         "id": "adv_agorapai6eaw",
         "name": "Jaro",
         "level": 6,
-        "experience": 60,
-        "morale": 88,
-        "condition": 94,
-        "stress": 75,
-        "fatigue": 66,
+        "experience": 65,
+        "morale": 100,
+        "condition": 100,
+        "stress": 56,
+        "fatigue": 50,
         "oathWage": 27,
         "post": "vanguard",
-        "away": {
-          "jobId": "delve_28",
-          "returnsDay": 33,
-          "delve": true,
-          "region": "elderwood"
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 17,
@@ -588,7 +582,8 @@
         },
         "traitIds": [
           "crucible-raised",
-          "ambitious"
+          "ambitious",
+          "stalwart"
         ],
         "stakes": {
           "conviction": "the-shield",
@@ -596,7 +591,11 @@
             "kind": "war",
             "templateId": "war-answered",
             "name": "Cuando suene el cuerno",
-            "text": "Juró no volver a estar en una casa que oyera el cuerno y se quedara junto a su fuego."
+            "text": "Juró no volver a estar en una casa que oyera el cuerno y se quedara junto a su fuego.",
+            "resolved": {
+              "line": "El cuerno sonó, y esta casa acudió. No estaban junto al fuego cuando ocurrió.",
+              "day": 33
+            }
           },
           "flaw": "the-martyr"
         },
@@ -680,153 +679,16 @@
         }
       },
       {
-        "id": "adv_w21f5zhwf7li",
-        "name": "Brugo",
-        "level": 8,
-        "experience": 91,
-        "morale": 64,
-        "condition": 100,
-        "stress": 40,
-        "fatigue": 35,
-        "oathWage": 38,
-        "post": "vanguard",
-        "injury": null,
-        "attributes": {
-          "weaponSkill": 14,
-          "marksmanship": 4,
-          "power": 15,
-          "spellcraft": 1,
-          "armorUse": 20,
-          "parry": 13,
-          "evasion": 13,
-          "criticalStrike": 12,
-          "composure": 13,
-          "bravery": 14,
-          "decisions": 11,
-          "anticipation": 10,
-          "teamwork": 5,
-          "leadership": 11,
-          "concentration": 11,
-          "aggression": 14,
-          "discipline": 10,
-          "resolve": 18,
-          "strength": 20,
-          "agility": 7,
-          "stamina": 10,
-          "vitality": 20,
-          "speed": 10,
-          "reflexes": 9,
-          "threat": 17,
-          "mitigation": 20,
-          "healing": 4,
-          "support": 10,
-          "crowdControl": 16,
-          "positioning": 12
-        },
-        "traitIds": [
-          "crowd-pleaser",
-          "clumsy",
-          "bog-bred"
-        ],
-        "delves": 4,
-        "record": {
-          "since": 0,
-          "all": {
-            "n": 4,
-            "dealt": 1391,
-            "healed": 0,
-            "faced": 3348,
-            "kills": 11,
-            "downed": 0,
-            "swings": 196,
-            "hits": 193,
-            "crits": 13,
-            "taken": 376,
-            "blocked": 53,
-            "heroic": 3
-          },
-          "trials": {
-            "n": 2,
-            "dealt": 593,
-            "healed": 0,
-            "faced": 1683,
-            "kills": 4,
-            "downed": 0,
-            "swings": 85,
-            "hits": 83,
-            "crits": 7,
-            "taken": 179,
-            "blocked": 27,
-            "heroic": 1
-          }
-        },
-        "currentAbility": 153,
-        "potentialAbility": 158,
-        "abilityStars": 4,
-        "potentialStars": 4,
-        "equipment": {
-          "weapon": {
-            "id": "it_fk_w_founding-1793874176816-909579_5_2503",
-            "name": "Templado Hacha baluarte",
-            "slot": "weapon",
-            "rarity": "rare",
-            "mods": {
-              "attackPct": 0.11255862303951289,
-              "blockChance": 0.11577458369778468,
-              "mitigation": 0.02894364592444617
-            },
-            "weaponKind": "melee",
-            "value": 79,
-            "tier": 1,
-            "quality": 1.071986886090599
-          },
-          "armour": {
-            "id": "it_fk_a_founding-1793874176816-909579_5_7388",
-            "name": "Fino Grebas de Piel de Foca",
-            "slot": "armour",
-            "rarity": "rare",
-            "mods": {
-              "mitigation": 0.061517952866619444
-            },
-            "counters": "flooded",
-            "value": 84,
-            "tier": 1,
-            "quality": 1.1392213493818417
-          },
-          "trinket": {
-            "id": "it_fk_s_founding-1793874176816-909579_2_2979_1109",
-            "name": "Colgante Vital",
-            "slot": "trinket",
-            "rarity": "common",
-            "mods": {
-              "hpPct": 0.09270374867250211
-            },
-            "value": 40,
-            "tier": 1,
-            "quality": 1.0300416519166902
-          }
-        }
-      },
-      {
         "id": "adv_ge28ylm26r9p",
         "name": "Íñigo Guzmán",
         "level": 1,
         "experience": 4,
-        "morale": 81,
+        "morale": 83,
         "condition": 100,
         "stress": 0,
-        "fatigue": 10,
+        "fatigue": 0,
         "oathWage": 14,
         "post": "secondWatch",
-        "away": {
-          "jobId": "loan_adv_ge28ylm26r9p_18",
-          "returnsDay": 36,
-          "loan": {
-            "to": "La Guardia de Conchamuelle",
-            "toId": "lg_t6_0_8760",
-            "affiliate": false
-          }
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 1,
@@ -875,7 +737,7 @@
           },
           "flaw": "keeps-score"
         },
-        "currentAbility": 68,
+        "currentAbility": 70,
         "potentialAbility": 143,
         "abilityStars": 1.5,
         "potentialStars": 3.5,
@@ -978,7 +840,7 @@
           },
           "flaw": "the-grudge"
         },
-        "currentAbility": 64,
+        "currentAbility": 66,
         "potentialAbility": 137,
         "abilityStars": 1.5,
         "potentialStars": 3.5,
@@ -1019,10 +881,10 @@
         "name": "Xara del Cuerno",
         "level": 1,
         "experience": 6,
-        "morale": 78,
+        "morale": 42,
         "condition": 100,
-        "stress": 31,
-        "fatigue": 23,
+        "stress": 12,
+        "fatigue": 14,
         "oathWage": 14,
         "post": "secondWatch",
         "injury": null,
@@ -1144,15 +1006,10 @@
         "level": 5,
         "experience": 42,
         "morale": 96,
-        "condition": 94,
-        "stress": 56,
-        "fatigue": 46,
-        "away": {
-          "jobId": "delve_28",
-          "returnsDay": 33,
-          "delve": true,
-          "region": "elderwood"
-        },
+        "condition": 100,
+        "stress": 35,
+        "fatigue": 32,
+        "post": "vanguard",
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -1279,8 +1136,8 @@
         "experience": 35,
         "morale": 79,
         "condition": 100,
-        "stress": 13,
-        "fatigue": 16,
+        "stress": 4,
+        "fatigue": 11,
         "injury": null,
         "attributes": {
           "weaponSkill": 2,
@@ -1403,7 +1260,12 @@
         "aspirant": true
       }
     ],
-    "fallen": [],
+    "fallen": [
+      {
+        "id": "adv_w21f5zhwf7li",
+        "name": "Brugo"
+      }
+    ],
     "bonds": {
       "adv_xsny2mf20dv6|adv_xvecyci8knko": {
         "value": 6
@@ -1416,17 +1278,17 @@
         "mentorId": "adv_w21f5zhwf7li"
       },
       "adv_w21f5zhwf7li|adv_xsny2mf20dv6": {
-        "value": 8
+        "value": 11
       },
       "adv_agorapai6eaw|adv_hpzq2ixhvxtq": {
-        "value": 31
+        "value": 37
       },
       "adv_agorapai6eaw|adv_xsny2mf20dv6": {
-        "value": 21,
+        "value": 27,
         "mentorId": "adv_agorapai6eaw"
       },
       "adv_hpzq2ixhvxtq|adv_xsny2mf20dv6": {
-        "value": 8
+        "value": 14
       },
       "adv_dvyb6kaxgy9l|adv_vir5cr755mej": {
         "value": 30,
@@ -1442,7 +1304,7 @@
         "value": 2
       },
       "adv_nmu0cr5oezjw|adv_vir5cr755mej": {
-        "value": 32.925
+        "value": 33
       },
       "adv_neqeupnrhpgg|adv_nmu0cr5oezjw": {
         "value": 1
@@ -1454,13 +1316,13 @@
         "value": 4
       },
       "adv_agorapai6eaw|adv_nmu0cr5oezjw": {
-        "value": 11.375
+        "value": 11
       },
       "adv_hpzq2ixhvxtq|adv_nmu0cr5oezjw": {
         "value": 2
       },
       "adv_dvyb6kaxgy9l|adv_xsny2mf20dv6": {
-        "value": 2
+        "value": 4
       },
       "adv_vir5cr755mej|adv_xsny2mf20dv6": {
         "value": 2
@@ -1469,7 +1331,7 @@
         "value": 2
       },
       "adv_agorapai6eaw|adv_vir5cr755mej": {
-        "value": -0.5
+        "value": 0
       },
       "adv_agorapai6eaw|adv_dvyb6kaxgy9l": {
         "value": 1
@@ -1493,13 +1355,16 @@
         "value": -2
       },
       "adv_nmu0cr5oezjw|adv_xvecyci8knko": {
-        "value": 6.475
+        "value": 6
       },
       "adv_vir5cr755mej|adv_xvecyci8knko": {
-        "value": 0.75
+        "value": 1
       },
       "adv_agorapai6eaw|adv_xvecyci8knko": {
-        "value": 0.5
+        "value": -2
+      },
+      "adv_hpzq2ixhvxtq|adv_xvecyci8knko": {
+        "value": -2
       }
     },
     "hall": {
@@ -1539,32 +1404,7 @@
       "cleared": 8,
       "quests": 2
     },
-    "activeJobs": [
-      {
-        "id": "loan_adv_ge28ylm26r9p_18",
-        "posting": {
-          "id": "loan_adv_ge28ylm26r9p_18",
-          "title": "En cesión a La Guardia de Conchamuelle",
-          "kind": "expedition"
-        },
-        "sentDay": 18,
-        "returnsDay": 36,
-        "heroIds": [
-          "adv_ge28ylm26r9p"
-        ],
-        "loan": {
-          "to": "La Guardia de Conchamuelle",
-          "toId": "lg_t6_0_8760",
-          "affiliate": false,
-          "at": {
-            "played": 1,
-            "won": 0,
-            "drawn": 0,
-            "lost": 1
-          }
-        }
-      }
-    ],
+    "activeJobs": [],
     "meetings": [
       {
         "day": 8,
@@ -1618,6 +1458,30 @@
       }
     ],
     "goldLog": [
+      {
+        "day": 36,
+        "kind": "payroll",
+        "delta": -198,
+        "gold": 2186
+      },
+      {
+        "day": 34,
+        "kind": "gift",
+        "delta": -520,
+        "gold": 2384
+      },
+      {
+        "day": 33,
+        "kind": "other",
+        "delta": 640,
+        "gold": 2904
+      },
+      {
+        "day": 33,
+        "kind": "payroll",
+        "delta": -221,
+        "gold": 2264
+      },
       {
         "day": 28,
         "kind": "delve",
@@ -1730,6 +1594,12 @@
     "honours": [
       {
         "year": 1,
+        "icon": "🗡️",
+        "title": "Jaro, héroe de El Asalto de Ashfall",
+        "kind": "war"
+      },
+      {
+        "year": 1,
         "icon": "🎭",
         "title": "Campeones: Festejos de Marea Verde (Jaro)",
         "kind": "festival"
@@ -1742,6 +1612,56 @@
       "skirmish-line"
     ],
     "yearBeats": [
+      {
+        "id": "n_job_36_loan_adv_ge28ylm26r9p_18",
+        "day": 36,
+        "text": "Íñigo Guzmán pasó una estación en cesión a La Guardia de Conchamuelle y ha vuelto a la casa."
+      },
+      {
+        "id": "n_bond_home_36_adv_xvecyci8knko_adv_agorapai6eaw",
+        "day": 36,
+        "text": "Luna se rio de algo que dijo Jaro, y Jaro no lo había dicho en broma."
+      },
+      {
+        "id": "n_ourdead_gift_adv_w21f5zhwf7li_34",
+        "day": 34,
+        "text": "Enterraron a Brugo detrás de la casa y levantaron un túmulo sobre su tumba, como harían con cualquiera de los suyos."
+      },
+      {
+        "id": "n_warkinleft_33",
+        "day": 33,
+        "text": "🏚️ El Cindermoor ardió, y mandaste a otros pero dejaste a Belzar de la Ofrenda y Xara del Cuerno en casa. Su familia vivía allí. Desde entonces apenas te han dirigido la palabra."
+      },
+      {
+        "id": "n_war_33",
+        "day": 33,
+        "text": "🗡️ El Asalto de Ashfall, en El Cindermoor: 4 marcharon, la coalición triunfó; 1 no volvieron."
+      },
+      {
+        "id": "n_warhero_adv_agorapai6eaw_33",
+        "day": 33,
+        "text": "🗡️ Jaro salió de El Asalto de Ashfall con fama de héroe de guerra, y la fama se le ha quedado."
+      },
+      {
+        "id": "n_vow_horn_33_adv_agorapai6eaw",
+        "day": 33,
+        "text": "🕊️ Jaro cumple un voto. El cuerno sonó, y esta casa acudió. No estaban junto al fuego cuando ocurrió."
+      },
+      {
+        "id": "n_warkit_33",
+        "day": 33,
+        "text": "El equipo de los caídos se trajo a casa, a la armería."
+      },
+      {
+        "id": "n_warcomrades_33",
+        "day": 33,
+        "text": "Ulf Vallehondo, Velasco Rivadeneira y Jaro volvieron sin Brugo."
+      },
+      {
+        "id": "n_bond_home_30_adv_xsny2mf20dv6_adv_w21f5zhwf7li",
+        "day": 30,
+        "text": "Ulf y Brugo hicieron la misma guardia, y al acabarla ya se completaban las quejas mutuamente."
+      },
       {
         "id": "n_syn_28_skirmish-line",
         "day": 28,
@@ -1811,11 +1731,6 @@
         "id": "n_fest_23",
         "day": 23,
         "text": "🎭 Festejos de Marea Verde: Jaro quedó 1.º de 16, ¡ganó el Encuentro! (+4 de renombre)."
-      },
-      {
-        "id": "n_job_22_pet_17_2122",
-        "day": 22,
-        "text": "🧭 Luna volvió de Las Marcas Cenicientas con sangre en las botas y con las canciones ya corriendo por delante."
       }
     ],
     "hallBuilds": [],
