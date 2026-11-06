@@ -164,12 +164,21 @@ try{
    await iligarCard.click();
    assert.ok((await desktop.locator('#content').innerText()).includes('Una Tumba que Responder'),'Falta su voto en la ficha');
    assert.ok((await desktop.locator('.founder-note').innerText()).includes('honorable'),'Falta la nota literal sobre Iligar');
+   await desktop.locator('#sideNav [data-nav="saga"]').click();
+   const extraTitles=['Los nombres de Huesolinde','La tumba y el camino','Nadie vuelve invicto','La Casa que sigue'];
+   for(let i=0;i<extraTitles.length;i++){
+     await desktop.locator('.chapter-tile').nth(10+i).click();
+     assert.equal((await desktop.locator('.reader-hero h2').innerText()).trim(),extraTitles[i]);
+     assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=25,'Faltan diálogos en '+extraTitles[i]);
+     await desktop.locator('#sideNav [data-nav="saga"]').click();
+   }
+   await desktop.locator('#sideNav [data-nav="heroes"]').click();
    await desktop.locator('#sideNav [data-nav="patrols"]').click();
-   assert.equal(await desktop.locator('.patrol-row').count(),7,'Cuatro siguen de expedición: deben quedar siete disponibles');
+   assert.equal(await desktop.locator('.patrol-row').count(),10,'Luna está de encargo: los otros diez deben figurar en patrullas');
    assert.ok(!(await desktop.locator('.patrol-row .patrol-name strong').allTextContents()).includes('Brugo'),'Brugo no puede figurar en patrulla');
    await desktop.locator('#sideNav [data-nav="archive"]').click();
    const archiveNow=await desktop.locator('#content').innerText();
-   assert.ok(archiveNow.includes('69'),'El archivo no refleja el renombre vigente');
+   assert.ok(archiveNow.includes('116'),'El archivo no refleja el renombre vigente');
    assert.ok(archiveNow.includes('1 caído'),'El archivo no refleja la baja');
    assert.ok(!archiveNow.includes('6 / 6 · ninguna muerte'),'Aún se muestran cifras históricas como actuales');
    console.log('Memorial, fichas, patrullas y archivo: sincronizados con el día 45');
