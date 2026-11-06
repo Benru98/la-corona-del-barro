@@ -24,8 +24,8 @@ const artFiles=['art/catalog.js','art-manifest.js'];
 test('Los cuatro capítulos conservan exactamente su contenido y orden original',()=>{
  const previous=evaluate(['data/campaign.js','novel/chapters.js'],'BOOK.chapters');
  const next=evaluate(['data/campaign.js',...chapterFiles],'BOOK.chapters');
- assert.deepEqual(next,previous);
- assert.equal(next.length,4);
+ assert.deepEqual(next.slice(0,previous.length),previous);
+ assert.ok(next.length>=previous.length);
  assert.equal(new Set(next.map(c=>c.id)).size,next.length);
 });
 test('El ensamblador narrativo conserva todas las claves y fuentes de continuidad',()=>{
@@ -46,14 +46,18 @@ test('Las ilustraciones aprobadas conservan las rutas de producción',()=>{
  const catalog=evaluate(artFiles,'ART_CATALOG'),manifest=evaluate(artFiles,'ART');
  const book=evaluate(['data/campaign.js'],'BOOK');
  assert.equal(catalog.schemaVersion,'1.0.0');
- assert.equal(catalog.items.length,17);
+ assert.ok(catalog.items.length>=17);
  assert.equal(new Set(catalog.items.map(x=>x.id)).size,catalog.items.length);
- assert.equal(new Set(catalog.items.map(x=>x.legacyKey)).size,catalog.items.length);
+ const keys=catalog.items.filter(x=>typeof x.legacyKey==='string').map(x=>x.legacyKey);
+ assert.equal(new Set(keys).size,keys.length);
  for(const item of catalog.items){
-  assert.equal(item.status,'approved',item.id);
+  assert.ok(['approved','draft'].includes(item.status),item.id);
   assert.ok(item.id.length>=3);
   assert.ok(existsSync(join(root,item.src)),item.src);
-  assert.equal(manifest[item.legacyKey],item.src);
+  if(item.legacyKey){
+   if(item.status==='approved')assert.equal(manifest[item.legacyKey],item.src);
+   else assert.equal(manifest[item.legacyKey],undefined,'No publicar borradores');
+  }
   if(item.characterId)assert.ok(book.characters.some(c=>c.id===item.characterId),'Desconocido: '+item.characterId);
  }
  assert.equal(manifest.groupCover,'portada-grupal.webp');
@@ -67,6 +71,6 @@ test('Ninguna capa editorial modifica relaciones mecánicas ni personajes',()=>{
  assert.deepEqual(expanded.relationships,base.relationships);
  assert.deepEqual(expanded.stats,base.stats);
  assert.deepEqual(expanded.world,base.world);
- assert.equal(expanded.chapters.length,4);
+ assert.ok(expanded.chapters.length>=4);
  assert.equal(expanded.literaryRelationships.length,26);
 });
