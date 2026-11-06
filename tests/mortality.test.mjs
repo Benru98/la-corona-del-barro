@@ -16,7 +16,7 @@ const luna='adv_xvecyci8knko';
 const who=id=>book.characters.find(x=>x.id===id);
 
 test('Un caído sigue en el códice, pero no cuenta como aventurero vivo',()=>{
- assert.equal(book.stats.day,39);
+ assert.equal(book.stats.day,40);
  assert.equal(current.guild.roster.length,10);
  assert.equal(current.guild.fallen.length,1);
  assert.equal(book.characters.length,11);

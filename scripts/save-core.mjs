@@ -80,6 +80,8 @@ export function compareSaves(previous,next) {
     const fields=tracked.filter(k=>!equal(old[k],now[k])).map(k=>({field:k,before:old[k]??null,after:now[k]??null}));
     if(fields.length)characterChanges.push({id,name:now.name,fields});
   }
+  const notesA=a.heroNotes||{},notesB=b.heroNotes||{};
+  const noteChanges=[...new Set([...Object.keys(notesA),...Object.keys(notesB)])].filter(id=>notesA[id]!==notesB[id]).map(id=>({id,before:notesA[id]||null,after:notesB[id]||null}));
   const bondsA=relationValues(a),bondsB=relationValues(b);
   const bonds=[];
   for(const k of sorted(new Set([...bondsA.keys(),...bondsB.keys()]))) {
@@ -105,7 +107,7 @@ export function compareSaves(previous,next) {
   return {format:'corona-save-diff/v1',guild:b.name,gameVersion:SAVE_VERSION,fromDay:before.day,toDay:after.day,
     summary:{before,after,metrics:metricChanges},
     roster:{added:roster.added.map(x=>({id:x.id,name:x.name})),removed:roster.removed.map(x=>({id:x.id,name:x.name})),changed:characterChanges},
-    bonds,jobs:{added:jobs.added,removed:jobs.removed},meetings,quests,fallen:{added:fallen.added.map(x=>({id:fallenId(x),name:fallenName(x)})),removed:fallen.removed.map(x=>({id:fallenId(x),name:fallenName(x)}))},
+    noteChanges,bonds,jobs:{added:jobs.added,removed:jobs.removed},meetings,quests,fallen:{added:fallen.added.map(x=>({id:fallenId(x),name:fallenName(x)})),removed:fallen.removed.map(x=>({id:fallenId(x),name:fallenName(x)}))},
     facilities,review,requiresEditorialReview:review.length>0,events:HouseEngine.eventsFromDiff({fallen:{added:fallen.added.map(x=>({id:fallenId(x),name:fallenName(x)}))},roster:{added:roster.added,changed:characterChanges},bonds,jobs,facilities,summary:{before,after}})};
 }
 const scalarCharacterFields={level:'level',experience:'experience',morale:'morale',condition:'condition',stress:'stress',fatigue:'fatigue',oathWage:'salary'};
@@ -137,6 +139,9 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
       if(typeof fresh[raw]==='number')replace(hero,dest,safeNumField(fresh[raw],raw),'characters.'+hero.id+'.'+dest);
     if(isObj(fresh.attributes))replace(hero,'attributes',structuredClone(fresh.attributes),'characters.'+hero.id+'.attributes');
   }
+  for(const hero of result.characters){
+    if(Object.hasOwn(g.heroNotes||{},hero.id))replace(hero,'founderNote',g.heroNotes[hero.id],'characters.'+hero.id+'.founderNote');
+  }
   // Bajas automáticas: mantener fichas y memorias, pero excluir de los activos.
   // El relato de los últimos instantes no se infiere desde el juego.
   const mortality=reconcileCasualties(result,g);
@@ -157,6 +162,40 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
     returnsDay:typeof j.returnsDay==='number'?j.returnsDay+1:null
   }));
   replace(result.world,'activeJobs',projectedJobs,'world.activeJobs');
+  // El juego registra incursiones en roster[].away aun cuando activeJobs está vacío.
+  const out=g.roster.filter(hero=>hero.away?.delve);
+  const jobIds=new Set(out.map(hero=>hero.away.jobId));
+  if(jobIds.size>1)throw Error('Varias expediciones simultáneas: es necesaria revisión');
+  const expedition=out.length?{
+    name:'Incursión en '+(out[0].away.region||'región no identificada'),
+    jobId:out[0].away.jobId,
+    heroIds:out.map(hero=>hero.id),
+    startDay:g.day+1,
+    returnsDay:Number.isInteger(out[0].away.returnsDay)?out[0].away.returnsDay+1:null,
+    region:out[0].away.region
+  }:null;
+  replace(result.world,'activeExpedition',expedition,'world.activeExpedition');
+  for(const hero of result.characters){
+    const raw=g.roster.find(x=>x.id===hero.id);
+    if(!raw)continue;
+    const away=raw.away?{...raw.away,returnsDay:Number.isInteger(raw.away.returnsDay)?raw.away.returnsDay+1:null,kind:raw.away.loan?'cesión':raw.away.delve?'incursión':'encargo'}:null;
+    replace(hero,'away',away,'characters.'+hero.id+'.away');
+  }
+  replace(result.world,'guildRosterAlive',g.roster.map(h=>h.id),'world.guildRosterAlive');
+  if(g.league?.divisions){
+    const d=g.league.divisions.find(x=>x.tier===g.league.playerTier);
+    const player=d?.guilds?.find(x=>x.id==='player');
+    if(d&&player){
+      const position=[...d.guilds].sort((a,b)=>(b.points||0)-(a.points||0)||(b.won||0)-(a.won||0)).findIndex(x=>x.id==='player')+1;
+      const league={position,of:d.guilds.length,points:player.points,played:player.played,won:player.won,drawn:player.drawn,lost:player.lost,
+        leader:d.guilds.reduce((a,b)=>a.points>=b.points?a:b).name,tiedOnPointsWith:d.guilds.filter(x=>x.id!=='player'&&x.points===player.points).map(x=>x.name)};
+      replace(result.world,'league',league,'world.league');
+      for(const [key,value] of Object.entries({leaguePoints:player.points,leaguePosition:position,leagueSize:d.guilds.length,encounters:player.played}))
+        replace(result.stats,key,value,'stats.'+key);
+    }
+  }
+  if(Array.isArray(g.discoveredSynergies))replace(result.stats,'synergies',g.discoveredSynergies.length,'stats.synergies');
+  if(g.bonds)replace(result.stats,'bonds',Object.keys(g.bonds).length,'stats.bonds');
   if(g.day>base.day) {
     const snapshot={year:result.meta.year,day:g.day+1,renown:result.stats.renown,gold:result.stats.gold,
       members:result.stats.members,delves:result.stats.delves,dead:result.stats.dead,
@@ -183,6 +222,7 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
     assert(equal(result[key],book[key]),'Cambio no autorizado en canon: '+key);
   const audit=HouseEngine.audit(result);
   const blocking=diff.review.length>0||audit.length>0;
+  if(diff.noteChanges?.length)changes.push({path:'founderNotes',before:null,after:diff.noteChanges.map(x=>x.id)});
   const warnings=[
     'Borrador no publicado: revisar y aprobar antes de sustituir data/campaign.js.',
     'Cálculos de clasificación, hazañas, encuentros, biografías y cronología requieren revisión editorial.',
@@ -198,7 +238,7 @@ export function reportMarkdown(diff,proposal) {
   for(const m of diff.summary.metrics)lines.push('- '+m.field+': '+m.before+' → '+m.after);
   lines.push('','## Aventureros','- Altas: '+diff.roster.added.map(x=>x.name).join(', '),
     '- Salidas: '+diff.roster.removed.map(x=>x.name).join(', '),
-    '- Fichas modificadas: '+diff.roster.changed.length,'','## Vínculos',
+    '- Fichas modificadas: '+diff.roster.changed.length,'- Notas personales cambiadas: '+(diff.noteChanges||[]).length,'','## Vínculos',
     '- Cambios: '+diff.bonds.length,'','## Actividad',
     '- Nuevos encuentros: '+diff.meetings.added.length,
     '- Nuevos registros de misión: '+diff.quests.added.length,

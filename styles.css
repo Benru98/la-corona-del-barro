@@ -928,3 +928,9 @@ body.reading-night .pulse-stat:not(:first-child){background:linear-gradient(145d
 .atlas-node.is-fallen img,.rel-record-face.is-fallen img{filter:grayscale(.78) sepia(.2)}
 .atlas-node.is-fallen{border-color:#8f7667!important}
 .rel-record-face.is-fallen{border-color:#8f7667}
+
+/* Notas literales del fundador: archivo de personaje independiente de la prosa editada. */
+.founder-note{margin:22px 0;padding:20px 22px;background:#f5ead0;border:1px solid #b7a17d;border-left:4px solid #91673e;border-radius:10px}
+.founder-note blockquote{font-family:Georgia,serif;font-size:1.05em;line-height:1.75;color:inherit;margin:12px 0;white-space:pre-wrap}
+.founder-note .eyebrow{letter-spacing:.11em}
+.founder-note .source-note{font-size:.79em;margin:10px 0 0}
