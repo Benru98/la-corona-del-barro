@@ -157,7 +157,9 @@ function bondStroke(value){return (2.5 + Math.min(7,bondPower(value)/5)).toFixed
 function formatBondValue(value){const n=Number(value)||0;return `${n>=0?'+':''}${Math.round(n*10)/10}`}
 function patrols(){
  const living=house().available;
- const groups=[['Vanguardia','Vanguardia'],['Segunda Guardia','Segunda Guardia'],['Aspirantes','Aspirantes']];
+ const normal=[['Vanguardia','Vanguardia'],['Segunda Guardia','Segunda Guardia'],['Aspirantes','Aspirantes']];
+ const additional=[...new Set(living.map(c=>c.post).filter(p=>p&&!normal.some(([label])=>p===label)))].sort((a,b)=>a.localeCompare(b,'es')).map(p=>[p,p]);
+ const groups=[...normal,...additional];
  const membersFor=title=>orderPatrolMembers(living.filter(c=>c.post===title));
  const counts=groups.map(([title])=>({title,n:membersFor(title).length}));
  const n=counts.find(x=>x.title==='Vanguardia')?.n||0,second=counts.find(x=>x.title==='Segunda Guardia')?.n||0;
