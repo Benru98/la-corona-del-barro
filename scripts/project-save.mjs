@@ -40,6 +40,7 @@ export function projectApprovedSave(save) {
    honours:g.honours,discoveredSynergies:g.discoveredSynergies,
    yearBeats:(g.yearBeats||[]).filter(x=>x.day>=Math.max(0,g.day-15)).map(x=>pick(x,['id','day','text'])),
    hallBuilds:g.hall.builds,
+   heroNotes:g.heroNotes||{},
    mascot:g.mascot
   }
  };
