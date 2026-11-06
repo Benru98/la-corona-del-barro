@@ -2,6 +2,18 @@
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const byId=id=>BOOK.characters.find(c=>c.id===id);
 const heroName=n=>BOOK.characters.find(c=>c.name===n);
+/* Estado vital: una sola fuente de verdad para portada, fichas, patrullas y memorial.
+ * Los caídos siguen en el archivo y en los capítulos, pero no en las formaciones activas. */
+const deathOf=c=>c?(c.death||(BOOK.world.fallen||[]).find(f=>f.id===c.id)||null):null;
+const isFallen=c=>!!c&&(c.status==='caído'||!!deathOf(c));
+const livingMembers=()=>BOOK.characters.filter(c=>!isFallen(c));
+const fallenMembers=()=>BOOK.characters.filter(isFallen).sort((a,b)=>(deathOf(a)?.day||0)-(deathOf(b)?.day||0));
+const deathRibbon=c=>isFallen(c)?'<span class="death-ribbon" aria-label="Fallecido">✦ IN MEMORIAM</span>':'';
+const deathDate=c=>{const d=deathOf(c);return d?'Año '+(d.year||BOOK.meta.year||1)+' · día '+(d.day??'—'):'Fecha no registrada'};
+const memorialFeat=c=>c.memorial?.feat||('Dejó su nombre en '+(c.statistics?.incursions||c.incursions||0)+' incursiones. Su servicio no se borra de la historia de la Casa.');
+const memorialQuote=c=>c.memorial?.quote||'En esta Casa guardamos el nombre de quienes no regresan, y el lugar que dejaron entre nosotros.';
+const memorialVoice=c=>c.memorial?.attribution||'El Libro de la Casa · homenaje literario';
+
 // Almacena una URL de objeto para cada ilustración: así cada diálogo no repite 300 KB de base64 en el DOM.
 const artUrlCache=new Map();
 function artUrl(key){
@@ -16,7 +28,7 @@ function artUrl(key){
   }catch(e){return raw}
 }
 const portrait=c=>artUrl(c?.portrait||'placeholder');
-const sections=[['home','Portada','⌂'],['saga','Crónicas','◈'],['heroes','Aventureros','♜'],['patrols','Patrullas','⚔'],['bonds','Los lazos','✧'],['legacy','Leyendas','✦'],['archive','El archivo','▤'],['studio','El Escritorio','✒']];
+const sections=[['home','Portada','⌂'],['saga','Crónicas','◈'],['heroes','Aventureros','♜'],['patrols','Patrullas','⚔'],['bonds','Los lazos','✧'],['legacy','Memorial','✦'],['archive','El archivo','▤'],['studio','El Escritorio','✒']];
 const readKey='libro-casa-'+BOOK.bookId;
 let prefs={};try{prefs=JSON.parse(localStorage.getItem(readKey)||'{}')}catch(e){prefs={}}
 const state={section:'home',chapter:Math.max(0,Number.isFinite(Number(prefs.lastChapter))?Number(prefs.lastChapter):0),hero:null,search:'',filter:'all',bond:'adv_agorapai6eaw',bondType:'all',bondView:'todos',era:'all',font:prefs.font||1,light:!!prefs.light,portraits:prefs.portraits!==false,returnToReader:null};
@@ -32,7 +44,7 @@ function artHero(c){return `<img src="${portrait(c)}" alt="${c.aspirant?'Medall�
 function pulseStat(n,label,nav){return `<button type="button" class="pulse-stat" data-nav="${esc(nav)}" aria-label="${esc(label)}: ${esc(n)}. Abrir ${nav==='heroes'?'aventureros':'el archivo'}"><span class="pulse-go" aria-hidden="true">↗</span><strong>${esc(n)}</strong><small>${esc(label)}</small></button>`}
 function pulseHome(){
  const active=[...(BOOK.world.activeJobs||[]),...(BOOK.world.activeExpedition?[BOOK.world.activeExpedition]:[])].sort((a,b)=>(a.returnsDay??999)-(b.returnsDay??999));
- const important=BOOK.characters.filter(c=>Number(c.stress)>=50||Number(c.fatigue)>=45).sort((a,b)=>Math.max(Number(b.stress||0),Number(b.fatigue||0))-Math.max(Number(a.stress||0),Number(a.fatigue||0))).slice(0,3);
+ const important=livingMembers().filter(c=>Number(c.stress)>=50||Number(c.fatigue)>=45).sort((a,b)=>Math.max(Number(b.stress||0),Number(b.fatigue||0))-Math.max(Number(a.stress||0),Number(a.fatigue||0))).slice(0,3);
  const notable=(BOOK.literaryRelationships||[]).filter(r=>r.status!=='semilla'&&r.people.every(id=>byId(id)));
  const featuredPairs=[['Velasco Rivadeneira','Jaro'],['Belzar de la Ofrenda','Xara del Cuerno'],['Ruc','Brugo']].map(names=>notable.find(r=>names.every(n=>r.people.some(id=>byId(id).name===n)))).filter(Boolean);
  const chosen=[...featuredPairs,...notable.filter(r=>!featuredPairs.includes(r)).sort((a,b)=>b.intensity-a.intensity)].slice(0,3);
@@ -45,16 +57,17 @@ function pulseHome(){
  <div class="pulse-stats">${pulseStat(BOOK.stats.leaguePosition+'.º / '+BOOK.stats.leagueSize,'Clasificación','archive')}${pulseStat(BOOK.stats.leaguePoints,'Puntos de liga','archive')}${pulseStat(BOOK.stats.gold.toLocaleString('es-ES')+' g','Tesorería','archive')}${pulseStat(BOOK.stats.members,'Aventureros','heroes')}</div>
  <div class="pulse-columns" style="margin-top:13px"><section class="pulse-panel"><div class="pulse-panel-header"><h3 class="pulse-panel-title">Fuera de la Casa</h3><span class="pulse-panel-mark">${active.length} salidas</span></div><div class="pulse-panel-list">${expeditionCards}</div></section>
  <section class="pulse-panel"><div class="pulse-panel-header"><h3 class="pulse-panel-title">Piden descanso</h3><span class="pulse-panel-mark">Tensión y fatiga</span></div><div class="pulse-panel-list">${tiredCards}</div></section>
- <section class="pulse-panel"><div class="pulse-panel-header"><h3 class="pulse-panel-title">Hilos vivos</h3><span class="pulse-panel-mark">Nuestra novela</span></div><div class="pulse-panel-list">${relationCards}</div></section></div>
+ <section class="pulse-panel"><div class="pulse-panel-header"><h3 class="pulse-panel-title">Hilos y memorias</h3><span class="pulse-panel-mark">Nuestra novela</span></div><div class="pulse-panel-list">${relationCards}</div></section></div>
  <div class="pulse-footer"><span>✧ ${esc(BOOK.stats.delves)} incursiones completadas · ${esc(BOOK.stats.dead)} bajas · ${esc(BOOK.world.guildType)} · ${esc(BOOK.stats.renown)} renombre</span><button type="button" data-chapter="${Math.max(0,BOOK.chapters.length-1)}">Continuar la última lectura ↗</button></div></section>`;
 }
-function home(){const recent=BOOK.timeline.slice(-4).reverse();const members=BOOK.characters;return `
+function home(){const recent=BOOK.timeline.slice(-4).reverse();const members=BOOK.characters;const dead=fallenMembers();return `
 <section class="cover cover-epic cover-fullbleed" aria-label="Portada ilustrada del gremio">
-  <div class="epic-paint"><img class="cover-art" src="${artUrl('groupCover')}" alt="Ilustración grupal de los once aventureros de La Corona de Barro, en estilo manuscrito iluminado medieval" decoding="async" fetchpriority="high"/></div>
+  <div class="epic-paint"><img class="cover-art" src="${artUrl('groupCover')}" alt="Ilustración histórica de los once aventureros de La Corona de Barro al fundar la Casa, antes de las pérdidas" decoding="async" fetchpriority="high"/></div>
 </section>
 ${pulseHome()}
+${dead.length?`<section class="home-memorial" aria-label="Memoria de nuestros caídos"><span class="home-memorial-sigil" aria-hidden="true">✦</span><div><small>EN MEMORIA · AÑO ${esc(BOOK.meta.year||1)}</small><h2>Hay nombres que no regresan, pero permanecen.</h2><p>${esc(dead.map(c=>c.name).join(' · '))} · ${dead.length} ${dead.length===1?'vida recordada':'vidas recordadas'} por la Casa.</p></div><button type="button" class="btn secondary small" data-nav="legacy">Visitar el memorial ↗</button></section>`:''}
 <section class="gallery-section" aria-label="Galería de personajes"><div class="section-heading-row"><div><div class="eyebrow">✦ EL REPARTO DE NUESTRA HISTORIA</div><h2>Los rostros de la Casa</h2><p class="source-note">La portada cede todo el protagonismo a la compañía; debajo quedan las cifras y, a continuación, el archivo vivo de la casa.</p></div><div class="rail-controls"><button type="button" class="rail-arrow" data-action="scroll-cards-left" aria-label="Desplazar retratos a la izquierda">‹</button><button type="button" class="rail-arrow" data-action="scroll-cards-right" aria-label="Desplazar retratos a la derecha">›</button><button type="button" class="btn small secondary" data-nav="heroes">Ver fichas ↗</button></div></div>
-<div class="featured-rail" id="featuredRail" role="region" aria-label="Retratos de los once aventureros" tabindex="0">${members.map(c=>`<button type="button" class="featured-card" data-hero="${esc(c.id)}" aria-label="Abrir ficha de ${esc(c.name)}"><span class="featured-image"><img src="${portrait(c)}" alt="Retrato de ${esc(c.name)}" loading="lazy"/></span><span class="featured-card-body"><small>${esc(c.roleLabel)} · ${esc(c.race)}</small><strong>${esc(c.name)}</strong><span class="featured-home-line">${esc(c.homeLine||c.epithet)}</span></span></button>`).join('')}</div></section>
+<div class="featured-rail" id="featuredRail" role="region" aria-label="Archivo de retratos, incluidos los fallecidos" tabindex="0">${members.map(c=>`<button type="button" class="featured-card ${isFallen(c)?'is-fallen':''}" data-hero="${esc(c.id)}" aria-label="Abrir ficha de ${esc(c.name)}"><span class="featured-image"><img src="${portrait(c)}" alt="Retrato de ${esc(c.name)}" loading="lazy"/>${deathRibbon(c)}</span><span class="featured-card-body"><small>${isFallen(c)?'† CAÍDO · ':''}${esc(c.roleLabel)} · ${esc(c.race)}</small><strong>${esc(c.name)}</strong><span class="featured-home-line">${esc(c.homeLine||c.epithet)}</span></span></button>`).join('')}</div></section>
 <section class="history-panels"><div class="panel"><div class="panel-head"><div><span class="eyebrow">CRÓNICAS DEL PRIMER AÑO</span><h3>Las páginas escritas</h3></div><button class="btn small secondary" data-nav="saga">Todos los capítulos ↗</button></div><div class="chapter-peek">${BOOK.chapters.map((c,i)=>`<button type="button" data-chapter="${i}" class="latest-card"><span class="latest-icon">${i===0?'❦':'✦'}</span><span><span>${esc(c.chapter)} · ${esc(c.years)}</span><b>${esc(c.title)}</b><span>${esc(c.lead)}</span></span><span class="peek-arrow">›</span></button>`).join('')}</div></div><div class="panel events-panel"><div class="panel-head"><div><span class="eyebrow">REGISTRO DEL ESCRIBA</span><h3>Las últimas noticias</h3></div><button class="btn small secondary" data-nav="archive">Archivo ↗</button></div><div class="inline-list">${recent.map(t=>`<div class="quiet-event"><strong>Día ${esc(t.day)} · ${esc(t.title)}</strong><p>${esc(t.description)}</p></div>`).join('')}</div></div></section>
 <section class="oath-panel"><div class="oath-insignia">♛</div><div><span class="eyebrow">EL JURAMENTO DEL BARRO</span><h2>Una corona que no se compra</h2><p>${esc(BOOK.meta.oath).replace(/\n/g,'<br>')}</p></div></section>
 <section class="maestre-codex" aria-label="El maestre de La Corona de Barro"><img src="${artUrl('maestre')}" alt="Retrato narrativo del anciano maestre de la casa" loading="lazy"/><div><div class="eyebrow">LA VOZ DEL MAESTRE · VETERANÍA DE LA SIMA</div><h2>Quien abrió las puertas de la Casa</h2><p>Un veterano curtido guía esta fundación independiente. Su retrato es nuestra representación literaria del director del gremio: no añade una raza, estadísticas ni acontecimientos al guardado.</p><button class="btn secondary small" data-nav="saga">Escuchar su voz en las crónicas ↗</button></div></section>
