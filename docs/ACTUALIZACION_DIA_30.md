@@ -27,7 +27,7 @@
 
 1. **Día interno 20 (visible 21):** el archivo descubre la historia de una casa calcinada en Las Marcas Cenicientas y el nombre de Izgar sin Miedo. No se ha resuelto la trama.
 2. **Día interno 22 (visible 23):** Luna resuelve triunfalmente el encargo de Dienteamarillo el Ahíto (+61 g, +2 renombre).
-3. **Día interno 22 (visible 23):** Jaro gana los Festejos de Marea Verde, 1.º de 16 (+500 g, +4 renombre). Se celebra en la Casa.
+3. **Día interno 23 (visible 24):** Jaro gana los Festejos de Marea Verde, 1.º de 16 (+500 g, +4 renombre). Se celebra en la Casa.
 4. **Día interno 23 (visible 24):** Horno Ardiente figura despejada; Brugo se reconoce mentor de Velasco y Jaro toma a Ulf bajo su ala.
 5. **Día interno 23 (visible 24):** nueva nómina neta de −204 g (+62 estipendio, −176 salarios, −90 mantenimiento).
 6. **Día interno 24 (visible 25):** Luna mueve su cama lejos de Xara; el motivo no consta. Yvaldo elogia sus remiendos.
