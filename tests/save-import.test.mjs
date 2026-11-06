@@ -4,6 +4,9 @@ import {readFileSync} from 'node:fs';
 import {join,dirname} from 'node:path';
 import {fileURLToPath} from 'node:url';
 import vm from 'node:vm';
+import {mkdtempSync,writeFileSync,existsSync,rmSync} from 'node:fs';
+import {tmpdir} from 'node:os';
+import {spawnSync} from 'node:child_process';
 import {validateSave,compareSaves,prepareCampaignUpdate,reportMarkdown} from '../scripts/save-core.mjs';
 
 const root=join(dirname(fileURLToPath(import.meta.url)),'..');
@@ -72,4 +75,26 @@ test('Prepara campos seguros sin reescribir canon narrativo',()=>{
 test('No aplica propuesta cuando la línea base del libro no coincide',()=>{
  const a=fixture(),b=clone(a);b.guild.day++;a.guild.day--;
  assert.throws(()=>prepareCampaignUpdate(book,a,b),/no coincide/);
+});
+
+test('CLI crea informe y propuesta sin alterar archivos originales',()=>{
+  const work=mkdtempSync(join(tmpdir(),'corona-save-test-'));
+  try{
+    const a=fixture(),b=clone(a);b.guild.day++;b.guild.gold+=18;
+    const prev=join(work,'antes.json'),next=join(work,'despues.json');
+    const baseline=join(work,'baseline.json'),out=join(work,'salida');
+    writeFileSync(prev,JSON.stringify(a));writeFileSync(next,JSON.stringify(b));
+    writeFileSync(baseline,JSON.stringify({guild:a.guild.name,lastApprovedInternalDay:a.guild.day,lastApprovedSaveSignature:a.sig}));
+    const args=['scripts/compare-saves.mjs','--previous',prev,'--next',next,'--campaign','data/campaign.js',
+      '--baseline',baseline,'--out',out];
+    const r=spawnSync(process.execPath,args,{cwd:root,encoding:'utf8'});
+    assert.equal(r.status,0,r.stderr);
+    for(const file of ['report.md','diff.json','campaign.proposed.js','changes.json','baseline.proposed.json'])
+      assert.ok(existsSync(join(out,file)),file);
+    const altered=JSON.parse(readFileSync(join(out,'diff.json'),'utf8'));
+    assert.equal(altered.summary.after.gold,a.guild.gold+18);
+    const repeat=spawnSync(process.execPath,args,{cwd:root,encoding:'utf8'});
+    assert.notEqual(repeat.status,0,'Nunca sobrescribir salida existente');
+    assert.equal(JSON.parse(readFileSync(prev,'utf8')).guild.gold,a.guild.gold,'Guardar fuente intacta');
+  }finally{rmSync(work,{recursive:true,force:true});}
 });
