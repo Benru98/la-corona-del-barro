@@ -1,5 +1,6 @@
 import {createHash} from 'node:crypto';
 import {fallenId,fallenName,reconcileCasualties} from './mortality-core.mjs';
+import HouseEngine from '../data/house-state.js';
 
 /*
  * Adapter para guardados REALES de Dungeons & Dynasties v26.
@@ -105,7 +106,7 @@ export function compareSaves(previous,next) {
     summary:{before,after,metrics:metricChanges},
     roster:{added:roster.added.map(x=>({id:x.id,name:x.name})),removed:roster.removed.map(x=>({id:x.id,name:x.name})),changed:characterChanges},
     bonds,jobs:{added:jobs.added,removed:jobs.removed},meetings,quests,fallen:{added:fallen.added.map(x=>({id:fallenId(x),name:fallenName(x)})),removed:fallen.removed.map(x=>({id:fallenId(x),name:fallenName(x)}))},
-    facilities,review,requiresEditorialReview:review.length>0};
+    facilities,review,requiresEditorialReview:review.length>0,events:HouseEngine.eventsFromDiff({fallen:{added:fallen.added.map(x=>({id:fallenId(x),name:fallenName(x)}))},roster:{added:roster.added,changed:characterChanges},bonds,jobs,facilities,summary:{before,after}})};
 }
 const scalarCharacterFields={level:'level',experience:'experience',morale:'morale',condition:'condition',stress:'stress',fatigue:'fatigue',oathWage:'salary'};
 function safeNumField(v,name){return num(v,name);}
@@ -164,17 +165,32 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
       leaguePoints:result.stats.leaguePoints,leaguePosition:result.stats.leaguePosition,bonds:result.stats.bonds};
     if(!result.snapshots.some(s=>s.year===snapshot.year && s.day===snapshot.day))result.snapshots.push(snapshot);
   }
+  // El registro técnico de acontecimientos es distinto de los capítulos y de la cronología literaria.
+  // Nunca atribuir éxitos ni motivaciones que no constan en el guardado.
+  const titleFor={death:'Fallecimiento registrado',recruitment:'Nueva incorporación',promotion:'Ascenso de nivel',departure:'Salida de la Casa',return:'Regreso a la Casa',injury:'Cambio de lesión',division_changed:'Cambio de división',building_changed:'Instalaciones actualizadas',bond_changed:'Vínculo actualizado',job_started:'Nuevo encargo',job_ended:'Encargo cerrado o desaparecido',post_changed:'Cambio de puesto',assignment_changed:'Cambio de destino'};
+  const previousEvents=Array.isArray(result.world.systemEvents)?result.world.systemEvents:[];
+  const generated=diff.events.map((e,i)=>({
+    id:[result.meta.year,g.day+1,e.kind,e.subjectId||'casa',i].join(':'),
+    year:result.meta.year,day:g.day+1,kind:e.kind,subjectId:e.subjectId,
+    title:titleFor[e.kind]||'Cambio en la Casa',
+    description:(e.details?.name?e.details.name+' · ':'')+(e.requiresEditorialReview?'Pendiente de interpretación editorial.':'Cambio registrado en el guardado.'),
+    needsEditorialReview:e.requiresEditorialReview,
+    details:e.details
+  }));
+  replace(result.world,'systemEvents',[...previousEvents,...generated],'world.systemEvents');
   // Nunca sobrescribir textos, memorias, escenas ni el atlas literario desde un JSON mecánico.
   for(const key of ['chapters','literaryRelationships','literaryTagCatalog','editions','timeline','marginalia'])
     assert(equal(result[key],book[key]),'Cambio no autorizado en canon: '+key);
-  const blocking=diff.review.length>0;
+  const audit=HouseEngine.audit(result);
+  const blocking=diff.review.length>0||audit.length>0;
   const warnings=[
     'Borrador no publicado: revisar y aprobar antes de sustituir data/campaign.js.',
     'Cálculos de clasificación, hazañas, encuentros, biografías y cronología requieren revisión editorial.',
-    ...diff.review
+    ...diff.review,
+    ...audit.map(issue=>'Auditoría ['+issue.code+']: '+issue.message)
   ];
   return {format:'corona-campaign-proposal/v1',source:sourceName,gameVersion:SAVE_VERSION,fromDay:base.day+1,toDay:g.day+1,
-    updatedPaths:changes.map(x=>x.path),changes,blocking,review:warnings,campaign:result};
+    updatedPaths:changes.map(x=>x.path),changes,blocking,review:warnings,events:diff.events,campaign:result,audit};
 }
 export function reportMarkdown(diff,proposal) {
   const lines=['# Informe de guardados — '+diff.guild,'','**Día visible:** '+diff.fromDay+' → '+diff.toDay,

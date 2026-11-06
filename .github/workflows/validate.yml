@@ -15,6 +15,8 @@ jobs:
         run: |
           node --check app.js
           node --check data/campaign.js
+          node --check data/house-state.js
+          node --check scripts/audit-house.mjs
           node --check novel/chapters.js
           node --check novel/relationships.js
           node --check novel/editorial-policy.js
@@ -30,4 +32,6 @@ jobs:
           node --check scripts/save-core.mjs
           node --check scripts/compare-saves.mjs
       - name: Comprobar integridad de datos y recursos
-        run: node --test tests/*.test.mjs
+        run: |
+          node --test tests/*.test.mjs
+          node scripts/audit-house.mjs
