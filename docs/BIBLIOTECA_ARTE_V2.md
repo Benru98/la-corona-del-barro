@@ -2,8 +2,8 @@
 
 ## Material recibido (6 noviembre 2026)
 
-- 2 portadas: `assets/covers/corona-grupal-v2.webp` para Portada y `assets/covers/cronicas-fantasia-v2.webp` para Crónicas.
-- 31 variantes de retrato: `assets/portraits/<personaje>/<personaje>-v2-[a|b|c].webp`.
+- 2 portadas: `corona-grupal-v2.webp` para Portada y `cronicas-fantasia-v2.webp` para Crónicas.
+- 31 variantes de retrato: `<personaje>-v2-[a|b|c].webp`.
 - Se mantienen los once retratos oficiales existentes en la raíz. Ninguno se sobrescribe.
 - Las imágenes antiguas de las dos portadas se conservan como archivo histórico, aunque las portadas oficiales cambian a V2.
 - El catálogo `art/catalog.js` liga cada variante al **ID real** de su personaje. Los archivos han sido convertidos de PNG a WebP, sin recortes.
@@ -62,7 +62,7 @@ Ejemplo (imagen ya subida a la carpeta correspondiente):
 
 ```bash
 node scripts/register-art.mjs --id portrait-adv_agorapai6eaw-v3-a \
-  --src assets/portraits/jaro/jaro-v3-a.webp --kind portrait \
+  --src jaro-v3-a.webp --kind portrait \
   --character-id adv_agorapai6eaw --label "Preocupado" \
   --moods "reflexivo,preocupacion" --edition v3
 ```
@@ -71,13 +71,9 @@ La entrada se registra como **draft**. Debe revisarse y aprobarse en la PR; nunc
 
 ## Despliegue del lote recibido
 
-La PR contiene código, catálogo y pruebas. Las imágenes binarias se entregan aparte como ZIP de **solo 33 archivos WebP**.
+La PR contiene código, catálogo y pruebas. Los 33 WebP ya se han subido a la **raíz** del repositorio; sus rutas se han reconciliado con el catálogo para evitar volver a subirlos.
 
-1. Extraer `La_Corona_de_Barro_Arte_V2_SOLO_SUBIR.zip`.
-2. En la rama `feat/biblioteca-retratos-v2-portadas` de GitHub, arrastrar la carpeta **assets** en la raíz; verificar que se mantuvieron los subdirectorios `assets/covers` y `assets/portraits/<personaje>`.
-3. Crear commit con el mensaje `feat(art): subir retratos alternativos y portadas V2`.
-4. Esperar a que GitHub Actions valide archivos e imágenes y comprobar la vista previa de Cloudflare.
-5. Fusionar PR a main solo tras validar. NO subir el ZIP anterior de toda la web.
+Los archivos V2 están ya en la raíz del repositorio y el catálogo apunta exactamente a esos nombres. Verificar GitHub Actions y vista previa antes de fusionar. No deben moverse los ficheros ni crearse una carpeta `assets/` duplicada.
 
 ## Pruebas
 
