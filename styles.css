@@ -846,3 +846,80 @@ body.reading-night .pulse-stat:not(:first-child){background:linear-gradient(145d
     height:66px;
   }
 }
+
+
+/* ===== Memorial permanente de La Corona de Barro =====
+   La muerte se representa en el PRESENTE editorial; las escenas del pasado
+   conservan sus retratos originales sin una marca retroactiva. */
+.hero-card-portrait{position:relative;display:block;overflow:hidden;background:#2e302c}
+.hero-card-portrait img{display:block;width:100%;height:260px;object-fit:cover}
+.hero-card.is-fallen{background:linear-gradient(#f1e7d4,#e5d9c3);border-color:#786c61}
+.hero-card.is-fallen .hero-card-portrait img,
+.featured-card.is-fallen .featured-image img{filter:grayscale(.67) sepia(.22) brightness(.9);object-position:center 12%}
+.hero-card.is-fallen h3,.featured-card.is-fallen strong{color:#433a37}
+.hero-card .fallen-word{color:#78554b;letter-spacing:.5px}
+.death-ribbon{position:absolute;top:11px;left:10px;z-index:4;display:block;max-width:calc(100% - 20px);padding:7px 10px;background:rgba(41,38,42,.92);border:1px solid #c6a977;border-radius:3px;box-shadow:0 3px 9px #1a171433;color:#f1deb4;font:800 10px/1.15 var(--sans);letter-spacing:1px;text-transform:uppercase;pointer-events:none}
+.featured-image{position:relative}
+.featured-card.is-fallen{border-color:#9c896a;background:linear-gradient(#e6dcc9,#d0c1a6)}
+.featured-card.is-fallen .featured-image{border-bottom-color:#9c8a73}
+.featured-card.is-fallen .featured-card-body small{color:#855d52}
+.portrait-mourn-wrap{position:relative;max-width:340px}
+.portrait-mourn-wrap .death-ribbon{top:23px;left:19px;font-size:12px;padding:9px 13px}
+.detail-deceased .portrait-large{filter:grayscale(.56) sepia(.18);border-color:#d0c0a6;object-fit:contain;background:#e3dac9}
+.detail-deceased .detail-head h2{color:#554338}
+.death-biography{border:1px solid #b99c79;border-left:5px solid #7a5955;border-radius:9px;padding:26px 30px;margin:0 0 27px;background:linear-gradient(120deg,#f0e4d1,#f9efd9 70%);box-shadow:0 5px 22px #69544014}
+.death-biography h3{font:clamp(25px,3vw,37px)/1.22 var(--serif);color:#563f37;margin:9px 0 14px}
+.death-biography p{font:16px/1.7 var(--serif);max-width:75ch;margin:10px 0;color:#51463d}
+.death-biography .death-literary{border-top:1px solid #ccb69a;padding-top:14px}
+.death-biography small,.memorial-literary small{display:block;color:#806b5c;font:11px/1.55 var(--sans);margin:4px 0 12px}
+.death-biography blockquote{font:italic 20px/1.5 var(--serif);margin:18px 0;padding-left:20px;border-left:2px solid #ab8c5f;color:#674b42;max-width:65ch}
+.death-biography cite,.memorial-quote cite{display:block;font:700 10px/1.6 var(--sans);letter-spacing:.7px;font-style:normal;text-transform:uppercase;margin-top:10px;color:#86705f}
+.legacy-opening.legacy-mourning{border-color:#ad947c;background:linear-gradient(130deg,#ddd1bc,#ebdec6 70%);position:relative;padding-left:44px}
+.legacy-opening.legacy-mourning:before{content:'✦';position:absolute;left:17px;top:37px;color:#8c695f;font-size:18px}
+.legacy-opening.legacy-mourning h2{color:#4a3b37}
+.memorial-section{margin:18px 0 38px}
+.memorial-person{display:grid;grid-template-columns:minmax(180px,250px) minmax(0,1fr);gap:28px;border:1px solid #b8a281;border-radius:12px;overflow:hidden;margin:20px 0 26px;background:linear-gradient(118deg,#efe0c4,#f9efd9 57%,#e8d7b7);box-shadow:0 9px 26px #513f2c19}
+.memorial-image{position:relative;min-height:355px;display:flex;align-items:center;justify-content:center;background:#beb09c;border-right:3px solid #b69a72;overflow:hidden}
+.memorial-image img{display:block;width:100%;height:100%;min-height:355px;object-fit:contain;object-position:center center;filter:grayscale(.52) sepia(.14);background:#ac9c89}
+.memorial-copy{padding:29px 26px 28px 0;min-width:0}
+.memorial-copy .eyebrow{color:#8e5547;letter-spacing:1.2px}
+.memorial-copy h3{font:clamp(31px,3.8vw,48px)/1.08 var(--serif);letter-spacing:-.7px;color:#45352e;margin:11px 0 8px}
+.memorial-copy p{margin:8px 0;font:16px/1.65 var(--serif);color:#584b40;overflow-wrap:break-word}
+.memorial-copy .memorial-identity{font:700 12px/1.6 var(--sans);color:#886f57}
+.memorial-copy .memorial-feat{padding:12px 0 10px;margin-top:10px;border-top:1px solid #cbb99d}
+.memorial-copy .memorial-feat strong{color:#614b3b}
+.memorial-quote{border-left:3px solid #9d7c61;margin:15px 0 17px;padding:10px 19px;background:#ead8b840;font:italic 21px/1.5 var(--serif);color:#644a3e;max-width:56ch}
+.memorial-literary{margin:10px 0 19px;border-top:1px solid #c9b797;padding-top:12px}
+.memorial-literary summary{cursor:pointer;font:700 12px/1.45 var(--sans);color:#755b48}
+.memorial-literary p{font-size:15px;line-height:1.65;margin-top:8px}
+.legacy-living{margin:34px 0 28px}
+.home-memorial{display:flex;align-items:center;gap:19px;flex-wrap:wrap;border:1px solid #b39a79;border-left:5px solid #765955;border-radius:9px;background:linear-gradient(100deg,#e8d8bd,#f3e3c9);padding:20px 24px;margin:22px 0 25px;color:#493930}
+.home-memorial-sigil{font-size:30px;color:#856151}
+.home-memorial>div{flex:1;min-width:170px}
+.home-memorial small{font:800 10px/1.4 var(--sans);letter-spacing:1px;color:#845e4c}
+.home-memorial h2{font:clamp(22px,2.5vw,29px)/1.2 var(--serif);margin:5px 0 7px}
+.home-memorial p{font:14px/1.6 var(--serif);margin:0}
+.home-memorial button{margin-left:auto}
+.text-link{border:0;background:none;color:#694c47;text-decoration:underline;cursor:pointer;font:inherit;padding:0 3px}
+@media(max-width:760px){
+ .memorial-person{grid-template-columns:1fr;gap:0}
+ .memorial-image{min-height:0;border-right:0;border-bottom:2px solid #b69a72;height:min(78vw,390px)}
+ .memorial-image img{height:100%;min-height:0;object-fit:contain}
+ .memorial-copy{padding:22px 23px 26px}
+ .memorial-copy h3{font-size:35px}
+ .memorial-quote{font-size:18px}
+ .death-biography{padding:20px}
+ .home-memorial{gap:11px;padding:16px}
+ .home-memorial>button{margin-left:0}
+}
+@media(max-width:450px){
+ .death-ribbon{font-size:9px;padding:5px 7px;left:7px;top:7px}
+ .portrait-mourn-wrap .death-ribbon{top:14px;left:14px}
+ .memorial-copy h3{font-size:30px}
+ .memorial-copy{padding:19px 16px 23px}
+ .hero-card-portrait img{height:225px}
+}
+@media print{
+ .memorial-person,.death-biography,.home-memorial{break-inside:avoid;box-shadow:none}
+ .death-ribbon{box-shadow:none}
+}
