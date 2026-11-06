@@ -1,4 +1,5 @@
 import {createHash} from 'node:crypto';
+import {fallenId,fallenName,reconcileCasualties} from './mortality-core.mjs';
 
 /*
  * Adapter para guardados REALES de Dungeons & Dynasties v26.
@@ -24,6 +25,8 @@ export function validateSave(save) {
   assert(isObj(g.tally) && Array.isArray(g.activeJobs) && Array.isArray(g.meetings),'Estructura incompleta');
   assert(unique(g.roster.map(h=>h.id)) && g.roster.every(h=>typeof h.id==='string' && typeof h.name==='string'),'IDs de personajes inválidos o duplicados');
   assert(g.roster.length<1000,'Número de héroes inesperado');
+  assert(unique(g.fallen.map(fallenId))&&g.fallen.every(f=>typeof fallenId(f)==='string'),'IDs de caídos inválidos o duplicados');
+  assert(g.fallen.every(f=>!g.roster.some(h=>h.id===fallenId(f))),'Una persona no puede estar viva y caída simultáneamente');
   num(g.gold,'gold');num(g.renown,'renown');
   return g;
 }
@@ -85,7 +88,7 @@ export function compareSaves(previous,next) {
   const jobs=listDiff(a.activeJobs,b.activeJobs,jobKey);
   const meetings=listDiff(a.meetings,b.meetings,meetingKey);
   const quests=listDiff(a.questLog??[],b.questLog??[],questKey);
-  const fallen=listDiff(a.fallen,b.fallen,x=>x.id);
+  const fallen=listDiff(a.fallen,b.fallen,fallenId);
   const facilities={};
   for(const k of sorted(new Set([...Object.keys(a.hall.facilities??{}),...Object.keys(b.hall.facilities??{})]))) {
     if(a.hall.facilities?.[k]!==b.hall.facilities?.[k]) facilities[k]={before:a.hall.facilities?.[k]??null,after:b.hall.facilities?.[k]??null};
@@ -101,7 +104,7 @@ export function compareSaves(previous,next) {
   return {format:'corona-save-diff/v1',guild:b.name,gameVersion:SAVE_VERSION,fromDay:before.day,toDay:after.day,
     summary:{before,after,metrics:metricChanges},
     roster:{added:roster.added.map(x=>({id:x.id,name:x.name})),removed:roster.removed.map(x=>({id:x.id,name:x.name})),changed:characterChanges},
-    bonds,jobs:{added:jobs.added,removed:jobs.removed},meetings,quests,fallen:{added:fallen.added.map(x=>({id:x.id,name:x.name})),removed:fallen.removed.map(x=>({id:x.id,name:x.name}))},
+    bonds,jobs:{added:jobs.added,removed:jobs.removed},meetings,quests,fallen:{added:fallen.added.map(x=>({id:fallenId(x),name:fallenName(x)})),removed:fallen.removed.map(x=>({id:fallenId(x),name:fallenName(x)}))},
     facilities,review,requiresEditorialReview:review.length>0};
 }
 const scalarCharacterFields={level:'level',experience:'experience',morale:'morale',condition:'condition',stress:'stress',fatigue:'fatigue',oathWage:'salary'};
@@ -133,6 +136,10 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
       if(typeof fresh[raw]==='number')replace(hero,dest,safeNumField(fresh[raw],raw),'characters.'+hero.id+'.'+dest);
     if(isObj(fresh.attributes))replace(hero,'attributes',structuredClone(fresh.attributes),'characters.'+hero.id+'.attributes');
   }
+  // Bajas automáticas: mantener fichas y memorias, pero excluir de los activos.
+  // El relato de los últimos instantes no se infiere desde el juego.
+  const mortality=reconcileCasualties(result,g);
+  if(mortality.newDeaths.length)changes.push({path:'world.fallen',before:book.world?.fallen||[],after:result.world.fallen});
   const existing=bondMap(result);
   for(const [key,v] of relationValues(g)){
     const item=existing.get(key);if(!item)continue; // new bonds need editorial classification
