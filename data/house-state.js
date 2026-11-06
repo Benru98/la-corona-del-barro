@@ -22,10 +22,10 @@
   const historicRelations=array(book.literaryRelationships).map(r=>{
    const people=array(r.people).map(id=>byId.get(id)).filter(Boolean);
    const mourning=people.some(c=>isFallen(book,c));
-   return {...r,peopleIds:r.people,people,lifeStatus:mourning?'memoria':'presente',mourning,
+   return {...r,members:people,lifeStatus:mourning?'memoria':'presente',mourning,
     needsEditorialReview:mourning&&r.status!=='memoria'&&r.status!=='duelo'};
   });
-  const featured=[...historicRelations].filter(r=>r.people.length>=2&&r.status!=='semilla')
+  const featured=[...historicRelations].filter(r=>r.members.length>=2&&r.status!=='semilla')
    .sort((a,b)=>Number(b.intensity||0)-Number(a.intensity||0)||
     Number(b.since?.day||0)-Number(a.since?.day||0)||String(a.id).localeCompare(String(b.id)))
    .slice(0,3);
