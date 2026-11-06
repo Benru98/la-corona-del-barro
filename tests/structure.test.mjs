@@ -15,7 +15,8 @@ function run(paths,expression){
   for(const p of paths)vm.runInContext(read(p),ctx,{filename:p,timeout:5000});
   return JSON.parse(vm.runInContext('JSON.stringify('+expression+')',ctx));
 }
-const modules=['data/campaign.js','novel/chapters.js','novel/relationships.js','novel/narrative-engine.js'];
+const scripts=["data/campaign.js","novel/chapters/index.js","novel/chapters/prologo-corona.js","novel/chapters/primer-certamen.js","novel/chapters/lo-que-vuelve.js","novel/chapters/interludio-iv-la-partida-que-no-termina.js","novel/relationships.js","novel/editorial-policy.js","novel/continuity.js","novel/narrative-engine.js","art/catalog.js","art-manifest.js","app.js"];
+const modules=scripts.filter(p=>p!=='art/catalog.js'&&p!=='art-manifest.js'&&p!=='app.js');
 test('El libro modular conserva estructura y canon separado',()=>{
   const b=run(modules,'BOOK');
   assert.equal(b.bookId,'la-corona-de-barro');
@@ -38,11 +39,11 @@ test('Las reglas narrativas conservan íntegramente el motor original',()=>{
 test('El HTML carga los módulos antes de la aplicación',()=>{
   const html=read('index.html');
   const scripts=[...html.matchAll(/<script\s+src="([^"]+)"/g)].map(x=>x[1]);
-  assert.deepEqual(scripts,[...modules,'art-manifest.js','app.js']);
+  assert.deepEqual(actual,scripts);
   for(const file of scripts)assert.ok(existsSync(join(root,file)),file+' missing');
 });
 test('Todas las imágenes mencionadas existen en el repositorio',()=>{
-  const manifest=run(['art-manifest.js'],'ART');
+  const manifest=run(['art/catalog.js','art-manifest.js'],'ART');
   for(const [name,p] of Object.entries(manifest)){
     assert.ok(!p.startsWith('assets/'),'Ruta heredada: '+name);
     assert.ok(existsSync(join(root,p)),'Imagen ausente: '+name+' -> '+p);
