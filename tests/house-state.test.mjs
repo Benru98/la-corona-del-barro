@@ -21,9 +21,10 @@ test('El estado compartido concilia la edición publicada',()=>{
  assert.ok(!h.availableIds.has(brugo));
  assert.ok(h.featured.every(r=>r.people.every(id=>typeof id==='string')));
  assert.deepEqual(HouseEngine.audit(campaign),[]);
- assert.equal(h.counts.available,7);
- assert.equal(h.expedition.heroIds.length,4);
- assert.equal(h.expedition.returnsDay,50);
+ assert.equal(h.counts.available,10);
+ assert.equal(h.expedition,null);
+ assert.equal(h.activeJobs.length,1);
+ assert.equal(h.activeJobs[0].returnsDay,92);
 });
 test('Una muerte y una expedición concurrente producen un error verificable',()=>{
  const b=clone(),c=b.characters.find(c=>c.id===luna);
@@ -36,6 +37,7 @@ test('Una muerte y una expedición concurrente producen un error verificable',()
  assert.ok(!HouseEngine.create(b).availableIds.has(luna));
  assert.ok(HouseEngine.audit(b).some(x=>x.code==='dead-in-job'));
  b.world.activeExpedition=null;
+ b.world.activeJobs=b.world.activeJobs.filter(j=>!j.heroIds.includes(luna));
  assert.deepEqual(HouseEngine.audit(b),[]);
 });
 test('El motor detecta reclutamiento, ascenso, cesión, regreso, lesiones, construcción, división y vínculos',()=>{
@@ -81,6 +83,7 @@ test('Dos bajas simultáneas se reflejan en todos los contadores y sin perder su
  b.stats.members-=2;b.stats.dead+=2;
  b.world.guildRosterAlive=b.world.guildRosterAlive.filter(id=>!victims.some(c=>c.id===id));
  if(b.world.activeExpedition)b.world.activeExpedition.heroIds=b.world.activeExpedition.heroIds.filter(id=>!victims.some(c=>c.id===id));
+ b.world.activeJobs=b.world.activeJobs.filter(j=>!j.heroIds.some(id=>victims.some(c=>c.id===id)));
  const h=HouseEngine.create(b);
  assert.equal(h.counts.living,9);
  assert.equal(h.counts.fallen,3);
