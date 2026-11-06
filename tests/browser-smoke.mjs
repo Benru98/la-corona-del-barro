@@ -76,6 +76,19 @@ try{
    const firstLoaded=await firstImage.evaluate(async img=>{await img.decode();return img.naturalWidth>0;});
    assert.ok(firstLoaded,'El primer retrato no se pudo cargar');
    console.log('Diálogos de escritorio:',JSON.stringify({count:portraits.length,regular:portraits.find(p=>!p.brief),brief:portraits.find(p=>p.brief)}));
+   // Nueva crónica de la actualización real: comprobar contenido y retratos contextuales.
+   await desktop.locator('#sideNav [data-nav="saga"]').click();
+   await desktop.locator('.chapter-tile').last().click();
+   const novel=await desktop.locator('.reading').innerText();
+   assert.equal((await desktop.locator('.reader-hero h2').innerText()).trim(),'La medida de una victoria','Capítulo V ausente del lector');
+   assert.ok(novel.includes('Belzar')&&novel.includes('Jaro'),'Faltan protagonistas del capítulo V');
+   assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=40,'Faltan diálogos del capítulo V');
+   const sources=await desktop.locator('.prose .dialogue-entry img').evaluateAll(
+     nodes=>[...new Set(nodes.map(n=>n.getAttribute('src')).filter(Boolean))]);
+   assert.ok(sources.some(x=>x.includes('-v2-')),'La narración no utiliza ninguna variante visual aprobada');
+   for(const src of sources)assert.equal((await desktop.request.get(new URL(src,base).href)).status(),200,'Retrato del capítulo V ausente: '+src);
+   console.log('Capítulo V:',JSON.stringify({dialogues:await desktop.locator('.prose .dialogue-entry').count(),uniqueImages:sources.length,contextualVariants:sources.filter(x=>x.includes('-v2-')).length}));
+
  }
  const mobile=await browser.newPage({viewport:{width:390,height:844},isMobile:true,hasTouch:true});
  await mobile.goto(base,{waitUntil:'networkidle',timeout:30000});

@@ -1,4 +1,40 @@
-# Importador de guardados · Fase 2
+# Importador de guardados · Fase 2 + primera actualización real
+
+## Flujo recomendado desde el día visible 30
+
+El repositorio incluye `data/approved-save-projection.json`: datos seguros de la última partida aprobada, sin conservar el guardado bruto del juego ni atributos ocultos. Esto permite comparar el próximo guardado sin recuperar el JSON anterior del chat.
+
+1. Recibir el nuevo JSON en el chat y guardarlo **fuera** del repositorio público.
+2. Ejecutar el comparador frente a la proyección aprobada:
+
+```bash
+node scripts/compare-saves.mjs \
+  --previous data/approved-save-projection.json \
+  --next "/ruta/La Corona de Barro NUEVO.json" \
+  --campaign data/campaign.js \
+  --baseline data/save-baseline.json \
+  --out "/ruta/informe-nuevo"
+```
+
+3. Revisar la propuesta automática y los hechos registrados con ID; los vínculos nuevos, las escenas y las misiones desaparecidas necesitan decisión editorial.
+4. Preparar PR con datos, cronología, una crónica seleccionada por relevancia y pruebas de regresión.
+5. Después de aprobar la PR, generar una nueva proyección con el JSON original en entorno local:
+
+```bash
+node scripts/project-save.mjs \
+  --input "/ruta/La Corona de Barro NUEVO.json" \
+  --out "/ruta/proyeccion-nueva.json"
+```
+
+6. Copiar la proyección **revisada** a `data/approved-save-projection.json` en la misma PR, actualizar `data/save-baseline.json` con día y firma y comprobar que coinciden con el libro. Jamás subir el guardado bruto.
+
+### Alcance de la comparación
+
+El primer salto (día 20 → 30) se comparó contra la instantánea del libro, pues el JSON bruto del día 20 no estaba disponible. Desde el día 30, la proyección permite volver a comparar por IDs estables usando `compareSaves`, aunque no sustituye un guardado íntegro para campos que no fueron proyectados.
+
+Consulta `docs/ACTUALIZACION_DIA_30.md` para ver el informe de referencia de la primera prueba de fuego.
+
+---
 
 ## Qué hace
 

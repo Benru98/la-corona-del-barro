@@ -73,5 +73,6 @@ test('Ninguna capa editorial modifica relaciones mecánicas ni personajes',()=>{
  assert.deepEqual(expanded.stats,base.stats);
  assert.deepEqual(expanded.world,base.world);
  assert.ok(expanded.chapters.length>=4);
- assert.equal(expanded.literaryRelationships.length,26);
+ assert.ok(expanded.literaryRelationships.length>=26,'No se deben perder relaciones literarias anteriores');
+ assert.equal(new Set(expanded.literaryRelationships.map(x=>x.id)).size,expanded.literaryRelationships.length,'IDs literarios duplicados');
 });
