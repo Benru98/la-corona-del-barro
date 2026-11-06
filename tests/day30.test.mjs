@@ -37,6 +37,9 @@ test('La nueva línea base y su proyección coinciden exactamente con el libro',
  assert.equal(book.stats.leaguePoints,9);
  assert.equal(book.stats.bonds,31);
  assert.equal(book.stats.synergies,4);
+ assert.equal(book.world.eventLog.length,34);
+ assert.equal(book.world.storyBeats.length,15);
+ assert.equal(new Set(book.world.eventLog.map(x=>x.id)).size,34,'Noticias duplicadas');
  assert.equal(book.stats.clearRate,100);
  assert.equal(approved.guild.roster.length,book.characters.length);
  assert.deepEqual(new Set(approved.guild.roster.map(h=>h.id)),new Set(book.characters.map(h=>h.id)));
