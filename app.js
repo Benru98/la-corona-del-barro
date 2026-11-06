@@ -61,7 +61,7 @@ ${pulseHome()}
 <div class="notice">✧ ${esc(BOOK.meta.notice)}<br><b>Nota:</b> Los hechos proceden del guardado; las conversaciones son recreaciones literarias.</div>`}
 function saga(){if(!BOOK.chapters.length)return heading('LA NOVELA DEL GREMIO','La Saga','El primer capítulo nacerá cuando el gremio emprenda su aventura.')+'<div class="empty-state"><h3>El libro todavía no tiene capítulos</h3><p>Cuando llegue el primer guardado, aquí aparecerá el prólogo de la casa.</p></div>';return `${heading('LA NOVELA DEL GREMIO','La Saga','Cada capítulo conserva los hechos y les da una voz. La ficción literaria nunca sustituye los registros del juego.')}<div class="saga-cover-preview"><img src="${esc(artUrl('cover'))}" alt="Portada ilustrada de La Corona de Barro: Crónicas de Fantasía" loading="lazy"/><div><div class="eyebrow">EL CÓDICE ILUSTRADO</div><h2>Crónicas de Fantasía</h2><p>El retrato de nuestra Casa, una historia que continúa creciendo con cada aventura.</p></div></div><div class="chapter-grid">${BOOK.chapters.map((c,i)=>`<button type="button" class="chapter-tile" data-chapter="${i}"><div class="eyebrow">${esc(c.chapter)} · ${esc(c.years)}</div><h3>${esc(c.title)}</h3><p>${esc(c.lead)}</p><footer><span>${esc(c.characterIds.length)} protagonistas</span><span>Leer capítulo ↗</span></footer></button>`).join('')}</div>`}
 function portraitModeSwitch(){return `<button type="button" class="portrait-toggle" data-action="toggle-portraits" aria-pressed="${state.portraits}" aria-label="${state.portraits?'Ocultar':'Mostrar'} retratos de los personajes en los diálogos">${state.portraits?'◉ Retratos activados':'◯ Mostrar retratos'}</button>`}
-function renderDialogue(text,speakerId,chapter,sceneIndex,paragraphIndex){
+function renderDialogue(text,speakerId,chapter,sceneIndex,paragraphIndex,isRepeat=false){
  if(!state.portraits||!speakerId)return `<p class="dialogue">${esc(text)}</p>`;
  let actor=speakerId==='guildmaster'?null:byId(speakerId);
  if(!actor&&speakerId!=='guildmaster')return `<p class="dialogue">${esc(text)}</p>`;
@@ -69,13 +69,37 @@ function renderDialogue(text,speakerId,chapter,sceneIndex,paragraphIndex){
  const src=actor?PORTRAIT_LIBRARY.resolve(actor.id,chapter,sceneIndex,paragraphIndex,portrait(actor)):artUrl('maestreDialogue');
  const avatar=actor?`<button type="button" class="dialogue-avatar" data-hero="${esc(actor.id)}" title="Abrir ficha de ${esc(name)}" aria-label="Abrir biografía de ${esc(name)}"><img src="${src}" alt="" loading="lazy"/></button>`:`<span class="dialogue-avatar is-master" title="Retrato literario del maestre de La Corona de Barro"><img src="${src}" alt=""/></span>`;
  const brief=String(text).length<=76;
- return `<div class="dialogue-entry${brief?' dialogue-entry-brief':''}" data-speaker="${esc(speakerId)}">${avatar}<div class="dialogue-copy"><span class="dialogue-speaker">${esc(name)}</span><p class="dialogue-text">${esc(text)}</p></div></div>`;
+ return `<div class="dialogue-entry${brief?' dialogue-entry-brief':''}${isRepeat?' dialogue-entry-repeat':''}" data-speaker="${esc(speakerId)}">${avatar}<div class="dialogue-copy"><span class="dialogue-speaker">${esc(name)}</span><p class="dialogue-text">${esc(text)}</p></div></div>`;
 }
 function reader(){
  if(!BOOK.chapters.length)return saga();
  const c=BOOK.chapters[state.chapter];
- let sceneIndex=0;
- const content=c.paragraphs.map((p,i)=>{if(p.trim()==='***'){sceneIndex++;return '<div class="scene-break" role="separator" aria-label="Cambio de escena">❦</div>';}return p.trim().startsWith('—')?renderDialogue(p,c.speakers?.[i],c,sceneIndex,i):`<p class="narration">${esc(p)}</p>`}).join('');
+ let sceneIndex=0, wordsBetweenDialogues=0;
+ let introduced=new Set();
+ const content=c.paragraphs.map((p,i)=>{
+   const text=p.trim();
+   if(text==='***'){
+     sceneIndex++;
+     introduced.clear();
+     wordsBetweenDialogues=0;
+     return '<div class="scene-break" role="separator" aria-label="Cambio de escena">❦</div>';
+   }
+   if(text.startsWith('—')){
+     const speaker=c.speakers?.[i];
+     // Primera intervención: retrato grande. Réplicas del mismo personaje:
+     // retrato pequeño para que el diálogo no ocupe el doble de páginas.
+     const isRepeat=!!speaker&&introduced.has(speaker);
+     if(speaker)introduced.add(speaker);
+     wordsBetweenDialogues=0;
+     return renderDialogue(p,speaker,c,sceneIndex,i,isRepeat);
+   }
+   wordsBetweenDialogues+=text.split(/\s+/).filter(Boolean).length;
+   if(wordsBetweenDialogues>90){
+     introduced.clear();  // Cambio de foco narrativo, nueva presentación.
+     wordsBetweenDialogues=0;
+   }
+   return `<p class="narration">${esc(p)}</p>`;
+ }).join('');
  return `<div class="tool-row"><button class="btn secondary small" data-action="back-saga">← Volver al índice</button>${chip(c.chapter+' · '+c.years)}</div>
  <div class="reader"><div class="reader-hero"><div><div class="eyebrow">${esc(c.chapter)} — ${esc(c.years)}</div><h2>${esc(c.title)}</h2><p>${esc(c.lead)}</p></div></div><article class="reading" style="--fontmult:${state.font}"><div class="reading-settings"><span class="setting-hint">Pulsa un retrato para abrir su biografía.</span>${portraitModeSwitch()}</div><div class="prose">${content}</div><div class="reading-end"><div class="eyebrow">Personajes en este capítulo</div><div class="info-pills">${c.characterIds.map(name=>{let h=heroName(name);return h?`<button class="filter" data-hero="${h.id}">${esc(name)} ↗</button>`:''}).join('')}</div><div class="fact-note"><strong>Hechos verificados · Fuente del juego</strong><ul>${c.facts.map(f=>`<li>${esc(f)}</li>`).join('')}</ul><p><b>Origen:</b> ${esc(c.source)}. Los detalles ambientales y el tono de las escenas son dramatizaciones literarias.</p></div></div></article>
  <div class="reader-tools"><button class="btn secondary small" data-chapter="${Math.max(0,state.chapter-1)}" ${state.chapter===0?'disabled':''}>← Anterior</button><span class="small-controls">Tamaño <button class="icon-btn" data-action="font-down" aria-label="Reducir tamaño de letra">A−</button><button class="icon-btn" data-action="font-up" aria-label="Ampliar tamaño de letra">A+</button></span>${portraitModeSwitch()}<button class="btn small" data-chapter="${Math.min(BOOK.chapters.length-1,state.chapter+1)}" ${state.chapter===BOOK.chapters.length-1?'disabled':''}>Siguiente →</button></div></div>`;
