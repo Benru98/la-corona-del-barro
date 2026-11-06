@@ -168,14 +168,16 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
   // Nunca sobrescribir textos, memorias, escenas ni el atlas literario desde un JSON mecánico.
   for(const key of ['chapters','literaryRelationships','literaryTagCatalog','editions','timeline','marginalia'])
     assert(equal(result[key],book[key]),'Cambio no autorizado en canon: '+key);
-  const blocking=diff.review.length>0;
+  const audit=HouseEngine.audit(result);
+  const blocking=diff.review.length>0||audit.length>0;
   const warnings=[
     'Borrador no publicado: revisar y aprobar antes de sustituir data/campaign.js.',
     'Cálculos de clasificación, hazañas, encuentros, biografías y cronología requieren revisión editorial.',
-    ...diff.review
+    ...diff.review,
+    ...audit.map(issue=>'Auditoría ['+issue.code+']: '+issue.message)
   ];
   return {format:'corona-campaign-proposal/v1',source:sourceName,gameVersion:SAVE_VERSION,fromDay:base.day+1,toDay:g.day+1,
-    updatedPaths:changes.map(x=>x.path),changes,blocking,review:warnings,events:diff.events,campaign:result,audit:HouseEngine.audit(result)};
+    updatedPaths:changes.map(x=>x.path),changes,blocking,review:warnings,events:diff.events,campaign:result,audit};
 }
 export function reportMarkdown(diff,proposal) {
   const lines=['# Informe de guardados — '+diff.guild,'','**Día visible:** '+diff.fromDay+' → '+diff.toDay,
