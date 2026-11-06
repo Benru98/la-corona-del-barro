@@ -118,7 +118,7 @@ test('Se preservan afinidades reales y se incluyen nuevos vínculos, sin mezclar
  assert.equal(pair('adv_hpzq2ixhvxtq','adv_xsny2mf20dv6').rawValue,20);
  assert.ok(book.literaryRelationships.some(x=>x.id==='lit-iligar-yvaldo-friend-y1d79'));
  assert.ok(book.literaryRelationships.some(x=>x.id==='lit-velasco-ulf-friend-y1d85'));
- assert.equal(iligar.vow.resolved.day,75);
+ assert.equal(book.characters.find(x=>x.name==='Iligar el Rompehuesos').vow.resolved.day,75);
  assert.ok(book.world.town.threatDay===94);
  assert.equal(book.characters.find(x=>x.name==='Brugo').status,'caído');
  for(const chapter of book.chapters.slice(8))for(const [idx,id] of Object.entries(chapter.speakers)){assert.ok(idName.has(id));assert.ok(chapter.paragraphs[+idx].startsWith('—'));}
