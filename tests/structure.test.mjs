@@ -47,9 +47,9 @@ test('El HTML carga los módulos antes de la aplicación',()=>{
   assert.deepEqual(chapterPaths.slice(0,4),[
     'novel/chapters/prologo-corona.js','novel/chapters/primer-certamen.js',
     'novel/chapters/lo-que-vuelve.js','novel/chapters/interludio-iv-la-partida-que-no-termina.js']);
-  assert.deepEqual(scripts.slice(-8),[
+  assert.deepEqual(scripts.slice(-9),[
     'novel/relationships.js','novel/editorial-policy.js','novel/continuity.js',
-    'novel/narrative-engine.js','art/catalog.js','art-manifest.js','art/portrait-library.js','app.js']);
+    'novel/narrative-engine.js','art/catalog.js','art-manifest.js','art/portrait-library.js','data/house-state.js','app.js']);
   assert.equal(new Set(scripts).size,scripts.length,'Scripts duplicados');
   for(const file of scripts)assert.ok(existsSync(join(root,file)),file+' missing');
 });
