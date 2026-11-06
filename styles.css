@@ -807,3 +807,42 @@ body.reading-night .pulse-stat:not(:first-child){background:linear-gradient(145d
   .prose .dialogue-entry{break-inside:avoid; background:transparent; border-color:transparent}
   .prose .dialogue-entry .dialogue-avatar{box-shadow:none}
 }
+
+
+/* Réplicas sucesivas: identidad visible con retrato compacto, sin grandes blancos. */
+.prose .dialogue-entry.dialogue-entry-repeat,
+.prose .dialogue-entry.dialogue-entry-brief.dialogue-entry-repeat{
+  display:grid;
+  grid-template-columns:56px minmax(0,1fr);
+  column-gap:13px;
+  margin:7px 0 10px;
+  padding:5px 11px 7px 3px;
+  border-bottom:0;
+  background:linear-gradient(95deg,rgba(184,145,93,.065),transparent 75%);
+}
+.prose .dialogue-entry.dialogue-entry-repeat .dialogue-avatar,
+.prose .dialogue-entry.dialogue-entry-brief.dialogue-entry-repeat .dialogue-avatar,
+.prose .dialogue-entry + .dialogue-entry.dialogue-entry-repeat .dialogue-avatar{
+  box-sizing:border-box;
+  width:56px;
+  height:75px;
+  margin:0;
+  padding:1px;
+}
+.prose .dialogue-entry.dialogue-entry-repeat .dialogue-copy{padding-top:3px}
+.prose .dialogue-entry.dialogue-entry-repeat .dialogue-speaker{margin-bottom:5px}
+@media(max-width:650px){
+  .prose .dialogue-entry.dialogue-entry-repeat,
+  .prose .dialogue-entry.dialogue-entry-brief.dialogue-entry-repeat{
+    grid-template-columns:49px minmax(0,1fr);
+    column-gap:10px;
+    padding:4px 5px 6px 0;
+    margin:6px 0 9px;
+  }
+  .prose .dialogue-entry.dialogue-entry-repeat .dialogue-avatar,
+  .prose .dialogue-entry.dialogue-entry-brief.dialogue-entry-repeat .dialogue-avatar,
+  .prose .dialogue-entry + .dialogue-entry.dialogue-entry-repeat .dialogue-avatar{
+    width:49px;
+    height:66px;
+  }
+}
