@@ -2,11 +2,11 @@
   "format": "corona-approved-save-projection/v1",
   "projectionNote": "SOLO CAMPOS DE DIFERENCIA APROBADOS. Guardado original no incluido; no contiene atributos ocultos ni todos los historiales.",
   "version": 26,
-  "sig": "57oqwd.1577imj",
+  "sig": "1wp6qov.1bqzzo9",
   "guild": {
     "name": "La Corona de Barro",
-    "day": 39,
-    "gold": 2530,
+    "day": 44,
+    "gold": 1563,
     "renown": 69,
     "roster": [
       {
@@ -15,17 +15,11 @@
         "level": 2,
         "experience": 13,
         "morale": 100,
-        "condition": 94,
-        "stress": 32,
-        "fatigue": 25,
+        "condition": 100,
+        "stress": 25,
+        "fatigue": 20,
         "oathWage": 19,
         "post": "secondWatch",
-        "away": {
-          "jobId": "delve_38",
-          "returnsDay": 42,
-          "delve": true,
-          "region": "pale-reach"
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -163,18 +157,12 @@
         "name": "Belzar de la Ofrenda",
         "level": 6,
         "experience": 56,
-        "morale": 37,
-        "condition": 94,
-        "stress": 44,
-        "fatigue": 34,
+        "morale": 39,
+        "condition": 100,
+        "stress": 37,
+        "fatigue": 27,
         "oathWage": 24,
         "post": "vanguard",
-        "away": {
-          "jobId": "delve_38",
-          "returnsDay": 42,
-          "delve": true,
-          "region": "pale-reach"
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 10,
@@ -305,11 +293,11 @@
         "id": "adv_xsny2mf20dv6",
         "name": "Ulf Vallehondo",
         "level": 2,
-        "experience": 12,
-        "morale": 66,
+        "experience": 13,
+        "morale": 70,
         "condition": 100,
-        "stress": 20,
-        "fatigue": 16,
+        "stress": 37,
+        "fatigue": 25,
         "oathWage": 15,
         "post": "secondWatch",
         "injury": null,
@@ -326,7 +314,7 @@
           "bravery": 6,
           "decisions": 14,
           "anticipation": 13,
-          "teamwork": 8,
+          "teamwork": 9,
           "leadership": 7,
           "concentration": 11,
           "aggression": 9,
@@ -341,7 +329,7 @@
           "threat": 3,
           "mitigation": 5,
           "healing": 11,
-          "support": 7,
+          "support": 8,
           "crowdControl": 8,
           "positioning": 10
         },
@@ -359,21 +347,21 @@
           },
           "flaw": "freezes-at-fork"
         },
-        "delves": 3,
+        "delves": 4,
         "record": {
           "since": 0,
           "all": {
-            "n": 3,
-            "dealt": 406,
-            "healed": 650,
-            "faced": 577,
+            "n": 4,
+            "dealt": 583,
+            "healed": 1692,
+            "faced": 944,
             "kills": 3,
             "downed": 0,
-            "swings": 65,
-            "hits": 63,
-            "crits": 4,
-            "taken": 361,
-            "blocked": 6,
+            "swings": 91,
+            "hits": 86,
+            "crits": 6,
+            "taken": 500,
+            "blocked": 7,
             "heroic": 0
           },
           "trials": {
@@ -391,7 +379,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 79,
+        "currentAbility": 80,
         "potentialAbility": 135,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -429,11 +417,11 @@
         "id": "adv_hpzq2ixhvxtq",
         "name": "Velasco Rivadeneira",
         "level": 5,
-        "experience": 47,
+        "experience": 48,
         "morale": 60,
         "condition": 100,
-        "stress": 35,
-        "fatigue": 27,
+        "stress": 47,
+        "fatigue": 36,
         "oathWage": 26,
         "post": "vanguard",
         "injury": null,
@@ -483,20 +471,20 @@
           },
           "flaw": "contrary"
         },
-        "delves": 4,
+        "delves": 5,
         "record": {
           "since": 0,
           "all": {
-            "n": 4,
-            "dealt": 4960,
+            "n": 5,
+            "dealt": 7317,
             "healed": 0,
-            "faced": 99,
-            "kills": 28,
+            "faced": 259,
+            "kills": 41,
             "downed": 0,
-            "swings": 128,
-            "hits": 127,
-            "crits": 28,
-            "taken": 184,
+            "swings": 187,
+            "hits": 184,
+            "crits": 38,
+            "taken": 371,
             "blocked": 1,
             "heroic": 0
           },
@@ -556,8 +544,8 @@
         "experience": 65,
         "morale": 100,
         "condition": 100,
-        "stress": 53,
-        "fatigue": 47,
+        "stress": 42,
+        "fatigue": 39,
         "oathWage": 27,
         "post": "vanguard",
         "injury": null,
@@ -695,7 +683,7 @@
           "marksmanship": 5,
           "power": 3,
           "spellcraft": 11,
-          "armorUse": 2,
+          "armorUse": 3,
           "parry": 5,
           "evasion": 6,
           "criticalStrike": 12,
@@ -737,7 +725,7 @@
           },
           "flaw": "keeps-score"
         },
-        "currentAbility": 71,
+        "currentAbility": 72,
         "potentialAbility": 143,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -867,12 +855,12 @@
       {
         "id": "adv_dvyb6kaxgy9l",
         "name": "Xara del Cuerno",
-        "level": 1,
-        "experience": 6,
-        "morale": 42,
+        "level": 2,
+        "experience": 7,
+        "morale": 44,
         "condition": 100,
-        "stress": 11,
-        "fatigue": 13,
+        "stress": 33,
+        "fatigue": 23,
         "oathWage": 14,
         "post": "secondWatch",
         "injury": null,
@@ -884,9 +872,9 @@
           "armorUse": 9,
           "parry": 9,
           "evasion": 5,
-          "criticalStrike": 8,
+          "criticalStrike": 9,
           "composure": 7,
-          "bravery": 8,
+          "bravery": 9,
           "decisions": 5,
           "anticipation": 8,
           "teamwork": 7,
@@ -922,21 +910,21 @@
           },
           "flaw": "never-apologises"
         },
-        "delves": 3,
+        "delves": 4,
         "record": {
           "since": 1,
           "all": {
-            "n": 3,
-            "dealt": 288,
+            "n": 4,
+            "dealt": 455,
             "healed": 0,
-            "faced": 2862,
+            "faced": 4591,
             "kills": 3,
             "downed": 0,
-            "swings": 265,
-            "hits": 240,
-            "crits": 13,
-            "taken": 1056,
-            "blocked": 31,
+            "swings": 342,
+            "hits": 312,
+            "crits": 18,
+            "taken": 2042,
+            "blocked": 52,
             "heroic": 0
           },
           "trials": {
@@ -954,7 +942,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 71,
+        "currentAbility": 72,
         "potentialAbility": 140,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -994,16 +982,10 @@
         "level": 5,
         "experience": 44,
         "morale": 96,
-        "condition": 94,
-        "stress": 55,
-        "fatigue": 45,
+        "condition": 100,
+        "stress": 43,
+        "fatigue": 38,
         "post": "vanguard",
-        "away": {
-          "jobId": "delve_38",
-          "returnsDay": 42,
-          "delve": true,
-          "region": "pale-reach"
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -1142,15 +1124,9 @@
         "level": 4,
         "experience": 37,
         "morale": 77,
-        "condition": 59,
-        "stress": 16,
-        "fatigue": 26,
-        "away": {
-          "jobId": "delve_38",
-          "returnsDay": 42,
-          "delve": true,
-          "region": "pale-reach"
-        },
+        "condition": 87,
+        "stress": 14,
+        "fatigue": 21,
         "injury": null,
         "attributes": {
           "weaponSkill": 2,
@@ -1302,7 +1278,7 @@
         "mentorId": "adv_agorapai6eaw"
       },
       "adv_hpzq2ixhvxtq|adv_xsny2mf20dv6": {
-        "value": 14
+        "value": 16
       },
       "adv_dvyb6kaxgy9l|adv_vir5cr755mej": {
         "value": 30,
@@ -1315,16 +1291,16 @@
         "value": 2
       },
       "adv_neqeupnrhpgg|adv_vir5cr755mej": {
-        "value": 3.4749999999999996
+        "value": 3
       },
       "adv_nmu0cr5oezjw|adv_vir5cr755mej": {
-        "value": 18.5
+        "value": 18
       },
       "adv_neqeupnrhpgg|adv_nmu0cr5oezjw": {
-        "value": 0.4874999999999998
+        "value": 0
       },
       "adv_dvyb6kaxgy9l|adv_hpzq2ixhvxtq": {
-        "value": 2
+        "value": 3
       },
       "adv_nmu0cr5oezjw|adv_w21f5zhwf7li": {
         "value": 4
@@ -1336,7 +1312,7 @@
         "value": 2
       },
       "adv_dvyb6kaxgy9l|adv_xsny2mf20dv6": {
-        "value": 4
+        "value": 13
       },
       "adv_vir5cr755mej|adv_xsny2mf20dv6": {
         "value": 2
@@ -1369,10 +1345,10 @@
         "value": -2
       },
       "adv_nmu0cr5oezjw|adv_xvecyci8knko": {
-        "value": 6.475
+        "value": 6
       },
       "adv_vir5cr755mej|adv_xvecyci8knko": {
-        "value": 1.4958333333333333
+        "value": 1
       },
       "adv_agorapai6eaw|adv_xvecyci8knko": {
         "value": -2
@@ -1381,7 +1357,7 @@
         "value": -2
       },
       "adv_neqeupnrhpgg|adv_xvecyci8knko": {
-        "value": 0.5
+        "value": 0
       },
       "adv_dvyb6kaxgy9l|adv_ge28ylm26r9p": {
         "value": 6
@@ -1421,8 +1397,8 @@
       ]
     },
     "tally": {
-      "delves": 9,
-      "cleared": 9,
+      "delves": 10,
+      "cleared": 10,
       "quests": 2
     },
     "activeJobs": [],
@@ -1486,6 +1462,30 @@
       }
     ],
     "goldLog": [
+      {
+        "day": 42,
+        "kind": "payroll",
+        "delta": -212,
+        "gold": 1563
+      },
+      {
+        "day": 41,
+        "kind": "event",
+        "delta": -70,
+        "gold": 1775
+      },
+      {
+        "day": 39,
+        "kind": "delve",
+        "delta": 315,
+        "gold": 1845
+      },
+      {
+        "day": 39,
+        "kind": "building",
+        "delta": -1000,
+        "gold": 1530
+      },
       {
         "day": 38,
         "kind": "delve",
@@ -1648,6 +1648,21 @@
     ],
     "yearBeats": [
       {
+        "id": "n_story_39_c_36_3848_0",
+        "day": 39,
+        "text": "Xara del Cuerno cargó con las salas fáciles y no le quedó nada para la difícil, como de costumbre."
+      },
+      {
+        "id": "n_story_39_c_36_3848_1",
+        "day": 39,
+        "text": "Ulf Vallehondo fue lo mejor del grupo hasta la sala que contaba, y entonces dejó de serlo."
+      },
+      {
+        "id": "n_story_39_c_36_3848_2",
+        "day": 39,
+        "text": "Ulf Vallehondo se puso entre Xara y la oscuridad, y salieron los dos."
+      },
+      {
         "id": "n_syn_38_last-wall",
         "day": 38,
         "text": "✨ ¡Sinergia descubierta, El Último Muro! Espada, escudo, hechizo y oración: uno de cada y ninguno de sobra. La línea tal como se trazó por primera vez. (+5% de daño del grupo · +5% de curación)"
@@ -1731,45 +1746,16 @@
         "id": "n_bond_home_30_adv_xsny2mf20dv6_adv_w21f5zhwf7li",
         "day": 30,
         "text": "Ulf y Brugo hicieron la misma guardia, y al acabarla ya se completaban las quejas mutuamente."
-      },
-      {
-        "id": "n_syn_28_skirmish-line",
-        "day": 28,
-        "text": "✨ ¡Sinergia descubierta, Línea de Hostigamiento! Un Montaraz y un Espadachín encierran al enemigo entre los dos: no hay escape ni de cerca ni de lejos. (+5% de daño del grupo)"
-      },
-      {
-        "id": "n_bond_28_fixture-1-3_0",
-        "day": 28,
-        "text": "Belzar y Jaro se pelearon a lo grande ahí abajo, y no han hecho las paces."
-      },
-      {
-        "id": "n_bond_28_fixture-1-3_1",
-        "day": 28,
-        "text": "Belzar y Yvaldo se acercaron en la incursión."
-      },
-      {
-        "id": "n_story_28_fixture-1-3_0",
-        "day": 28,
-        "text": "El grupo rechazó los dados de un desconocido en la sima."
-      },
-      {
-        "id": "n_story_28_fixture-1-3_1",
-        "day": 28,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, el brillo del oro, y algo que lo custodia. Yvaldo sopesa el oro un momento y sigue por la senda."
-      },
-      {
-        "id": "n_syndiv_28_fixture-1-3",
-        "day": 28,
-        "text": "✦ 2 sinergias dio fruto: el grupo peleó como uno solo (+183g, +3 de renombre)."
-      },
-      {
-        "id": "n_bond_home_24_adv_xvecyci8knko_adv_dvyb6kaxgy9l",
-        "day": 24,
-        "text": "Luna movió su cama al otro extremo del cuarto, lejos de Xara."
       }
     ],
-    "hallBuilds": [],
-    "mascot": "La Reina Zarigüeya",
+    "hallBuilds": [
+      {
+        "target": "hall",
+        "completeDay": 53,
+        "cost": 1000,
+        "startDay": 39
+      }
+    ],
     "heroNotes": {
       "adv_ge28ylm26r9p": "Será un gran mago dps, ahora tiene que viajar para aprender mas.",
       "adv_agorapai6eaw": "Le gusta liderar",
@@ -1782,6 +1768,7 @@
       "adv_dw6dpd5sh7jc": "Ruc a su corta edad tiene rencor y sed de vengaza por lo que le hicieron a sus padres. Ahora se dedica a curar y apoyar a los demas, hasta que encuentre el momento de sucumbir a su venganza...",
       "adv_nmu0cr5oezjw": "Aunque sea joven, no tiene nada a su disposición. LLegó a estas tierras solo con su laúd y con ganas de tener una fmailia.",
       "adv_neqeupnrhpgg": "La pobre está muy verde, aun no sabe ni lanzar una bola de fuego... Intentará sorprender para que al acepten en cualquier gremio."
-    }
+    },
+    "mascot": "La Reina Zarigüeya"
   }
 }
