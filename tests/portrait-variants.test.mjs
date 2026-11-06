@@ -23,8 +23,8 @@ test('Todas las ilustraciones v2 están asociadas a un personaje estable y son u
  }
 });
 test('Las dos portadas v2 existen, tienen rutas distintas y preservan las anteriores',()=>{
- assert.equal(data.art.groupCover,'assets/covers/corona-grupal-v2.webp');
- assert.equal(data.art.cover,'assets/covers/cronicas-fantasia-v2.webp');
+ assert.equal(data.art.groupCover,'corona-grupal-v2.webp');
+ assert.equal(data.art.cover,'cronicas-fantasia-v2.webp');
  assert.ok(existsSync(join(root,data.art.groupCover)));
  assert.ok(existsSync(join(root,data.art.cover)));
  assert.ok(existsSync(join(root,'portada-grupal.webp')));
