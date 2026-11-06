@@ -73,7 +73,8 @@ test('No se pierden fichas, biografías, memorias, reliquias ni capítulos anter
 });
 test('La Casa mantiene retornos pendientes sin atribuir resultados futuros',()=>{
  assert.equal(book.world.activeJobs.length,0);
- assert.equal(book.world.activeExpedition.heroIds.length,4);\n assert.equal(book.world.activeExpedition.returnsDay,43);
+ assert.equal(book.world.activeExpedition.heroIds.length,4);
+ assert.equal(book.world.activeExpedition.returnsDay,43);
  assert.equal(book.world.fallen.length,1);
  assert.equal(book.world.fallen[0].name,'Brugo');
  assert.equal(book.world.fallen[0].day,34);
