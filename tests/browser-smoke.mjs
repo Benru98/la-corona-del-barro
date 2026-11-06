@@ -98,6 +98,12 @@ try{
    assert.equal((await desktop.locator('.reader-hero h2').innerText()).trim(),'La grieta y la guardia','Capítulo VII no cargado');
    assert.ok((await desktop.locator('.reading').innerText()).includes('Catacumba Inviolable'),'Falta la Catacumba en el capítulo VII');
    assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=18,'Faltan diálogos del capítulo VII');
+   await desktop.locator('#sideNav [data-nav="saga"]').click();
+   await desktop.locator('.chapter-tile').nth(7).click();
+   assert.equal((await desktop.locator('.reader-hero h2').innerText()).trim(),'La mano que no se aparta','Interludio VIII no cargado');
+   const newProse=await desktop.locator('.reading').innerText();
+   assert.ok(newProse.includes('Ulf')&&newProse.includes('Xara'),'Falta la relación central del interludio');
+   assert.ok(await desktop.locator('.prose .dialogue-entry').count()>=30,'Faltan intervenciones retratadas en el interludio');
    // Primera muerte registrada: portada, memorial, ficha y patrullas deben coincidir.
    await desktop.locator('#sideNav [data-nav="home"]').click();
    assert.equal(await desktop.locator('.home-memorial').count(),1,'No aparece la noticia de duelo en portada');
@@ -117,14 +123,14 @@ try{
    await desktop.locator('[data-filter="caidos"]').click();
    assert.equal(await desktop.locator('.hero-card.is-fallen').count(),1,'Filtro de caídos incorrecto');
    await desktop.locator('#sideNav [data-nav="patrols"]').click();
-   assert.equal(await desktop.locator('.patrol-row').count(),6,'Las patrullas deben excluir cuatro aventureros de expedición');
+   assert.equal(await desktop.locator('.patrol-row').count(),10,'Los diez vivos han regresado y deben estar disponibles en patrullas');
    assert.ok(!(await desktop.locator('.patrol-row .patrol-name strong').allTextContents()).includes('Brugo'),'Brugo no puede figurar en patrulla');
    await desktop.locator('#sideNav [data-nav="archive"]').click();
    const archiveNow=await desktop.locator('#content').innerText();
    assert.ok(archiveNow.includes('69'),'El archivo no refleja el renombre vigente');
    assert.ok(archiveNow.includes('1 caído'),'El archivo no refleja la baja');
    assert.ok(!archiveNow.includes('6 / 6 · ninguna muerte'),'Aún se muestran cifras históricas como actuales');
-   console.log('Memorial, fichas, patrullas y archivo: sincronizados con el día 40');
+   console.log('Memorial, fichas, patrullas y archivo: sincronizados con el día 45');
 
 
  }

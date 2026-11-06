@@ -16,7 +16,7 @@ const luna='adv_xvecyci8knko';
 const who=id=>book.characters.find(x=>x.id===id);
 
 test('Un caído sigue en el códice, pero no cuenta como aventurero vivo',()=>{
- assert.equal(book.stats.day,40);
+ assert.equal(book.stats.day,45);
  assert.equal(current.guild.roster.length,10);
  assert.equal(current.guild.fallen.length,1);
  assert.equal(book.characters.length,11);
@@ -36,7 +36,7 @@ test('Un futuro fallecimiento activa la conciliación sin eliminar retrato, biog
  const next=structuredClone(current);
  next.guild.day++;
  const [hero]=next.guild.roster.splice(next.guild.roster.findIndex(x=>x.id===luna),1);
- next.guild.fallen.push({adventurer:{id:hero.id,name:hero.name},day:39,dungeon:'El Paso de la Niebla',epitaph:'La Casa conserva su nombre'});
+ next.guild.fallen.push({adventurer:{id:hero.id,name:hero.name},day:current.guild.day,dungeon:'El Paso de la Niebla',epitaph:'La Casa conserva su nombre'});
  validateSave(next);
  const diff=compareSaves(current,next);
  assert.equal(diff.fallen.added.length,1);
@@ -48,7 +48,7 @@ test('Un futuro fallecimiento activa la conciliación sin eliminar retrato, biog
  const c=after.characters.find(x=>x.id===luna);
  assert.equal(after.characters.length,11,'No se borran personajes históricos');
  assert.equal(c.status,'caído');
- assert.equal(c.death.day,40);
+ assert.equal(c.death.day,45);
  assert.equal(c.death.place,'El Paso de la Niebla');
  assert.equal(c.away,null);
  assert.equal(after.stats.members,9);
