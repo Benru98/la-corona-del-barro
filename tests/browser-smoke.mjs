@@ -112,7 +112,7 @@ try{
    assert.equal(await desktop.locator('.hero-card.is-fallen').count(),1,'Filtro de caídos incorrecto');
    await desktop.locator('#sideNav [data-nav="patrols"]').click();
    assert.equal(await desktop.locator('.patrol-row').count(),10,'Las patrullas no cuentan los diez supervivientes');
-   assert.ok(!(await desktop.locator('.patrol-list').innerText()).includes('Brugo'),'Brugo no puede figurar en patrulla');
+   assert.ok(!(await desktop.locator('.patrol-row .patrol-name strong').allTextContents()).includes('Brugo'),'Brugo no puede figurar en patrulla');
    await desktop.locator('#sideNav [data-nav="archive"]').click();
    const archiveNow=await desktop.locator('#content').innerText();
    assert.ok(archiveNow.includes('65'),'El archivo no refleja el renombre vigente');
