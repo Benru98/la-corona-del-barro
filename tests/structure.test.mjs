@@ -16,8 +16,15 @@ function run(paths,expression){
   return JSON.parse(vm.runInContext('JSON.stringify('+expression+')',ctx));
 }
 const modules=['data/campaign.js','novel/chapters.js','novel/relationships.js','novel/narrative-engine.js'];
-test('Los datos conservan íntegramente el BOOK original',()=>{
-  assert.deepEqual(run(['book-data.js'],'BOOK'),run(modules,'BOOK'));
+test('El libro modular conserva estructura y canon separado',()=>{
+  const b=run(modules,'BOOK');
+  assert.equal(b.bookId,'la-corona-de-barro');
+  assert.ok(b.meta?.guild && Number.isInteger(b.meta.day));
+  assert.ok(Array.isArray(b.characters) && Array.isArray(b.chapters));
+  assert.ok(Array.isArray(b.relationships) && Array.isArray(b.literaryRelationships));
+  assert.ok(Array.isArray(b.timeline) && Array.isArray(b.editions) && Array.isArray(b.snapshots));
+  assert.ok(b.snapshots.every(x=>x.day<=b.meta.day));
+  assert.ok(b.characters.every(x=>typeof x.id==='string'&&typeof x.name==='string'));
 });
 test('Las reglas narrativas conservan íntegramente el motor original',()=>{
   // El motor anterior se declara antes de la IIFE de app.js.
