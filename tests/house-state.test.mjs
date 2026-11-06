@@ -77,6 +77,7 @@ test('Dos bajas simultáneas se reflejan en todos los contadores y sin perder su
  }
  b.stats.members-=2;b.stats.dead+=2;
  b.world.guildRosterAlive=b.world.guildRosterAlive.filter(id=>!victims.some(c=>c.id===id));
+ b.world.activeExpedition.heroIds=b.world.activeExpedition.heroIds.filter(id=>!victims.some(c=>c.id===id));
  const h=HouseEngine.create(b);
  assert.equal(h.counts.living,8);
  assert.equal(h.counts.fallen,3);
