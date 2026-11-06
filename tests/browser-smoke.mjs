@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 const base=process.env.BASE_URL || 'http://127.0.0.1:8765/';
-const browser=await chromium.launch({headless:true,args:['--no-sandbox']});
+const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',args:['--no-sandbox']});
 const sections=['home','saga','heroes','patrols','bonds','legacy','archive','studio'];
 let visited=0,images=0;
 const findings=[];
