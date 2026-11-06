@@ -22,8 +22,10 @@ test('Todas las ilustraciones v2 están asociadas a un personaje estable y son u
   assert.ok(existsSync(join(root,item.src)), 'Imagen V2 pendiente de subir: '+item.src);
  }
 });
-test('Las dos portadas v2 existen, tienen rutas distintas y preservan las anteriores',()=>{
- assert.equal(data.art.groupCover,'corona-grupal-v2.webp');
+test('La nueva portada institucional convive con la vertical y preserva las portadas históricas',()=>{
+ assert.equal(data.art.groupCover,'portada-casa.webp');
+ assert.ok(data.catalog.items.some(x=>x.id==='cover-group-v2-historical'&&x.src==='corona-grupal-v2.webp'));
+ assert.ok(existsSync(join(root,'corona-grupal-v2.webp')));
  assert.equal(data.art.cover,'cronicas-fantasia-v2.webp');
  assert.ok(existsSync(join(root,data.art.groupCover)));
  assert.ok(existsSync(join(root,data.art.cover)));
