@@ -62,7 +62,8 @@ test('Las ilustraciones aprobadas conservan las rutas de producción',()=>{
  }
  assert.equal(manifest.groupCover,'portada-casa.webp');
  assert.ok(catalog.items.some(x=>x.id==='cover-group-v2-historical'&&x.src==='corona-grupal-v2.webp'),'Mantener mural histórico');
- assert.ok(catalog.items.some(x=>x.id==='portrait-pending-half-orc-paladin'&&x.status==='draft'&&!x.characterId),'No asignar ID ficticio al paladín');
+ assert.ok(catalog.items.some(x=>x.id==='portrait-adv_efelp4o01ks4'&&x.status==='approved'&&x.characterId==='adv_efelp4o01ks4'),'Iligar debe tener retrato oficial');
+ assert.equal(manifest['Iligar el Rompehuesos'],'iligar-rompehuesos.webp');
  assert.equal(manifest.cover,'cronicas-fantasia-v2.webp');
  assert.equal(manifest['Velasco Rivadeneira'],'velasco.webp');
  assert.equal(manifest.maestreDialogue,'maestre-dialogo.webp');
