@@ -102,7 +102,7 @@ try{
    assert.equal(await desktop.locator('.memorial-person').count(),1,'Memorial no actualizado');
    assert.ok((await desktop.locator('.legacy-opening').innerText()).includes('ausencias'));
    assert.ok((await desktop.locator('.memorial-person').innerText()).includes('Brugo'));
-   assert.ok((await desktop.locator('.memorial-person').innerText()).includes('Velasco'));
+   assert.ok((await desktop.locator('.memorial-person').textContent()).includes('Velasco'),'El homenaje editorial debe identificar a Velasco');
    await desktop.locator('.memorial-person [data-hero]').click();
    assert.equal(await desktop.locator('.death-biography').count(),1,'La ficha no refleja la muerte');
    assert.ok((await desktop.locator('.death-biography').innerText()).includes('día 34'));
