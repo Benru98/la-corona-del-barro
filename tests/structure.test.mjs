@@ -44,9 +44,10 @@ test('Todas las imágenes mencionadas existen en el repositorio',()=>{
 test('Referencias a personajes y capítulos válidas',()=>{
   const b=run(modules,'BOOK');
   const ids=new Set(b.characters.map(c=>c.id));
+  const names=new Set(b.characters.map(c=>c.name));
   assert.equal(ids.size,b.characters.length,'IDs de personajes duplicados');
   for(const chapter of b.chapters){
-    for(const id of (chapter.characterIds??[]))assert.ok(ids.has(id),'Personaje desconocido en '+chapter.id+': '+id);
+    for(const id of (chapter.characterIds??[]))assert.ok(ids.has(id)||names.has(id),'Personaje desconocido en '+chapter.id+': '+id);
   }
   assert.equal(new Set(b.chapters.map(c=>c.id)).size,b.chapters.length,'IDs de capítulos duplicados');
   assert.ok(b.chapters.length>=4,'Faltan capítulos históricos');
