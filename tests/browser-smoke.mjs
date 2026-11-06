@@ -51,7 +51,7 @@ try{
    const cover=await desktop.locator('.cover-fullbleed .cover-art').evaluate(img=>({
      src:img.currentSrc,naturalWidth:img.naturalWidth,fit:getComputedStyle(img).objectFit
    }));
-   assert.match(cover.src,/corona-grupal-v2\\.webp$/,'Debe aparecer la portada panorámica V2');
+   assert.match(cover.src,/corona-grupal-v2\.webp$/,'Debe aparecer la portada panorámica V2');
    assert.ok(cover.naturalWidth>1000,'La portada no se ha cargado');
    assert.equal(cover.fit,'contain','La portada no debe recortarse');
    await desktop.locator('#sideNav [data-nav="saga"]').click();
