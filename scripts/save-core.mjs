@@ -114,7 +114,7 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
   assert(book.meta?.guild===g.name,'El nombre de la Casa no coincide');
   assert(book.meta.day===base.day+1,'El libro publicado no coincide con el guardado anterior (día)');
   const bookIds=new Set((book.characters??[]).map(x=>x.id));
-  const oldIds=new Set(base.roster.map(x=>x.id));
+  const oldIds=new Set([...base.roster,...base.fallen].map(x=>x.id));
   assert(oldIds.size===bookIds.size && [...oldIds].every(id=>bookIds.has(id)),
     'El libro no coincide con la plantilla anterior de personajes. Revisión manual requerida');
   const result=structuredClone(book);
