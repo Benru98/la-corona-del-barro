@@ -2,7 +2,7 @@ import { chromium } from 'playwright';
 import assert from 'node:assert/strict';
 const base=process.env.BASE_URL || 'http://127.0.0.1:8765/';
 const browser=await chromium.launch({headless:true,executablePath:process.env.CHROME_BIN||'/usr/bin/google-chrome',args:['--no-sandbox']});
-const sections=['home','saga','heroes','patrols','bonds','legacy','archive','studio'];
+const sections=['home','saga','heroes','patrols','bonds','legacy','annual','archive','studio'];
 let visited=0,images=0;
 const findings=[];
 async function inspectPage(page,label){
@@ -124,7 +124,7 @@ try{
    // Corrección UI: la tarjeta abre notas completas y el diálogo responde a ESC y cierre.
    await desktop.locator('#sideNav [data-nav="home"]').click();
    assert.equal(await desktop.locator('.chapter-peek .latest-icon').count(),0,'Quedan mini-portadas decorativas sin ilustración');
-   assert.equal(await desktop.locator('.chapter-peek .latest-card').count(),chapters.length,'Faltan capítulos en la portada');
+   assert.equal(await desktop.locator('.chapter-peek .latest-card').count(),Math.min(5,chapters.length),'Las cinco crónicas más recientes no aparecen en portada');
    await desktop.locator('#sideNav [data-nav="bonds"]').click();
    const relRow=desktop.locator('.rel-simple-row[data-rel-detail]').first();
    assert.ok(await relRow.count(),'Faltan tarjetas de vínculos');
@@ -174,14 +174,17 @@ try{
    }
    await desktop.locator('#sideNav [data-nav="heroes"]').click();
    await desktop.locator('#sideNav [data-nav="patrols"]').click();
-   assert.equal(await desktop.locator('.patrol-row').count(),10,'Luna está de encargo: los otros diez deben figurar en patrullas');
+   assert.equal(await desktop.locator('.patrol-row').count(),11,'El Año II tiene once miembros vivos asignados a patrullas');
+    assert.equal(await desktop.locator('.patrol-row.patrol-away').count(),4,'Los cuatro aventureros en Cindermoor deben permanecer visibles');
+    assert.ok((await desktop.locator('#content').innerText()).includes('154'),'Falta el día de regreso previsto para la expedición');
    assert.ok(!(await desktop.locator('.patrol-row .patrol-name strong').allTextContents()).includes('Brugo'),'Brugo no puede figurar en patrulla');
    await desktop.locator('#sideNav [data-nav="archive"]').click();
    const archiveNow=await desktop.locator('#content').innerText();
-   assert.ok(archiveNow.includes('116'),'El archivo no refleja el renombre vigente');
+   assert.ok(archiveNow.includes('226'),'El archivo no refleja el renombre vigente del Año II');
+    assert.ok(archiveNow.includes('Frontera'),'El archivo sigue enseñando Villorrio como liga actual');
    assert.ok(archiveNow.includes('1 caído'),'El archivo no refleja la baja');
    assert.ok(!archiveNow.includes('6 / 6 · ninguna muerte'),'Aún se muestran cifras históricas como actuales');
-   console.log('Memorial, fichas, patrullas y archivo: sincronizados con el día 45');
+   console.log('Memorial, fichas, patrullas y archivo: sincronizados con el Año II, día visible 150');
 
 
  }
