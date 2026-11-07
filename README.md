@@ -32,7 +32,7 @@ El comando comprueba que no exista ya, valida personajes, secundarios literarios
 
 ## Validaciones ligeras
 
-GitHub Actions ejecuta verificaciones **solo sobre los archivos cambiados**: sintaxis de JS/JSON; índice de capítulos si se modifica el HTML o una crónica; estado derivado si cambia la campaña o las relaciones. No se ejecutan pruebas móviles ni de navegador automáticamente.
+GitHub Actions ejecuta verificaciones **solo sobre los archivos cambiados**: sintaxis de JS/JSON; índice de capítulos si se modifica el HTML o una crónica; estado derivado si cambia la campaña o las relaciones. No se ejecutan pruebas móviles ni de navegador automáticamente. Si se modifican únicamente Markdown, CSS o imágenes, GitHub Actions ni siquiera arranca.
 
 Comprobación local puntual:
 

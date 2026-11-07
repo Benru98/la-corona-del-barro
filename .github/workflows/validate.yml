@@ -1,8 +1,20 @@
 name: Validación rápida por archivos modificados
 on:
   pull_request:
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.webp'
+      - '**/*.png'
+      - '**/*.svg'
+      - '**/*.css'
   push:
     branches: [main]
+    paths-ignore:
+      - '**/*.md'
+      - '**/*.webp'
+      - '**/*.png'
+      - '**/*.svg'
+      - '**/*.css'
 jobs:
   cambios:
     runs-on: ubuntu-latest
