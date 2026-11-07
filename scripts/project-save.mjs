@@ -7,6 +7,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {validateSave} from './save-core.mjs';
+import {fallenId,fallenName} from './mortality-core.mjs';
 
 const heroFields=['id','name','level','experience','morale','condition','stress','fatigue','oathWage','post',
   'away','injury','attributes','traitIds','stakes','delves','record','currentAbility','potentialAbility',
@@ -25,7 +26,7 @@ export function projectApprovedSave(save) {
   guild:{
    name:g.name,day:g.day,gold:g.gold,renown:g.renown,
    roster:g.roster.map(h=>pick(h,heroFields)),
-   fallen:g.fallen.map(h=>pick(h,['id','name'])),
+   fallen:g.fallen.map(h=>({id:fallenId(h),name:fallenName(h)})),
    bonds:g.bonds,
    hall:{level:g.hall.level,facilities:g.hall.facilities},
    league:{playerTier:g.league.playerTier,round:g.league.round,playerForm:g.league.playerForm,
