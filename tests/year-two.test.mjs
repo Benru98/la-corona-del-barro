@@ -61,7 +61,7 @@ test('El resumen anual se conserva y la Gaceta sigue el día actual',()=>{
  assert.equal(summary.years[0].year,1);
  assert.equal(summary.years[0].title,'El año que hicimos casa');
  assert.equal(dispatch.latestDay,150);
- assert.equal(dispatch.latestEdition,'E0027');
+ assert.equal(dispatch.latestEdition,'E0028');
  assert.equal(dispatch.issues[0].day,150);
  assert.ok(dispatch.issues[0].eye.length>=5);
  const html=read('index.html');
