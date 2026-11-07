@@ -1063,3 +1063,44 @@ body.reading-night .chronicle-index-item.is-current:hover{background:#c7a16a}
  .chronicle-index-side,.chronicle-index-mobile,.chronicle-recents{display:none!important}
  .chronicle-feature{break-inside:avoid;box-shadow:none}
 }
+
+
+/* Portada del boletín: lectura visual con titulares y separación estricta de canon. */
+.dispatches-home{margin:27px 0 34px}
+.dispatches-heading{margin:0 0 18px}
+.dispatches-heading h2{font:clamp(29px,3vw,39px)/1.15 var(--serif);color:#3d2d1e;margin:5px 0}
+.dispatches-heading p{font:15px/1.5 var(--serif);color:#755f48;margin:0}
+.dispatches-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.08fr);gap:19px;align-items:start}
+.dispatches-eye,.dispatches-gazette{min-width:0;border:1px solid #bda070;border-radius:11px;padding:21px;background:linear-gradient(140deg,#f6eedc,#e9d8b7);box-shadow:0 9px 22px #5e472526}
+.dispatches-gazette{background:#f9efd8;border:3px double #b79a6a}
+.dispatches-panel-head{padding:0 0 16px;margin-bottom:15px;border-bottom:1px solid #c3ab84}
+.dispatches-panel-head h3{font:clamp(26px,2.5vw,33px)/1.13 var(--serif);margin:6px 0;color:#473020}
+.dispatches-panel-head small{color:#8b765b;font:11px var(--sans)}
+.dispatches-eye-list{display:grid;gap:12px}
+.eye-item{padding:13px 15px;border-left:3px solid #47695e;background:#fff8e8;border-radius:0 8px 8px 0}
+.eye-item h4{font:21px/1.2 var(--serif);margin:0 0 8px;color:#3d3024}
+.eye-item p{font:13px/1.65 var(--sans);color:#584c3b;margin:0}
+.eye-item details{margin-top:8px}
+.eye-item summary{font:700 11px var(--sans);color:#755334;cursor:pointer}
+.eye-item details p{margin:8px 0}
+.eye-item details small{font:10px/1.5 var(--sans);color:#83715d}
+.gazette-articles{display:grid;gap:16px}
+.gazette-story{border-top:1px solid #c8b28b;padding:15px 0 0}
+.gazette-story:first-child{border-top:0;padding-top:0}
+.gazette-rubric{font:800 10px var(--sans);letter-spacing:.1em;color:#8c4e2d}
+.gazette-story h4{font:clamp(20px,2vw,26px)/1.18 var(--serif);color:#372a1e;margin:6px 0 10px}
+.gazette-story p{font:14px/1.7 var(--serif);color:#5c4d39;margin:0}
+.gazette-lead h4{font-size:clamp(24px,2.4vw,31px)}
+.gazette-link{border:0;background:none;padding:8px 0 0;color:#83522c;font:700 12px var(--sans);text-decoration:underline;text-underline-offset:3px}
+.gazette-disclaimer{font:11px/1.45 var(--sans);color:#877157;border-top:1px solid #ccb48e;padding-top:12px;margin:17px 0 0}
+.studio-two-fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.studio-textarea-small{min-height:90px}
+body.reading-night .dispatches-heading h2,body.reading-night .dispatches-panel-head h3{color:#f0dfb9}
+body.reading-night .dispatches-eye,body.reading-night .dispatches-gazette{background:linear-gradient(140deg,#29473b,#1a332e);border-color:#a38b5f}
+body.reading-night .eye-item{background:#324c42;border-left-color:#c0a476}
+body.reading-night .eye-item h4,body.reading-night .gazette-story h4{color:#f8dfad}
+body.reading-night .eye-item p,body.reading-night .gazette-story p,body.reading-night .dispatches-heading p{color:#e7d5b5}
+body.reading-night .gazette-rubric,body.reading-night .gazette-disclaimer{color:#d6b886}
+@media(max-width:950px){.dispatches-grid{grid-template-columns:1fr}}
+@media(max-width:520px){.dispatches-eye,.dispatches-gazette{padding:16px}.studio-two-fields{grid-template-columns:1fr}}
+@media print{.dispatches-home{break-inside:auto}.dispatches-gazette,.dispatches-eye{box-shadow:none}.gazette-story{break-inside:avoid}}
