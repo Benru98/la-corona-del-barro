@@ -398,7 +398,7 @@ button:disabled{opacity:.48;transform:none!important;box-shadow:none!important}
  .drawer-heading span{display:block;color:#d9aa62;font:800 10px var(--sans);letter-spacing:1.4px}
  .drawer-heading strong{display:block;font:29px var(--serif);margin-top:10px}
  .drawer-close{border:1px solid #ac844b;color:#ffe3a5;background:#315448;width:39px;height:39px;border-radius:7px;font-size:24px}
- .drawer-shortcut{margin:0 0 14px} .drawer-shortcut button{display:flex;align-items:center;gap:10px;width:100%;text-align:left;padding:12px 14px;background:linear-gradient(#efd09a,#b88742);border:1px solid #fad899;color:#2b1b0e;border-radius:7px;font:700 16px var(--serif)} .drawer-shortcut button:focus-visible{outline:2px solid #fff0c0;outline-offset:2px} .drawer-nav{display:grid;grid-auto-rows:max-content;align-content:start;gap:7px;min-height:0;overflow:visible;padding:4px 4px 0}
+ .drawer-nav{display:grid;grid-auto-rows:max-content;align-content:start;gap:7px;min-height:0;overflow:visible;padding:4px 4px 0}
  .drawer-nav button{display:flex;align-items:center;gap:13px;text-align:left;border:1px solid #be965444;background:#1a3935;color:#f2dfbb;border-radius:7px;padding:15px 13px;font:17px var(--serif);min-height:52px}
  .drawer-nav .symbol{width:26px;color:#e2bb73;font:23px var(--serif);text-align:center}
  .drawer-nav button.active{background:linear-gradient(#efd09a,#b88742);border-color:#fad899;color:#2b1b0e}
