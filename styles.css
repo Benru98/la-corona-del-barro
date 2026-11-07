@@ -1151,3 +1151,13 @@ body.reading-night .annual-event p,body.reading-night .annual-movement p,body.re
 .annual-home-link p{font:14px/1.5 var(--serif);max-width:570px;color:#eddfc5;margin:0}
 .annual-home-link .eyebrow{color:#edc98e}.annual-home-link button{flex:none}
 @media(max-width:750px){.annual-home-link{flex-direction:column;align-items:start}.annual-home-link button{width:100%}}
+
+
+/* E0027 · Actualidad de la Casa, destacada sin desplazar la memoria anual */
+.new-era-home{margin:24px 0 18px;padding:27px 30px;border:1px solid var(--gold,#bb9660);border-radius:15px;background:linear-gradient(115deg,rgba(154,117,54,.16),rgba(154,117,54,.035));}
+.new-era-home h2{font-family:Georgia,serif;font-size:clamp(1.45rem,3vw,2.15rem);line-height:1.18;margin:10px 0;}
+.new-era-home p{max-width:75ch;line-height:1.65;margin:0 0 17px;}
+.new-era-actions{display:flex;flex-wrap:wrap;gap:10px;}
+.featured-card.is-retired{opacity:.68;}
+.featured-card.is-retired .featured-image{filter:grayscale(.45);}
+@media(max-width:640px){.new-era-home{margin:16px 0;padding:20px 18px;}.new-era-actions .btn{flex:1 1 auto;}}
