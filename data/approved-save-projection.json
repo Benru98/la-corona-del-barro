@@ -1,31 +1,25 @@
 {
   "format": "corona-approved-save-projection/v1",
-  "projectionNote": "SOLO CAMPOS DE DIFERENCIA APROBADOS. Guardado original no incluido; no contiene atributos ocultos ni todos los historiales.",
+  "projectionNote": "SOLO CAMPOS DE DIFERENCIA APROBADOS. Guardado original no incluido; no contiene todos los historiales.",
   "version": 26,
-  "sig": "hgsv3c.1186w1m",
+  "sig": "1obq182.rkdzfg",
   "guild": {
     "name": "La Corona de Barro",
-    "day": 99,
-    "gold": 1635,
-    "renown": 168,
+    "day": 105,
+    "gold": 1751,
+    "renown": 170,
     "roster": [
       {
         "id": "adv_xvecyci8knko",
         "name": "Luna",
         "level": 3,
-        "experience": 25,
+        "experience": 26,
         "morale": 98,
-        "condition": 95,
-        "stress": 24,
-        "fatigue": 30,
+        "condition": 100,
+        "stress": 42,
+        "fatigue": 34,
         "oathWage": 19,
         "post": "secondWatch",
-        "away": {
-          "jobId": "delve_98",
-          "returnsDay": 103,
-          "delve": true,
-          "region": "riven-peaks"
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -78,20 +72,20 @@
           },
           "flaw": "cant-sit-still"
         },
-        "delves": 5,
+        "delves": 6,
         "record": {
           "since": 28,
           "all": {
-            "n": 5,
-            "dealt": 5974,
+            "n": 6,
+            "dealt": 7930,
             "healed": 0,
-            "faced": 73,
-            "kills": 35,
+            "faced": 105,
+            "kills": 42,
             "downed": 0,
-            "swings": 223,
-            "hits": 180,
-            "crits": 18,
-            "taken": 113,
+            "swings": 287,
+            "hits": 239,
+            "crits": 23,
+            "taken": 146,
             "blocked": 1,
             "heroic": 0
           },
@@ -110,7 +104,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 123,
+        "currentAbility": 126,
         "potentialAbility": 198,
         "abilityStars": 3,
         "potentialStars": 5,
@@ -162,20 +156,14 @@
       {
         "id": "adv_vir5cr755mej",
         "name": "Belzar de la Ofrenda",
-        "level": 6,
-        "experience": 68,
-        "morale": 71,
-        "condition": 95,
-        "stress": 18,
-        "fatigue": 16,
+        "level": 7,
+        "experience": 69,
+        "morale": 73,
+        "condition": 100,
+        "stress": 36,
+        "fatigue": 24,
         "oathWage": 24,
         "post": "vanguard",
-        "away": {
-          "jobId": "delve_98",
-          "returnsDay": 103,
-          "delve": true,
-          "region": "riven-peaks"
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 10,
@@ -219,26 +207,27 @@
             "kind": "bond",
             "templateId": "bond-truefriend",
             "name": "Una Amistad Verdadera",
-            "text": "No ha dejado entrar a nadie del todo, y medio desearía poder hacerlo."
+            "text": "No ha dejado entrar a nadie del todo, y medio desearía poder hacerlo.",
+            "resworn": true
           },
           "flaw": "gambles"
         },
-        "delves": 9,
+        "delves": 10,
         "record": {
           "since": 1,
           "all": {
-            "n": 9,
-            "dealt": 1803,
+            "n": 10,
+            "dealt": 2180,
             "healed": 0,
-            "faced": 10029,
-            "kills": 8,
+            "faced": 12664,
+            "kills": 10,
             "downed": 1,
-            "swings": 624,
-            "hits": 598,
-            "crits": 32,
-            "taken": 3865,
-            "blocked": 118,
-            "heroic": 0
+            "swings": 783,
+            "hits": 755,
+            "crits": 38,
+            "taken": 4075,
+            "blocked": 167,
+            "heroic": 1
           },
           "trials": {
             "n": 6,
@@ -255,7 +244,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 119.72000000000003,
+        "currentAbility": 122.72000000000003,
         "potentialAbility": 124,
         "abilityStars": 3,
         "potentialStars": 3,
@@ -276,17 +265,17 @@
             "quality": 1.071986886090599
           },
           "armour": {
-            "id": "it_fk_a_founding-1793874176816-909579_1_4827",
-            "name": "Templado Capa Guardaescarcha",
+            "id": "it_fk_a_founding-1793874176816-909579_6_7423",
+            "name": "Templado Escudo de Roble",
             "slot": "armour",
             "rarity": "rare",
             "mods": {
-              "hpPct": 0.09816145786084234
+              "blockChance": 0.10203931272611952,
+              "mitigation": 0.020407862545223903
             },
-            "counters": "deepcold",
-            "value": 81,
+            "value": 56,
             "tier": 1,
-            "quality": 1.0906828651204705
+            "quality": 0.7558467609342188
           },
           "trinket": {
             "id": "it_evt_4_522878843_3091",
@@ -307,19 +296,13 @@
         "id": "adv_xsny2mf20dv6",
         "name": "Ulf Vallehondo",
         "level": 3,
-        "experience": 16,
+        "experience": 17,
         "morale": 100,
-        "condition": 95,
-        "stress": 13,
-        "fatigue": 14,
+        "condition": 100,
+        "stress": 35,
+        "fatigue": 23,
         "oathWage": 15,
         "post": "secondWatch",
-        "away": {
-          "jobId": "delve_98",
-          "returnsDay": 103,
-          "delve": true,
-          "region": "riven-peaks"
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 2,
@@ -355,7 +338,8 @@
         },
         "traitIds": [
           "gambler",
-          "humble"
+          "humble",
+          "stalwart"
         ],
         "stakes": {
           "conviction": "word-given",
@@ -363,24 +347,28 @@
             "kind": "deep",
             "templateId": "deep-owed",
             "name": "Lo que se Llevó la Escalera",
-            "text": "Perdió a alguien en la vieja escalera, y no piensa dejar que la Sima se quede con los dos."
+            "text": "Perdió a alguien en la vieja escalera, y no piensa dejar que la Sima se quede con los dos.",
+            "resolved": {
+              "line": "Tomó un piso de la escalera que le quitó a alguien. La Sima no devuelve a nadie, pero se la ha obligado a soltar algo.",
+              "day": 103
+            }
           },
           "flaw": "freezes-at-fork"
         },
-        "delves": 6,
+        "delves": 7,
         "record": {
           "since": 0,
           "all": {
-            "n": 6,
-            "dealt": 845,
-            "healed": 3172,
-            "faced": 1514,
-            "kills": 3,
+            "n": 7,
+            "dealt": 1119,
+            "healed": 3541,
+            "faced": 1756,
+            "kills": 5,
             "downed": 0,
-            "swings": 138,
-            "hits": 129,
-            "crits": 8,
-            "taken": 918,
+            "swings": 183,
+            "hits": 171,
+            "crits": 12,
+            "taken": 1095,
             "blocked": 12,
             "heroic": 0
           },
@@ -399,7 +387,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 90.60000000000014,
+        "currentAbility": 93.60000000000014,
         "potentialAbility": 136,
         "abilityStars": 2.5,
         "potentialStars": 3.5,
@@ -430,6 +418,16 @@
             "value": 42,
             "tier": 2,
             "quality": 0.7902734422823414
+          },
+          "trinket": {
+            "id": "it_minor_2_128366224_8396",
+            "name": "Reloj de Arena Agrietado",
+            "slot": "trinket",
+            "rarity": "rare",
+            "mods": {
+              "critChance": 0.03
+            },
+            "value": 130
           }
         }
       },
@@ -438,18 +436,12 @@
         "name": "Velasco Rivadeneira",
         "level": 6,
         "experience": 67,
-        "morale": 92,
-        "condition": 95,
-        "stress": 40,
-        "fatigue": 28,
+        "morale": 96,
+        "condition": 100,
+        "stress": 28,
+        "fatigue": 18,
         "oathWage": 26,
         "post": "vanguard",
-        "away": {
-          "jobId": "delve_98",
-          "returnsDay": 103,
-          "delve": true,
-          "region": "riven-peaks"
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 18,
@@ -529,7 +521,7 @@
             "heroic": 1
           }
         },
-        "currentAbility": 130.32000000000005,
+        "currentAbility": 130.56000000000006,
         "potentialAbility": 142,
         "abilityStars": 3.5,
         "potentialStars": 3.5,
@@ -580,32 +572,20 @@
         "id": "adv_agorapai6eaw",
         "name": "Jaro",
         "level": 7,
-        "experience": 84,
-        "morale": 92,
+        "experience": 85,
+        "morale": 93,
         "condition": 100,
-        "stress": 7,
-        "fatigue": 7,
+        "stress": 21,
+        "fatigue": 9,
         "oathWage": 27,
         "post": "vanguard",
-        "away": null,
-        "injury": {
-          "type": "Hombro dislocado",
-          "icon": "🦴",
-          "daysLeft": 6,
-          "total": 18,
-          "cause": {
-            "kind": "war",
-            "war": "La Cruzada Ceniza"
-          },
-          "remediedWith": "carrion-crow",
-          "mendCarry": 0
-        },
+        "injury": null,
         "attributes": {
           "weaponSkill": 17,
           "marksmanship": 9,
-          "power": 17,
+          "power": 15,
           "spellcraft": 7,
-          "armorUse": 7,
+          "armorUse": 5,
           "parry": 9,
           "evasion": 10,
           "criticalStrike": 14,
@@ -652,20 +632,20 @@
           },
           "flaw": "the-martyr"
         },
-        "delves": 11,
+        "delves": 12,
         "record": {
           "since": 0,
           "all": {
-            "n": 11,
-            "dealt": 15523,
+            "n": 12,
+            "dealt": 18034,
             "healed": 0,
-            "faced": 694,
-            "kills": 76,
+            "faced": 726,
+            "kills": 83,
             "downed": 2,
-            "swings": 341,
-            "hits": 337,
-            "crits": 71,
-            "taken": 1023,
+            "swings": 397,
+            "hits": 393,
+            "crits": 80,
+            "taken": 1143,
             "blocked": 0,
             "heroic": 1
           },
@@ -684,10 +664,10 @@
             "heroic": 1
           }
         },
-        "currentAbility": 112.44000000000005,
-        "potentialAbility": 137,
+        "currentAbility": 115.92000000000007,
+        "potentialAbility": 125,
         "abilityStars": 3,
-        "potentialStars": 3.5,
+        "potentialStars": 3,
         "equipment": {
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_3_9680",
@@ -728,6 +708,10 @@
             "tier": 2,
             "quality": 1.0100821381201968
           }
+        },
+        "lastingMark": {
+          "id": "shoulder",
+          "day": 102
         }
       },
       {
@@ -735,13 +719,12 @@
         "name": "Íñigo Guzmán",
         "level": 2,
         "experience": 8,
-        "morale": 92,
+        "morale": 88,
         "condition": 100,
         "stress": 0,
         "fatigue": 0,
         "oathWage": 14,
         "post": "secondWatch",
-        "away": null,
         "injury": null,
         "attributes": {
           "weaponSkill": 1,
@@ -822,7 +805,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 80.96000000000015,
+        "currentAbility": 81.68000000000018,
         "potentialAbility": 143,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -860,13 +843,12 @@
         "name": "Ruc",
         "level": 1,
         "experience": 3,
-        "morale": 97,
+        "morale": 100,
         "condition": 100,
-        "stress": 2,
+        "stress": 0,
         "fatigue": 0,
         "oathWage": 13,
         "post": "cp_1",
-        "away": null,
         "injury": null,
         "attributes": {
           "weaponSkill": 3,
@@ -914,9 +896,7 @@
           },
           "flaw": "the-grudge"
         },
-        "delves": null,
-        "record": null,
-        "currentAbility": 73.32000000000016,
+        "currentAbility": 74.04000000000019,
         "potentialAbility": 137,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -957,13 +937,12 @@
         "name": "Xara del Cuerno",
         "level": 2,
         "experience": 8,
-        "morale": 73,
+        "morale": 77,
         "condition": 100,
-        "stress": 2,
+        "stress": 0,
         "fatigue": 0,
         "oathWage": 14,
         "post": "cp_1",
-        "away": null,
         "injury": null,
         "attributes": {
           "weaponSkill": 8,
@@ -1081,14 +1060,12 @@
         "id": "adv_nmu0cr5oezjw",
         "name": "Yvaldo Guardapuerto",
         "level": 6,
-        "experience": 65,
+        "experience": 66,
         "morale": 100,
         "condition": 100,
-        "stress": 16,
-        "fatigue": 19,
-        "oathWage": null,
+        "stress": 35,
+        "fatigue": 24,
         "post": "vanguard",
-        "away": null,
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -1098,14 +1075,14 @@
           "armorUse": 11,
           "parry": 6,
           "evasion": 9,
-          "criticalStrike": 9,
+          "criticalStrike": 10,
           "composure": 11,
-          "bravery": 7,
+          "bravery": 8,
           "decisions": 14,
           "anticipation": 14,
           "teamwork": 17,
           "leadership": 14,
-          "concentration": 11,
+          "concentration": 12,
           "aggression": 11,
           "discipline": 10,
           "resolve": 11,
@@ -1117,7 +1094,7 @@
           "reflexes": 6,
           "threat": 6,
           "mitigation": 10,
-          "healing": 15,
+          "healing": 16,
           "support": 19,
           "crowdControl": 14,
           "positioning": 10
@@ -1137,20 +1114,20 @@
           },
           "flaw": "the-bottle"
         },
-        "delves": 11,
+        "delves": 12,
         "record": {
           "since": 1,
           "all": {
-            "n": 11,
-            "dealt": 2199,
-            "healed": 6271,
-            "faced": 2273,
+            "n": 12,
+            "dealt": 2630,
+            "healed": 6761,
+            "faced": 2305,
             "kills": 10,
             "downed": 2,
-            "swings": 264,
-            "hits": 223,
-            "crits": 22,
-            "taken": 1465,
+            "swings": 314,
+            "hits": 268,
+            "crits": 29,
+            "taken": 1526,
             "blocked": 6,
             "heroic": 0
           },
@@ -1169,7 +1146,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 82.6400000000001,
+        "currentAbility": 88.12000000000012,
         "potentialAbility": 123,
         "abilityStars": 2,
         "potentialStars": 3,
@@ -1216,7 +1193,9 @@
             "tier": 1,
             "quality": 1.0300416519166902
           }
-        }
+        },
+        "origin": "youth",
+        "aspirant": true
       },
       {
         "id": "adv_neqeupnrhpgg",
@@ -1225,11 +1204,9 @@
         "experience": 37,
         "morale": 90,
         "condition": 100,
-        "stress": 2,
+        "stress": 0,
         "fatigue": 0,
-        "oathWage": null,
         "post": "cp_1",
-        "away": null,
         "injury": null,
         "attributes": {
           "weaponSkill": 2,
@@ -1316,7 +1293,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 64.31999999999992,
+        "currentAbility": 65.03999999999995,
         "potentialAbility": 86,
         "abilityStars": 1.5,
         "potentialStars": 2,
@@ -1347,20 +1324,21 @@
             "tier": 1,
             "quality": 0.9560449591372162
           }
-        }
+        },
+        "origin": "youth",
+        "aspirant": true
       },
       {
         "id": "adv_efelp4o01ks4",
         "name": "Iligar el Rompehuesos",
         "level": 5,
-        "experience": 46,
+        "experience": 47,
         "morale": 100,
         "condition": 100,
-        "stress": 13,
-        "fatigue": 14,
+        "stress": 33,
+        "fatigue": 21,
         "oathWage": 21,
         "post": "secondWatch",
-        "away": null,
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -1414,21 +1392,21 @@
           },
           "flaw": "old-guilt"
         },
-        "delves": 2,
+        "delves": 3,
         "record": {
           "since": 58,
           "all": {
-            "n": 2,
-            "dealt": 244,
+            "n": 3,
+            "dealt": 449,
             "healed": 0,
-            "faced": 2522,
-            "kills": 2,
+            "faced": 2600,
+            "kills": 3,
             "downed": 1,
-            "swings": 119,
-            "hits": 106,
-            "crits": 1,
-            "taken": 1104,
-            "blocked": 37,
+            "swings": 217,
+            "hits": 200,
+            "crits": 7,
+            "taken": 1390,
+            "blocked": 38,
             "heroic": 0
           },
           "trials": {
@@ -1446,9 +1424,9 @@
             "heroic": 0
           }
         },
-        "currentAbility": 107.28000000000009,
+        "currentAbility": 110.7600000000001,
         "potentialAbility": 123,
-        "abilityStars": 2.5,
+        "abilityStars": 3,
         "potentialStars": 3,
         "equipment": {
           "weapon": {
@@ -1478,7 +1456,8 @@
             "tier": 2,
             "quality": 1.0370915269013494
           }
-        }
+        },
+        "origin": "recruited"
       }
     ],
     "fallen": [
@@ -1489,28 +1468,32 @@
     ],
     "bonds": {
       "adv_xsny2mf20dv6|adv_xvecyci8knko": {
-        "value": 18.93125
+        "value": 20.89375
       },
       "adv_agorapai6eaw|adv_w21f5zhwf7li": {
         "value": 8
       },
       "adv_hpzq2ixhvxtq|adv_w21f5zhwf7li": {
-        "value": 25
+        "value": 25,
+        "mentorId": "adv_w21f5zhwf7li"
       },
       "adv_w21f5zhwf7li|adv_xsny2mf20dv6": {
         "value": 11
       },
       "adv_agorapai6eaw|adv_hpzq2ixhvxtq": {
-        "value": 74
+        "value": 73
       },
       "adv_agorapai6eaw|adv_xsny2mf20dv6": {
-        "value": 27
+        "value": 28.9375,
+        "mentorId": "adv_agorapai6eaw"
       },
       "adv_hpzq2ixhvxtq|adv_xsny2mf20dv6": {
-        "value": 22.083333333333332
+        "value": 22,
+        "mentorId": "adv_hpzq2ixhvxtq"
       },
       "adv_dvyb6kaxgy9l|adv_vir5cr755mej": {
-        "value": 30
+        "value": 30,
+        "mentorId": "adv_vir5cr755mej"
       },
       "adv_dvyb6kaxgy9l|adv_neqeupnrhpgg": {
         "value": 2
@@ -1522,7 +1505,7 @@
         "value": 3
       },
       "adv_nmu0cr5oezjw|adv_vir5cr755mej": {
-        "value": 43
+        "value": 55.99375
       },
       "adv_neqeupnrhpgg|adv_nmu0cr5oezjw": {
         "value": 0
@@ -1534,7 +1517,7 @@
         "value": 4
       },
       "adv_agorapai6eaw|adv_nmu0cr5oezjw": {
-        "value": 28
+        "value": 29.725
       },
       "adv_hpzq2ixhvxtq|adv_nmu0cr5oezjw": {
         "value": 0
@@ -1543,13 +1526,14 @@
         "value": 26
       },
       "adv_vir5cr755mej|adv_xsny2mf20dv6": {
-        "value": 16.258333333333333
+        "value": 18.166666666666668,
+        "mentorId": "adv_vir5cr755mej"
       },
       "adv_neqeupnrhpgg|adv_xsny2mf20dv6": {
         "value": 2
       },
       "adv_agorapai6eaw|adv_vir5cr755mej": {
-        "value": -19
+        "value": -16.75
       },
       "adv_agorapai6eaw|adv_dvyb6kaxgy9l": {
         "value": 1
@@ -1561,7 +1545,7 @@
         "value": 11
       },
       "adv_agorapai6eaw|adv_ge28ylm26r9p": {
-        "value": 10
+        "value": 12
       },
       "adv_dw6dpd5sh7jc|adv_neqeupnrhpgg": {
         "value": 2
@@ -1573,16 +1557,16 @@
         "value": -2
       },
       "adv_nmu0cr5oezjw|adv_xvecyci8knko": {
-        "value": 12
+        "value": 12.45
       },
       "adv_vir5cr755mej|adv_xvecyci8knko": {
         "value": 1.4958333333333333
       },
       "adv_agorapai6eaw|adv_xvecyci8knko": {
-        "value": 5
+        "value": 5.479166666666667
       },
       "adv_hpzq2ixhvxtq|adv_xvecyci8knko": {
-        "value": 14.483333333333334
+        "value": 14
       },
       "adv_neqeupnrhpgg|adv_xvecyci8knko": {
         "value": 0
@@ -1597,25 +1581,25 @@
         "value": 12
       },
       "adv_dw6dpd5sh7jc|adv_efelp4o01ks4": {
-        "value": 4
+        "value": 6
       },
       "adv_hpzq2ixhvxtq|adv_vir5cr755mej": {
-        "value": 29.725
+        "value": 29
       },
       "adv_efelp4o01ks4|adv_xvecyci8knko": {
-        "value": 15
+        "value": 15.65625
       },
       "adv_agorapai6eaw|adv_efelp4o01ks4": {
-        "value": 14
+        "value": 15.325
       },
       "adv_efelp4o01ks4|adv_nmu0cr5oezjw": {
-        "value": 26
+        "value": 27.175
       },
       "adv_ge28ylm26r9p|adv_vir5cr755mej": {
         "value": 6
       },
       "adv_efelp4o01ks4|adv_vir5cr755mej": {
-        "value": 6
+        "value": 18.825
       },
       "adv_ge28ylm26r9p|adv_nmu0cr5oezjw": {
         "value": 6
@@ -1627,10 +1611,13 @@
         "value": 7
       },
       "adv_efelp4o01ks4|adv_xsny2mf20dv6": {
-        "value": 4
+        "value": 25.025
       },
       "adv_ge28ylm26r9p|adv_hpzq2ixhvxtq": {
         "value": 2
+      },
+      "adv_nmu0cr5oezjw|adv_xsny2mf20dv6": {
+        "value": 3.5
       }
     },
     "hall": {
@@ -1662,18 +1649,19 @@
         "loss",
         "win"
       ],
-      "playerStanding": {
-        "position": 2,
-        "points": 24,
-        "played": 10,
-        "won": 8,
-        "lost": 2,
-        "drawn": 0
-      }
+      "playerStanding": [
+        {
+          "points": 24,
+          "won": 8,
+          "lost": 2,
+          "drawn": 0,
+          "played": 10
+        }
+      ]
     },
     "tally": {
-      "delves": 17,
-      "cleared": 15,
+      "delves": 18,
+      "cleared": 16,
       "quests": 5
     },
     "activeJobs": [],
@@ -1755,55 +1743,88 @@
         "day": 91,
         "title": "Una línea sostenida en La Puerta de Ceniza",
         "kind": "sellsword",
+        "region": "ashen-marches",
         "outcome": "mixed",
         "heroNames": [
           "Luna"
-        ]
+        ],
+        "gold": 132,
+        "renown": 0
       },
       {
         "id": "job_escort_63_4584",
         "day": 75,
         "title": "Escoltar el cargamento de cuernos de leva hasta Plataselva",
         "kind": "sellsword",
+        "region": "ashen-marches",
         "outcome": "triumph",
         "heroNames": [
           "Luna",
           "Iligar el Rompehuesos"
-        ]
+        ],
+        "gold": 271,
+        "renown": 1
       },
       {
         "id": "pet_60_4357",
         "day": 64,
         "title": "Raxal el Viejo de Las Marcas Cenicientas",
         "kind": "bounty",
+        "region": "ashen-marches",
         "outcome": "triumph",
         "heroNames": [
           "Velasco Rivadeneira"
-        ]
+        ],
+        "gold": 49,
+        "renown": 1
       },
       {
         "id": "pet_17_2122",
         "day": 22,
         "title": "Dienteamarillo el Ahíto en los pastos de Las Marcas Cenicientas",
         "kind": "bounty",
+        "region": "ashen-marches",
         "outcome": "triumph",
         "heroNames": [
           "Luna"
-        ]
+        ],
+        "gold": 61,
+        "renown": 2
       },
       {
         "id": "job_1_expedition_1032",
         "day": 15,
         "title": "El otro lado de El Terreno del Crisol",
         "kind": "expedition",
+        "region": "vale",
         "outcome": "triumph",
         "heroNames": [
           "Luna",
           "Íñigo Guzmán"
-        ]
+        ],
+        "gold": 270,
+        "renown": 2
       }
     ],
     "goldLog": [
+      {
+        "day": 104,
+        "kind": "event",
+        "delta": -100,
+        "gold": 1751
+      },
+      {
+        "day": 103,
+        "kind": "delve",
+        "delta": 647,
+        "gold": 1851
+      },
+      {
+        "day": 102,
+        "kind": "payroll",
+        "delta": -431,
+        "gold": 1204
+      },
       {
         "day": 98,
         "kind": "delve",
@@ -2145,24 +2166,6 @@
         "kind": "building",
         "delta": -600,
         "gold": 430
-      },
-      {
-        "day": 6,
-        "kind": "payroll",
-        "delta": -205,
-        "gold": 1030
-      },
-      {
-        "day": 1,
-        "kind": "delve",
-        "delta": 409,
-        "gold": 1235
-      },
-      {
-        "day": 0,
-        "kind": "delve",
-        "delta": 273,
-        "gold": 826
       }
     ],
     "honours": [
@@ -2184,9 +2187,75 @@
       "phalanx",
       "warsong",
       "skirmish-line",
-      "last-wall"
+      "last-wall",
+      "holy-order"
     ],
     "yearBeats": [
+      {
+        "id": "n_ms_roadwise_adv_vir5cr755mej_103",
+        "day": 103,
+        "text": "Belzar de la Ofrenda es ya De muchos caminos, y ha vuelto a jurar su voto: Una Amistad Verdadera."
+      },
+      {
+        "id": "n_bondturn_103_friend_UlfLuna",
+        "day": 103,
+        "text": "Ulf y Luna ya son amistades. Las amistades animan al grupo en el que luchan, y se lloran si una cae."
+      },
+      {
+        "id": "n_deep_run_103_1",
+        "day": 103,
+        "text": "🕳️ La casa tomó El Umbral, sus 5 oleadas enteras, y la escalera sigue bajando."
+      },
+      {
+        "id": "n_vow_deep_103_adv_xsny2mf20dv6",
+        "day": 103,
+        "text": "🕊️ Ulf Vallehondo cumple un voto. Tomó un piso de la escalera que le quitó a alguien. La Sima no devuelve a nadie, pero se la ha obligado a soltar algo."
+      },
+      {
+        "id": "n_syn_103_holy-order",
+        "day": 103,
+        "text": "✨ ¡Sinergia descubierta, Orden Sagrada! Un Paladín y un Clérigo pelean como una orden consagrada, justa e inflexible. (+10% de curación · +3% de daño del grupo)"
+      },
+      {
+        "id": "n_bond_103_deep-1-1_0",
+        "day": 103,
+        "text": "🤝 El gremio es un sitio más cálido últimamente: Iligar, Belzar, Ulf y Yvaldo se han encontrado."
+      },
+      {
+        "id": "n_story_103_deep-1-1_0",
+        "day": 103,
+        "text": "Iligar llegó con la mente en calma: el juramento está cumplido."
+      },
+      {
+        "id": "n_story_103_deep-1-1_1",
+        "day": 103,
+        "text": "Jaro llegó con la mente en calma: el juramento está cumplido."
+      },
+      {
+        "id": "n_story_103_deep-1-1_2",
+        "day": 103,
+        "text": "Luna llegó con la mente en calma: el juramento está cumplido."
+      },
+      {
+        "id": "n_story_103_deep-1-1_3",
+        "day": 103,
+        "text": "Algo se le apaga a Ulf Vallehondo cuando lo que tiene delante es peligroso de verdad."
+      },
+      {
+        "id": "n_syndiv_103_deep-1-1",
+        "day": 103,
+        "text": "✦ 4 sinergias dio fruto: el grupo peleó como uno solo (+183g)."
+      },
+      {
+        "id": "n_warcall_102_boss-t3-2017",
+        "day": 102,
+        "text": "Una llamada a las armas. Dentro de 8 días el reino se movilizará contra Corazónglaciar el Silencioso el Sin Respuesta, en El Cindermoor."
+      },
+      {
+        "id": "n_bond_home_102_adv_dw6dpd5sh7jc_adv_efelp4o01ks4",
+        "day": 102,
+        "text": "Iligar y Ruc se quedaron hasta tarde con un juego en el que eran igual de torpes."
+      },
       {
         "id": "n_bond_98_fixture-1-10_0",
         "day": 98,
@@ -2276,601 +2345,6 @@
         "id": "n_bond_home_90_adv_xsny2mf20dv6_adv_efelp4o01ks4",
         "day": 90,
         "text": "Iligar y Ulf trabajaron codo con codo en el patio, y descubrieron que les gusta el mismo silencio."
-      },
-      {
-        "id": "n_bond_88_fixture-1-9_0",
-        "day": 88,
-        "text": "Jaro y Velasco han empezado a hacer la misma guardia. Ninguno de los dos lo planeó."
-      },
-      {
-        "id": "n_bond_88_fixture-1-9_1",
-        "day": 88,
-        "text": "Jaro y Yvaldo volvieron a casa riéndose de algo que nadie más entendía."
-      },
-      {
-        "id": "n_story_88_fixture-1-9_0",
-        "day": 88,
-        "text": "Jaro se enfrentó a una tumba que resonaba y se llevó su ajuar."
-      },
-      {
-        "id": "n_story_88_fixture-1-9_1",
-        "day": 88,
-        "text": "Sea lo que sea lo que permite a algunas personas alejarse andando de un golpe así, Belzar de la Ofrenda no lo tiene."
-      },
-      {
-        "id": "n_story_88_fixture-1-9_2",
-        "day": 88,
-        "text": "Yvaldo Guardapuerto cayó pronto y cayó fuerte, y la casa se va acostumbrando a esa imagen."
-      },
-      {
-        "id": "n_bondturn_84_friend_VelascoUlf",
-        "day": 84,
-        "text": "Velasco y Ulf ya son amistades. Las amistades animan al grupo en el que luchan, y se lloran si una cae."
-      },
-      {
-        "id": "n_bond_home_84_adv_agorapai6eaw_adv_ge28ylm26r9p",
-        "day": 84,
-        "text": "Jaro y Íñigo se quedaron hasta tarde con un juego en el que eran igual de torpes."
-      },
-      {
-        "id": "n_bondturn_78_friend_IligarYvaldo",
-        "day": 78,
-        "text": "Iligar y Yvaldo ya son amistades. Las amistades animan al grupo en el que luchan, y se lloran si una cae."
-      },
-      {
-        "id": "n_bond_78_fixture-1-8_0",
-        "day": 78,
-        "text": "Velasco y Yvaldo llegaron a las manos por la salida."
-      },
-      {
-        "id": "n_story_78_fixture-1-8_0",
-        "day": 78,
-        "text": "Una bestia herida, a la que el grupo perdonó, les llevó hasta un tesoro."
-      },
-      {
-        "id": "n_story_78_fixture-1-8_1",
-        "day": 78,
-        "text": "Sea lo que sea lo que permite a algunas personas alejarse andando de un golpe así, Yvaldo Guardapuerto no lo tiene."
-      },
-      {
-        "id": "n_bond_home_78_adv_hpzq2ixhvxtq_adv_agorapai6eaw",
-        "day": 78,
-        "text": "Jaro y Velasco se quedaron hasta tarde con un juego en el que eran igual de torpes."
-      },
-      {
-        "id": "n_job_75_job_escort_63_4584",
-        "day": 75,
-        "text": "🧭 Luna e Iligar lo terminó en Las Marcas Cenicientas, y el relato llegó a casa antes que Luna e Iligar."
-      },
-      {
-        "id": "n_vow_75_adv_efelp4o01ks4",
-        "day": 75,
-        "text": "🕊️ Iligar el Rompehuesos cumple un voto. Respondió a la llamada de Las Marcas Cenicientas y volvió a casa, y al que dejó en su tierra no se le acabó dejando sin respuesta."
-      },
-      {
-        "id": "n_bond_home_72_adv_xsny2mf20dv6_adv_ge28ylm26r9p",
-        "day": 72,
-        "text": "Ulf y Íñigo compartieron las comidas, y se quedaron a la mesa mucho después de que se fuera el resto."
-      },
-      {
-        "id": "n_bond_68_fixture-1-7_0",
-        "day": 68,
-        "text": "Belzar culpa a Jaro de cómo fue la incursión. Jaro culpa a Belzar."
-      },
-      {
-        "id": "n_bond_68_fixture-1-7_1",
-        "day": 68,
-        "text": "Jaro y Yvaldo llegaron a las manos por la salida."
-      },
-      {
-        "id": "n_bond_68_fixture-1-7_2",
-        "day": 68,
-        "text": "Belzar y Velasco llegaron a un entendimiento en la oscuridad, y ha durado."
-      },
-      {
-        "id": "n_story_68_fixture-1-7_0",
-        "day": 68,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, el brillo del oro, y algo que lo custodia. Jaro explora ambos caminos y luego sigue por la senda."
-      },
-      {
-        "id": "n_story_68_fixture-1-7_1",
-        "day": 68,
-        "text": "Un espejo dorado tuvo a Jaro bajo su hechizo; el grupo perdió tiempo con ello."
-      },
-      {
-        "id": "n_syndiv_68_fixture-1-7",
-        "day": 68,
-        "text": "✦ Canto de Guerra dio fruto: el grupo peleó como uno solo (+122g, +2 de renombre)."
-      },
-      {
-        "id": "n_bond_home_66_adv_xsny2mf20dv6_adv_dw6dpd5sh7jc",
-        "day": 66,
-        "text": "Ruc y Ulf se quedaron hasta tarde con un juego en el que eran igual de torpes."
-      },
-      {
-        "id": "n_job_64_pet_60_4357",
-        "day": 64,
-        "text": "🧭 Velasco hizo en Las Marcas Cenicientas lo que los anteriores no pudieron, y volvió a casa hablando del tiempo."
-      },
-      {
-        "id": "n_warkin_63",
-        "day": 63,
-        "text": "🏚️ Belzar de la Ofrenda marcharon por El Cindermoor, donde viven los suyos. La aguantaron. Eso no se olvidará."
-      },
-      {
-        "id": "n_war_63",
-        "day": 63,
-        "text": "🗡️ El Asedio de Huesolinde, en El Cindermoor: 5 marcharon, la coalición triunfó."
-      },
-      {
-        "id": "n_warmark_63_cindermoor",
-        "day": 63,
-        "text": "La gente de Huesolinde sabe quién defendió sus murallas."
-      },
-      {
-        "id": "n_warcomrades_63",
-        "day": 63,
-        "text": "Belzar de la Ofrenda, Jaro, Íñigo Guzmán, Yvaldo Guardapuerto e Iligar el Rompehuesos marcharon juntos, y vuelven con un lazo más fuerte."
-      },
-      {
-        "id": "n_kinsale_60_adv_dgwz67438oce",
-        "day": 60,
-        "text": "Xantara de la Ofrenda, familia de Belzar de la Ofrenda, ha sido puesto en venta por El Cerco Vigilante. Está en el Tablón de compra del Mercado."
-      },
-      {
-        "id": "n_bond_home_60_adv_vir5cr755mej_adv_xsny2mf20dv6",
-        "day": 60,
-        "text": "Belzar le habló a Ulf de su tierra, algo que Belzar no hace con mucha gente."
-      },
-      {
-        "id": "n_ms_roadwise_adv_agorapai6eaw_58",
-        "day": 58,
-        "text": "Jaro es ya De muchos caminos, y el camino le ha dado un rasgo nuevo: Viejo Soldado."
-      },
-      {
-        "id": "n_bond_58_fixture-1-6_0",
-        "day": 58,
-        "text": "Iligar y Yvaldo llegaron a un entendimiento en la oscuridad, y ha durado."
-      },
-      {
-        "id": "n_story_58_fixture-1-6_0",
-        "day": 58,
-        "text": "🎒 Sin ceremonias: Iligar cogió Tabardo de Centinela allí mismo y siguió adelante."
-      },
-      {
-        "id": "n_story_58_fixture-1-6_1",
-        "day": 58,
-        "text": "Jaro se enfrentó a una tumba que resonaba y se llevó su ajuar."
-      },
-      {
-        "id": "n_story_58_fixture-1-6_2",
-        "day": 58,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, una puerta sellada. Yvaldo no puede dejar en paz una puerta sellada."
-      },
-      {
-        "id": "n_syndiv_58_fixture-1-6",
-        "day": 58,
-        "text": "✦ 2 sinergias dio fruto: el grupo peleó como uno solo (+183g, +3 de renombre)."
-      },
-      {
-        "id": "n_loot_58_it_fk_a_founding-1793874176816-909579_7_8190",
-        "day": 58,
-        "text": "◆ El grupo recuperó Templado Botas Altas de Cera de Tormenta (Rara) de las profundidades, y espera en la armería."
-      },
-      {
-        "id": "n_bond_home_54_adv_xvecyci8knko_adv_efelp4o01ks4",
-        "day": 54,
-        "text": "Iligar movió su cama al otro extremo del cuarto, lejos de Luna."
-      },
-      {
-        "id": "n_bond_48_fixture-1-5_0",
-        "day": 48,
-        "text": "Belzar culpa a Jaro de cómo fue la incursión. Jaro culpa a Belzar."
-      },
-      {
-        "id": "n_bond_48_fixture-1-5_1",
-        "day": 48,
-        "text": "Fuera lo que fuera Jaro y Yvaldo el uno para el otro, la oscuridad se lo llevó. Apenas se hablan."
-      },
-      {
-        "id": "n_bond_48_fixture-1-5_2",
-        "day": 48,
-        "text": "Belzar y Yvaldo volvieron de la oscuridad con algo entre ellos que antes no estaba."
-      },
-      {
-        "id": "n_syndiv_48_fixture-1-5",
-        "day": 48,
-        "text": "✦ Canto de Guerra dio fruto: el grupo peleó como uno solo (+122g, +2 de renombre)."
-      },
-      {
-        "id": "n_bond_home_48_adv_hpzq2ixhvxtq_adv_agorapai6eaw",
-        "day": 48,
-        "text": "Jaro y Velasco hicieron la misma guardia, y al acabarla ya se completaban las quejas mutuamente."
-      },
-      {
-        "id": "n_unscar_46_Turca de la Tormenta",
-        "day": 46,
-        "text": "El descanso ha asentado a Turca de la Tormenta: De Nervio Roto ya no está."
-      },
-      {
-        "id": "n_story_44_c_36_8031_2_0",
-        "day": 44,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, el brillo del oro, y algo que lo custodia. Ulf mira las heridas del grupo y sigue por la senda. Ulf le da al grupo el mérito de la decisión."
-      },
-      {
-        "id": "n_story_44_c_36_8031_2_1",
-        "day": 44,
-        "text": "Íñigo caló a un ídolo que susurraba y sacó al grupo de allí."
-      },
-      {
-        "id": "n_story_44_c_36_8031_2_2",
-        "day": 44,
-        "text": "Algo se le apaga a Xara del Cuerno cuando lo que tiene delante es peligroso de verdad."
-      },
-      {
-        "id": "n_story_44_c_36_8031_2_3",
-        "day": 44,
-        "text": "Algo se le apaga a Ulf Vallehondo cuando lo que tiene delante es peligroso de verdad."
-      },
-      {
-        "id": "n_story_44_c_36_8031_2_4",
-        "day": 44,
-        "text": "Ulf Vallehondo se puso entre Xara y la oscuridad, y salieron los dos."
-      },
-      {
-        "id": "n_syndiv_44_c_36_8031_2",
-        "day": 44,
-        "text": "✦ 2 sinergias dio fruto: el grupo peleó como uno solo (+183g)."
-      },
-      {
-        "id": "n_story_39_c_36_3848_0",
-        "day": 39,
-        "text": "Xara del Cuerno cargó con las salas fáciles y no le quedó nada para la difícil, como de costumbre."
-      },
-      {
-        "id": "n_story_39_c_36_3848_1",
-        "day": 39,
-        "text": "Ulf Vallehondo fue lo mejor del grupo hasta la sala que contaba, y entonces dejó de serlo."
-      },
-      {
-        "id": "n_story_39_c_36_3848_2",
-        "day": 39,
-        "text": "Ulf Vallehondo se puso entre Xara y la oscuridad, y salieron los dos."
-      },
-      {
-        "id": "n_syn_38_last-wall",
-        "day": 38,
-        "text": "✨ ¡Sinergia descubierta, El Último Muro! Espada, escudo, hechizo y oración: uno de cada y ninguno de sobra. La línea tal como se trazó por primera vez. (+5% de daño del grupo · +5% de curación)"
-      },
-      {
-        "id": "n_bond_38_fixture-1-4_0",
-        "day": 38,
-        "text": "Belzar culpa a Yvaldo de cómo fue la incursión. Yvaldo culpa a Belzar."
-      },
-      {
-        "id": "n_scar_38_adv_neqeupnrhpgg",
-        "day": 38,
-        "text": "Turca de la Tormenta vuelve a casa con De Nervio Roto; la oscuridad dejó su marca."
-      },
-      {
-        "id": "n_story_38_fixture-1-4_0",
-        "day": 38,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, una guarida con un nombre grabado sobre el arco. Turca pide a Yvaldo que tome la guarida. Turca quiere el nombre para sí. Yvaldo escucha a Turca y sigue el camino. Turca no dice nada más del asunto."
-      },
-      {
-        "id": "n_story_38_fixture-1-4_1",
-        "day": 38,
-        "text": "El grupo rechazó los dados de un desconocido en la sima."
-      },
-      {
-        "id": "n_syndiv_38_fixture-1-4",
-        "day": 38,
-        "text": "✦ 3 sinergias dio fruto: el grupo peleó como uno solo (+183g, +3 de renombre)."
-      },
-      {
-        "id": "n_pet_38_pet_25_2590",
-        "day": 38,
-        "text": "Hierrovigía preguntó, y esperó, y la casa no respondió. Los Mapachutas sí."
-      },
-      {
-        "id": "n_job_36_loan_adv_ge28ylm26r9p_18",
-        "day": 36,
-        "text": "Íñigo Guzmán pasó una estación en cesión a La Guardia de Conchamuelle y ha vuelto a la casa."
-      },
-      {
-        "id": "n_bond_home_36_adv_xvecyci8knko_adv_agorapai6eaw",
-        "day": 36,
-        "text": "Luna se rio de algo que dijo Jaro, y Jaro no lo había dicho en broma."
-      },
-      {
-        "id": "n_ourdead_gift_adv_w21f5zhwf7li_34",
-        "day": 34,
-        "text": "Enterraron a Brugo detrás de la casa y levantaron un túmulo sobre su tumba, como harían con cualquiera de los suyos."
-      },
-      {
-        "id": "n_warkinleft_33",
-        "day": 33,
-        "text": "🏚️ El Cindermoor ardió, y mandaste a otros pero dejaste a Belzar de la Ofrenda y Xara del Cuerno en casa. Su familia vivía allí. Desde entonces apenas te han dirigido la palabra."
-      },
-      {
-        "id": "n_war_33",
-        "day": 33,
-        "text": "🗡️ El Asalto de Ashfall, en El Cindermoor: 4 marcharon, la coalición triunfó; 1 no volvieron."
-      },
-      {
-        "id": "n_warhero_adv_agorapai6eaw_33",
-        "day": 33,
-        "text": "🗡️ Jaro salió de El Asalto de Ashfall con fama de héroe de guerra, y la fama se le ha quedado."
-      },
-      {
-        "id": "n_vow_horn_33_adv_agorapai6eaw",
-        "day": 33,
-        "text": "🕊️ Jaro cumple un voto. El cuerno sonó, y esta casa acudió. No estaban junto al fuego cuando ocurrió."
-      },
-      {
-        "id": "n_warkit_33",
-        "day": 33,
-        "text": "El equipo de los caídos se trajo a casa, a la armería."
-      },
-      {
-        "id": "n_warcomrades_33",
-        "day": 33,
-        "text": "Ulf Vallehondo, Velasco Rivadeneira y Jaro volvieron sin Brugo."
-      },
-      {
-        "id": "n_bond_home_30_adv_xsny2mf20dv6_adv_w21f5zhwf7li",
-        "day": 30,
-        "text": "Ulf y Brugo hicieron la misma guardia, y al acabarla ya se completaban las quejas mutuamente."
-      },
-      {
-        "id": "n_syn_28_skirmish-line",
-        "day": 28,
-        "text": "✨ ¡Sinergia descubierta, Línea de Hostigamiento! Un Montaraz y un Espadachín encierran al enemigo entre los dos: no hay escape ni de cerca ni de lejos. (+5% de daño del grupo)"
-      },
-      {
-        "id": "n_bond_28_fixture-1-3_0",
-        "day": 28,
-        "text": "Belzar y Jaro se pelearon a lo grande ahí abajo, y no han hecho las paces."
-      },
-      {
-        "id": "n_bond_28_fixture-1-3_1",
-        "day": 28,
-        "text": "Belzar y Yvaldo se acercaron en la incursión."
-      },
-      {
-        "id": "n_story_28_fixture-1-3_0",
-        "day": 28,
-        "text": "El grupo rechazó los dados de un desconocido en la sima."
-      },
-      {
-        "id": "n_story_28_fixture-1-3_1",
-        "day": 28,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, el brillo del oro, y algo que lo custodia. Yvaldo sopesa el oro un momento y sigue por la senda."
-      },
-      {
-        "id": "n_syndiv_28_fixture-1-3",
-        "day": 28,
-        "text": "✦ 2 sinergias dio fruto: el grupo peleó como uno solo (+183g, +3 de renombre)."
-      },
-      {
-        "id": "n_bond_home_24_adv_xvecyci8knko_adv_dvyb6kaxgy9l",
-        "day": 24,
-        "text": "Luna movió su cama al otro extremo del cuarto, lejos de Xara."
-      },
-      {
-        "id": "n_bond_23_c_8_5769_0",
-        "day": 23,
-        "text": "Brugo y Velasco llegaron a un entendimiento en la oscuridad, y ha durado."
-      },
-      {
-        "id": "n_bond_23_c_8_5769_1",
-        "day": 23,
-        "text": "Brugo se ha nombrado a sí mismo maestro de Velasco, sin decir nada. Nadie discutió."
-      },
-      {
-        "id": "n_bond_23_c_8_5769_2",
-        "day": 23,
-        "text": "Jaro tomó a Ulf bajo su ala."
-      },
-      {
-        "id": "n_story_23_c_8_5769_0",
-        "day": 23,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, el brillo del oro, y algo que lo custodia. Jaro sopesa el oro un momento y sigue por la senda."
-      },
-      {
-        "id": "n_story_23_c_8_5769_1",
-        "day": 23,
-        "text": "Brugo es un explorador del montón durante cuatro salas y otra persona por completo en la quinta."
-      },
-      {
-        "id": "n_story_23_c_8_5769_2",
-        "day": 23,
-        "text": "Algo se le apaga a Ulf Vallehondo cuando lo que tiene delante es peligroso de verdad."
-      },
-      {
-        "id": "n_fest_23",
-        "day": 23,
-        "text": "🎭 Festejos de Marea Verde: Jaro quedó 1.º de 16, ¡ganó el Encuentro! (+4 de renombre)."
-      },
-      {
-        "id": "n_job_22_pet_17_2122",
-        "day": 22,
-        "text": "🧭 Luna volvió de Las Marcas Cenicientas con sangre en las botas y con las canciones ya corriendo por delante."
-      },
-      {
-        "id": "n_loot_job_15_job_1_expedition_1032#2",
-        "day": 15,
-        "text": "🎒 Luna trajo Fetiche de Corneja Carroñera de vuelta; espera en la armería."
-      },
-      {
-        "id": "n_story_18_fixture-1-2_0",
-        "day": 18,
-        "text": "🎒 Jaro no preguntó. Templado Cuerno de Caza se puso directamente, porque Jaro es Ambición y esa es toda la explicación."
-      },
-      {
-        "id": "n_story_18_fixture-1-2_1",
-        "day": 18,
-        "text": "Brugo peleó toda la incursión a medio gas y luego gastó todo lo que tenía en la que importaba."
-      },
-      {
-        "id": "n_syndiv_18_fixture-1-2",
-        "day": 18,
-        "text": "✦ Canto de Guerra dio fruto: el grupo peleó como uno solo (+122g, +2 de renombre)."
-      },
-      {
-        "id": "n_bond_home_18_adv_agorapai6eaw_adv_ge28ylm26r9p",
-        "day": 18,
-        "text": "Jaro y Íñigo compartieron las comidas, y se quedaron a la mesa mucho después de que se fuera el resto."
-      },
-      {
-        "id": "n_loot_job_15_job_1_expedition_1032",
-        "day": 15,
-        "text": "🎒 Luna trajo Cetro de la misericordia de vuelta; espera en la armería."
-      },
-      {
-        "id": "n_loot_job_15_job_1_expedition_1032",
-        "day": 15,
-        "text": "🎒 Luna trajo Fetiche de Corneja Carroñera de vuelta; espera en la armería."
-      },
-      {
-        "id": "n_job_15_job_1_expedition_1032",
-        "day": 15,
-        "text": "🧭 Luna y Íñigo hizo en El Valle de los Nueve Pliegues lo que los anteriores no pudieron, y volvió a casa hablando del tiempo."
-      },
-      {
-        "id": "n_vow_15_adv_xvecyci8knko",
-        "day": 15,
-        "text": "🕊️ Luna cumple un voto. El trabajo del gremio le hizo cruzar El Valle de los Nueve Pliegues otra vez, y salió de ello más cerca del nombre que fue a buscar."
-      },
-      {
-        "id": "n_story_12_c_0_9198_0",
-        "day": 12,
-        "text": "Un espejo dorado tuvo a Jaro bajo su hechizo; el grupo perdió tiempo con ello."
-      },
-      {
-        "id": "n_story_12_c_0_9198_1",
-        "day": 12,
-        "text": "Xara del Cuerno cargó con las salas fáciles y no le quedó nada para la difícil, como de costumbre."
-      },
-      {
-        "id": "n_syndiv_12_c_0_9198",
-        "day": 12,
-        "text": "✦ Falange dio fruto: el grupo peleó como uno solo (+122g)."
-      },
-      {
-        "id": "n_vow_8_adv_neqeupnrhpgg",
-        "day": 8,
-        "text": "🕊️ Turca de la Tormenta cumple un voto. Abatió una bestia a la que Las Marcas Cenicientas tenía puesto nombre, y su cabeza cuelga ahora donde la ve toda la casa. Cuerno de bruja de Escarno el Pálido espera en la armería."
-      },
-      {
-        "id": "n_story_8_c_0_5747_0",
-        "day": 8,
-        "text": "Xara del Cuerno fue lo mejor del grupo hasta la sala que contaba, y entonces dejó de serlo."
-      },
-      {
-        "id": "n_story_8_c_0_5747_1",
-        "day": 8,
-        "text": "Algo se le apaga a Ulf Vallehondo cuando lo que tiene delante es peligroso de verdad."
-      },
-      {
-        "id": "n_syndiv_8_c_0_5747",
-        "day": 8,
-        "text": "✦ 2 sinergias dio fruto: el grupo peleó como uno solo (+183g)."
-      },
-      {
-        "id": "n_relic_8_beasttrophy_8_adv_neqeupnrhpgg",
-        "day": 8,
-        "text": "✦ Una reliquia emerge de la oscuridad: Cuerno de bruja de Escarno el Pálido (Mítica), y cambiará a quien lo porte. Un hallazgo que la casa recordará."
-      },
-      {
-        "id": "n_syn_8_warsong",
-        "day": 8,
-        "text": "✨ ¡Sinergia descubierta, Canto de Guerra! Un Bardo detrás y filos suficientes delante. Los atacantes marcan el ritmo y lo sostienen. (+6% de daño del grupo)"
-      },
-      {
-        "id": "n_bond_8_fixture-1-1_0",
-        "day": 8,
-        "text": "Jaro no pensaba dejar atrás a Velasco, y la casa se enteró."
-      },
-      {
-        "id": "n_story_8_fixture-1-1_0",
-        "day": 8,
-        "text": "Jaro recogió el estandarte de un gremio caído en la sima."
-      },
-      {
-        "id": "n_story_8_fixture-1-1_1",
-        "day": 8,
-        "text": "Cuanto más grande es lo que tiene delante Brugo, menos problema parece ser."
-      },
-      {
-        "id": "n_syndiv_8_fixture-1-1",
-        "day": 8,
-        "text": "✦ Canto de Guerra dio fruto: el grupo peleó como uno solo (+122g, +2 de renombre)."
-      },
-      {
-        "id": "n_bond_home_6_adv_xsny2mf20dv6_adv_agorapai6eaw",
-        "day": 6,
-        "text": "Ulf y Jaro trabajaron codo con codo en el patio, y descubrieron que les gusta el mismo silencio."
-      },
-      {
-        "id": "n_syn_1_phalanx",
-        "day": 1,
-        "text": "✨ ¡Sinergia descubierta, Falange! Dos escudos trabados en un muro sin grietas: el enemigo se rompe contra él. (+7% de mitigación)"
-      },
-      {
-        "id": "n_syn_1_storm-and-cinder",
-        "day": 1,
-        "text": "✨ ¡Sinergia descubierta, Tormenta y Ceniza! Un Centinela abre la jauría y un Arcanista deja caer fuego en el hueco. Ninguno de los dos apunta a nadie en particular. (+7% de daño del grupo)"
-      },
-      {
-        "id": "n_bond_1_c_0_6651_0",
-        "day": 1,
-        "text": "Xara y Belzar volvieron de la oscuridad con algo entre ellos que antes no estaba."
-      },
-      {
-        "id": "n_bond_1_c_0_6651_1",
-        "day": 1,
-        "text": "Belzar sacó a Yvaldo de un apuro ahí abajo, y desde entonces ninguno lo ha mencionado."
-      },
-      {
-        "id": "n_bond_1_c_0_6651_2",
-        "day": 1,
-        "text": "Donde va Belzar en la oscuridad, ahora va Xara detrás, y le está sentando bien."
-      },
-      {
-        "id": "n_story_1_c_0_6651_0",
-        "day": 1,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, una guarida con un nombre grabado sobre el arco. Turca explora ambos caminos y luego toma la guarida."
-      },
-      {
-        "id": "n_story_1_c_0_6651_1",
-        "day": 1,
-        "text": "Xara del Cuerno cargó con las salas fáciles y no le quedó nada para la difícil, como de costumbre."
-      },
-      {
-        "id": "n_syndiv_1_c_0_6651",
-        "day": 1,
-        "text": "✦ 2 sinergias dio fruto: el grupo peleó como uno solo (+183g)."
-      },
-      {
-        "id": "n_story_0_c_0_2691_0",
-        "day": 0,
-        "text": "El grupo liberó a un cautivo en las profundidades."
-      },
-      {
-        "id": "n_story_0_c_0_2691_1",
-        "day": 0,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, una puerta sellada. Ulf pide a Brugo que tome la puerta. Brugo escucha a Ulf y sigue el camino. Ulf no dice nada más del asunto."
-      },
-      {
-        "id": "n_story_0_c_0_2691_2",
-        "day": 0,
-        "text": "Cuanto más grande es lo que tiene delante Brugo, menos problema parece ser."
-      },
-      {
-        "id": "n_story_0_c_0_2691_3",
-        "day": 0,
-        "text": "Algo se le apaga a Ulf Vallehondo cuando lo que tiene delante es peligroso de verdad."
       }
     ],
     "hallBuilds": [],
