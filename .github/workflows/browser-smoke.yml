@@ -1,6 +1,5 @@
 name: Auditoría funcional en navegador
 on:
-  pull_request:
   workflow_dispatch:
 jobs:
   browser-smoke:

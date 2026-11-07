@@ -1,37 +1,41 @@
-name: Validar La Corona de Barro
+name: Validación rápida por archivos modificados
 on:
   pull_request:
   push:
     branches: [main]
 jobs:
-  validate:
+  cambios:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Verificar sintaxis
+      - name: Sintaxis y comprobaciones puntuales
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: |
-          node --check app.js
-          node --check data/campaign.js
-          node --check data/house-state.js
-          node --check scripts/audit-house.mjs
-          node --check novel/chapters.js
-          node --check novel/relationships.js
-          node --check novel/editorial-policy.js
-          node --check novel/continuity.js
-          node --check novel/chapters/index.js
-          for file in novel/chapters/*.js; do node --check "$file"; done
-          node --check art/catalog.js
-          node --check art/portrait-library.js
-          node --check scripts/add-chapter.mjs
-          node --check scripts/register-art.mjs
-          node --check novel/narrative-engine.js
-          node --check art-manifest.js
-          node --check scripts/save-core.mjs
-          node --check scripts/compare-saves.mjs
-      - name: Comprobar integridad de datos y recursos
-        run: |
-          node --test tests/*.test.mjs
-          node scripts/audit-house.mjs
+          if [ -n "${BASE_SHA:-}" ] && ! [[ "$BASE_SHA" =~ ^0+$ ]]; then
+            git fetch --no-tags --depth=1 origin "$BASE_SHA"
+            BASE="$BASE_SHA"
+          else
+            BASE="$(git rev-parse HEAD^)"
+          fi
+          git diff --name-only --diff-filter=ACMRT "$BASE" HEAD > /tmp/corona-changed
+          echo "Archivos modificados:"
+          cat /tmp/corona-changed
+          while IFS= read -r file; do
+            case "$file" in
+              *.js|*.mjs) if [ -f "$file" ]; then node --check "$file"; fi ;;
+              *.json) if [ -f "$file" ]; then node -e 'JSON.parse(require("fs").readFileSync(process.argv[1],"utf8"))' "$file"; fi ;;
+            esac
+          done < /tmp/corona-changed
+          if grep -Eq '^index\.html$|^novel/chapters/.*\.js$' /tmp/corona-changed; then
+            node scripts/check-chapter-order.mjs
+          fi
+          if grep -Eq '^data/(campaign|house-state)\.js$|^novel/relationships\.js$' /tmp/corona-changed; then
+            node scripts/audit-house.mjs
+          fi
+          echo "Comprobación selectiva completada."

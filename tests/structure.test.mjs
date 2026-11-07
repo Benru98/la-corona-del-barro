@@ -15,7 +15,7 @@ function run(paths,expression){
   for(const p of paths)vm.runInContext(read(p),ctx,{filename:p,timeout:5000});
   return JSON.parse(vm.runInContext('JSON.stringify('+expression+')',ctx));
 }
-const scripts=[...read('index.html').matchAll(/<script\s+src="([^"]+)"/g)].map(x=>x[1]);
+const scripts=[...read('index.html').matchAll(/<script\s+src="([^"]+)"/g)].map(x=>x[1].split('?')[0]);
 const modules=scripts.filter(p=>p!=='art/catalog.js'&&p!=='art-manifest.js'&&p!=='art/portrait-library.js'&&p!=='app.js');
 test('El libro modular conserva estructura y canon separado',()=>{
   const b=run(modules,'BOOK');
