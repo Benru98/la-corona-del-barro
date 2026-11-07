@@ -1,30 +1,25 @@
 {
   "format": "corona-approved-save-projection/v1",
-  "projectionNote": "Instantánea para comparar, no guardado original completo.",
+  "projectionNote": "Proyección de seguimiento del guardado del día interno 149; campos de mecánica actualizados, sin guardado bruto, atributos ocultos ni histórico completo.",
   "version": 26,
-  "sig": "sk9j19.10bmbfb",
+  "sig": "fmyvti.jr6zxc",
   "guild": {
     "name": "La Corona de Barro",
-    "day": 121,
-    "gold": 643,
-    "renown": 204,
+    "day": 149,
+    "gold": 1589,
+    "renown": 226,
     "roster": [
       {
         "id": "adv_xvecyci8knko",
         "name": "Luna",
         "level": 4,
-        "experience": 27,
+        "experience": 28,
         "morale": 100,
         "condition": 100,
-        "stress": 0,
-        "fatigue": 0,
+        "stress": 11,
+        "fatigue": 11,
         "oathWage": 19,
         "post": "secondWatch",
-        "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -77,15 +72,15 @@
           },
           "flaw": "cant-sit-still"
         },
-        "delves": 7,
+        "delves": 8,
         "record": {
           "since": 28,
           "all": {
             "n": 7,
-            "dealt": 9032,
+            "dealt": 11214,
             "healed": 0,
-            "faced": 161,
-            "kills": 49,
+            "faced": 245,
+            "kills": 54,
             "downed": 0,
             "swings": 321,
             "hits": 269,
@@ -109,9 +104,9 @@
             "heroic": 0
           }
         },
-        "currentAbility": 129,
+        "currentAbility": 132,
         "potentialAbility": 198,
-        "abilityStars": 3,
+        "abilityStars": 3.5,
         "potentialStars": 5,
         "equipment": {
           "weapon": {
@@ -159,24 +154,20 @@
             "salvaged": true,
             "reforged": true
           }
-        }
+        },
+        "age": 21
       },
       {
         "id": "adv_vir5cr755mej",
         "name": "Belzar de la Ofrenda",
         "level": 7,
-        "experience": 71,
+        "experience": 72,
         "morale": 100,
         "condition": 100,
-        "stress": 0,
-        "fatigue": 0,
+        "stress": 11,
+        "fatigue": 7,
         "oathWage": 24,
         "post": "vanguard",
-        "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 10,
@@ -221,30 +212,25 @@
             "kind": "bond",
             "templateId": "bond-truefriend",
             "name": "Una Amistad Verdadera",
-            "text": "No ha dejado entrar a nadie del todo, y medio desearía poder hacerlo.",
-            "resworn": true,
-            "resolved": {
-              "line": "En algún sitio de la oscuridad, casi sin querer, dejó entrar a alguien del todo. Y aguantó.",
-              "day": 108
-            }
+            "text": "No ha dejado entrar a nadie del todo, y medio desearía poder hacerlo."
           },
           "flaw": "gambles"
         },
-        "delves": 11,
+        "delves": 12,
         "record": {
           "since": 1,
           "all": {
             "n": 11,
-            "dealt": 2283,
+            "dealt": 2632,
             "healed": 0,
-            "faced": 13251,
-            "kills": 11,
+            "faced": 15792,
+            "kills": 13,
             "downed": 1,
             "swings": 833,
             "hits": 801,
             "crits": 39,
             "taken": 4239,
-            "blocked": 179,
+            "blocked": 227,
             "heroic": 1
           },
           "trials": {
@@ -297,24 +283,20 @@
             "quality": 0.7558467609342188,
             "reforged": true
           }
-        }
+        },
+        "age": 26
       },
       {
         "id": "adv_xsny2mf20dv6",
         "name": "Ulf Vallehondo",
         "level": 3,
-        "experience": 18,
+        "experience": 19,
         "morale": 100,
         "condition": 100,
-        "stress": 0,
-        "fatigue": 0,
+        "stress": 11,
+        "fatigue": 8,
         "oathWage": 15,
         "post": "secondWatch",
-        "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 2,
@@ -329,12 +311,12 @@
           "bravery": 6,
           "decisions": 14,
           "anticipation": 13,
-          "teamwork": 9,
+          "teamwork": 10,
           "leadership": 7,
           "concentration": 12,
           "aggression": 9,
           "discipline": 7,
-          "resolve": 9,
+          "resolve": 10,
           "strength": 12,
           "agility": 6,
           "stamina": 6,
@@ -359,23 +341,19 @@
             "kind": "deep",
             "templateId": "deep-owed",
             "name": "Lo que se Llevó la Escalera",
-            "text": "Perdió a alguien en la vieja escalera, y no piensa dejar que la Sima se quede con los dos.",
-            "resolved": {
-              "line": "Tomó un piso de la escalera que le quitó a alguien. La Sima no devuelve a nadie, pero se la ha obligado a soltar algo.",
-              "day": 103
-            }
+            "text": "Perdió a alguien en la vieja escalera, y no piensa dejar que la Sima se quede con los dos."
           },
           "flaw": "freezes-at-fork"
         },
-        "delves": 8,
+        "delves": 9,
         "record": {
           "since": 0,
           "all": {
             "n": 8,
-            "dealt": 1249,
-            "healed": 3974,
-            "faced": 1812,
-            "kills": 5,
+            "dealt": 1477,
+            "healed": 4670,
+            "faced": 1949,
+            "kills": 7,
             "downed": 0,
             "swings": 204,
             "hits": 190,
@@ -399,7 +377,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 96.60000000000014,
+        "currentAbility": 104.328,
         "potentialAbility": 136,
         "abilityStars": 2.5,
         "potentialStars": 3.5,
@@ -444,23 +422,25 @@
             "value": 146,
             "reforged": true
           }
-        }
+        },
+        "age": 18
       },
       {
         "id": "adv_hpzq2ixhvxtq",
         "name": "Velasco Rivadeneira",
         "level": 7,
-        "experience": 69,
-        "morale": 100,
-        "condition": 100,
-        "stress": 0,
-        "fatigue": 0,
+        "experience": 77,
+        "morale": 92,
+        "condition": 94,
+        "stress": 47,
+        "fatigue": 22,
         "oathWage": 26,
         "post": "vanguard",
         "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
+          "jobId": "delve_148",
+          "returnsDay": 153,
+          "delve": true,
+          "region": "cindermoor"
         },
         "injury": null,
         "attributes": {
@@ -505,20 +485,19 @@
             "kind": "war",
             "templateId": "war-songs",
             "name": "Bautizado en el Frente",
-            "text": "Se propone ser aquel de quien hablen las canciones cuando la coalición vuelva a casa.",
-            "resworn": true
+            "text": "Se propone ser aquel de quien hablen las canciones cuando la coalición vuelva a casa."
           },
           "flaw": "contrary"
         },
-        "delves": 11,
+        "delves": 14,
         "record": {
           "since": 0,
           "all": {
             "n": 11,
-            "dealt": 16254,
+            "dealt": 23718,
             "healed": 0,
-            "faced": 1007,
-            "kills": 84,
+            "faced": 1324,
+            "kills": 117,
             "downed": 2,
             "swings": 380,
             "hits": 376,
@@ -542,7 +521,7 @@
             "heroic": 1
           }
         },
-        "currentAbility": 134.7600000000001,
+        "currentAbility": 142,
         "potentialAbility": 142,
         "abilityStars": 3.5,
         "potentialStars": 3.5,
@@ -589,24 +568,20 @@
             "quality": 1.0100821381201968,
             "reforged": true
           }
-        }
+        },
+        "age": 22
       },
       {
         "id": "adv_agorapai6eaw",
         "name": "Jaro",
         "level": 8,
-        "experience": 87,
+        "experience": 94,
         "morale": 100,
         "condition": 100,
-        "stress": 0,
-        "fatigue": 0,
+        "stress": 14,
+        "fatigue": 8,
         "oathWage": 27,
         "post": "vanguard",
-        "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 17,
@@ -660,21 +635,21 @@
           },
           "flaw": "the-martyr"
         },
-        "delves": 13,
+        "delves": 15,
         "record": {
           "since": 0,
           "all": {
             "n": 13,
-            "dealt": 19188,
+            "dealt": 22804,
             "healed": 0,
-            "faced": 787,
-            "kills": 89,
+            "faced": 959,
+            "kills": 105,
             "downed": 2,
             "swings": 423,
             "hits": 419,
             "crits": 84,
             "taken": 1212,
-            "blocked": 0,
+            "blocked": 2,
             "heroic": 1
           },
           "trials": {
@@ -692,7 +667,7 @@
             "heroic": 1
           }
         },
-        "currentAbility": 120.12000000000012,
+        "currentAbility": 125,
         "potentialAbility": 125,
         "abilityStars": 3,
         "potentialStars": 3,
@@ -744,24 +719,20 @@
         "lastingMark": {
           "id": "shoulder",
           "day": 102
-        }
+        },
+        "age": 25
       },
       {
         "id": "adv_ge28ylm26r9p",
         "name": "Íñigo Guzmán",
         "level": 2,
-        "experience": 9,
+        "experience": 11,
         "morale": 100,
         "condition": 100,
-        "stress": 0,
-        "fatigue": 0,
+        "stress": 11,
+        "fatigue": 11,
         "oathWage": 14,
         "post": "secondWatch",
-        "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 1,
@@ -810,15 +781,15 @@
           },
           "flaw": "keeps-score"
         },
-        "delves": 2,
+        "delves": 3,
         "record": {
           "since": 44,
           "all": {
             "n": 2,
-            "dealt": 1902,
+            "dealt": 3431,
             "healed": 0,
-            "faced": 56,
-            "kills": 11,
+            "faced": 140,
+            "kills": 14,
             "downed": 0,
             "swings": 84,
             "hits": 67,
@@ -842,9 +813,9 @@
             "heroic": 0
           }
         },
-        "currentAbility": 84.68000000000018,
+        "currentAbility": 92.0256,
         "potentialAbility": 143,
-        "abilityStars": 2,
+        "abilityStars": 2.5,
         "potentialStars": 3.5,
         "equipment": {
           "weapon": {
@@ -875,7 +846,8 @@
             "quality": 1.1936262761009857,
             "reforged": true
           }
-        }
+        },
+        "age": 17
       },
       {
         "id": "adv_dw6dpd5sh7jc",
@@ -888,11 +860,6 @@
         "fatigue": 0,
         "oathWage": 13,
         "post": "cp_1",
-        "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 3,
@@ -972,7 +939,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 79.4000000000002,
+        "currentAbility": 84.28,
         "potentialAbility": 137,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -1008,24 +975,20 @@
             "quality": 0.795580864418298,
             "reforged": true
           }
-        }
+        },
+        "age": 15
       },
       {
         "id": "adv_dvyb6kaxgy9l",
         "name": "Xara del Cuerno",
         "level": 2,
         "experience": 9,
-        "morale": 96,
+        "morale": 100,
         "condition": 100,
         "stress": 0,
         "fatigue": 0,
         "oathWage": 14,
         "post": "cp_1",
-        "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
-        },
         "injury": null,
         "attributes": {
           "weaponSkill": 8,
@@ -1033,7 +996,7 @@
           "power": 8,
           "spellcraft": 4,
           "armorUse": 9,
-          "parry": 9,
+          "parry": 10,
           "evasion": 5,
           "criticalStrike": 9,
           "composure": 7,
@@ -1048,7 +1011,7 @@
           "resolve": 10,
           "strength": 11,
           "agility": 7,
-          "stamina": 6,
+          "stamina": 7,
           "vitality": 9,
           "speed": 7,
           "reflexes": 7,
@@ -1105,7 +1068,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 82,
+        "currentAbility": 86.88,
         "potentialAbility": 140,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -1139,23 +1102,25 @@
             "quality": 0.7662268632557243,
             "reforged": true
           }
-        }
+        },
+        "age": 19
       },
       {
         "id": "adv_nmu0cr5oezjw",
         "name": "Yvaldo Guardapuerto",
-        "level": 6,
-        "experience": 68,
+        "level": 7,
+        "experience": 76,
         "morale": 100,
-        "condition": 100,
-        "stress": 0,
-        "fatigue": 0,
+        "condition": 94,
+        "stress": 25,
+        "fatigue": 22,
         "oathWage": 21,
         "post": "vanguard",
         "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
+          "jobId": "delve_148",
+          "returnsDay": 153,
+          "delve": true,
+          "region": "cindermoor"
         },
         "injury": null,
         "attributes": {
@@ -1166,7 +1131,7 @@
           "armorUse": 11,
           "parry": 6,
           "evasion": 9,
-          "criticalStrike": 10,
+          "criticalStrike": 11,
           "composure": 11,
           "bravery": 8,
           "decisions": 14,
@@ -1174,17 +1139,17 @@
           "teamwork": 18,
           "leadership": 14,
           "concentration": 12,
-          "aggression": 11,
-          "discipline": 10,
+          "aggression": 12,
+          "discipline": 11,
           "resolve": 11,
           "strength": 13,
           "agility": 9,
           "stamina": 9,
           "vitality": 11,
-          "speed": 11,
+          "speed": 12,
           "reflexes": 6,
           "threat": 6,
-          "mitigation": 10,
+          "mitigation": 11,
           "healing": 16,
           "support": 19,
           "crowdControl": 14,
@@ -1205,21 +1170,21 @@
           },
           "flaw": "the-bottle"
         },
-        "delves": 13,
+        "delves": 16,
         "record": {
           "since": 1,
           "all": {
             "n": 13,
-            "dealt": 2836,
-            "healed": 6971,
-            "faced": 2339,
-            "kills": 10,
+            "dealt": 3797,
+            "healed": 9215,
+            "faced": 2769,
+            "kills": 11,
             "downed": 2,
             "swings": 338,
             "hits": 288,
             "crits": 33,
             "taken": 1550,
-            "blocked": 6,
+            "blocked": 7,
             "heroic": 0
           },
           "trials": {
@@ -1237,7 +1202,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 92.32000000000016,
+        "currentAbility": 103.472,
         "potentialAbility": 123,
         "abilityStars": 2.5,
         "potentialStars": 3,
@@ -1289,23 +1254,25 @@
           }
         },
         "origin": "youth",
-        "aspirant": false
+        "aspirant": false,
+        "age": 21
       },
       {
         "id": "adv_efelp4o01ks4",
         "name": "Iligar el Rompehuesos",
-        "level": 5,
-        "experience": 48,
+        "level": 6,
+        "experience": 56,
         "morale": 100,
-        "condition": 100,
-        "stress": 0,
-        "fatigue": 0,
+        "condition": 94,
+        "stress": 25,
+        "fatigue": 22,
         "oathWage": 21,
         "post": "secondWatch",
         "away": {
-          "jobId": "standdown_120",
-          "returnsDay": 124,
-          "leave": true
+          "jobId": "delve_148",
+          "returnsDay": 153,
+          "delve": true,
+          "region": "cindermoor"
         },
         "injury": null,
         "attributes": {
@@ -1360,21 +1327,21 @@
           },
           "flaw": "old-guilt"
         },
-        "delves": 4,
+        "delves": 7,
         "record": {
           "since": 58,
           "all": {
             "n": 4,
-            "dealt": 593,
+            "dealt": 1272,
             "healed": 0,
-            "faced": 3521,
-            "kills": 4,
+            "faced": 9107,
+            "kills": 5,
             "downed": 1,
             "swings": 272,
             "hits": 249,
             "crits": 12,
             "taken": 1621,
-            "blocked": 52,
+            "blocked": 124,
             "heroic": 0
           },
           "trials": {
@@ -1392,7 +1359,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 115.08000000000015,
+        "currentAbility": 123,
         "potentialAbility": 123,
         "abilityStars": 3,
         "potentialStars": 3,
@@ -1441,17 +1408,18 @@
             "reforged": true
           }
         },
-        "origin": "recruited"
+        "origin": "recruited",
+        "age": 19
       },
       {
         "id": "adv_3yrkzbvzvfzu",
         "name": "Grosco del Puño de Piedra",
         "level": 4,
-        "experience": 33,
-        "morale": 74,
+        "experience": 36,
+        "morale": 99,
         "condition": 94,
-        "stress": 6,
-        "fatigue": 7,
+        "stress": 11,
+        "fatigue": 14,
         "oathWage": 26,
         "post": "vanguard",
         "injury": null,
@@ -1499,15 +1467,36 @@
             "templateId": "place-name",
             "regionId": "ashen-marches",
             "name": "Un Nombre que Encontrar",
-            "text": "Guarda un nombre salido de Las Marcas Cenicientas que se propone encontrar, vivo o no."
+            "text": "Guarda un nombre salido de Las Marcas Cenicientas que se propone encontrar, vivo o no.",
+            "resolved": {
+              "line": "El trabajo del gremio le hizo cruzar Las Marcas Cenicientas otra vez, y salió de ello más cerca del nombre que fue a buscar.",
+              "day": 137
+            }
           },
           "flaw": "pride"
         },
-        "currentAbility": 107,
+        "currentAbility": 117.728,
         "potentialAbility": 135,
-        "abilityStars": 2.5,
+        "abilityStars": 3,
         "potentialStars": 3.5,
-        "origin": "recruited"
+        "origin": "recruited",
+        "age": 18,
+        "delves": 1,
+        "away": {
+          "jobId": "delve_148",
+          "returnsDay": 153,
+          "delve": true,
+          "region": "cindermoor"
+        },
+        "record": {
+          "all": {
+            "kills": 12,
+            "dealt": 2749,
+            "healed": 0,
+            "faced": 33,
+            "blocked": 0
+          }
+        }
       }
     ],
     "fallen": [
@@ -1518,57 +1507,40 @@
     ],
     "bonds": {
       "adv_xsny2mf20dv6|adv_xvecyci8knko": {
-        "value": 23
-      },
-      "adv_agorapai6eaw|adv_w21f5zhwf7li": {
-        "value": 8
-      },
-      "adv_hpzq2ixhvxtq|adv_w21f5zhwf7li": {
-        "value": 25,
-        "mentorId": "adv_w21f5zhwf7li"
-      },
-      "adv_w21f5zhwf7li|adv_xsny2mf20dv6": {
-        "value": 11
+        "value": 20
       },
       "adv_agorapai6eaw|adv_hpzq2ixhvxtq": {
-        "value": 72
+        "value": 90
       },
       "adv_agorapai6eaw|adv_xsny2mf20dv6": {
-        "value": 29,
-        "mentorId": "adv_agorapai6eaw"
+        "value": 31
       },
       "adv_hpzq2ixhvxtq|adv_xsny2mf20dv6": {
-        "value": 22,
-        "mentorId": "adv_hpzq2ixhvxtq"
+        "value": 22
       },
       "adv_dvyb6kaxgy9l|adv_vir5cr755mej": {
-        "value": 32,
-        "mentorId": "adv_vir5cr755mej"
+        "value": 34
       },
       "adv_dvyb6kaxgy9l|adv_nmu0cr5oezjw": {
         "value": 2
       },
       "adv_nmu0cr5oezjw|adv_vir5cr755mej": {
-        "value": 64
+        "value": 60
       },
       "adv_dvyb6kaxgy9l|adv_hpzq2ixhvxtq": {
         "value": 3
       },
-      "adv_nmu0cr5oezjw|adv_w21f5zhwf7li": {
-        "value": 4
-      },
       "adv_agorapai6eaw|adv_nmu0cr5oezjw": {
-        "value": 30
+        "value": 17
       },
       "adv_hpzq2ixhvxtq|adv_nmu0cr5oezjw": {
-        "value": 9
+        "value": 11.081
       },
       "adv_dvyb6kaxgy9l|adv_xsny2mf20dv6": {
-        "value": 26
+        "value": 28
       },
       "adv_vir5cr755mej|adv_xsny2mf20dv6": {
-        "value": 18,
-        "mentorId": "adv_vir5cr755mej"
+        "value": 38
       },
       "adv_agorapai6eaw|adv_vir5cr755mej": {
         "value": -15
@@ -1576,11 +1548,8 @@
       "adv_agorapai6eaw|adv_dvyb6kaxgy9l": {
         "value": 1
       },
-      "adv_dw6dpd5sh7jc|adv_w21f5zhwf7li": {
-        "value": 8
-      },
       "adv_ge28ylm26r9p|adv_xvecyci8knko": {
-        "value": 10
+        "value": 11
       },
       "adv_agorapai6eaw|adv_ge28ylm26r9p": {
         "value": 14
@@ -1595,10 +1564,10 @@
         "value": 12
       },
       "adv_vir5cr755mej|adv_xvecyci8knko": {
-        "value": 1
+        "value": 2
       },
       "adv_agorapai6eaw|adv_xvecyci8knko": {
-        "value": 5
+        "value": 7
       },
       "adv_hpzq2ixhvxtq|adv_xvecyci8knko": {
         "value": 14
@@ -1607,10 +1576,10 @@
         "value": 8
       },
       "adv_dw6dpd5sh7jc|adv_xsny2mf20dv6": {
-        "value": -2
+        "value": 0
       },
       "adv_ge28ylm26r9p|adv_xsny2mf20dv6": {
-        "value": 17
+        "value": 20
       },
       "adv_dw6dpd5sh7jc|adv_efelp4o01ks4": {
         "value": 6
@@ -1622,13 +1591,13 @@
         "value": 12
       },
       "adv_agorapai6eaw|adv_efelp4o01ks4": {
-        "value": 15
+        "value": 17
       },
       "adv_efelp4o01ks4|adv_nmu0cr5oezjw": {
-        "value": 27
+        "value": 30.137
       },
       "adv_ge28ylm26r9p|adv_vir5cr755mej": {
-        "value": 6
+        "value": 8
       },
       "adv_efelp4o01ks4|adv_vir5cr755mej": {
         "value": 19
@@ -1640,10 +1609,10 @@
         "value": 8
       },
       "adv_efelp4o01ks4|adv_hpzq2ixhvxtq": {
-        "value": 7
+        "value": 10.387
       },
       "adv_efelp4o01ks4|adv_xsny2mf20dv6": {
-        "value": 36
+        "value": 38
       },
       "adv_ge28ylm26r9p|adv_hpzq2ixhvxtq": {
         "value": 2
@@ -1653,6 +1622,21 @@
       },
       "adv_dvyb6kaxgy9l|adv_dw6dpd5sh7jc": {
         "value": 20
+      },
+      "adv_3yrkzbvzvfzu|adv_ge28ylm26r9p": {
+        "value": 10
+      },
+      "adv_3yrkzbvzvfzu|adv_dw6dpd5sh7jc": {
+        "value": 4
+      },
+      "adv_3yrkzbvzvfzu|adv_efelp4o01ks4": {
+        "value": 4.458
+      },
+      "adv_3yrkzbvzvfzu|adv_hpzq2ixhvxtq": {
+        "value": 14.25
+      },
+      "adv_3yrkzbvzvfzu|adv_nmu0cr5oezjw": {
+        "value": 2.25
       }
     },
     "hall": {
@@ -1667,58 +1651,33 @@
         "counting": 1,
         "larder": 1,
         "academy": 0
-      }
+      },
+      "builds": []
     },
     "league": {
       "playerTier": 5,
-      "round": 0,
-      "playerForm": [],
-      "playerStanding": {
-        "points": 0,
-        "position": 12,
-        "won": 0,
-        "lost": 0,
-        "played": 0
-      }
+      "round": 3,
+      "playerForm": [
+        "win",
+        "win",
+        "win"
+      ],
+      "playerStanding": [
+        {
+          "points": 9,
+          "won": 3,
+          "lost": 0,
+          "drawn": 0,
+          "played": 3
+        }
+      ]
     },
     "tally": {
-      "delves": 21,
-      "cleared": 19,
-      "quests": 5
+      "delves": 25,
+      "cleared": 23,
+      "quests": 6
     },
-    "activeJobs": [
-      {
-        "id": "standdown_120",
-        "posting": {
-          "id": "standdown_120",
-          "kind": "expedition",
-          "title": "Descansa al cambio de año",
-          "blurb": "La casa está cerrada y su gente ha vuelto con quien la esperaba.",
-          "region": "ashen-marches",
-          "days": 4,
-          "danger": 0,
-          "seats": 11,
-          "postedDay": 120,
-          "expiresDay": 120,
-          "fee": 0
-        },
-        "sentDay": 120,
-        "returnsDay": 124,
-        "heroIds": [
-          "adv_xvecyci8knko",
-          "adv_vir5cr755mej",
-          "adv_xsny2mf20dv6",
-          "adv_hpzq2ixhvxtq",
-          "adv_agorapai6eaw",
-          "adv_ge28ylm26r9p",
-          "adv_dw6dpd5sh7jc",
-          "adv_dvyb6kaxgy9l",
-          "adv_nmu0cr5oezjw",
-          "adv_neqeupnrhpgg",
-          "adv_efelp4o01ks4"
-        ]
-      }
-    ],
+    "activeJobs": [],
     "meetings": [
       {
         "day": 8,
@@ -1803,6 +1762,24 @@
         "oppName": "El Cónclave Sagaz",
         "result": "loss",
         "kind": "crucible"
+      },
+      {
+        "day": 128,
+        "oppName": "El Pacto de Sal",
+        "result": "win",
+        "kind": "league"
+      },
+      {
+        "day": 138,
+        "oppName": "La Guardia de Hielo",
+        "result": "win",
+        "kind": "league"
+      },
+      {
+        "day": 148,
+        "oppName": "El Convento de Cenizaerial",
+        "result": "win",
+        "kind": "league"
       }
     ],
     "questLog": [
@@ -1856,6 +1833,18 @@
         "heroNames": [
           "Luna",
           "Íñigo Guzmán"
+        ]
+      },
+      {
+        "id": "ql_ashen-marches_1_p0_120",
+        "day": 136,
+        "title": "El Morral a la Boca de la Sima",
+        "kind": "quest",
+        "region": "ashen-marches",
+        "outcome": "triumph",
+        "heroNames": [
+          "Íñigo Guzmán",
+          "Grosco del Puño de Piedra"
         ]
       }
     ],
