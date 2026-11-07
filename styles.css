@@ -1173,3 +1173,15 @@ body.reading-night .annual-event p,body.reading-night .annual-movement p,body.re
 .patrol-row.patrol-away{background:linear-gradient(90deg,rgba(182,137,69,.11),transparent 70%);}
 .patrol-row.patrol-away .patrol-name>strong:after{content:" · fuera";font-size:.7em;font-weight:400;color:#906e46;}
 @media(max-width:640px){.patrol-live-summary{gap:6px 12px;padding:12px;}.patrol-row.patrol-away .patrol-name>strong:after{content:"";}}
+
+/* Retratos oficiales renovados (Iligar y Grosco). El marco no recorta la pintura. */
+img[src*="iligar-retrato-v2.webp"],
+img[src*="grosco-retrato-v2.webp"]{
+  object-fit:contain !important;
+  object-position:center top !important;
+  background:#332d29;
+}
+.hero-card-portrait:has(img[src*="-retrato-v2.webp"]),
+.featured-image:has(img[src*="-retrato-v2.webp"]){
+  background:#332d29;
+}
