@@ -11,9 +11,10 @@ Preservar el canon y facilitar capítulos e imágenes incrementales sin reescrib
 
 Registrar un nuevo capítulo editorial previamente revisado:
 
+    node scripts/add-chapter.mjs --file /ruta/capitulo-aprobado.json --dry-run
     node scripts/add-chapter.mjs --file /ruta/capitulo-aprobado.json
 
-Requiere id, title, paragraphs y characterIds válidos. Rechaza sobrescrituras, no publica por sí mismo y solo modifica index.html y un archivo nuevo.
+Requiere id, chapter, title, years, lead, source, paragraphs, facts y characterIds válidos. Valida las atribuciones mediante speakers y acepta IDs de secundarios declarados en literaryCharacters. Rechaza sobrescrituras, no publica por sí mismo y solo modifica index.html y un archivo nuevo.
 
 ## Motor editorial y continuidad
 - novel/editorial-policy.js: prompt, guía y formatos para la Mesa del Escriba.
@@ -39,9 +40,9 @@ No reutilizar IDs ni claves de recursos ya aprobados.
 
 ## Publicación y control
 1. Comparar el nuevo guardado (fase 2) y revisar cambios.
-2. Añadir nuevo capítulo o imagen sin tocar los anteriores.
-3. Ejecutar: node --test tests/*.test.mjs
-4. Abrir una PR y comprobar la vista previa de Cloudflare.
-5. Fusionar en main solo si pasa todas las pruebas y la revisión editorial.
+2. Añadir capítulo o imagen sin tocar los anteriores; prevalidar capítulos con --dry-run.
+3. Comprobar el índice con `node scripts/check-chapter-order.mjs` si se ha añadido una crónica.
+4. El CI de GitHub valida solamente archivos modificados; no ejecuta una batería de tests ni abre un navegador automáticamente.
+5. Publicar en `main` tras revisar el canon; Cloudflare despliega la versión por separado.
 
 No subir guardados originales ni contenido privado a un repositorio público.
