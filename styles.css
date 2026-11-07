@@ -987,3 +987,79 @@ body.reading-night .rel-simple-row:hover{background:linear-gradient(115deg,#3156
  .chapter-peek .latest-card{min-height:75px;padding:12px 6px}
 }
 @media(prefers-reduced-motion:reduce){.rel-simple-row{transition:none;transform:none!important}}
+
+
+/* E0023 · Crónicas: catálogo inverso e índice lateral permanente durante la lectura. */
+.chronicle-layout{display:grid;grid-template-columns:minmax(200px,236px) minmax(0,1fr);align-items:start;gap:21px;margin:8px 0 32px}
+.chronicle-main{min-width:0}
+.chronicle-index-side{position:sticky;top:84px;max-height:calc(100vh - 103px);max-height:calc(100dvh - 103px);display:flex;flex-direction:column;min-height:0;border:1px solid #c3a174;border-radius:10px;overflow:hidden;background:linear-gradient(160deg,#f5ebd9,#e8d7bb);box-shadow:0 7px 19px #533c2424}
+.chronicle-index-heading{flex:none;padding:18px 17px 15px;border-bottom:1px solid #c9af87;background:linear-gradient(150deg,#f8efdc,#e6d3b2)}
+.chronicle-index-heading strong{display:block;font:25px/1.15 var(--serif);color:#46331f;margin:7px 0}
+.chronicle-index-heading small{font:11px/1.4 var(--sans);color:#876f50}
+.chronicle-index-items{display:grid;grid-auto-rows:max-content;align-content:start;overflow-y:auto;overflow-x:hidden;min-height:0;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#b89b6b #eadbc4;padding:7px}
+.chronicle-index-item{display:flex;flex-direction:column;align-items:stretch;gap:5px;width:100%;min-width:0;text-align:left;background:transparent;border:1px solid transparent;border-bottom:1px solid #ceb99599;border-radius:6px;padding:11px 10px;color:#483a2c;transition:background .16s,border-color .16s}
+.chronicle-index-item:hover,.chronicle-index-item:focus-visible{background:#fff8e8;border-color:#bd9657;outline:none}
+.chronicle-index-item.is-current{background:#254b40;color:#f3e3c5;border-color:#b48c4a}
+.chronicle-index-label{font:750 10px/1.35 var(--sans);letter-spacing:.05em;text-transform:uppercase;opacity:.78;display:flex;align-items:center;gap:7px;flex-wrap:wrap}
+.chronicle-index-title{font:17px/1.22 var(--serif);overflow-wrap:break-word}
+.chronicle-new-label{font:700 9px/1 var(--sans);background:#b78946;color:#fff8e9;padding:4px 5px;border-radius:3px;letter-spacing:0}
+.chronicle-index-mobile{display:none}
+.chronicle-feature{display:grid;grid-template-columns:minmax(130px,190px) minmax(0,1fr);gap:24px;align-items:center;background:linear-gradient(115deg,#f7eddc,#e6d1af);border:1px solid #c4a074;border-radius:11px;padding:23px;box-shadow:0 8px 23px #64432526}
+.chronicle-feature-art{max-width:190px;justify-self:center}
+.chronicle-feature-art img{display:block;width:100%;max-height:235px;object-fit:contain;border-radius:6px;filter:drop-shadow(0 5px 10px #5942274a)}
+.chronicle-feature-meta{font:750 12px/1.35 var(--sans);color:#906e43;margin:11px 0 6px}
+.chronicle-feature h2{font:clamp(28px,3vw,42px)/1.08 var(--serif);color:#3f2d1d;margin:0 0 14px;overflow-wrap:break-word}
+.chronicle-feature p{font:16px/1.62 var(--serif);color:#755b43;margin:0 0 20px;max-width:52ch}
+.chronicle-recents{margin-top:28px}
+.chronicle-recents-heading{margin:0 0 14px}
+.chronicle-recents-heading h3{font:30px/1.12 var(--serif);margin:5px 0;color:#46331f}
+.chronicle-recents-heading p{font:14px/1.4 var(--sans);color:#7c6b56;margin:5px 0}
+.chronicle-recent-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.chronicle-recent-card{min-width:0;display:flex;flex-direction:column;align-items:stretch;text-align:left;min-height:160px;padding:17px 18px;border:1px solid #d1b994;border-top:3px solid #b98b4a;border-radius:8px;background:#faf3e6;color:#453321;box-shadow:0 5px 14px #614a2920}
+.chronicle-recent-card:hover,.chronicle-recent-card:focus-visible{border-color:#956839;background:#fff9ec;outline:2px solid #bd9657;outline-offset:1px}
+.chronicle-recent-number{font:750 10px/1.4 var(--sans);letter-spacing:.045em;color:#947044;text-transform:uppercase}
+.chronicle-recent-card strong{display:block;font:23px/1.14 var(--serif);margin:8px 0}
+.chronicle-recent-lead{font:14px/1.52 var(--serif);color:#776957;flex:1}
+.chronicle-recent-link{font:750 11px/1.4 var(--sans);color:#88613f;margin-top:15px}
+.chronicle-layout-reader .reader{min-width:0}
+.chronicle-layout-reader .tool-row{margin-top:0}
+body.reading-night .chronicle-index-side,body.reading-night .chronicle-feature,body.reading-night .chronicle-recent-card{background:linear-gradient(145deg,#29483d,#203a34);border-color:#9c8055;color:#eedfbe}
+body.reading-night .chronicle-index-heading{background:linear-gradient(145deg,#365348,#274237);border-bottom-color:#8c7656}
+body.reading-night .chronicle-index-heading strong,body.reading-night .chronicle-feature h2,body.reading-night .chronicle-recents-heading h3,body.reading-night .chronicle-recent-card strong{color:#f5e4c4}
+body.reading-night .chronicle-index-heading small,body.reading-night .chronicle-index-item,body.reading-night .chronicle-feature p,body.reading-night .chronicle-feature-meta,body.reading-night .chronicle-recent-lead,body.reading-night .chronicle-recents-heading p{color:#e0cfac}
+body.reading-night .chronicle-index-item.is-current{background:#c7a16a;color:#241b12}
+body.reading-night .chronicle-index-item:hover,body.reading-night .chronicle-recent-card:hover{background:#3a5b4a}
+body.reading-night .chronicle-index-item.is-current:hover{background:#c7a16a}
+@media(max-width:1250px){
+ .chronicle-layout{grid-template-columns:minmax(0,1fr);gap:15px}
+ .chronicle-index-side{display:none}
+ .chronicle-index-mobile{display:block;border:1px solid #b9915b;background:#f2e3c8;border-radius:9px;overflow:hidden}
+ .chronicle-index-mobile summary{display:flex;justify-content:space-between;align-items:center;gap:12px;cursor:pointer;list-style:none;padding:15px 17px;font:700 17px/1.25 var(--serif);color:#4a3724}
+ .chronicle-index-mobile summary::-webkit-details-marker{display:none}
+ .chronicle-index-mobile summary span{font:700 11px var(--sans);color:#886846}
+ .chronicle-index-mobile[open] summary{border-bottom:1px solid #ccb084}
+ .chronicle-index-mobile .chronicle-index-items{max-height:45vh;max-height:45dvh;overflow-y:auto;padding:8px}
+ body.reading-night .chronicle-index-mobile{background:#2b4a40;border-color:#a68b5d}
+ body.reading-night .chronicle-index-mobile summary,body.reading-night .chronicle-index-mobile summary span{color:#f1ddb7}
+}
+@media(max-width:700px){
+ .chronicle-feature{grid-template-columns:105px minmax(0,1fr);gap:14px;padding:16px}
+ .chronicle-feature-art{max-width:105px}
+ .chronicle-feature-art img{max-height:170px}
+ .chronicle-feature h2{font-size:26px}
+ .chronicle-feature p{font-size:14px;line-height:1.48}
+ .chronicle-feature .btn{font-size:12px}
+ .chronicle-recent-grid{grid-template-columns:1fr}
+ .chronicle-recent-card{min-height:0}
+}
+@media(max-width:420px){
+ .chronicle-feature{grid-template-columns:1fr}
+ .chronicle-feature-art{max-width:115px;justify-self:start}
+ .chronicle-feature-copy{min-width:0}
+ .chronicle-index-mobile summary{font-size:15px}
+}
+@media print{
+ .chronicle-layout{display:block!important}
+ .chronicle-index-side,.chronicle-index-mobile,.chronicle-recents{display:none!important}
+ .chronicle-feature{break-inside:avoid;box-shadow:none}
+}
