@@ -2,12 +2,12 @@
   "format": "corona-approved-save-projection/v1",
   "projectionNote": "SOLO CAMPOS DE DIFERENCIA APROBADOS. Guardado original no incluido; no contiene atributos ocultos ni todos los historiales.",
   "version": 26,
-  "sig": "1ds2t12.1olc7a4",
+  "sig": "zvr7hi.t0efk6",
   "guild": {
     "name": "La Corona de Barro",
-    "day": 84,
-    "gold": 1750,
-    "renown": 116,
+    "day": 90,
+    "gold": 1498,
+    "renown": 112,
     "roster": [
       {
         "id": "adv_xvecyci8knko",
@@ -17,7 +17,7 @@
         "morale": 100,
         "condition": 100,
         "stress": 11,
-        "fatigue": 12,
+        "fatigue": 8,
         "oathWage": 19,
         "post": "secondWatch",
         "away": {
@@ -148,13 +148,19 @@
         "id": "adv_vir5cr755mej",
         "name": "Belzar de la Ofrenda",
         "level": 6,
-        "experience": 62,
-        "morale": 74,
-        "condition": 100,
-        "stress": 19,
-        "fatigue": 15,
+        "experience": 66,
+        "morale": 71,
+        "condition": 65,
+        "stress": 20,
+        "fatigue": 23,
         "oathWage": 24,
         "post": "vanguard",
+        "away": {
+          "jobId": "delve_88",
+          "returnsDay": 92,
+          "delve": true,
+          "region": "ashen-marches"
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 10,
@@ -202,40 +208,40 @@
           },
           "flaw": "gambles"
         },
-        "delves": 7,
+        "delves": 8,
         "record": {
           "since": 1,
           "all": {
-            "n": 7,
-            "dealt": 1598,
+            "n": 8,
+            "dealt": 1662,
             "healed": 0,
-            "faced": 7802,
-            "kills": 6,
-            "downed": 0,
-            "swings": 529,
-            "hits": 507,
-            "crits": 31,
-            "taken": 3128,
-            "blocked": 95,
+            "faced": 8827,
+            "kills": 7,
+            "downed": 1,
+            "swings": 562,
+            "hits": 538,
+            "crits": 32,
+            "taken": 3571,
+            "blocked": 99,
             "heroic": 0
           },
           "trials": {
-            "n": 4,
-            "dealt": 925,
+            "n": 5,
+            "dealt": 989,
             "healed": 0,
-            "faced": 7414,
-            "kills": 3,
-            "downed": 0,
-            "swings": 278,
-            "hits": 269,
-            "crits": 11,
-            "taken": 2261,
-            "blocked": 93,
+            "faced": 8439,
+            "kills": 4,
+            "downed": 1,
+            "swings": 311,
+            "hits": 300,
+            "crits": 12,
+            "taken": 2704,
+            "blocked": 97,
             "heroic": 0
           }
         },
         "currentAbility": 117,
-        "potentialAbility": 117,
+        "potentialAbility": 124,
         "abilityStars": 3,
         "potentialStars": 3,
         "equipment": {
@@ -266,6 +272,19 @@
             "value": 81,
             "tier": 1,
             "quality": 1.0906828651204705
+          },
+          "trinket": {
+            "id": "it_evt_4_522878843_3091",
+            "name": "Nudo de Hoja de Rey",
+            "slot": "trinket",
+            "rarity": "common",
+            "mods": {
+              "hpPct": 0.03815141356363893
+            },
+            "counters": "cursed",
+            "value": 71,
+            "tier": 3,
+            "quality": 1.059761487878859
           }
         }
       },
@@ -296,7 +315,7 @@
           "anticipation": 13,
           "teamwork": 9,
           "leadership": 7,
-          "concentration": 11,
+          "concentration": 12,
           "aggression": 9,
           "discipline": 7,
           "resolve": 9,
@@ -359,7 +378,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 85.92000000000007,
+        "currentAbility": 87.6400000000001,
         "potentialAbility": 136,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -397,13 +416,19 @@
         "id": "adv_hpzq2ixhvxtq",
         "name": "Velasco Rivadeneira",
         "level": 6,
-        "experience": 56,
-        "morale": 80,
-        "condition": 83,
-        "stress": 39,
-        "fatigue": 27,
+        "experience": 60,
+        "morale": 77,
+        "condition": 65,
+        "stress": 34,
+        "fatigue": 29,
         "oathWage": 26,
         "post": "vanguard",
+        "away": {
+          "jobId": "delve_88",
+          "returnsDay": 92,
+          "delve": true,
+          "region": "ashen-marches"
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 18,
@@ -451,42 +476,42 @@
           },
           "flaw": "contrary"
         },
-        "delves": 8,
+        "delves": 9,
         "record": {
           "since": 0,
           "all": {
-            "n": 8,
-            "dealt": 12338,
+            "n": 9,
+            "dealt": 13071,
             "healed": 0,
-            "faced": 620,
-            "kills": 60,
-            "downed": 1,
-            "swings": 285,
-            "hits": 282,
-            "crits": 73,
-            "taken": 784,
-            "blocked": 1,
+            "faced": 840,
+            "kills": 66,
+            "downed": 2,
+            "swings": 304,
+            "hits": 301,
+            "crits": 80,
+            "taken": 988,
+            "blocked": 2,
             "heroic": 0
           },
           "trials": {
-            "n": 5,
-            "dealt": 7118,
+            "n": 6,
+            "dealt": 7851,
             "healed": 0,
-            "faced": 444,
-            "kills": 34,
-            "downed": 1,
-            "swings": 148,
-            "hits": 148,
-            "crits": 48,
-            "taken": 511,
-            "blocked": 1,
+            "faced": 664,
+            "kills": 40,
+            "downed": 2,
+            "swings": 167,
+            "hits": 167,
+            "crits": 55,
+            "taken": 715,
+            "blocked": 2,
             "heroic": 0
           }
         },
-        "currentAbility": 121.12,
-        "potentialAbility": 128,
+        "currentAbility": 121.60000000000002,
+        "potentialAbility": 137,
         "abilityStars": 3,
-        "potentialStars": 3,
+        "potentialStars": 3.5,
         "equipment": {
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_4_9541",
@@ -534,13 +559,19 @@
         "id": "adv_agorapai6eaw",
         "name": "Jaro",
         "level": 7,
-        "experience": 77,
-        "morale": 98,
-        "condition": 83,
-        "stress": 39,
-        "fatigue": 33,
+        "experience": 81,
+        "morale": 92,
+        "condition": 65,
+        "stress": 34,
+        "fatigue": 32,
         "oathWage": 27,
         "post": "vanguard",
+        "away": {
+          "jobId": "delve_88",
+          "returnsDay": 92,
+          "delve": true,
+          "region": "ashen-marches"
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 17,
@@ -594,42 +625,42 @@
           },
           "flaw": "the-martyr"
         },
-        "delves": 10,
+        "delves": 11,
         "record": {
           "since": 0,
           "all": {
-            "n": 10,
-            "dealt": 14738,
+            "n": 11,
+            "dealt": 15523,
             "healed": 0,
-            "faced": 516,
-            "kills": 74,
-            "downed": 1,
-            "swings": 328,
-            "hits": 324,
-            "crits": 68,
-            "taken": 897,
+            "faced": 694,
+            "kills": 76,
+            "downed": 2,
+            "swings": 341,
+            "hits": 337,
+            "crits": 71,
+            "taken": 1023,
             "blocked": 0,
             "heroic": 1
           },
           "trials": {
-            "n": 7,
-            "dealt": 9726,
+            "n": 8,
+            "dealt": 10511,
             "healed": 0,
-            "faced": 446,
-            "kills": 52,
-            "downed": 1,
-            "swings": 210,
-            "hits": 207,
-            "crits": 46,
-            "taken": 687,
+            "faced": 624,
+            "kills": 54,
+            "downed": 2,
+            "swings": 223,
+            "hits": 220,
+            "crits": 49,
+            "taken": 813,
             "blocked": 0,
             "heroic": 1
           }
         },
-        "currentAbility": 111.12,
-        "potentialAbility": 123,
+        "currentAbility": 111.60000000000002,
+        "potentialAbility": 137,
         "abilityStars": 3,
-        "potentialStars": 3,
+        "potentialStars": 3.5,
         "equipment": {
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_3_9680",
@@ -763,7 +794,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 78.16000000000008,
+        "currentAbility": 78.88000000000011,
         "potentialAbility": 143,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -854,7 +885,7 @@
           },
           "flaw": "the-grudge"
         },
-        "currentAbility": 70.5200000000001,
+        "currentAbility": 71.24000000000012,
         "potentialAbility": 137,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -924,7 +955,7 @@
           "strength": 11,
           "agility": 7,
           "stamina": 6,
-          "vitality": 8,
+          "vitality": 9,
           "speed": 7,
           "reflexes": 7,
           "threat": 11,
@@ -980,7 +1011,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 78.56000000000006,
+        "currentAbility": 80,
         "potentialAbility": 140,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -1018,12 +1049,18 @@
         "id": "adv_nmu0cr5oezjw",
         "name": "Yvaldo Guardapuerto",
         "level": 6,
-        "experience": 56,
-        "morale": 100,
-        "condition": 83,
-        "stress": 39,
-        "fatigue": 46,
+        "experience": 60,
+        "morale": 97,
+        "condition": 65,
+        "stress": 34,
+        "fatigue": 40,
         "post": "vanguard",
+        "away": {
+          "jobId": "delve_88",
+          "returnsDay": 92,
+          "delve": true,
+          "region": "ashen-marches"
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -1072,39 +1109,39 @@
           },
           "flaw": "the-bottle"
         },
-        "delves": 10,
+        "delves": 11,
         "record": {
           "since": 1,
           "all": {
-            "n": 10,
-            "dealt": 2110,
-            "healed": 6043,
-            "faced": 2169,
+            "n": 11,
+            "dealt": 2199,
+            "healed": 6271,
+            "faced": 2273,
             "kills": 10,
-            "downed": 1,
-            "swings": 252,
-            "hits": 213,
+            "downed": 2,
+            "swings": 264,
+            "hits": 223,
             "crits": 22,
-            "taken": 1321,
+            "taken": 1465,
             "blocked": 6,
             "heroic": 0
           },
           "trials": {
-            "n": 8,
-            "dealt": 1710,
-            "healed": 4086,
-            "faced": 871,
+            "n": 9,
+            "dealt": 1799,
+            "healed": 4314,
+            "faced": 975,
             "kills": 5,
-            "downed": 1,
-            "swings": 191,
-            "hits": 162,
+            "downed": 2,
+            "swings": 203,
+            "hits": 172,
             "crits": 17,
-            "taken": 746,
+            "taken": 890,
             "blocked": 0,
             "heroic": 0
           }
         },
-        "currentAbility": 75.32000000000005,
+        "currentAbility": 75.80000000000007,
         "potentialAbility": 110,
         "abilityStars": 2,
         "potentialStars": 3,
@@ -1140,17 +1177,16 @@
             "quality": 1.1588557744398713
           },
           "trinket": {
-            "id": "it_nat20_267829147_8523",
-            "name": "Templado Cuerno de Caza",
+            "id": "it_fk_s_founding-1793874176816-909579_2_2979_1109",
+            "name": "Colgante Vital",
             "slot": "trinket",
-            "rarity": "rare",
+            "rarity": "common",
             "mods": {
-              "accuracy": 2,
-              "attackPct": 0.05501267029205337
+              "hpPct": 0.09270374867250211
             },
-            "value": 117,
-            "tier": 3,
-            "quality": 0.9168778382008895
+            "value": 40,
+            "tier": 1,
+            "quality": 1.0300416519166902
           }
         },
         "origin": "youth",
@@ -1164,7 +1200,7 @@
         "morale": 90,
         "condition": 100,
         "stress": 0,
-        "fatigue": 8,
+        "fatigue": 4,
         "post": "cp_1",
         "injury": null,
         "attributes": {
@@ -1252,7 +1288,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 62.519999999999946,
+        "currentAbility": 63.23999999999993,
         "potentialAbility": 86,
         "abilityStars": 1.5,
         "potentialStars": 2,
@@ -1293,9 +1329,9 @@
         "level": 5,
         "experience": 43,
         "morale": 100,
-        "condition": 83,
-        "stress": 15,
-        "fatigue": 28,
+        "condition": 100,
+        "stress": 1,
+        "fatigue": 15,
         "oathWage": 21,
         "post": "secondWatch",
         "injury": null,
@@ -1383,7 +1419,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 105.48000000000002,
+        "currentAbility": 106.20000000000005,
         "potentialAbility": 123,
         "abilityStars": 2.5,
         "potentialStars": 3,
@@ -1414,28 +1450,13 @@
             "value": 55,
             "tier": 2,
             "quality": 1.0370915269013494
-          },
-          "trinket": {
-            "id": "it_fk_s_founding-1793874176816-909579_2_2979_1109",
-            "name": "Colgante Vital",
-            "slot": "trinket",
-            "rarity": "common",
-            "mods": {
-              "hpPct": 0.09270374867250211
-            },
-            "value": 40,
-            "tier": 1,
-            "quality": 1.0300416519166902
           }
         },
         "origin": "recruited"
       }
     ],
     "fallen": [
-      {
-        "id": "adv_w21f5zhwf7li",
-        "name": "Brugo"
-      }
+      {}
     ],
     "bonds": {
       "adv_xsny2mf20dv6|adv_xvecyci8knko": {
@@ -1452,7 +1473,7 @@
         "value": 11
       },
       "adv_agorapai6eaw|adv_hpzq2ixhvxtq": {
-        "value": 58
+        "value": 69
       },
       "adv_agorapai6eaw|adv_xsny2mf20dv6": {
         "value": 27,
@@ -1475,7 +1496,7 @@
         "value": 3
       },
       "adv_nmu0cr5oezjw|adv_vir5cr755mej": {
-        "value": 42
+        "value": 43
       },
       "adv_neqeupnrhpgg|adv_nmu0cr5oezjw": {
         "value": 0
@@ -1487,10 +1508,10 @@
         "value": 4
       },
       "adv_agorapai6eaw|adv_nmu0cr5oezjw": {
-        "value": 0
+        "value": 22
       },
       "adv_hpzq2ixhvxtq|adv_nmu0cr5oezjw": {
-        "value": -8
+        "value": -6
       },
       "adv_dvyb6kaxgy9l|adv_xsny2mf20dv6": {
         "value": 26
@@ -1502,7 +1523,7 @@
         "value": 2
       },
       "adv_agorapai6eaw|adv_vir5cr755mej": {
-        "value": -21
+        "value": -19
       },
       "adv_agorapai6eaw|adv_dvyb6kaxgy9l": {
         "value": 1
@@ -1547,13 +1568,13 @@
         "value": -2
       },
       "adv_ge28ylm26r9p|adv_xsny2mf20dv6": {
-        "value": 10
+        "value": 12
       },
       "adv_dw6dpd5sh7jc|adv_efelp4o01ks4": {
         "value": 4
       },
       "adv_hpzq2ixhvxtq|adv_vir5cr755mej": {
-        "value": 27
+        "value": 28
       },
       "adv_efelp4o01ks4|adv_xvecyci8knko": {
         "value": 9
@@ -1578,6 +1599,9 @@
       },
       "adv_efelp4o01ks4|adv_hpzq2ixhvxtq": {
         "value": 1
+      },
+      "adv_efelp4o01ks4|adv_xsny2mf20dv6": {
+        "value": 2
       }
     },
     "hall": {
@@ -1586,7 +1610,7 @@
         "infirmary": 1,
         "training": 1,
         "tavern": 0,
-        "armoury": 0,
+        "armoury": 1,
         "stonehouse": 0,
         "beacon": 0,
         "counting": 1,
@@ -1596,7 +1620,7 @@
     },
     "league": {
       "playerTier": 6,
-      "round": 8,
+      "round": 9,
       "playerForm": [
         "win",
         "win",
@@ -1605,20 +1629,21 @@
         "win",
         "win",
         "win",
+        "loss",
         "loss"
       ],
       "playerStanding": [
         {
           "points": 21,
           "won": 7,
-          "lost": 1,
+          "lost": 2,
           "drawn": 0,
-          "played": 8
+          "played": 9
         }
       ]
     },
     "tally": {
-      "delves": 15,
+      "delves": 16,
       "cleared": 14,
       "quests": 4
     },
@@ -1693,6 +1718,13 @@
         "oppName": "El Convento de Cenizaerial",
         "result": "loss",
         "kind": "league"
+      },
+      {
+        "day": 88,
+        "oppId": "lg_t6_3_1838",
+        "oppName": "La Cofradía de Azulhondo",
+        "result": "loss",
+        "kind": "league"
       }
     ],
     "questLog": [
@@ -1752,6 +1784,18 @@
       }
     ],
     "goldLog": [
+      {
+        "day": 90,
+        "kind": "payroll",
+        "delta": -415,
+        "gold": 1498
+      },
+      {
+        "day": 88,
+        "kind": "other",
+        "delta": 163,
+        "gold": 1913
+      },
       {
         "day": 84,
         "kind": "payroll",
@@ -2088,6 +2132,41 @@
     ],
     "yearBeats": [
       {
+        "id": "n_bond_88_fixture-1-9_0",
+        "day": 88,
+        "text": "Jaro y Velasco han empezado a hacer la misma guardia. Ninguno de los dos lo planeó."
+      },
+      {
+        "id": "n_bond_88_fixture-1-9_1",
+        "day": 88,
+        "text": "Jaro y Yvaldo volvieron a casa riéndose de algo que nadie más entendía."
+      },
+      {
+        "id": "n_story_88_fixture-1-9_0",
+        "day": 88,
+        "text": "Jaro se enfrentó a una tumba que resonaba y se llevó su ajuar."
+      },
+      {
+        "id": "n_story_88_fixture-1-9_1",
+        "day": 88,
+        "text": "Sea lo que sea lo que permite a algunas personas alejarse andando de un golpe así, Belzar de la Ofrenda no lo tiene."
+      },
+      {
+        "id": "n_story_88_fixture-1-9_2",
+        "day": 88,
+        "text": "Yvaldo Guardapuerto cayó pronto y cayó fuerte, y la casa se va acostumbrando a esa imagen."
+      },
+      {
+        "id": "n_bondturn_84_friend_VelascoUlf",
+        "day": 84,
+        "text": "Velasco y Ulf ya son amistades. Las amistades animan al grupo en el que luchan, y se lloran si una cae."
+      },
+      {
+        "id": "n_bond_home_84_adv_agorapai6eaw_adv_ge28ylm26r9p",
+        "day": 84,
+        "text": "Jaro y Íñigo se quedaron hasta tarde con un juego en el que eran igual de torpes."
+      },
+      {
         "id": "n_bondturn_78_friend_IligarYvaldo",
         "day": 78,
         "text": "Iligar y Yvaldo ya son amistades. Las amistades animan al grupo en el que luchan, y se lloran si una cae."
@@ -2121,21 +2200,9 @@
         "id": "n_vow_75_adv_efelp4o01ks4",
         "day": 75,
         "text": "🕊️ Iligar el Rompehuesos cumple un voto. Respondió a la llamada de Las Marcas Cenicientas y volvió a casa, y al que dejó en su tierra no se le acabó dejando sin respuesta."
-      },
-      {
-        "id": "n_bond_home_72_adv_xsny2mf20dv6_adv_ge28ylm26r9p",
-        "day": 72,
-        "text": "Ulf y Íñigo compartieron las comidas, y se quedaron a la mesa mucho después de que se fuera el resto."
       }
     ],
-    "hallBuilds": [
-      {
-        "target": "armoury",
-        "completeDay": 85,
-        "cost": 600,
-        "startDay": 75
-      }
-    ],
+    "hallBuilds": [],
     "heroNotes": {
       "adv_ge28ylm26r9p": "Será un gran mago dps, ahora tiene que viajar para aprender mas.",
       "adv_agorapai6eaw": "Le gusta liderar",
