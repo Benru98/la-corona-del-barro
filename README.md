@@ -58,3 +58,13 @@ Un cambio en `data/campaign.js` debe modificar también `home/dispatches.js` en 
 - No se inventan resultados mecánicos ni se generan imágenes automáticamente.
 
 Ver `docs/PROTOCOLO_DOS_JSON.md`.
+
+## Actualizaciones rápidas (formato v2)
+
+El JSON exportado por la Mesa incluye solo el número y extensión de crónicas, tus instrucciones y noticias solicitadas; ya no incrusta Motor 3.1, todas las fichas, crónicas y vínculos. El contexto vigente se consulta en GitHub.
+
+```bash
+node scripts/prepare-next.mjs --save /ruta/guardado-nuevo.json --out /tmp/corona-propuesta
+```
+
+Este comando prepara **borradores no publicados** de campaña, baseline, proyección y un `resumen.json` para la parte creativa. Nunca sube el guardado bruto ni inventa crónicas: hay que revisar muertes, altas, nuevos vínculos, sucesos y completar Gaceta/edición antes de publicar en un único commit. No añade pruebas automáticas.

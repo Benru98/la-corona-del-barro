@@ -9,8 +9,8 @@
 
 ## Para el asistente
 
-- El guardado nuevo determina los hechos. El JSON del encargo recoge deseos del usuario, último libro publicado, el Motor 3.1 y el historial de noticias: su resumen puede quedar obsoleto, de modo que hay que contrastarlo con el HEAD actual del repositorio conectado.
-- Recuperar de GitHub `data/campaign.js`, `data/save-baseline.json`, `data/approved-save-projection.json`, `novel/continuity.js`, `novel/relationships.js`, índice de capítulos, `home/dispatches.js` y archivos relacionados.
+- El guardado nuevo determina los hechos. El JSON del encargo recoge deseos del usuario, último libro publicado, una referencia a las reglas de GitHub: su resumen puede quedar obsoleto, de modo que hay que contrastarlo con el HEAD actual del repositorio conectado.
+- Con checkout actualizado ejecutar `node scripts/prepare-next.mjs --save /ruta/nuevo.json --out /tmp/corona-E0025` para preparar borradores mecánicos y resumen sin tocar producción. Si solo se dispone del conector GitHub, se aplica ese mismo contrato sin afirmar que el script se ha ejecutado. Releer continuidad y Gaceta desde GitHub, no desde el encargo.
 - Comparar cambios por ID estable: fallecidos, nuevos integrantes, incidencias, relaciones mecánicas, encargos, liga, economía, sucesos. Documentar y validar antes de modificar datos. Nunca inventar causas o resultados.
 - Actualizar canon literario y crear la cantidad de capítulos solicitados. El Motor 3.1 permite escenas cotidianas autónomas: no convertir el JSON en una recapitulación.
 - Abrir **un nuevo número de Gaceta** al inicio de `HOUSE_DISPATCHES.issues`, conservar anteriores y actualizar `latestDay` y `latestEdition` al estado aprobado. Crear noticias originales (preferencia 1–3) que pueden tratar de Villorio, otros gremios o rumores. Etiquetar como `game`, `literary` o `fiction`; evitar noticias repetidas. Si son rumores inventados, no elevarlos a hechos mecánicos.
