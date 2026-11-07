@@ -12,7 +12,7 @@
  function create(book){
   if(!book||!Array.isArray(book.characters))throw new Error('Campaña sin personajes');
   const chars=book.characters,byId=new Map(chars.map(c=>[c.id,c]));
-  const living=chars.filter(c=>!isFallen(book,c)),fallen=chars.filter(c=>isFallen(book,c))
+  const living=chars.filter(c=>!isFallen(book,c)&&c.status!=='retirada'),fallen=chars.filter(c=>isFallen(book,c))
     .sort((a,b)=>(deathOf(book,a)?.year||1)-(deathOf(book,b)?.year||1)||(deathOf(book,a)?.day||0)-(deathOf(book,b)?.day||0));
   const activeJobs=array(book.world?.activeJobs);
   const expedition=book.world?.activeExpedition;

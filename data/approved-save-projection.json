@@ -1,25 +1,30 @@
 {
   "format": "corona-approved-save-projection/v1",
-  "projectionNote": "SOLO CAMPOS DE DIFERENCIA APROBADOS. Guardado original no incluido; no contiene todos los historiales.",
+  "projectionNote": "Instantánea para comparar, no guardado original completo.",
   "version": 26,
-  "sig": "1obq182.rkdzfg",
+  "sig": "sk9j19.10bmbfb",
   "guild": {
     "name": "La Corona de Barro",
-    "day": 105,
-    "gold": 1751,
-    "renown": 170,
+    "day": 121,
+    "gold": 643,
+    "renown": 204,
     "roster": [
       {
         "id": "adv_xvecyci8knko",
         "name": "Luna",
-        "level": 3,
-        "experience": 26,
-        "morale": 98,
+        "level": 4,
+        "experience": 27,
+        "morale": 100,
         "condition": 100,
-        "stress": 42,
-        "fatigue": 34,
+        "stress": 0,
+        "fatigue": 0,
         "oathWage": 19,
         "post": "secondWatch",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -72,22 +77,22 @@
           },
           "flaw": "cant-sit-still"
         },
-        "delves": 6,
+        "delves": 7,
         "record": {
           "since": 28,
           "all": {
-            "n": 6,
-            "dealt": 7930,
+            "n": 7,
+            "dealt": 9032,
             "healed": 0,
-            "faced": 105,
-            "kills": 42,
+            "faced": 161,
+            "kills": 49,
             "downed": 0,
-            "swings": 287,
-            "hits": 239,
-            "crits": 23,
-            "taken": 146,
+            "swings": 321,
+            "hits": 269,
+            "crits": 27,
+            "taken": 187,
             "blocked": 1,
-            "heroic": 0
+            "heroic": 1
           },
           "trials": {
             "n": 4,
@@ -104,52 +109,55 @@
             "heroic": 0
           }
         },
-        "currentAbility": 126,
+        "currentAbility": 129,
         "potentialAbility": 198,
         "abilityStars": 3,
         "potentialStars": 5,
         "equipment": {
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_0_5985",
-            "name": "Templado Ballesta de asedio",
+            "name": "Templado Ballesta de asedio Reforjado",
             "slot": "weapon",
             "rarity": "rare",
             "mods": {
-              "attackPct": 0.18373766356904525
+              "attackPct": 0.2058
             },
             "weaponKind": "ranged",
             "favours": [
               "ranger"
             ],
-            "value": 70,
+            "value": 78,
             "tier": 1,
-            "quality": 0.9422444285592064
+            "quality": 0.9422444285592064,
+            "reforged": true
           },
           "armour": {
             "id": "it_fk_a_founding-1793874176816-909579_0_8029",
-            "name": "Templado Cota de Escamas",
+            "name": "Templado Cota de Escamas Reforjado",
             "slot": "armour",
             "rarity": "rare",
             "mods": {
-              "mitigation": 0.09063833983498625,
-              "hpPct": 0.09063833983498625
+              "mitigation": 0.1015,
+              "hpPct": 0.1015
             },
-            "value": 75,
+            "value": 84,
             "tier": 1,
-            "quality": 1.0070926648331806
+            "quality": 1.0070926648331806,
+            "reforged": true
           },
           "trinket": {
-            "id": "it_nat20_267829147_8523",
-            "name": "Templado Cuerno de Caza",
+            "id": "it_salvage_63_1_El Asedio de Huesolinde_7862",
+            "name": "Moneda del Jugador Reforjado",
             "slot": "trinket",
-            "rarity": "rare",
+            "rarity": "common",
             "mods": {
-              "accuracy": 2,
-              "attackPct": 0.05501267029205337
+              "critChance": 0.0372
             },
-            "value": 117,
-            "tier": 3,
-            "quality": 0.9168778382008895
+            "value": 81,
+            "tier": 6,
+            "quality": 0.6637232778593898,
+            "salvaged": true,
+            "reforged": true
           }
         }
       },
@@ -157,13 +165,18 @@
         "id": "adv_vir5cr755mej",
         "name": "Belzar de la Ofrenda",
         "level": 7,
-        "experience": 69,
-        "morale": 73,
+        "experience": 71,
+        "morale": 100,
         "condition": 100,
-        "stress": 36,
-        "fatigue": 24,
+        "stress": 0,
+        "fatigue": 0,
         "oathWage": 24,
         "post": "vanguard",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 10,
@@ -179,7 +192,7 @@
           "decisions": 9,
           "anticipation": 9,
           "teamwork": 9,
-          "leadership": 10,
+          "leadership": 11,
           "concentration": 10,
           "aggression": 10,
           "discipline": 10,
@@ -199,7 +212,8 @@
         },
         "traitIds": [
           "diligent",
-          "ash-hardened"
+          "ash-hardened",
+          "companionable"
         ],
         "stakes": {
           "conviction": "quiet-hand",
@@ -208,87 +222,80 @@
             "templateId": "bond-truefriend",
             "name": "Una Amistad Verdadera",
             "text": "No ha dejado entrar a nadie del todo, y medio desearía poder hacerlo.",
-            "resworn": true
+            "resworn": true,
+            "resolved": {
+              "line": "En algún sitio de la oscuridad, casi sin querer, dejó entrar a alguien del todo. Y aguantó.",
+              "day": 108
+            }
           },
           "flaw": "gambles"
         },
-        "delves": 10,
+        "delves": 11,
         "record": {
           "since": 1,
           "all": {
-            "n": 10,
-            "dealt": 2180,
+            "n": 11,
+            "dealt": 2283,
             "healed": 0,
-            "faced": 12664,
-            "kills": 10,
+            "faced": 13251,
+            "kills": 11,
             "downed": 1,
-            "swings": 783,
-            "hits": 755,
-            "crits": 38,
-            "taken": 4075,
-            "blocked": 167,
+            "swings": 833,
+            "hits": 801,
+            "crits": 39,
+            "taken": 4239,
+            "blocked": 179,
             "heroic": 1
           },
           "trials": {
-            "n": 6,
-            "dealt": 1130,
+            "n": 7,
+            "dealt": 1233,
             "healed": 0,
-            "faced": 9641,
-            "kills": 5,
+            "faced": 10228,
+            "kills": 6,
             "downed": 1,
-            "swings": 373,
-            "hits": 360,
-            "crits": 12,
-            "taken": 2998,
-            "blocked": 116,
+            "swings": 423,
+            "hits": 406,
+            "crits": 13,
+            "taken": 3162,
+            "blocked": 128,
             "heroic": 0
           }
         },
-        "currentAbility": 122.72000000000003,
+        "currentAbility": 124,
         "potentialAbility": 124,
         "abilityStars": 3,
         "potentialStars": 3,
         "equipment": {
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_5_2503",
-            "name": "Templado Hacha baluarte",
+            "name": "Templado Hacha baluarte Reforjado",
             "slot": "weapon",
             "rarity": "rare",
             "mods": {
-              "attackPct": 0.11255862303951289,
-              "blockChance": 0.11577458369778468,
-              "mitigation": 0.02894364592444617
+              "attackPct": 0.1261,
+              "blockChance": 0.1297,
+              "mitigation": 0.0324
             },
             "weaponKind": "melee",
-            "value": 79,
+            "value": 88,
             "tier": 1,
-            "quality": 1.071986886090599
+            "quality": 1.071986886090599,
+            "reforged": true
           },
           "armour": {
             "id": "it_fk_a_founding-1793874176816-909579_6_7423",
-            "name": "Templado Escudo de Roble",
+            "name": "Templado Escudo de Roble Reforjado",
             "slot": "armour",
             "rarity": "rare",
             "mods": {
-              "blockChance": 0.10203931272611952,
-              "mitigation": 0.020407862545223903
+              "blockChance": 0.1143,
+              "mitigation": 0.0229
             },
-            "value": 56,
+            "value": 63,
             "tier": 1,
-            "quality": 0.7558467609342188
-          },
-          "trinket": {
-            "id": "it_evt_4_522878843_3091",
-            "name": "Nudo de Hoja de Rey",
-            "slot": "trinket",
-            "rarity": "common",
-            "mods": {
-              "hpPct": 0.03815141356363893
-            },
-            "counters": "cursed",
-            "value": 71,
-            "tier": 3,
-            "quality": 1.059761487878859
+            "quality": 0.7558467609342188,
+            "reforged": true
           }
         }
       },
@@ -296,13 +303,18 @@
         "id": "adv_xsny2mf20dv6",
         "name": "Ulf Vallehondo",
         "level": 3,
-        "experience": 17,
+        "experience": 18,
         "morale": 100,
         "condition": 100,
-        "stress": 35,
-        "fatigue": 23,
+        "stress": 0,
+        "fatigue": 0,
         "oathWage": 15,
         "post": "secondWatch",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 2,
@@ -355,20 +367,20 @@
           },
           "flaw": "freezes-at-fork"
         },
-        "delves": 7,
+        "delves": 8,
         "record": {
           "since": 0,
           "all": {
-            "n": 7,
-            "dealt": 1119,
-            "healed": 3541,
-            "faced": 1756,
+            "n": 8,
+            "dealt": 1249,
+            "healed": 3974,
+            "faced": 1812,
             "kills": 5,
             "downed": 0,
-            "swings": 183,
-            "hits": 171,
-            "crits": 12,
-            "taken": 1095,
+            "swings": 204,
+            "hits": 190,
+            "crits": 14,
+            "taken": 1139,
             "blocked": 12,
             "heroic": 0
           },
@@ -387,68 +399,76 @@
             "heroic": 0
           }
         },
-        "currentAbility": 93.60000000000014,
+        "currentAbility": 96.60000000000014,
         "potentialAbility": 136,
         "abilityStars": 2.5,
         "potentialStars": 3.5,
         "equipment": {
           "armour": {
             "id": "it_drop_566407000_8933",
-            "name": "Vestiduras Guardianas",
+            "name": "Vestiduras Guardianas Reforjado",
             "slot": "armour",
             "rarity": "common",
             "mods": {
-              "healPct": 0.07360792895033956,
-              "hpPct": 0.03680396447516978
+              "healPct": 0.0824,
+              "hpPct": 0.0412
             },
-            "value": 54,
+            "value": 60,
             "tier": 2,
-            "quality": 1.0223323465324938
+            "quality": 1.0223323465324938,
+            "reforged": true
           },
           "weapon": {
             "id": "it_job_job_1_expedition_1032_triumph_1_1021",
-            "name": "Cetro de la misericordia",
+            "name": "Cetro de la misericordia Reforjado",
             "slot": "weapon",
             "rarity": "common",
             "mods": {
-              "attackPct": 0.06401214882486966,
-              "healPct": 0.035562304902705365
+              "attackPct": 0.0717,
+              "healPct": 0.0398
             },
             "weaponKind": "spell",
-            "value": 42,
+            "value": 47,
             "tier": 2,
-            "quality": 0.7902734422823414
+            "quality": 0.7902734422823414,
+            "reforged": true
           },
           "trinket": {
             "id": "it_minor_2_128366224_8396",
-            "name": "Reloj de Arena Agrietado",
+            "name": "Reloj de Arena Agrietado Reforjado",
             "slot": "trinket",
             "rarity": "rare",
             "mods": {
-              "critChance": 0.03
+              "critChance": 0.0336
             },
-            "value": 130
+            "value": 146,
+            "reforged": true
           }
         }
       },
       {
         "id": "adv_hpzq2ixhvxtq",
         "name": "Velasco Rivadeneira",
-        "level": 6,
-        "experience": 67,
-        "morale": 96,
+        "level": 7,
+        "experience": 69,
+        "morale": 100,
         "condition": 100,
-        "stress": 28,
-        "fatigue": 18,
+        "stress": 0,
+        "fatigue": 0,
         "oathWage": 26,
         "post": "vanguard",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 18,
           "marksmanship": 12,
           "power": 16,
           "spellcraft": 3,
-          "armorUse": 6,
+          "armorUse": 7,
           "parry": 10,
           "evasion": 11,
           "criticalStrike": 17,
@@ -485,107 +505,115 @@
             "kind": "war",
             "templateId": "war-songs",
             "name": "Bautizado en el Frente",
-            "text": "Se propone ser aquel de quien hablen las canciones cuando la coalición vuelva a casa."
+            "text": "Se propone ser aquel de quien hablen las canciones cuando la coalición vuelva a casa.",
+            "resworn": true
           },
           "flaw": "contrary"
         },
-        "delves": 10,
+        "delves": 11,
         "record": {
           "since": 0,
           "all": {
-            "n": 10,
-            "dealt": 14979,
+            "n": 11,
+            "dealt": 16254,
             "healed": 0,
-            "faced": 998,
-            "kills": 75,
+            "faced": 1007,
+            "kills": 84,
             "downed": 2,
-            "swings": 348,
-            "hits": 344,
-            "crits": 94,
-            "taken": 1174,
+            "swings": 380,
+            "hits": 376,
+            "crits": 103,
+            "taken": 1208,
             "blocked": 2,
             "heroic": 1
           },
           "trials": {
-            "n": 7,
-            "dealt": 9759,
+            "n": 8,
+            "dealt": 11034,
             "healed": 0,
-            "faced": 822,
-            "kills": 49,
+            "faced": 831,
+            "kills": 58,
             "downed": 2,
-            "swings": 211,
-            "hits": 210,
-            "crits": 69,
-            "taken": 901,
+            "swings": 243,
+            "hits": 242,
+            "crits": 78,
+            "taken": 935,
             "blocked": 2,
             "heroic": 1
           }
         },
-        "currentAbility": 130.56000000000006,
+        "currentAbility": 134.7600000000001,
         "potentialAbility": 142,
         "abilityStars": 3.5,
         "potentialStars": 3.5,
         "equipment": {
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_4_9541",
-            "name": "Fino Filo Afinado",
+            "name": "Fino Filo Afinado Reforjado",
             "slot": "weapon",
             "rarity": "rare",
             "mods": {
-              "attackPct": 0.16239175095688552,
-              "critChance": 0.048717525287065654
+              "attackPct": 0.1819,
+              "critChance": 0.0546
             },
             "weaponKind": "melee",
-            "value": 80,
+            "value": 90,
             "tier": 1,
-            "quality": 1.0826116730459034
+            "quality": 1.0826116730459034,
+            "reforged": true
           },
           "armour": {
             "id": "it_drop_714469858_4770",
-            "name": "Fino Cota de Tablillas Atada",
+            "name": "Fino Cota de Tablillas Atada Reforjado",
             "slot": "armour",
             "rarity": "rare",
             "mods": {
-              "healTakenPct": 0.18678338558413088,
-              "hpPct": 0.03502188479702454
+              "healTakenPct": 0.2092,
+              "hpPct": 0.0392
             },
-            "value": 99,
+            "value": 111,
             "tier": 3,
-            "quality": 0.7782641066005453
+            "quality": 0.7782641066005453,
+            "reforged": true
           },
           "trinket": {
-            "id": "it_salvage_63_1_El Asedio de Huesolinde_7862",
-            "name": "Moneda del Jugador",
+            "id": "it_job_job_1_expedition_1032_triumph_0_4472",
+            "name": "Fetiche de Corneja Carroñera Reforjado",
             "slot": "trinket",
             "rarity": "common",
             "mods": {
-              "critChance": 0.03318616389296949
+              "attackPct": 0.0815
             },
-            "value": 72,
-            "tier": 6,
-            "quality": 0.6637232778593898,
-            "salvaged": true
+            "value": 60,
+            "tier": 2,
+            "quality": 1.0100821381201968,
+            "reforged": true
           }
         }
       },
       {
         "id": "adv_agorapai6eaw",
         "name": "Jaro",
-        "level": 7,
-        "experience": 85,
-        "morale": 93,
+        "level": 8,
+        "experience": 87,
+        "morale": 100,
         "condition": 100,
-        "stress": 21,
-        "fatigue": 9,
+        "stress": 0,
+        "fatigue": 0,
         "oathWage": 27,
         "post": "vanguard",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 17,
           "marksmanship": 9,
           "power": 15,
           "spellcraft": 7,
-          "armorUse": 5,
+          "armorUse": 7,
           "parry": 9,
           "evasion": 10,
           "criticalStrike": 14,
@@ -632,81 +660,85 @@
           },
           "flaw": "the-martyr"
         },
-        "delves": 12,
+        "delves": 13,
         "record": {
           "since": 0,
           "all": {
-            "n": 12,
-            "dealt": 18034,
+            "n": 13,
+            "dealt": 19188,
             "healed": 0,
-            "faced": 726,
-            "kills": 83,
+            "faced": 787,
+            "kills": 89,
             "downed": 2,
-            "swings": 397,
-            "hits": 393,
-            "crits": 80,
-            "taken": 1143,
+            "swings": 423,
+            "hits": 419,
+            "crits": 84,
+            "taken": 1212,
             "blocked": 0,
             "heroic": 1
           },
           "trials": {
-            "n": 8,
-            "dealt": 10511,
+            "n": 9,
+            "dealt": 11665,
             "healed": 0,
-            "faced": 624,
-            "kills": 54,
+            "faced": 685,
+            "kills": 60,
             "downed": 2,
-            "swings": 223,
-            "hits": 220,
-            "crits": 49,
-            "taken": 813,
+            "swings": 249,
+            "hits": 246,
+            "crits": 53,
+            "taken": 882,
             "blocked": 0,
             "heroic": 1
           }
         },
-        "currentAbility": 115.92000000000007,
+        "currentAbility": 120.12000000000012,
         "potentialAbility": 125,
         "abilityStars": 3,
         "potentialStars": 3,
         "equipment": {
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_3_9680",
-            "name": "Templado Bardiche",
+            "name": "Templado Bardiche Reforjado",
             "slot": "weapon",
             "rarity": "rare",
             "mods": {
-              "attackPct": 0.10704054121859373,
-              "accuracy": 3
+              "attackPct": 0.1199,
+              "accuracy": 4
             },
             "weaponKind": "melee",
-            "value": 66,
+            "value": 74,
             "tier": 1,
-            "quality": 0.8920045101549476
+            "quality": 0.8920045101549476,
+            "reforged": true
           },
           "armour": {
             "id": "it_fk_a_founding-1793874176816-909579_5_7388",
-            "name": "Fino Grebas de Piel de Foca",
+            "name": "Fino Grebas de Piel de Foca Reforjado",
             "slot": "armour",
             "rarity": "rare",
             "mods": {
-              "mitigation": 0.061517952866619444
+              "mitigation": 0.0689
             },
             "counters": "flooded",
-            "value": 84,
+            "value": 94,
             "tier": 1,
-            "quality": 1.1392213493818417
+            "quality": 1.1392213493818417,
+            "reforged": true
           },
           "trinket": {
-            "id": "it_job_job_1_expedition_1032_triumph_0_4472",
-            "name": "Fetiche de Corneja Carroñera",
+            "id": "it_nat20_267829147_8523",
+            "name": "Templado Cuerno de Caza Reforjado",
             "slot": "trinket",
-            "rarity": "common",
+            "rarity": "rare",
             "mods": {
-              "attackPct": 0.07272591394465416
+              "accuracy": 3,
+              "attackPct": 0.0616
             },
-            "value": 54,
-            "tier": 2,
-            "quality": 1.0100821381201968
+            "value": 131,
+            "tier": 3,
+            "quality": 0.9168778382008895,
+            "reforged": true
           }
         },
         "lastingMark": {
@@ -718,13 +750,18 @@
         "id": "adv_ge28ylm26r9p",
         "name": "Íñigo Guzmán",
         "level": 2,
-        "experience": 8,
-        "morale": 88,
+        "experience": 9,
+        "morale": 100,
         "condition": 100,
         "stress": 0,
         "fatigue": 0,
         "oathWage": 14,
         "post": "secondWatch",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 1,
@@ -773,20 +810,20 @@
           },
           "flaw": "keeps-score"
         },
-        "delves": 1,
+        "delves": 2,
         "record": {
           "since": 44,
           "all": {
-            "n": 1,
-            "dealt": 1225,
+            "n": 2,
+            "dealt": 1902,
             "healed": 0,
-            "faced": 0,
-            "kills": 5,
+            "faced": 56,
+            "kills": 11,
             "downed": 0,
-            "swings": 50,
-            "hits": 40,
-            "crits": 2,
-            "taken": 34,
+            "swings": 84,
+            "hits": 67,
+            "crits": 3,
+            "taken": 88,
             "blocked": 0,
             "heroic": 0
           },
@@ -805,36 +842,38 @@
             "heroic": 0
           }
         },
-        "currentAbility": 81.68000000000018,
+        "currentAbility": 84.68000000000018,
         "potentialAbility": 143,
         "abilityStars": 2,
         "potentialStars": 3.5,
         "equipment": {
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_6_4732",
-            "name": "Templado Cetro de basalto",
+            "name": "Templado Cetro de basalto Reforjado",
             "slot": "weapon",
             "rarity": "rare",
             "mods": {
-              "attackPct": 0.23711210496257992
+              "attackPct": 0.2656
             },
             "weaponKind": "spell",
-            "value": 90,
+            "value": 101,
             "tier": 1,
-            "quality": 1.215959512628615
+            "quality": 1.215959512628615,
+            "reforged": true
           },
           "armour": {
             "id": "it_fk_a_founding-1793874176816-909579_4_4218",
-            "name": "Fino Escudo de Roble",
+            "name": "Fino Escudo de Roble Reforjado",
             "slot": "armour",
             "rarity": "rare",
             "mods": {
-              "blockChance": 0.16113954727363305,
-              "mitigation": 0.03222790945472661
+              "blockChance": 0.1805,
+              "mitigation": 0.0361
             },
-            "value": 88,
+            "value": 99,
             "tier": 1,
-            "quality": 1.1936262761009857
+            "quality": 1.1936262761009857,
+            "reforged": true
           }
         }
       },
@@ -842,13 +881,18 @@
         "id": "adv_dw6dpd5sh7jc",
         "name": "Ruc",
         "level": 1,
-        "experience": 3,
+        "experience": 4,
         "morale": 100,
         "condition": 100,
         "stress": 0,
         "fatigue": 0,
         "oathWage": 13,
         "post": "cp_1",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 3,
@@ -896,39 +940,73 @@
           },
           "flaw": "the-grudge"
         },
-        "currentAbility": 74.04000000000019,
+        "delves": 1,
+        "record": {
+          "since": 108,
+          "all": {
+            "n": 1,
+            "dealt": 153,
+            "healed": 576,
+            "faced": 108,
+            "kills": 0,
+            "downed": 0,
+            "swings": 38,
+            "hits": 32,
+            "crits": 2,
+            "taken": 88,
+            "blocked": 0,
+            "heroic": 0
+          },
+          "trials": {
+            "n": 0,
+            "dealt": 0,
+            "healed": 0,
+            "faced": 0,
+            "kills": 0,
+            "downed": 0,
+            "swings": 0,
+            "hits": 0,
+            "crits": 0,
+            "taken": 0,
+            "blocked": 0,
+            "heroic": 0
+          }
+        },
+        "currentAbility": 79.4000000000002,
         "potentialAbility": 137,
         "abilityStars": 2,
         "potentialStars": 3.5,
         "equipment": {
           "armour": {
             "id": "it_fk_a_founding-1793874176816-909579_8_7563",
-            "name": "Templado Cota de Escamas",
+            "name": "Templado Cota de Escamas Reforjado",
             "slot": "armour",
             "rarity": "rare",
             "mods": {
-              "mitigation": 0.07660450503230094,
-              "hpPct": 0.07660450503230094
+              "mitigation": 0.0858,
+              "hpPct": 0.0858
             },
-            "value": 63,
+            "value": 71,
             "tier": 1,
-            "quality": 0.8511611670255661
+            "quality": 0.8511611670255661,
+            "reforged": true
           },
           "weapon": {
             "id": "it_drop_770149843_8619",
-            "name": "Arco de Guerra de Raíz de Hierro",
+            "name": "Arco de Guerra de Raíz de Hierro Reforjado",
             "slot": "weapon",
             "rarity": "common",
             "mods": {
-              "attackPct": 0.09308296113694087
+              "attackPct": 0.1043
             },
             "weaponKind": "ranged",
             "favours": [
               "ranger"
             ],
-            "value": 42,
+            "value": 47,
             "tier": 2,
-            "quality": 0.795580864418298
+            "quality": 0.795580864418298,
+            "reforged": true
           }
         }
       },
@@ -936,13 +1014,18 @@
         "id": "adv_dvyb6kaxgy9l",
         "name": "Xara del Cuerno",
         "level": 2,
-        "experience": 8,
-        "morale": 77,
+        "experience": 9,
+        "morale": 96,
         "condition": 100,
         "stress": 0,
         "fatigue": 0,
         "oathWage": 14,
         "post": "cp_1",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 8,
@@ -990,21 +1073,21 @@
           },
           "flaw": "never-apologises"
         },
-        "delves": 5,
+        "delves": 6,
         "record": {
           "since": 1,
           "all": {
-            "n": 5,
-            "dealt": 610,
+            "n": 6,
+            "dealt": 718,
             "healed": 0,
-            "faced": 6281,
+            "faced": 7526,
             "kills": 3,
             "downed": 0,
-            "swings": 415,
-            "hits": 378,
-            "crits": 21,
-            "taken": 2827,
-            "blocked": 70,
+            "swings": 489,
+            "hits": 447,
+            "crits": 27,
+            "taken": 3385,
+            "blocked": 83,
             "heroic": 0
           },
           "trials": {
@@ -1022,37 +1105,39 @@
             "heroic": 0
           }
         },
-        "currentAbility": 80,
+        "currentAbility": 82,
         "potentialAbility": 140,
         "abilityStars": 2,
         "potentialStars": 3.5,
         "equipment": {
           "armour": {
             "id": "it_fk_a_founding-1793874176816-909579_3_2663",
-            "name": "Templado Equipo de Cura de Campaña",
+            "name": "Templado Equipo de Cura de Campaña Reforjado",
             "slot": "armour",
             "rarity": "rare",
             "mods": {
-              "healTakenPct": 0.2918756297416985,
-              "hpPct": 0.054726680576568466
+              "healTakenPct": 0.3269,
+              "hpPct": 0.0613
             },
-            "value": 90,
+            "value": 101,
             "tier": 1,
-            "quality": 1.216148457257077
+            "quality": 1.216148457257077,
+            "reforged": true
           },
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_1_4085",
-            "name": "Fino Filo Afinado",
+            "name": "Fino Filo Afinado Reforjado",
             "slot": "weapon",
             "rarity": "rare",
             "mods": {
-              "attackPct": 0.11493402948835864,
-              "critChance": 0.03448020884650759
+              "attackPct": 0.1287,
+              "critChance": 0.0386
             },
             "weaponKind": "melee",
-            "value": 57,
+            "value": 64,
             "tier": 1,
-            "quality": 0.7662268632557243
+            "quality": 0.7662268632557243,
+            "reforged": true
           }
         }
       },
@@ -1060,12 +1145,18 @@
         "id": "adv_nmu0cr5oezjw",
         "name": "Yvaldo Guardapuerto",
         "level": 6,
-        "experience": 66,
+        "experience": 68,
         "morale": 100,
         "condition": 100,
-        "stress": 35,
-        "fatigue": 24,
+        "stress": 0,
+        "fatigue": 0,
+        "oathWage": 21,
         "post": "vanguard",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -1080,14 +1171,14 @@
           "bravery": 8,
           "decisions": 14,
           "anticipation": 14,
-          "teamwork": 17,
+          "teamwork": 18,
           "leadership": 14,
           "concentration": 12,
           "aggression": 11,
           "discipline": 10,
           "resolve": 11,
           "strength": 13,
-          "agility": 8,
+          "agility": 9,
           "stamina": 9,
           "vitality": 11,
           "speed": 11,
@@ -1114,231 +1205,108 @@
           },
           "flaw": "the-bottle"
         },
-        "delves": 12,
+        "delves": 13,
         "record": {
           "since": 1,
           "all": {
-            "n": 12,
-            "dealt": 2630,
-            "healed": 6761,
-            "faced": 2305,
+            "n": 13,
+            "dealt": 2836,
+            "healed": 6971,
+            "faced": 2339,
             "kills": 10,
             "downed": 2,
-            "swings": 314,
-            "hits": 268,
-            "crits": 29,
-            "taken": 1526,
+            "swings": 338,
+            "hits": 288,
+            "crits": 33,
+            "taken": 1550,
             "blocked": 6,
             "heroic": 0
           },
           "trials": {
-            "n": 9,
-            "dealt": 1799,
-            "healed": 4314,
-            "faced": 975,
+            "n": 10,
+            "dealt": 2005,
+            "healed": 4524,
+            "faced": 1009,
             "kills": 5,
             "downed": 2,
-            "swings": 203,
-            "hits": 172,
-            "crits": 17,
-            "taken": 890,
+            "swings": 227,
+            "hits": 192,
+            "crits": 21,
+            "taken": 914,
             "blocked": 0,
             "heroic": 0
           }
         },
-        "currentAbility": 88.12000000000012,
+        "currentAbility": 92.32000000000016,
         "potentialAbility": 123,
-        "abilityStars": 2,
+        "abilityStars": 2.5,
         "potentialStars": 3,
         "equipment": {
           "armour": {
             "id": "it_fk_s_founding-1793874176816-909579_1_2016_7892",
-            "name": "Sobrevesta Heráldica",
+            "name": "Sobrevesta Heráldica Reforjado",
             "slot": "armour",
             "rarity": "common",
             "mods": {
-              "blockChance": 0.048110822406015365,
-              "hpPct": 0.04811082240601536
+              "blockChance": 0.0539,
+              "hpPct": 0.0539
             },
-            "value": 42,
+            "value": 47,
             "tier": 1,
-            "quality": 1.0691293868003413
+            "quality": 1.0691293868003413,
+            "reforged": true
           },
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_7_9732",
-            "name": "Fino Laúd del Huerto Real",
+            "name": "Fino Laúd del Huerto Real Reforjado",
             "slot": "weapon",
             "rarity": "rare",
             "mods": {
-              "attackPct": 0.15644552954938262,
-              "healPct": 0.08691418308299034
+              "attackPct": 0.1752,
+              "healPct": 0.0973
             },
             "weaponKind": "ranged",
             "favours": [
               "bard"
             ],
-            "value": 86,
+            "value": 96,
             "tier": 1,
-            "quality": 1.1588557744398713
+            "quality": 1.1588557744398713,
+            "reforged": true
           },
           "trinket": {
             "id": "it_fk_s_founding-1793874176816-909579_2_2979_1109",
-            "name": "Colgante Vital",
+            "name": "Colgante Vital Reforjado",
             "slot": "trinket",
             "rarity": "common",
             "mods": {
-              "hpPct": 0.09270374867250211
+              "hpPct": 0.1038
             },
-            "value": 40,
+            "value": 45,
             "tier": 1,
-            "quality": 1.0300416519166902
+            "quality": 1.0300416519166902,
+            "reforged": true
           }
         },
         "origin": "youth",
-        "aspirant": true
-      },
-      {
-        "id": "adv_neqeupnrhpgg",
-        "name": "Turca de la Tormenta",
-        "level": 4,
-        "experience": 37,
-        "morale": 90,
-        "condition": 100,
-        "stress": 0,
-        "fatigue": 0,
-        "post": "cp_1",
-        "injury": null,
-        "attributes": {
-          "weaponSkill": 2,
-          "marksmanship": 8,
-          "power": 7,
-          "spellcraft": 12,
-          "armorUse": 2,
-          "parry": 1,
-          "evasion": 3,
-          "criticalStrike": 10,
-          "composure": 6,
-          "bravery": 9,
-          "decisions": 7,
-          "anticipation": 9,
-          "teamwork": 6,
-          "leadership": 4,
-          "concentration": 9,
-          "aggression": 7,
-          "discipline": 4,
-          "resolve": 7,
-          "strength": 7,
-          "agility": 6,
-          "stamina": 5,
-          "vitality": 5,
-          "speed": 10,
-          "reflexes": 3,
-          "threat": 2,
-          "mitigation": 6,
-          "healing": 8,
-          "support": 8,
-          "crowdControl": 7,
-          "positioning": 9
-        },
-        "traitIds": [
-          "vigilant",
-          "light-sleeper",
-          "ambitious",
-          "brave"
-        ],
-        "stakes": {
-          "conviction": "prove-doubters",
-          "vow": {
-            "kind": "quarry",
-            "templateId": "quarry-head",
-            "regionId": "ashen-marches",
-            "name": "Una Cabeza para la Pared",
-            "text": "Se propone abatir una bestia digna de un nombre salida de Las Marcas Cenicientas, y colgar su cabeza donde la vea toda la casa.",
-            "resolved": {
-              "line": "Abatió una bestia a la que Las Marcas Cenicientas tenía puesto nombre, y su cabeza cuelga ahora donde la ve toda la casa.",
-              "day": 8
-            }
-          },
-          "flaw": "overreaches"
-        },
-        "delves": 3,
-        "record": {
-          "since": 1,
-          "all": {
-            "n": 3,
-            "dealt": 3666,
-            "healed": 0,
-            "faced": 233,
-            "kills": 14,
-            "downed": 1,
-            "swings": 150,
-            "hits": 121,
-            "crits": 11,
-            "taken": 179,
-            "blocked": 0,
-            "heroic": 0
-          },
-          "trials": {
-            "n": 1,
-            "dealt": 1022,
-            "healed": 0,
-            "faced": 150,
-            "kills": 4,
-            "downed": 1,
-            "swings": 40,
-            "hits": 25,
-            "crits": 2,
-            "taken": 66,
-            "blocked": 0,
-            "heroic": 0
-          }
-        },
-        "currentAbility": 65.03999999999995,
-        "potentialAbility": 86,
-        "abilityStars": 1.5,
-        "potentialStars": 2,
-        "equipment": {
-          "weapon": {
-            "id": "it_fk_w_founding-1793874176816-909579_2_4960",
-            "name": "Templado Vara del heraldo de ruina",
-            "slot": "weapon",
-            "rarity": "rare",
-            "mods": {
-              "attackPct": 0.15586711019743232
-            },
-            "weaponKind": "spell",
-            "value": 59,
-            "tier": 1,
-            "quality": 0.7993185138329864
-          },
-          "armour": {
-            "id": "it_fk_a_founding-1793874176816-909579_2_5647",
-            "name": "Templado Manto de Plumón de Águila",
-            "slot": "armour",
-            "rarity": "rare",
-            "mods": {
-              "hpPct": 0.08604404632234945
-            },
-            "counters": "deepcold",
-            "value": 71,
-            "tier": 1,
-            "quality": 0.9560449591372162
-          }
-        },
-        "origin": "youth",
-        "aspirant": true
+        "aspirant": false
       },
       {
         "id": "adv_efelp4o01ks4",
         "name": "Iligar el Rompehuesos",
         "level": 5,
-        "experience": 47,
+        "experience": 48,
         "morale": 100,
         "condition": 100,
-        "stress": 33,
-        "fatigue": 21,
+        "stress": 0,
+        "fatigue": 0,
         "oathWage": 21,
         "post": "secondWatch",
+        "away": {
+          "jobId": "standdown_120",
+          "returnsDay": 124,
+          "leave": true
+        },
         "injury": null,
         "attributes": {
           "weaponSkill": 7,
@@ -1392,21 +1360,21 @@
           },
           "flaw": "old-guilt"
         },
-        "delves": 3,
+        "delves": 4,
         "record": {
           "since": 58,
           "all": {
-            "n": 3,
-            "dealt": 449,
+            "n": 4,
+            "dealt": 593,
             "healed": 0,
-            "faced": 2600,
-            "kills": 3,
+            "faced": 3521,
+            "kills": 4,
             "downed": 1,
-            "swings": 217,
-            "hits": 200,
-            "crits": 7,
-            "taken": 1390,
-            "blocked": 38,
+            "swings": 272,
+            "hits": 249,
+            "crits": 12,
+            "taken": 1621,
+            "blocked": 52,
             "heroic": 0
           },
           "trials": {
@@ -1424,39 +1392,121 @@
             "heroic": 0
           }
         },
-        "currentAbility": 110.7600000000001,
+        "currentAbility": 115.08000000000015,
         "potentialAbility": 123,
         "abilityStars": 3,
         "potentialStars": 3,
         "equipment": {
           "weapon": {
             "id": "it_fk_w_founding-1793874176816-909579_8_6893",
-            "name": "Fino Filo de la Forja Honda",
+            "name": "Fino Filo de la Forja Honda Reforjado",
             "slot": "weapon",
             "rarity": "rare",
             "mods": {
-              "attackPct": 0.11262269953731446,
-              "critChance": 0.03378680986119434
+              "attackPct": 0.1261,
+              "critChance": 0.0378
             },
             "weaponKind": "melee",
-            "value": 56,
+            "value": 63,
             "tier": 1,
-            "quality": 0.7508179969154298
+            "quality": 0.7508179969154298,
+            "reforged": true
           },
           "armour": {
             "id": "it_evt_1_744681383_6865",
-            "name": "Tabardo de Centinela",
+            "name": "Tabardo de Centinela Reforjado",
             "slot": "armour",
             "rarity": "common",
             "mods": {
-              "blockChance": 0.04666911871056073,
-              "hpPct": 0.046669118710560724
+              "blockChance": 0.0523,
+              "hpPct": 0.0523
             },
-            "value": 55,
+            "value": 62,
             "tier": 2,
-            "quality": 1.0370915269013494
+            "quality": 1.0370915269013494,
+            "reforged": true
+          },
+          "trinket": {
+            "id": "it_evt_4_522878843_3091",
+            "name": "Nudo de Hoja de Rey Reforjado",
+            "slot": "trinket",
+            "rarity": "common",
+            "mods": {
+              "hpPct": 0.0427
+            },
+            "counters": "cursed",
+            "value": 80,
+            "tier": 3,
+            "quality": 1.059761487878859,
+            "reforged": true
           }
         },
+        "origin": "recruited"
+      },
+      {
+        "id": "adv_3yrkzbvzvfzu",
+        "name": "Grosco del Puño de Piedra",
+        "level": 4,
+        "experience": 33,
+        "morale": 74,
+        "condition": 94,
+        "stress": 6,
+        "fatigue": 7,
+        "oathWage": 26,
+        "post": "vanguard",
+        "injury": null,
+        "attributes": {
+          "weaponSkill": 10,
+          "marksmanship": 19,
+          "power": 10,
+          "spellcraft": 2,
+          "armorUse": 5,
+          "parry": 10,
+          "evasion": 8,
+          "criticalStrike": 13,
+          "composure": 8,
+          "bravery": 11,
+          "decisions": 10,
+          "anticipation": 13,
+          "teamwork": 9,
+          "leadership": 10,
+          "concentration": 8,
+          "aggression": 11,
+          "discipline": 9,
+          "resolve": 9,
+          "strength": 13,
+          "agility": 12,
+          "stamina": 7,
+          "vitality": 10,
+          "speed": 13,
+          "reflexes": 13,
+          "threat": 6,
+          "mitigation": 7,
+          "healing": 1,
+          "support": 11,
+          "crowdControl": 8,
+          "positioning": 10
+        },
+        "traitIds": [
+          "dutiful",
+          "early-riser",
+          "kin-proud"
+        ],
+        "stakes": {
+          "conviction": "name-over-coin",
+          "vow": {
+            "kind": "place",
+            "templateId": "place-name",
+            "regionId": "ashen-marches",
+            "name": "Un Nombre que Encontrar",
+            "text": "Guarda un nombre salido de Las Marcas Cenicientas que se propone encontrar, vivo o no."
+          },
+          "flaw": "pride"
+        },
+        "currentAbility": 107,
+        "potentialAbility": 135,
+        "abilityStars": 2.5,
+        "potentialStars": 3.5,
         "origin": "recruited"
       }
     ],
@@ -1468,7 +1518,7 @@
     ],
     "bonds": {
       "adv_xsny2mf20dv6|adv_xvecyci8knko": {
-        "value": 20.89375
+        "value": 23
       },
       "adv_agorapai6eaw|adv_w21f5zhwf7li": {
         "value": 8
@@ -1481,10 +1531,10 @@
         "value": 11
       },
       "adv_agorapai6eaw|adv_hpzq2ixhvxtq": {
-        "value": 73
+        "value": 72
       },
       "adv_agorapai6eaw|adv_xsny2mf20dv6": {
-        "value": 28.9375,
+        "value": 29,
         "mentorId": "adv_agorapai6eaw"
       },
       "adv_hpzq2ixhvxtq|adv_xsny2mf20dv6": {
@@ -1492,23 +1542,14 @@
         "mentorId": "adv_hpzq2ixhvxtq"
       },
       "adv_dvyb6kaxgy9l|adv_vir5cr755mej": {
-        "value": 30,
+        "value": 32,
         "mentorId": "adv_vir5cr755mej"
-      },
-      "adv_dvyb6kaxgy9l|adv_neqeupnrhpgg": {
-        "value": 2
       },
       "adv_dvyb6kaxgy9l|adv_nmu0cr5oezjw": {
         "value": 2
       },
-      "adv_neqeupnrhpgg|adv_vir5cr755mej": {
-        "value": 3
-      },
       "adv_nmu0cr5oezjw|adv_vir5cr755mej": {
-        "value": 55.99375
-      },
-      "adv_neqeupnrhpgg|adv_nmu0cr5oezjw": {
-        "value": 0
+        "value": 64
       },
       "adv_dvyb6kaxgy9l|adv_hpzq2ixhvxtq": {
         "value": 3
@@ -1517,23 +1558,20 @@
         "value": 4
       },
       "adv_agorapai6eaw|adv_nmu0cr5oezjw": {
-        "value": 29.725
+        "value": 30
       },
       "adv_hpzq2ixhvxtq|adv_nmu0cr5oezjw": {
-        "value": 0
+        "value": 9
       },
       "adv_dvyb6kaxgy9l|adv_xsny2mf20dv6": {
         "value": 26
       },
       "adv_vir5cr755mej|adv_xsny2mf20dv6": {
-        "value": 18.166666666666668,
+        "value": 18,
         "mentorId": "adv_vir5cr755mej"
       },
-      "adv_neqeupnrhpgg|adv_xsny2mf20dv6": {
-        "value": 2
-      },
       "adv_agorapai6eaw|adv_vir5cr755mej": {
-        "value": -16.75
+        "value": -15
       },
       "adv_agorapai6eaw|adv_dvyb6kaxgy9l": {
         "value": 1
@@ -1542,13 +1580,10 @@
         "value": 8
       },
       "adv_ge28ylm26r9p|adv_xvecyci8knko": {
-        "value": 11
+        "value": 10
       },
       "adv_agorapai6eaw|adv_ge28ylm26r9p": {
-        "value": 12
-      },
-      "adv_dw6dpd5sh7jc|adv_neqeupnrhpgg": {
-        "value": 2
+        "value": 14
       },
       "adv_dvyb6kaxgy9l|adv_xvecyci8knko": {
         "value": -1
@@ -1557,19 +1592,16 @@
         "value": -2
       },
       "adv_nmu0cr5oezjw|adv_xvecyci8knko": {
-        "value": 12.45
+        "value": 12
       },
       "adv_vir5cr755mej|adv_xvecyci8knko": {
-        "value": 1.4958333333333333
+        "value": 1
       },
       "adv_agorapai6eaw|adv_xvecyci8knko": {
-        "value": 5.479166666666667
+        "value": 5
       },
       "adv_hpzq2ixhvxtq|adv_xvecyci8knko": {
         "value": 14
-      },
-      "adv_neqeupnrhpgg|adv_xvecyci8knko": {
-        "value": 0
       },
       "adv_dvyb6kaxgy9l|adv_ge28ylm26r9p": {
         "value": 8
@@ -1578,46 +1610,49 @@
         "value": -2
       },
       "adv_ge28ylm26r9p|adv_xsny2mf20dv6": {
-        "value": 12
+        "value": 17
       },
       "adv_dw6dpd5sh7jc|adv_efelp4o01ks4": {
         "value": 6
       },
       "adv_hpzq2ixhvxtq|adv_vir5cr755mej": {
-        "value": 29
+        "value": 30
       },
       "adv_efelp4o01ks4|adv_xvecyci8knko": {
-        "value": 15.65625
+        "value": 12
       },
       "adv_agorapai6eaw|adv_efelp4o01ks4": {
-        "value": 15.325
+        "value": 15
       },
       "adv_efelp4o01ks4|adv_nmu0cr5oezjw": {
-        "value": 27.175
+        "value": 27
       },
       "adv_ge28ylm26r9p|adv_vir5cr755mej": {
         "value": 6
       },
       "adv_efelp4o01ks4|adv_vir5cr755mej": {
-        "value": 18.825
+        "value": 19
       },
       "adv_ge28ylm26r9p|adv_nmu0cr5oezjw": {
         "value": 6
       },
       "adv_efelp4o01ks4|adv_ge28ylm26r9p": {
-        "value": 6
+        "value": 8
       },
       "adv_efelp4o01ks4|adv_hpzq2ixhvxtq": {
         "value": 7
       },
       "adv_efelp4o01ks4|adv_xsny2mf20dv6": {
-        "value": 25.025
+        "value": 36
       },
       "adv_ge28ylm26r9p|adv_hpzq2ixhvxtq": {
         "value": 2
       },
       "adv_nmu0cr5oezjw|adv_xsny2mf20dv6": {
-        "value": 3.5
+        "value": 3
+      },
+      "adv_dvyb6kaxgy9l|adv_dw6dpd5sh7jc": {
+        "value": 20
       }
     },
     "hall": {
@@ -1635,36 +1670,55 @@
       }
     },
     "league": {
-      "playerTier": 6,
-      "round": 10,
-      "playerForm": [
-        "win",
-        "win",
-        "win",
-        "win",
-        "win",
-        "win",
-        "win",
-        "loss",
-        "loss",
-        "win"
-      ],
-      "playerStanding": [
-        {
-          "points": 24,
-          "won": 8,
-          "lost": 2,
-          "drawn": 0,
-          "played": 10
-        }
-      ]
+      "playerTier": 5,
+      "round": 0,
+      "playerForm": [],
+      "playerStanding": {
+        "points": 0,
+        "position": 12,
+        "won": 0,
+        "lost": 0,
+        "played": 0
+      }
     },
     "tally": {
-      "delves": 18,
-      "cleared": 16,
+      "delves": 21,
+      "cleared": 19,
       "quests": 5
     },
-    "activeJobs": [],
+    "activeJobs": [
+      {
+        "id": "standdown_120",
+        "posting": {
+          "id": "standdown_120",
+          "kind": "expedition",
+          "title": "Descansa al cambio de año",
+          "blurb": "La casa está cerrada y su gente ha vuelto con quien la esperaba.",
+          "region": "ashen-marches",
+          "days": 4,
+          "danger": 0,
+          "seats": 11,
+          "postedDay": 120,
+          "expiresDay": 120,
+          "fee": 0
+        },
+        "sentDay": 120,
+        "returnsDay": 124,
+        "heroIds": [
+          "adv_xvecyci8knko",
+          "adv_vir5cr755mej",
+          "adv_xsny2mf20dv6",
+          "adv_hpzq2ixhvxtq",
+          "adv_agorapai6eaw",
+          "adv_ge28ylm26r9p",
+          "adv_dw6dpd5sh7jc",
+          "adv_dvyb6kaxgy9l",
+          "adv_nmu0cr5oezjw",
+          "adv_neqeupnrhpgg",
+          "adv_efelp4o01ks4"
+        ]
+      }
+    ],
     "meetings": [
       {
         "day": 8,
@@ -1735,6 +1789,20 @@
         "oppName": "La Guardia de Conchamuelle",
         "result": "win",
         "kind": "league"
+      },
+      {
+        "day": 108,
+        "oppId": "lg_t6_1_7571",
+        "oppName": "La Cuadrilla de Blancarama",
+        "result": "win",
+        "kind": "league"
+      },
+      {
+        "day": 120,
+        "oppId": "lg_t5_0_9182",
+        "oppName": "El Cónclave Sagaz",
+        "result": "loss",
+        "kind": "crucible"
       }
     ],
     "questLog": [
@@ -1743,70 +1811,121 @@
         "day": 91,
         "title": "Una línea sostenida en La Puerta de Ceniza",
         "kind": "sellsword",
-        "region": "ashen-marches",
         "outcome": "mixed",
         "heroNames": [
           "Luna"
-        ],
-        "gold": 132,
-        "renown": 0
+        ]
       },
       {
         "id": "job_escort_63_4584",
         "day": 75,
         "title": "Escoltar el cargamento de cuernos de leva hasta Plataselva",
         "kind": "sellsword",
-        "region": "ashen-marches",
         "outcome": "triumph",
         "heroNames": [
           "Luna",
           "Iligar el Rompehuesos"
-        ],
-        "gold": 271,
-        "renown": 1
+        ]
       },
       {
         "id": "pet_60_4357",
         "day": 64,
         "title": "Raxal el Viejo de Las Marcas Cenicientas",
         "kind": "bounty",
-        "region": "ashen-marches",
         "outcome": "triumph",
         "heroNames": [
           "Velasco Rivadeneira"
-        ],
-        "gold": 49,
-        "renown": 1
+        ]
       },
       {
         "id": "pet_17_2122",
         "day": 22,
         "title": "Dienteamarillo el Ahíto en los pastos de Las Marcas Cenicientas",
         "kind": "bounty",
-        "region": "ashen-marches",
         "outcome": "triumph",
         "heroNames": [
           "Luna"
-        ],
-        "gold": 61,
-        "renown": 2
+        ]
       },
       {
         "id": "job_1_expedition_1032",
         "day": 15,
         "title": "El otro lado de El Terreno del Crisol",
         "kind": "expedition",
-        "region": "vale",
         "outcome": "triumph",
         "heroNames": [
           "Luna",
           "Íñigo Guzmán"
-        ],
-        "gold": 270,
-        "renown": 2
+        ]
       }
     ],
     "goldLog": [
+      {
+        "day": 120,
+        "kind": "signing",
+        "delta": -190,
+        "gold": 643
+      },
+      {
+        "day": 120,
+        "kind": "event",
+        "delta": -200,
+        "gold": 833
+      },
+      {
+        "day": 120,
+        "kind": "other",
+        "delta": -132,
+        "gold": 1033
+      },
+      {
+        "day": 120,
+        "kind": "other",
+        "delta": 42,
+        "gold": 1165
+      },
+      {
+        "day": 120,
+        "kind": "payroll",
+        "delta": -431,
+        "gold": 1123
+      },
+      {
+        "day": 114,
+        "kind": "payroll",
+        "delta": -431,
+        "gold": 1554
+      },
+      {
+        "day": 111,
+        "kind": "event",
+        "delta": -290,
+        "gold": 1985
+      },
+      {
+        "day": 108,
+        "kind": "delve",
+        "delta": 212,
+        "gold": 2275
+      },
+      {
+        "day": 108,
+        "kind": "delve",
+        "delta": 396,
+        "gold": 2063
+      },
+      {
+        "day": 108,
+        "kind": "payroll",
+        "delta": -431,
+        "gold": 1667
+      },
+      {
+        "day": 105,
+        "kind": "delve",
+        "delta": 347,
+        "gold": 2098
+      },
       {
         "day": 104,
         "kind": "event",
@@ -2100,75 +2219,21 @@
         "kind": "delve",
         "delta": 160,
         "gold": 2167
-      },
-      {
-        "day": 23,
-        "kind": "other",
-        "delta": 500,
-        "gold": 2007
-      },
-      {
-        "day": 23,
-        "kind": "quest",
-        "delta": 61,
-        "gold": 1507
-      },
-      {
-        "day": 19,
-        "kind": "event",
-        "delta": -300,
-        "gold": 1446
-      },
-      {
-        "day": 18,
-        "kind": "delve",
-        "delta": 408,
-        "gold": 1746
-      },
-      {
-        "day": 18,
-        "kind": "payroll",
-        "delta": -205,
-        "gold": 1338
-      },
-      {
-        "day": 15,
-        "kind": "other",
-        "delta": 270,
-        "gold": 1543
-      },
-      {
-        "day": 12,
-        "kind": "delve",
-        "delta": 436,
-        "gold": 1273
-      },
-      {
-        "day": 12,
-        "kind": "payroll",
-        "delta": -205,
-        "gold": 837
-      },
-      {
-        "day": 8,
-        "kind": "delve",
-        "delta": 355,
-        "gold": 1042
-      },
-      {
-        "day": 8,
-        "kind": "delve",
-        "delta": 257,
-        "gold": 687
-      },
-      {
-        "day": 8,
-        "kind": "building",
-        "delta": -600,
-        "gold": 430
       }
     ],
     "honours": [
+      {
+        "year": 1,
+        "icon": "🏆",
+        "title": "Campeones de Villorrio",
+        "kind": "title"
+      },
+      {
+        "year": 1,
+        "icon": "🪜",
+        "title": "Ascenso a Frontera",
+        "kind": "promotion"
+      },
       {
         "year": 1,
         "icon": "🗡️",
@@ -2192,159 +2257,14 @@
     ],
     "yearBeats": [
       {
-        "id": "n_ms_roadwise_adv_vir5cr755mej_103",
-        "day": 103,
-        "text": "Belzar de la Ofrenda es ya De muchos caminos, y ha vuelto a jurar su voto: Una Amistad Verdadera."
+        "id": "n_derby_120",
+        "day": 120,
+        "text": "🔥 El Convento de Cenizaerial se están convirtiendo en un rival de verdad. No dejan de acabar justo por delante de ti."
       },
       {
-        "id": "n_bondturn_103_friend_UlfLuna",
-        "day": 103,
-        "text": "Ulf y Luna ya son amistades. Las amistades animan al grupo en el que luchan, y se lloran si una cae."
-      },
-      {
-        "id": "n_deep_run_103_1",
-        "day": 103,
-        "text": "🕳️ La casa tomó El Umbral, sus 5 oleadas enteras, y la escalera sigue bajando."
-      },
-      {
-        "id": "n_vow_deep_103_adv_xsny2mf20dv6",
-        "day": 103,
-        "text": "🕊️ Ulf Vallehondo cumple un voto. Tomó un piso de la escalera que le quitó a alguien. La Sima no devuelve a nadie, pero se la ha obligado a soltar algo."
-      },
-      {
-        "id": "n_syn_103_holy-order",
-        "day": 103,
-        "text": "✨ ¡Sinergia descubierta, Orden Sagrada! Un Paladín y un Clérigo pelean como una orden consagrada, justa e inflexible. (+10% de curación · +3% de daño del grupo)"
-      },
-      {
-        "id": "n_bond_103_deep-1-1_0",
-        "day": 103,
-        "text": "🤝 El gremio es un sitio más cálido últimamente: Iligar, Belzar, Ulf y Yvaldo se han encontrado."
-      },
-      {
-        "id": "n_story_103_deep-1-1_0",
-        "day": 103,
-        "text": "Iligar llegó con la mente en calma: el juramento está cumplido."
-      },
-      {
-        "id": "n_story_103_deep-1-1_1",
-        "day": 103,
-        "text": "Jaro llegó con la mente en calma: el juramento está cumplido."
-      },
-      {
-        "id": "n_story_103_deep-1-1_2",
-        "day": 103,
-        "text": "Luna llegó con la mente en calma: el juramento está cumplido."
-      },
-      {
-        "id": "n_story_103_deep-1-1_3",
-        "day": 103,
-        "text": "Algo se le apaga a Ulf Vallehondo cuando lo que tiene delante es peligroso de verdad."
-      },
-      {
-        "id": "n_syndiv_103_deep-1-1",
-        "day": 103,
-        "text": "✦ 4 sinergias dio fruto: el grupo peleó como uno solo (+183g)."
-      },
-      {
-        "id": "n_warcall_102_boss-t3-2017",
-        "day": 102,
-        "text": "Una llamada a las armas. Dentro de 8 días el reino se movilizará contra Corazónglaciar el Silencioso el Sin Respuesta, en El Cindermoor."
-      },
-      {
-        "id": "n_bond_home_102_adv_dw6dpd5sh7jc_adv_efelp4o01ks4",
-        "day": 102,
-        "text": "Iligar y Ruc se quedaron hasta tarde con un juego en el que eran igual de torpes."
-      },
-      {
-        "id": "n_bond_98_fixture-1-10_0",
-        "day": 98,
-        "text": "Belzar y Ulf se acercaron en la incursión."
-      },
-      {
-        "id": "n_bond_98_fixture-1-10_1",
-        "day": 98,
-        "text": "Belzar le corrige la guardia a Ulf una docena de veces al día. Ulf ha dejado de quejarse."
-      },
-      {
-        "id": "n_bond_98_fixture-1-10_2",
-        "day": 98,
-        "text": "Velasco tomó a Ulf bajo su ala."
-      },
-      {
-        "id": "n_story_98_fixture-1-10_0",
-        "day": 98,
-        "text": "🎒 Velasco se puso Fino Cota de Tablillas Atada donde lo encontró, como se le ordenó, y con la oscuridad se hizo un poco más difícil discutir."
-      },
-      {
-        "id": "n_story_98_fixture-1-10_1",
-        "day": 98,
-        "text": "Salió a la superficie una curiosidad de la sima: Reloj de Arena Agrietado, una pieza con historia propia."
-      },
-      {
-        "id": "n_story_98_fixture-1-10_2",
-        "day": 98,
-        "text": "🎒 La orden era usar lo que encontraran. Ulf es Humilde, y Reloj de Arena Agrietado volvió a casa sin estrenar."
-      },
-      {
-        "id": "n_story_98_fixture-1-10_3",
-        "day": 98,
-        "text": "El camino se divide. El camino escrutado sigue adelante. A un lado, una guarida con un nombre grabado sobre el arco. Luna pide a Velasco que tome la guarida. Luna quiere el nombre para sí. Velasco escucha a Luna y sigue el camino. Luna no dice nada más del asunto."
-      },
-      {
-        "id": "n_story_98_fixture-1-10_4",
-        "day": 98,
-        "text": "Ulf Vallehondo cargó con las salas fáciles y no le quedó nada para la difícil, como de costumbre."
-      },
-      {
-        "id": "n_syndiv_98_fixture-1-10",
-        "day": 98,
-        "text": "✦ Línea de Hostigamiento dio fruto: el grupo peleó como uno solo (+122g, +2 de renombre)."
-      },
-      {
-        "id": "n_loot_98_it_fk_a_founding-1793874176816-909579_6_7423",
-        "day": 98,
-        "text": "◆ El grupo recuperó Templado Escudo de Roble (Rara) de las profundidades, y espera en la armería."
-      },
-      {
-        "id": "n_loot_98_it_minor_2_128366224_8396",
-        "day": 98,
-        "text": "◆ El grupo recuperó Reloj de Arena Agrietado (Rara) de las profundidades, y Ulf pide el hallazgo por Necesidad. Espera en la armería."
-      },
-      {
-        "id": "n_bond_home_96_adv_vir5cr755mej_adv_xsny2mf20dv6",
-        "day": 96,
-        "text": "Belzar remendó el equipo de Ulf sin que se lo pidieran, y Ulf fingió no darse cuenta."
-      },
-      {
-        "id": "n_war_93",
-        "day": 93,
-        "text": "🗡️ La Cruzada Ceniza, en El Elderwood: 5 marcharon, la coalición triunfó."
-      },
-      {
-        "id": "n_warforge_VelascoRivadeneira_93",
-        "day": 93,
-        "text": "🗡️ Velasco Rivadeneira volvió de La Cruzada Ceniza con más dentro de lo que llevaba al marchar. El frente sacó algo que el patio nunca había sacado (potencial +5)."
-      },
-      {
-        "id": "n_warforge_YvaldoGuardapuerto_93",
-        "day": 93,
-        "text": "🗡️ Yvaldo Guardapuerto volvió de La Cruzada Ceniza con más dentro de lo que llevaba al marchar. El frente sacó algo que el patio nunca había sacado (potencial +13). El patio ya puede entrenarle un punto más allá."
-      },
-      {
-        "id": "n_warcomrades_93",
-        "day": 93,
-        "text": "Luna, Velasco Rivadeneira, Jaro, Yvaldo Guardapuerto e Iligar el Rompehuesos marcharon juntos, y vuelven con un lazo más fuerte."
-      },
-      {
-        "id": "n_job_91_pet_79_1821",
-        "day": 91,
-        "text": "🧭 Luna lo llevó hasta el final en Las Marcas Cenicientas, en silencio, y volvió a casa sin mucho que contar."
-      },
-      {
-        "id": "n_bond_home_90_adv_xsny2mf20dv6_adv_efelp4o01ks4",
-        "day": 90,
-        "text": "Iligar y Ulf trabajaron codo con codo en el patio, y descubrieron que les gusta el mismo silencio."
+        "id": "n_bond_home_120_adv_agorapai6eaw_adv_ge28ylm26r9p",
+        "day": 120,
+        "text": "Jaro y Íñigo compartieron las comidas, y se quedaron a la mesa mucho después de que se fuera el resto."
       }
     ],
     "hallBuilds": [],
