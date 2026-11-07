@@ -57,4 +57,5 @@ jobs:
           if grep -Fxq 'data/campaign.js' /tmp/corona-changed || grep -Fxq 'home/dispatches.js' /tmp/corona-changed; then
             node scripts/check-dispatches.mjs
           fi
-          echo "Comprobación selectiva completada."
+          node --test tests/year-two.test.mjs
+          echo "Comprobación selectiva y pruebas del Año II completadas."
