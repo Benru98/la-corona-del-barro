@@ -1,6 +1,14 @@
 name: Auditoría funcional en navegador
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'data/campaign.js'
+      - 'app.js'
+      - 'index.html'
+      - 'home/dispatches.js'
+      - '.github/workflows/browser-smoke.yml'
 jobs:
   browser-smoke:
     runs-on: ubuntu-latest
