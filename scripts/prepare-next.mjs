@@ -30,8 +30,9 @@ function buildProposal(book,old,save,source){
  const positions={vanguard:'Vanguardia',secondWatch:'Segunda Guardia',thirdWatch:'Tercera Guardia'};
  for(const h of b.characters){
   const v=heroById.get(h.id);if(!v)continue;
-  for(const k of ['age','level','experience','morale','condition','stress','fatigue','attributes','equipment','currentAbility','abilityStars','potentialStars','traitsIds'])
+  for(const k of ['age','level','experience','morale','condition','stress','fatigue','attributes','equipment','currentAbility','abilityStars','potentialStars','traitIds'])
    if(v[k]!==undefined)h[k]=v[k];
+  h.traitsIds=v.traitIds||h.traitsIds||[];
   h.salary=v.oathWage;h.post=positions[v.post]||h.post;
   h.injury=v.injury||null;
   h.away=v.away?{jobId:v.away.jobId,returnsDay:Number.isInteger(v.away.returnsDay)?v.away.returnsDay+1:null,
@@ -101,6 +102,9 @@ function buildProposal(book,old,save,source){
 }
 try{
  const a=argumentsOf(process.argv.slice(2));
+ const outside=p=>{const rel=path.relative(root,path.resolve(p));return rel==='..'||rel.startsWith('..'+path.sep)};
+ requireThat(outside(a.save),'El guardado original debe permanecer fuera del repositorio');
+ requireThat(outside(a.out),'Los borradores deben generarse fuera del repositorio');
  requireThat(fs.statSync(a.save).size<=25*1024*1024,'Guardado mayor que 25 MB');
  const save=JSON.parse(fs.readFileSync(a.save,'utf8'));
  const old=JSON.parse(read('data/approved-save-projection.json'));
