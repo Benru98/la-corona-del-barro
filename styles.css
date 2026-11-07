@@ -1161,3 +1161,15 @@ body.reading-night .annual-event p,body.reading-night .annual-movement p,body.re
 .featured-card.is-retired{opacity:.68;}
 .featured-card.is-retired .featured-image{filter:grayscale(.45);}
 @media(max-width:640px){.new-era-home{margin:16px 0;padding:20px 18px;}.new-era-actions .btn{flex:1 1 auto;}}
+
+
+/* E0028 · Patrullas completas con disponibilidad explícita */
+.patrol-live-summary{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;margin:16px 0 28px;padding:14px 18px;border:1px solid rgba(136,97,48,.23);border-radius:10px;background:rgba(255,252,241,.42);font-size:.92rem;}
+.patrol-live-summary strong{color:var(--ink,#3f2b20);}
+.patrol-live-summary span{color:var(--muted,#735c48);}
+.patrol-status{display:block;margin-top:5px;font-size:.73rem;font-weight:650;line-height:1.4;white-space:normal;color:#9a6a3b;}
+.patrol-status.ready{color:#36755d;}
+.patrol-status.away{color:#916330;}
+.patrol-row.patrol-away{background:linear-gradient(90deg,rgba(182,137,69,.11),transparent 70%);}
+.patrol-row.patrol-away .patrol-name>strong:after{content:" · fuera";font-size:.7em;font-weight:400;color:#906e46;}
+@media(max-width:640px){.patrol-live-summary{gap:6px 12px;padding:12px;}.patrol-row.patrol-away .patrol-name>strong:after{content:"";}}
