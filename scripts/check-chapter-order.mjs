@@ -7,7 +7,7 @@ try{
  const html=read('index.html');
  const sources=[...html.matchAll(/<script\s+src="([^"]+)"/g)].map(x=>x[1].split('?')[0]);
  if(sources.length!==new Set(sources).size)throw Error('Hay scripts duplicados');
- if(sources[0]!=='data/campaign.js'||sources[1]!=='novel/chapters/index.js')throw Error('Inicialización incorrecta');
+ if(sources[0]!=='data/campaign.js'||sources[1]!=='home/dispatches.js'||sources[2]!=='novel/chapters/index.js')throw Error('Inicialización incorrecta');
  for(const file of sources)if(!fs.existsSync(file))throw Error('No existe el script '+file);
  const chapters=sources.filter(f=>f.startsWith('novel/chapters/')&&f!=='novel/chapters/index.js');
  const rel=sources.indexOf('novel/relationships.js');

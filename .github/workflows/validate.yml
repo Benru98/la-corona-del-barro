@@ -50,4 +50,14 @@ jobs:
           if grep -Eq '^data/(campaign|house-state)\.js$|^novel/relationships\.js$' /tmp/corona-changed; then
             node scripts/audit-house.mjs
           fi
+          if grep -Eq '^data/campaign\.js
+ /tmp/corona-changed && ! grep -Eq '^home/dispatches\.js
+ /tmp/corona-changed; then
+            echo "Cada actualización de campaña debe incluir un número nuevo de la Gaceta (home/dispatches.js)."
+            exit 1
+          fi
+          if grep -Eq '^data/campaign\.js$|^home/dispatches\.js
+ /tmp/corona-changed; then
+            node scripts/check-dispatches.mjs
+          fi
           echo "Comprobación selectiva completada."

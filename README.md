@@ -43,3 +43,18 @@ node scripts/check-chapter-order.mjs
 ## Privacidad
 
 No subir guardados de partida originales, credenciales o datos personales al repositorio público. Solo se publica información revisada. Véase `docs/IMPORTADOR.md` y `docs/SISTEMA_EDITORIAL.md`.
+
+## Protocolo de actualización con dos JSON
+
+En la **Mesa del Escriba**, seleccionar el número de crónicas (0 a 3), su extensión, las instrucciones personales y el número de noticias (1 a 3). Descargar «JSON del encargo». Enviar a ChatGPT **únicamente ese JSON y el nuevo JSON de Dungeons & Dynasties**.
+
+El paquete contiene Motor 3.1, fichas y relaciones literarias, el índice de capítulos, últimas ediciones de noticias y un procedimiento de actualización. **Nunca sustituye el guardado nuevo:** ChatGPT debe consultar la versión vigente de GitHub y comparar antes de escribir.
+
+Un cambio en `data/campaign.js` debe modificar también `home/dispatches.js` en el mismo commit. Una validación selectiva comprueba fecha, edición, IDs y la procedencia de noticias del Ojo y la Gaceta sin ejecutar navegador ni batería de tests.
+
+- `home/dispatches.js` conserva el historial de ediciones más nuevas primero.
+- Las entradas del Ojo tienen hechos del juego y fuente explícita; su interpretación va aparte.
+- La Gaceta alterna sátira ficticia, acontecimientos del entorno y hechos literarios aprobados con `sourceType`.
+- No se inventan resultados mecánicos ni se generan imágenes automáticamente.
+
+Ver `docs/PROTOCOLO_DOS_JSON.md`.
