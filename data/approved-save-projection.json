@@ -1509,6 +1509,15 @@
       "adv_xsny2mf20dv6|adv_xvecyci8knko": {
         "value": 20
       },
+      "adv_agorapai6eaw|adv_w21f5zhwf7li": {
+        "value": 8
+      },
+      "adv_hpzq2ixhvxtq|adv_w21f5zhwf7li": {
+        "value": 25
+      },
+      "adv_w21f5zhwf7li|adv_xsny2mf20dv6": {
+        "value": 11
+      },
       "adv_agorapai6eaw|adv_hpzq2ixhvxtq": {
         "value": 90
       },
@@ -1530,6 +1539,9 @@
       "adv_dvyb6kaxgy9l|adv_hpzq2ixhvxtq": {
         "value": 3
       },
+      "adv_nmu0cr5oezjw|adv_w21f5zhwf7li": {
+        "value": 4
+      },
       "adv_agorapai6eaw|adv_nmu0cr5oezjw": {
         "value": 17
       },
@@ -1547,6 +1559,9 @@
       },
       "adv_agorapai6eaw|adv_dvyb6kaxgy9l": {
         "value": 1
+      },
+      "adv_dw6dpd5sh7jc|adv_w21f5zhwf7li": {
+        "value": 8
       },
       "adv_ge28ylm26r9p|adv_xvecyci8knko": {
         "value": 11
@@ -1767,19 +1782,22 @@
         "day": 128,
         "oppName": "El Pacto de Sal",
         "result": "win",
-        "kind": "league"
+        "kind": "league",
+        "oppId": "lg_t5_6_8119"
       },
       {
         "day": 138,
         "oppName": "La Guardia de Hielo",
         "result": "win",
-        "kind": "league"
+        "kind": "league",
+        "oppId": "lg_t5_8_1370"
       },
       {
         "day": 148,
         "oppName": "El Convento de Cenizaerial",
         "result": "win",
-        "kind": "league"
+        "kind": "league",
+        "oppId": "lg_t6_6_3106"
       }
     ],
     "questLog": [
@@ -1839,13 +1857,15 @@
         "id": "ql_ashen-marches_1_p0_120",
         "day": 136,
         "title": "El Morral a la Boca de la Sima",
-        "kind": "quest",
+        "kind": "expedition",
         "region": "ashen-marches",
         "outcome": "triumph",
         "heroNames": [
           "Íñigo Guzmán",
           "Grosco del Puño de Piedra"
-        ]
+        ],
+        "gold": 218,
+        "renown": 3
       }
     ],
     "goldLog": [
