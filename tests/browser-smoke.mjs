@@ -51,7 +51,7 @@ async function audit(page,kind){
  await page.locator('#sideNav [data-nav="archive"]').click();
  const archive=await page.locator('#content').innerText();
  assert.ok(archive.includes('Frontera')&&archive.includes('226'),'Archivo desactualizado');
- assert.ok(archive.includes('Retratos asignados')&&archive.includes('Récords revisados'),'Falta la auditoría del guardado v26');
+ assert.ok(archive.toLocaleLowerCase('es').includes('retratos asignados')&&archive.toLocaleLowerCase('es').includes('récords revisados'),'Falta la auditoría del guardado v26');
  assert.ok(archive.includes('Cado Feroz')&&archive.includes('Tumba Inviolable'),'Tablón no sincronizado');
  await page.locator('#sideNav [data-nav="legacy"]').click();
  assert.equal(await page.locator('.memorial-person').count(),1,'Brugo perdió su memorial');
