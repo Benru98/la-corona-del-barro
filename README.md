@@ -49,16 +49,18 @@ Ver `AGENTS.md` para el procedimiento de publicación con un único commit, sin 
 
 No subir guardados de partida originales, credenciales o datos personales al repositorio público. Solo se publica información revisada. Véase `docs/IMPORTADOR.md` y `docs/SISTEMA_EDITORIAL.md`.
 
-## Flujo vigente de actualización con dos JSON
+## Flujo habitual: UN JSON del juego
 
-En la Mesa del Escriba se elige cuántas crónicas y noticias crear, su extensión y las instrucciones narrativas. Se descarga el **JSON del encargo** y se adjunta junto al **guardado nuevo de Dungeons & Dynasties**. No hace falta ZIP, HTML ni guardar en el chat el JSON anterior.
+El usuario adjunta únicamente el guardado nuevo de Dungeons & Dynasties. El asistente revisa GitHub, compara con el estado aprobado y se encarga de actualizar hechos, personajes, vínculos, biografías, crónicas, Gaceta, Ojo del Escriba, patrullas y publicación.
 
-El encargo solo contiene preferencias y contexto editorial abreviado; el estado vigente se consulta siempre en GitHub. El guardado define los hechos, y el asistente completa la narrativa y una nueva edición del Ojo del Escriba y de la Gaceta.
+La dirección narrativa queda a criterio del asistente por defecto: número y extensión de crónicas según los acontecimientos, continuidad con los capítulos existentes y separación entre ficción y datos mecánicos. Cualquier preferencia especial puede expresarse en el chat sin otro archivo.
 
-Si cambia `data/campaign.js`, actualizar también `home/dispatches.js` en el mismo commit. Jamás subir el JSON bruto; no atribuir resultados de misiones pendientes. Véase `docs/PROTOCOLO_DOS_JSON.md`.
-## Actualizaciones rápidas (formato v2)
+**El JSON de la Mesa del Escriba es opcional y no se solicita en las actualizaciones normales.** El flujo alternativo queda documentado en `docs/PROTOCOLO_DOS_JSON.md`; consultar `docs/IMPORTADOR.md` para el procedimiento habitual.
 
-El JSON exportado por la Mesa incluye solo el número y extensión de crónicas, tus instrucciones y noticias solicitadas; ya no incrusta Motor 3.1, todas las fichas, crónicas y vínculos. El contexto vigente se consulta en GitHub.
+Si se cambia `data/campaign.js`, debe actualizarse también `home/dispatches.js` en el mismo commit. El guardado original no se sube al repositorio.
+## Preparación mecánica sin JSON del encargo
+
+El nuevo guardado es la única entrada obligatoria. El preparador lee el estado publicado y deja un borrador mecánico para revisión; las crónicas se deciden y redactan después según la evolución de la partida.
 
 ```bash
 node scripts/prepare-next.mjs --save /ruta/guardado-nuevo.json --out /tmp/corona-propuesta

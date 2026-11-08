@@ -3,6 +3,13 @@
 Instrucciones permanentes para asistentes y colaboradores que editan este repositorio.
 Meta: **una actualizacion = una lectura inicial, cambios agrupados, preflight local, un commit atomico y una comprobacion final**.
 
+## Protocolo principal: UN solo JSON de partida
+- La entrada suficiente es únicamente el guardado JSON nuevo de Dungeons & Dynasties. **No solicitar un segundo JSON de la Mesa del Escriba** en el flujo habitual.
+- Consultar el HEAD de GitHub, la proyección aprobada, el baseline, la Gaceta, los capítulos y el canon literario. Comparar por ID y preparar las modificaciones con el guardado nuevo; no volver a pedir datos ya disponibles.
+- Autonomía creativa: el asistente escoge el número y la extensión de crónicas, interludios y escenas según los eventos detectados. Actualiza datos, biografías, relaciones, Gaceta, Ojo del Escriba, memorial, patrullas y asesoramiento cuando corresponda, sin inventar resultados mecánicos.
+- Una indicación especial se puede escribir en el mensaje del chat, sin ningún fichero adicional. El export de la Mesa queda como herramienta opcional, solo si el propietario lo adjunta voluntariamente.
+- Preservar el JSON privado fuera de GitHub, validar en bloque y publicar los cambios aprobados mediante un único commit atómico.
+
 ## Fuentes de verdad y limites
 - Publicacion: GitHub `Benru98/la-corona-del-barro`, rama `main`, Cloudflare Pages. El commit no prueba por si solo que el dominio publico se haya actualizado.
 - Archivos activos: `data/campaign.js`, `home/dispatches.js`, `data/save-baseline.json`, `data/approved-save-projection.json`, `app.js`, `styles.css`, `novel/chapters/*`, `art/catalog.js`, `art/portrait-library.js`. No editar `book-data.js` ni `novel/chapters.js` (copias historicas).

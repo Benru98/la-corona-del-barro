@@ -1,14 +1,16 @@
 # Importador de guardados — procedimiento vigente
 
-El flujo recomendado trabaja con **Dungeons & Dynasties v26**, dos JSON privados y un solo commit. No necesita recuperar el archivo de la partida anterior ni resubir toda la web.
+El flujo habitual trabaja con **un solo JSON privado**: el guardado nuevo de Dungeons & Dynasties v26. No se necesita el archivo de la partida anterior, un ZIP ni el JSON de la Mesa del Escriba.
 
-## Lo que se envía en el chat
+## Entrada del usuario
 
-1. El **JSON nuevo del juego**; nunca se publica en el repositorio.
-2. El **JSON del encargo** generado por la Mesa del Escriba, con preferencias narrativas y noticias.
+**Solo el JSON del juego.** El asistente decide por defecto cuántas crónicas, interludios y noticias crear según lo relevante de los hechos; revisa cambios de personajes, vínculos, lesiones, misiones, economía, bajas, fichajes y patrullas. Puede crear escenas de ficción, pero nunca presentar invenciones como resultados confirmados del juego.
 
-La fuente de verdad actual se consulta en GitHub: `data/campaign.js`, `data/approved-save-projection.json` y `data/save-baseline.json`. El JSON del encargo indica las preferencias, pero no sustituye la consulta al código vigente.
+Si el usuario desea personalizar alguna historia, puede indicarlo por texto normal en la conversación; no se le pide otro JSON.
 
+Consultar el estado publicado de GitHub (`data/campaign.js`, `data/approved-save-projection.json`, `data/save-baseline.json`, `home/dispatches.js` y canon literario). El JSON bruto no debe publicarse.
+
+El JSON de encargo de la Mesa del Escriba sigue siendo **opcional** y solo se procesa cuando el usuario lo aporta voluntariamente.
 ## Un único paso mecánico, si hay checkout local
 
 ```bash
