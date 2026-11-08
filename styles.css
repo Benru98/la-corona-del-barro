@@ -1185,3 +1185,93 @@ img[src*="grosco-retrato-v2.webp"]{
 .featured-image:has(img[src*="-retrato-v2.webp"]){
   background:#332d29;
 }
+
+
+/* E0030 · Patrullas: valoración de juego verificada, evolución y margen CA/PA */
+.patrol-guide{margin:18px 0 22px;padding:25px 28px;background:linear-gradient(120deg,#f5ecda,#faf6ec);border-color:#d3b88d}
+.patrol-guide h3{margin:4px 0 16px;font:28px/1.2 Georgia,serif}
+.patrol-guide-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.patrol-guide-grid>div{border:1px solid rgba(142,113,76,.18);background:#fffdf7ba;border-radius:9px;padding:14px}
+.patrol-guide-grid strong{display:block;font:18px/1.2 Georgia,serif;color:#504130;margin-bottom:8px}
+.patrol-guide-grid p{font-size:12px;line-height:1.6;color:#6b5c49;margin:0}
+.patrol-guide-notice{margin-top:17px;padding:13px 15px;border-left:3px solid #ac8559;background:rgba(217,195,159,.28);font-size:12px;line-height:1.7;color:#66543d}
+.patrol-guide .source-note{margin:13px 0 0}
+.patrol-finance-hint,.finance-home-strip{display:flex;justify-content:space-between;align-items:center;gap:16px;border:1px solid #d5bb8c;background:linear-gradient(115deg,#ede0c7,#f4ead6);border-radius:11px;padding:17px 21px;margin:15px 0 29px}
+.patrol-finance-hint div,.finance-home-strip div{display:grid;gap:5px}
+.patrol-finance-hint strong,.finance-home-strip strong{font:19px Georgia,serif;color:#674a33}
+.patrol-finance-hint span,.finance-home-strip span{font:12px/1.5 var(--sans);color:#786955}
+.finance-home-strip{margin:15px 0 22px}
+.patrol-row{grid-template-columns:52px minmax(155px,1.22fr) 75px 78px minmax(165px,1.3fr) minmax(90px,.64fr) 13px;gap:10px;min-height:112px;padding:12px}
+.patrol-row>img{width:51px;height:66px}
+.patrol-role-rating{text-align:center;min-width:0}
+.patrol-role-rating>b{display:block;font:30px/1 Georgia,serif;color:#70502d;font-variant-numeric:tabular-nums}
+.patrol-role-rating>span{display:block;font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:#786146;font-weight:700;margin:3px 0}
+.patrol-role-rating>small{display:block;color:#47836a;font-size:10px;white-space:nowrap}
+.patrol-role-rating>small:first-letter{color:#47836a}
+.patrol-progression{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0}
+.patrol-progression>strong{font-size:11px;line-height:1.2;font-weight:800;color:#64513e}
+.patrol-progression>span{font-size:11px;line-height:1.5;color:#655440}
+.patrol-progression>span b{color:#47795b}
+.patrol-progression>i{display:block;width:100%;height:6px;overflow:hidden;border-radius:20px;background:#ded3c0}
+.patrol-progression>i>em{display:block;height:100%;background:linear-gradient(90deg,#71987b,#bfa26a);border-radius:20px}
+.patrol-progression.growth-full>i>em{background:#797b78}
+.patrol-progression.growth-full>span b{color:#756c60}
+.patrol-progression>small{font-size:10px;line-height:1.4;color:#92724e}
+.patrol-progression.growth-high>small{color:#33765e}
+.patrol-row .patrol-bars{min-width:0}
+.patrol-row .patrol-bars span{font-size:9px}
+.finance-archive{margin:8px 0 30px;background:linear-gradient(125deg,#faf5e8,#f2e8d4);border-color:#d1b48c}
+.finance-archive h3{margin:6px 0 13px;font:30px Georgia,serif}
+.finance-archive>p{font-size:13px;line-height:1.7;color:#665c4c;max-width:900px}
+.finance-top{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:22px 0}
+.finance-metric{display:flex;flex-direction:column;gap:7px;padding:18px;background:#fffcf3b7;border:1px solid #deccb0;border-radius:10px}
+.finance-metric span{text-transform:uppercase;letter-spacing:.8px;font-size:10px;font-weight:800;color:#7c6c59}
+.finance-metric strong{font:30px/1.1 Georgia,serif;color:#6d493b}
+.finance-metric:last-child strong{color:#426c53}
+.finance-metric small{line-height:1.5;color:#7d6b56}
+.finance-ledger-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;margin:22px 0}
+.finance-ledger-grid>div{padding:18px;border:1px solid #e0ccb0;border-radius:10px;background:#fffaf080}
+.finance-ledger-grid h4{font:20px Georgia,serif;margin:0 0 15px;color:#5e4735}
+.finance-ledger-grid p{font-size:13px;color:#5d5349;line-height:1.7;margin:0 0 12px}
+.finance-ledger-grid .statrow{gap:10px}
+.finance-ledger-grid .statrow.total{margin-top:8px;border-top:2px solid #c3a77e;padding-top:15px}
+.finance-history{padding:15px;border:1px solid #ddc4a1;border-radius:9px;margin:10px 0 20px}
+.finance-history summary{cursor:pointer;font-weight:750;color:#725134}
+.finance-scroll{overflow:auto;padding-top:12px}
+.finance-history table{width:100%;border-collapse:collapse;font-size:12px;text-align:left}
+.finance-history td,.finance-history th{padding:9px 10px;border-bottom:1px solid #d8c6ad;white-space:nowrap}
+.finance-history th{color:#735d43;font-weight:800}
+@media(max-width:1150px){
+ .patrol-row{grid-template-columns:48px minmax(135px,1fr) 58px 60px minmax(155px,1fr) 15px}
+ .patrol-row .patrol-bars{display:none}
+ .patrol-role-rating>b{font-size:26px}
+ .patrol-progression>span{font-size:10px}
+}
+@media(max-width:850px){
+ .patrol-guide-grid{grid-template-columns:1fr}
+ .patrol-row{grid-template-columns:45px minmax(135px,1fr) 50px minmax(140px,.9fr) 13px;gap:8px}
+ .patrol-row .role-tag{display:none}
+ .patrol-row>img{width:45px;height:57px}
+ .finance-ledger-grid{grid-template-columns:1fr}
+}
+@media(max-width:650px){
+ .patrol-guide{padding:19px 15px}
+ .patrol-finance-hint,.finance-home-strip{flex-direction:column;align-items:flex-start;padding:15px}
+ .patrol-row{display:grid;grid-template-columns:44px minmax(0,1fr) 62px 12px;gap:8px;min-height:auto;padding:12px 9px}
+ .patrol-row>img{grid-column:1;grid-row:1/3;width:44px;height:57px}
+ .patrol-row .patrol-name{grid-column:2;grid-row:1}
+ .patrol-row .role-tag{display:none}
+ .patrol-row .patrol-role-rating{display:block;grid-column:3;grid-row:1;text-align:right}
+ .patrol-role-rating>b{font-size:24px}
+ .patrol-role-rating>span{font-size:8px}
+ .patrol-role-rating>small{font-size:9px}
+ .patrol-row .patrol-progression{display:flex;grid-column:2/4;grid-row:2;gap:4px}
+ .patrol-row .patrol-progression>strong{font-size:10px}
+ .patrol-row .patrol-progression>span{font-size:10px}
+ .patrol-row .patrol-progression>i{height:5px}
+ .patrol-row .patrol-progression>small{font-size:9px}
+ .patrol-row .patrol-go{grid-column:4;grid-row:1;align-self:center}
+ .finance-top{grid-template-columns:1fr}
+ .finance-archive{padding:17px}
+ .finance-metric strong{font-size:27px}
+}

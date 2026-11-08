@@ -11,7 +11,7 @@ async function audit(page,kind){
  assert.equal(res.status(),200,kind+' HTTP');
  await page.locator('#content').waitFor({state:'visible'});
  const summary=await page.locator('#sideEdition').innerText();
- assert.ok(summary.includes('E0029'),kind+' no muestra la edición E0029: '+summary);
+ assert.ok(summary.includes('E0030'),kind+' no muestra la edición E0030: '+summary);
  for(const section of sections){
    await page.locator('#sideNav [data-nav="'+section+'"]').click();
    const text=await page.locator('#content').innerText();
@@ -42,6 +42,11 @@ async function audit(page,kind){
  assert.ok((await page.locator('#content').innerText()).includes('Iligar el Rompehuesos'),'No abre ficha de Iligar');
  await page.locator('#sideNav [data-nav="patrols"]').click();
  assert.equal(await page.locator('.patrol-row').count(),11,'Patrullas incompletas: han de aparecer los 11 miembros vivos');
+ assert.ok((await page.locator('#content').innerText()).includes('Gran margen'),'Patrullas no presenta oportunidades de crecimiento');
+ const yvaldo=page.locator('.patrol-row[data-hero="adv_nmu0cr5oezjw"]');
+ assert.ok((await yvaldo.innerText()).includes('76'),'Yvaldo no muestra su valoración de clase');
+ const xara=page.locator('.patrol-row[data-hero="adv_dvyb6kaxgy9l"]');
+ assert.ok((await xara.innerText()).includes('47'),'Xara no muestra su valoración de clase');
  assert.equal(await page.locator('.patrol-row.patrol-away').count(),4,'Deben figurar cuatro compañeros en Cindermoor');
  const patrolText=await page.locator('#content').innerText();
  assert.ok(patrolText.includes('154')&&patrolText.includes('Grosco'));
@@ -52,6 +57,8 @@ async function audit(page,kind){
  const archive=await page.locator('#content').innerText();
  assert.ok(archive.includes('Frontera')&&archive.includes('226'),'Archivo desactualizado');
  assert.ok(archive.toLocaleLowerCase('es').includes('retratos asignados')&&archive.toLocaleLowerCase('es').includes('récords revisados'),'Falta la auditoría del guardado v26');
+ assert.ok(archive.includes('343')&&archive.includes('475')&&archive.includes('411'),'La economía nueva no refleja paga real y previsión');
+ assert.ok(archive.includes('Urbano sin Descanso'),'No se explica la bajada de coste del Consejo');
  assert.ok(archive.includes('Cado Feroz')&&archive.includes('Tumba Inviolable'),'Tablón no sincronizado');
  await page.locator('#sideNav [data-nav="legacy"]').click();
  assert.equal(await page.locator('.memorial-person').count(),1,'Brugo perdió su memorial');

@@ -12,7 +12,7 @@ const projection=JSON.parse(read('data/approved-save-projection.json'));
 test('Año II y fuente aprobada coherentes',()=>{
  assert.equal(book.meta.year,2);
  assert.equal(book.meta.day,150);
- assert.equal(book.editions.at(-1).id,'E0029');
+ assert.equal(book.editions.at(-1).id,'E0030');
  assert.equal(book.stats.members,11);
  assert.equal(book.stats.dead,1);
  assert.equal(book.stats.gold,1589);
@@ -61,7 +61,7 @@ test('El resumen anual se conserva y la Gaceta sigue el día actual',()=>{
  assert.equal(summary.years[0].year,1);
  assert.equal(summary.years[0].title,'El año que hicimos casa');
  assert.equal(dispatch.latestDay,150);
- assert.equal(dispatch.latestEdition,'E0029');
+ assert.equal(dispatch.latestEdition,'E0030');
  assert.equal(dispatch.issues[0].day,150);
  assert.ok(dispatch.issues[0].eye.length>=5);
  const html=read('index.html');
@@ -115,4 +115,39 @@ test('El tablón y los récords corresponden al último guardado',()=>{
  assert.equal(book.world.records.delveDealt.day,149);
  assert.equal(projection.guild.portraitFiles['adv_3yrkzbvzvfzu'],'grosco_512x512.webp');
  assert.equal(base.lastApprovedSource,'La Corona de Barro 2026-11-08 08-35.json');
+});
+
+test('Valoración de clase, CA, PA y etapa se leen por separado',()=>{
+ const expected={'Luna':55,'Belzar de la Ofrenda':66,'Ulf Vallehondo':53,'Velasco Rivadeneira':69,'Jaro':63,'Íñigo Guzmán':40,'Ruc':45,'Xara del Cuerno':47,'Yvaldo Guardapuerto':76,'Iligar el Rompehuesos':70,'Grosco del Puño de Piedra':68};
+ const living=book.characters.filter(c=>c.status!=='caído'&&c.status!=='retirada');
+ assert.equal(living.length,11);
+ for(const hero of living){
+  const saved=projection.guild.roster.find(c=>c.id===hero.id);
+  assert.ok(saved,'No aparece en proyección '+hero.name);
+  assert.equal(hero.gameRating,expected[hero.name],hero.name+' valoración verificada');
+  assert.equal(hero.rating,hero.gameRating,hero.name+' rating debe ser de clase');
+  assert.equal(hero.gameRating,saved.gameRatingVerified,hero.name+' proyección inconsistente');
+  assert.equal(hero.ratingAtJoin,saved.ratingAtJoin,hero.name+' valoración de entrada alterada');
+  assert.equal(hero.gameCareerStage,saved.gameCareerStageVerified,hero.name+' etapa distinta');
+  assert.equal(hero.potentialGap,Math.round(Math.max(0,hero.potentialAbility-hero.currentAbility)*100)/100,hero.name+' margen incorrecto');
+ }
+ assert.equal(book.characters.find(x=>x.name==='Yvaldo Guardapuerto').gameRating,76);
+ assert.equal(book.characters.find(x=>x.name==='Yvaldo Guardapuerto').ratingAtJoin,62);
+ assert.equal(book.characters.find(x=>x.name==='Velasco Rivadeneira').gameCareerStage,'Ascendiendo');
+ assert.equal(book.characters.find(x=>x.name==='Velasco Rivadeneira').potentialGap,0);
+});
+test('Economía: forecast −343, último cargo −475 y Consejo vacante',()=>{
+ const f=book.world.finance;
+ assert.equal(f.current.delverWages,220);
+ assert.equal(f.current.staffWages,0);
+ assert.equal(f.current.upkeep,202);
+ assert.equal(f.current.stipend,79);
+ assert.equal(f.current.netBeforeDelves,-343);
+ assert.equal(f.lastPayroll.net,-475);
+ assert.equal(f.lastPayroll.staffWages,132);
+ assert.equal(f.recentStaffDeparture.visibleDay,148);
+ assert.equal(f.avgDelvesGoldPerPay,411);
+ assert.equal(f.netWithAvgDelves,68);
+ assert.equal(f.current.stipend-f.current.delverWages-f.current.staffWages-f.current.upkeep,f.current.netBeforeDelves);
+ assert.equal(projection.guild.financeSnapshot.netBeforeDelves,-343);
 });

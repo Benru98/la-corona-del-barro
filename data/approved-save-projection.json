@@ -159,7 +159,11 @@
         "ratingAtJoin": 52,
         "lastYearRating": 55,
         "lastYearRated": 1,
-        "ingamePortraitFile": "Luna_512x512.webp"
+        "ingamePortraitFile": "Luna_512x512.webp",
+        "gameRatingVerified": 55,
+        "gameCareerStageVerified": "En sus inicios",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 66
       },
       {
         "id": "adv_vir5cr755mej",
@@ -292,7 +296,11 @@
         "ratingAtJoin": 65,
         "lastYearRating": 66,
         "lastYearRated": 1,
-        "ingamePortraitFile": "Belzar_512x512.webp"
+        "ingamePortraitFile": "Belzar_512x512.webp",
+        "gameRatingVerified": 66,
+        "gameCareerStageVerified": "En su apogeo",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 0
       },
       {
         "id": "adv_xsny2mf20dv6",
@@ -435,7 +443,11 @@
         "ratingAtJoin": 51,
         "lastYearRating": 53,
         "lastYearRated": 1,
-        "ingamePortraitFile": "Ulf_512x512.webp"
+        "ingamePortraitFile": "Ulf_512x512.webp",
+        "gameRatingVerified": 53,
+        "gameCareerStageVerified": "Ascendiendo",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 31.67
       },
       {
         "id": "adv_hpzq2ixhvxtq",
@@ -585,7 +597,11 @@
         "ratingAtJoin": 67,
         "lastYearRating": 69,
         "lastYearRated": 1,
-        "ingamePortraitFile": "Velasco_512x512.webp"
+        "ingamePortraitFile": "Velasco_512x512.webp",
+        "gameRatingVerified": 69,
+        "gameCareerStageVerified": "Ascendiendo",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 0
       },
       {
         "id": "adv_agorapai6eaw",
@@ -740,7 +756,11 @@
         "ratingAtJoin": 65,
         "lastYearRating": 63,
         "lastYearRated": 1,
-        "ingamePortraitFile": "Jaro_512x512.webp"
+        "ingamePortraitFile": "Jaro_512x512.webp",
+        "gameRatingVerified": 63,
+        "gameCareerStageVerified": "En su apogeo",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 0
       },
       {
         "id": "adv_ge28ylm26r9p",
@@ -871,7 +891,11 @@
         "ratingAtJoin": 39,
         "lastYearRating": 40,
         "lastYearRated": 1,
-        "ingamePortraitFile": "Inigo_512x512.webp"
+        "ingamePortraitFile": "Inigo_512x512.webp",
+        "gameRatingVerified": 40,
+        "gameCareerStageVerified": "En sus inicios",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 50.97
       },
       {
         "id": "adv_dw6dpd5sh7jc",
@@ -1004,7 +1028,11 @@
         "ratingAtJoin": 44,
         "lastYearRating": 45,
         "lastYearRated": 1,
-        "ingamePortraitFile": "Ruc_512x512.webp"
+        "ingamePortraitFile": "Ruc_512x512.webp",
+        "gameRatingVerified": 45,
+        "gameCareerStageVerified": "En sus inicios",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 52.72
       },
       {
         "id": "adv_dvyb6kaxgy9l",
@@ -1135,7 +1163,11 @@
         "ratingAtJoin": 45,
         "lastYearRating": 46,
         "lastYearRated": 1,
-        "ingamePortraitFile": "Xara_512x512.webp"
+        "ingamePortraitFile": "Xara_512x512.webp",
+        "gameRatingVerified": 47,
+        "gameCareerStageVerified": "En sus inicios",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 53.12
       },
       {
         "id": "adv_nmu0cr5oezjw",
@@ -1291,7 +1323,11 @@
         "ratingAtJoin": 62,
         "lastYearRating": 76,
         "lastYearRated": 1,
-        "ingamePortraitFile": "Yvaldo_512x512.webp"
+        "ingamePortraitFile": "Yvaldo_512x512.webp",
+        "gameRatingVerified": 76,
+        "gameCareerStageVerified": "Ascendiendo",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 19.53
       },
       {
         "id": "adv_efelp4o01ks4",
@@ -1449,7 +1485,11 @@
         "ratingAtJoin": 70,
         "lastYearRating": 70,
         "lastYearRated": 1,
-        "ingamePortraitFile": "iligar_512x512.webp"
+        "ingamePortraitFile": "iligar_512x512.webp",
+        "gameRatingVerified": 70,
+        "gameCareerStageVerified": "Ascendiendo",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 0
       },
       {
         "id": "adv_3yrkzbvzvfzu",
@@ -1540,7 +1580,11 @@
         "ratingAtJoin": 68,
         "lastYearRating": null,
         "lastYearRated": null,
-        "ingamePortraitFile": "grosco_512x512.webp"
+        "ingamePortraitFile": "grosco_512x512.webp",
+        "gameRatingVerified": 68,
+        "gameCareerStageVerified": "Ascendiendo",
+        "gameRatingVerifiedAt": "2026-11-08",
+        "potentialGap": 17.27
       }
     ],
     "fallen": [
@@ -2382,6 +2426,22 @@
         ]
       }
     ],
-    "notepadPresent": true
-  }
+    "notepadPresent": true,
+    "financeSnapshot": {
+      "visibleDay": 150,
+      "periodDays": 6,
+      "delverWages": 220,
+      "staffWagesCurrent": 0,
+      "upkeepLastKnown": 202,
+      "stipendLastKnown": 79,
+      "netBeforeDelves": -343,
+      "avgDelveGoldPerPeriod": 411,
+      "netWithAvgDelves": 68,
+      "lastPaydayNet": -475,
+      "lastPaydayStaffWages": 132,
+      "staffLeftAfterPayday": "Urbano sin Descanso",
+      "staffDepartureDay": 148
+    }
+  },
+  "ratingNote": "La valoración de clase actual se ha transcrito de una captura de Plantilla del 8/11/2026; no está en el JSON del guardado. No actualiza automáticamente con un nuevo guardado sin fuente equivalente."
 }
