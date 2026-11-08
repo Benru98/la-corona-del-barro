@@ -29,7 +29,7 @@
    .sort((a,b)=>Number(b.intensity||0)-Number(a.intensity||0)||
     Number(b.since?.day||0)-Number(a.since?.day||0)||String(a.id).localeCompare(String(b.id)))
    .slice(0,3);
-  const prospects=[...available].sort((a,b)=>Number(b.rating||0)-Number(a.rating||0)||a.name.localeCompare(b.name,'es')).slice(0,3);
+  const prospects=[...available].sort((a,b)=>Number(b.currentAbility??0)-Number(a.currentAbility??0)||a.name.localeCompare(b.name,'es')).slice(0,3);
   return {byId,living,fallen,available,availableIds,awayIds,activeJobs,expedition,
    relations:historicRelations,featured,prospects,
    counts:{living:living.length,fallen:fallen.length,total:chars.length,available:available.length},
