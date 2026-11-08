@@ -12,7 +12,7 @@ const projection=JSON.parse(read('data/approved-save-projection.json'));
 test('Año II y fuente aprobada coherentes',()=>{
  assert.equal(book.meta.year,2);
  assert.equal(book.meta.day,150);
- assert.equal(book.editions.at(-1).id,'E0028');
+ assert.equal(book.editions.at(-1).id,'E0029');
  assert.equal(book.stats.members,11);
  assert.equal(book.stats.dead,1);
  assert.equal(book.stats.gold,1589);
@@ -23,7 +23,7 @@ test('Año II y fuente aprobada coherentes',()=>{
  assert.equal(book.stats.salaryCycle,220);
  assert.equal(base.lastApprovedVisibleDay,150);
  assert.equal(base.lastApprovedInternalDay,149);
- assert.equal(base.lastApprovedSaveSignature,'fmyvti.jr6zxc');
+ assert.equal(base.lastApprovedSaveSignature,'lmc4sv.8q7cd');
  assert.equal(projection.sig,base.lastApprovedSaveSignature);
  assert.equal(projection.guild.day,149);
  assert.equal(Object.keys(projection.guild.bonds).length,49);
@@ -61,7 +61,7 @@ test('El resumen anual se conserva y la Gaceta sigue el día actual',()=>{
  assert.equal(summary.years[0].year,1);
  assert.equal(summary.years[0].title,'El año que hicimos casa');
  assert.equal(dispatch.latestDay,150);
- assert.equal(dispatch.latestEdition,'E0028');
+ assert.equal(dispatch.latestEdition,'E0029');
  assert.equal(dispatch.issues[0].day,150);
  assert.ok(dispatch.issues[0].eye.length>=5);
  const html=read('index.html');
@@ -83,4 +83,36 @@ test('Patrullas muestran plantilla, no solo disponibles',()=>{
  assert.ok(patrols.includes('const living=livingMembers()'));
  assert.ok(!patrols.includes('const living=house().available;'));
  assert.ok(patrols.includes('patrol-status away'));
+});
+
+test('Capacidades y puntuaciones del guardado v26 se presentan en escalas separadas',()=>{
+ const roster=book.characters.filter(c=>c.status!=='caído'&&c.status!=='retirada');
+ assert.equal(roster.length,11);
+ assert.equal(book.world.patch301.gameSaveVersion,26);
+ assert.equal(Object.keys(book.world.patch301.portraitFiles).length,11);
+ assert.deepEqual(book.world.patch301.personalCrestIds,['adv_vir5cr755mej']);
+ assert.equal(book.world.patch301.shapeLines[0].shape,'1-2-1');
+ for(const hero of roster){
+  const expected=projection.guild.roster.find(x=>x.id===hero.id);
+  assert.ok(expected,'Falta personaje en proyección: '+hero.name);
+  assert.equal(hero.ratingAtJoin,expected.ratingAtJoin,'Valoración inicial errónea: '+hero.name);
+  assert.equal(hero.currentAbility,Math.round(expected.currentAbility*1000)/1000,'Habilidad errónea: '+hero.name);
+  assert.equal(hero.potentialAbility,Math.round(expected.potentialAbility*1000)/1000,'Potencial erróneo: '+hero.name);
+  assert.equal(hero.ingamePortraitFile,expected.ingamePortraitFile,'Retrato incorrecto: '+hero.name);
+ }
+ assert.equal(book.characters.find(x=>x.name==='Luna').ratingAtJoin,52);
+ assert.equal(book.characters.find(x=>x.name==='Luna').currentAbility,132);
+ assert.equal(book.characters.find(x=>x.name==='Velasco Rivadeneira').currentAbility,142);
+ assert.equal(book.characters.find(x=>x.name==='Grosco del Puño de Piedra').ratingAtJoin,68);
+ assert.equal(book.characters.find(x=>x.name==='Grosco del Puño de Piedra').ratingLastYearEnd,null);
+});
+test('El tablón y los récords corresponden al último guardado',()=>{
+ assert.deepEqual(book.world.board.map(x=>x.name),['Cado Feroz','Cado Aullante','Espesura Aullante','Caverna sin Luz','Gruta Insondable','Tumba Inviolable']);
+ assert.ok(book.world.board.every(x=>x.expiresDay>=book.stats.day));
+ assert.equal(book.world.records.delveDealt.value,3025);
+ assert.equal(book.world.records.delveFaced.value,2842);
+ assert.equal(book.world.records.careerHealed.value,9215);
+ assert.equal(book.world.records.delveDealt.day,149);
+ assert.equal(projection.guild.portraitFiles['adv_3yrkzbvzvfzu'],'grosco_512x512.webp');
+ assert.equal(base.lastApprovedSource,'La Corona de Barro 2026-11-08 08-35.json');
 });

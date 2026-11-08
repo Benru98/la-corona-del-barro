@@ -11,7 +11,7 @@ async function audit(page,kind){
  assert.equal(res.status(),200,kind+' HTTP');
  await page.locator('#content').waitFor({state:'visible'});
  const summary=await page.locator('#sideEdition').innerText();
- assert.ok(summary.includes('E0028'),kind+' no muestra la edición E0028: '+summary);
+ assert.ok(summary.includes('E0029'),kind+' no muestra la edición E0029: '+summary);
  for(const section of sections){
    await page.locator('#sideNav [data-nav="'+section+'"]').click();
    const text=await page.locator('#content').innerText();
@@ -34,6 +34,12 @@ async function audit(page,kind){
  await page.locator('#sideNav [data-nav="heroes"]').click();
  assert.equal(await page.locator('.hero-card').count(),13,'El archivo debe incluir 11 vivos, Brugo y Turca');
  assert.ok((await page.locator('#content').innerText()).includes('Grosco del Puño de Piedra'));
+ await page.locator('.hero-card[data-hero="adv_3yrkzbvzvfzu"]').click();
+ const groscoText=await page.locator('#content').innerText();
+ assert.ok(groscoText.includes('VALORACIÓN DE INGRESO')&&groscoText.includes('68')&&groscoText.includes('HABILIDAD ACTUAL (CA)')&&groscoText.includes('118'),'Grosco no muestra puntuaciones correctas');
+ await page.locator('[data-action="back-heroes"]').click();
+ await page.locator('.hero-card[data-hero="adv_efelp4o01ks4"]').click();
+ assert.ok((await page.locator('#content').innerText()).includes('Iligar el Rompehuesos'),'No abre ficha de Iligar');
  await page.locator('#sideNav [data-nav="patrols"]').click();
  assert.equal(await page.locator('.patrol-row').count(),11,'Patrullas incompletas: han de aparecer los 11 miembros vivos');
  assert.equal(await page.locator('.patrol-row.patrol-away').count(),4,'Deben figurar cuatro compañeros en Cindermoor');
@@ -45,6 +51,8 @@ async function audit(page,kind){
  await page.locator('#sideNav [data-nav="archive"]').click();
  const archive=await page.locator('#content').innerText();
  assert.ok(archive.includes('Frontera')&&archive.includes('226'),'Archivo desactualizado');
+ assert.ok(archive.includes('Retratos asignados')&&archive.includes('Récords revisados'),'Falta la auditoría del guardado v26');
+ assert.ok(archive.includes('Cado Feroz')&&archive.includes('Tumba Inviolable'),'Tablón no sincronizado');
  await page.locator('#sideNav [data-nav="legacy"]').click();
  assert.equal(await page.locator('.memorial-person').count(),1,'Brugo perdió su memorial');
  await page.locator('#sideNav [data-nav="saga"]').click();

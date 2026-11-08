@@ -1,8 +1,8 @@
 {
   "format": "corona-approved-save-projection/v1",
-  "projectionNote": "Proyección de seguimiento del guardado del día interno 149; campos de mecánica actualizados, sin guardado bruto, atributos ocultos ni histórico completo.",
+  "projectionNote": "Proyección pública revisada del guardado v26 de 2026-11-08 08-35 (día interno 149). Sin guardado bruto, atributos ocultos ni notas privadas.",
   "version": 26,
-  "sig": "fmyvti.jr6zxc",
+  "sig": "lmc4sv.8q7cd",
   "guild": {
     "name": "La Corona de Barro",
     "day": 149,
@@ -76,16 +76,16 @@
         "record": {
           "since": 28,
           "all": {
-            "n": 7,
+            "n": 8,
             "dealt": 11214,
             "healed": 0,
             "faced": 245,
             "kills": 54,
             "downed": 0,
-            "swings": 321,
-            "hits": 269,
-            "crits": 27,
-            "taken": 187,
+            "swings": 387,
+            "hits": 330,
+            "crits": 34,
+            "taken": 259,
             "blocked": 1,
             "heroic": 1
           },
@@ -155,7 +155,11 @@
             "reforged": true
           }
         },
-        "age": 21
+        "age": 21,
+        "ratingAtJoin": 52,
+        "lastYearRating": 55,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "Luna_512x512.webp"
       },
       {
         "id": "adv_vir5cr755mej",
@@ -220,16 +224,16 @@
         "record": {
           "since": 1,
           "all": {
-            "n": 11,
+            "n": 12,
             "dealt": 2632,
             "healed": 0,
             "faced": 15792,
             "kills": 13,
             "downed": 1,
-            "swings": 833,
-            "hits": 801,
-            "crits": 39,
-            "taken": 4239,
+            "swings": 959,
+            "hits": 922,
+            "crits": 45,
+            "taken": 4713,
             "blocked": 227,
             "heroic": 1
           },
@@ -284,7 +288,11 @@
             "reforged": true
           }
         },
-        "age": 26
+        "age": 26,
+        "ratingAtJoin": 65,
+        "lastYearRating": 66,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "Belzar_512x512.webp"
       },
       {
         "id": "adv_xsny2mf20dv6",
@@ -349,16 +357,16 @@
         "record": {
           "since": 0,
           "all": {
-            "n": 8,
+            "n": 9,
             "dealt": 1477,
             "healed": 4670,
             "faced": 1949,
             "kills": 7,
             "downed": 0,
-            "swings": 204,
-            "hits": 190,
-            "crits": 14,
-            "taken": 1139,
+            "swings": 237,
+            "hits": 220,
+            "crits": 19,
+            "taken": 1251,
             "blocked": 12,
             "heroic": 0
           },
@@ -377,7 +385,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 104.328,
+        "currentAbility": 104.32800000000016,
         "potentialAbility": 136,
         "abilityStars": 2.5,
         "potentialStars": 3.5,
@@ -423,7 +431,11 @@
             "reforged": true
           }
         },
-        "age": 18
+        "age": 18,
+        "ratingAtJoin": 51,
+        "lastYearRating": 53,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "Ulf_512x512.webp"
       },
       {
         "id": "adv_hpzq2ixhvxtq",
@@ -493,30 +505,30 @@
         "record": {
           "since": 0,
           "all": {
-            "n": 11,
+            "n": 14,
             "dealt": 23718,
             "healed": 0,
             "faced": 1324,
             "kills": 117,
             "downed": 2,
-            "swings": 380,
-            "hits": 376,
-            "crits": 103,
-            "taken": 1208,
+            "swings": 534,
+            "hits": 530,
+            "crits": 143,
+            "taken": 1598,
             "blocked": 2,
             "heroic": 1
           },
           "trials": {
-            "n": 8,
-            "dealt": 11034,
+            "n": 11,
+            "dealt": 18498,
             "healed": 0,
-            "faced": 831,
-            "kills": 58,
+            "faced": 1148,
+            "kills": 91,
             "downed": 2,
-            "swings": 243,
-            "hits": 242,
-            "crits": 78,
-            "taken": 935,
+            "swings": 397,
+            "hits": 396,
+            "crits": 118,
+            "taken": 1325,
             "blocked": 2,
             "heroic": 1
           }
@@ -569,7 +581,11 @@
             "reforged": true
           }
         },
-        "age": 22
+        "age": 22,
+        "ratingAtJoin": 67,
+        "lastYearRating": 69,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "Velasco_512x512.webp"
       },
       {
         "id": "adv_agorapai6eaw",
@@ -639,31 +655,31 @@
         "record": {
           "since": 0,
           "all": {
-            "n": 13,
+            "n": 15,
             "dealt": 22804,
             "healed": 0,
             "faced": 959,
             "kills": 105,
             "downed": 2,
-            "swings": 423,
-            "hits": 419,
-            "crits": 84,
-            "taken": 1212,
+            "swings": 502,
+            "hits": 498,
+            "crits": 101,
+            "taken": 1373,
             "blocked": 2,
             "heroic": 1
           },
           "trials": {
-            "n": 9,
-            "dealt": 11665,
+            "n": 11,
+            "dealt": 15281,
             "healed": 0,
-            "faced": 685,
-            "kills": 60,
+            "faced": 857,
+            "kills": 76,
             "downed": 2,
-            "swings": 249,
-            "hits": 246,
-            "crits": 53,
-            "taken": 882,
-            "blocked": 0,
+            "swings": 328,
+            "hits": 325,
+            "crits": 70,
+            "taken": 1043,
+            "blocked": 2,
             "heroic": 1
           }
         },
@@ -720,7 +736,11 @@
           "id": "shoulder",
           "day": 102
         },
-        "age": 25
+        "age": 25,
+        "ratingAtJoin": 65,
+        "lastYearRating": 63,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "Jaro_512x512.webp"
       },
       {
         "id": "adv_ge28ylm26r9p",
@@ -732,7 +752,7 @@
         "stress": 11,
         "fatigue": 11,
         "oathWage": 14,
-        "post": "secondWatch",
+        "post": "cp_1",
         "injury": null,
         "attributes": {
           "weaponSkill": 1,
@@ -785,16 +805,16 @@
         "record": {
           "since": 44,
           "all": {
-            "n": 2,
+            "n": 3,
             "dealt": 3431,
             "healed": 0,
             "faced": 140,
             "kills": 14,
             "downed": 0,
-            "swings": 84,
-            "hits": 67,
-            "crits": 3,
-            "taken": 88,
+            "swings": 146,
+            "hits": 121,
+            "crits": 7,
+            "taken": 181,
             "blocked": 0,
             "heroic": 0
           },
@@ -813,7 +833,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 92.0256,
+        "currentAbility": 92.02560000000018,
         "potentialAbility": 143,
         "abilityStars": 2.5,
         "potentialStars": 3.5,
@@ -847,7 +867,11 @@
             "reforged": true
           }
         },
-        "age": 17
+        "age": 17,
+        "ratingAtJoin": 39,
+        "lastYearRating": 40,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "Inigo_512x512.webp"
       },
       {
         "id": "adv_dw6dpd5sh7jc",
@@ -939,7 +963,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 84.28,
+        "currentAbility": 84.28000000000024,
         "potentialAbility": 137,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -976,7 +1000,11 @@
             "reforged": true
           }
         },
-        "age": 15
+        "age": 15,
+        "ratingAtJoin": 44,
+        "lastYearRating": 45,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "Ruc_512x512.webp"
       },
       {
         "id": "adv_dvyb6kaxgy9l",
@@ -988,7 +1016,7 @@
         "stress": 0,
         "fatigue": 0,
         "oathWage": 14,
-        "post": "cp_1",
+        "post": "secondWatch",
         "injury": null,
         "attributes": {
           "weaponSkill": 8,
@@ -1068,7 +1096,7 @@
             "heroic": 0
           }
         },
-        "currentAbility": 86.88,
+        "currentAbility": 86.88000000000004,
         "potentialAbility": 140,
         "abilityStars": 2,
         "potentialStars": 3.5,
@@ -1103,7 +1131,11 @@
             "reforged": true
           }
         },
-        "age": 19
+        "age": 19,
+        "ratingAtJoin": 45,
+        "lastYearRating": 46,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "Xara_512x512.webp"
       },
       {
         "id": "adv_nmu0cr5oezjw",
@@ -1174,35 +1206,35 @@
         "record": {
           "since": 1,
           "all": {
-            "n": 13,
+            "n": 16,
             "dealt": 3797,
             "healed": 9215,
             "faced": 2769,
             "kills": 11,
             "downed": 2,
-            "swings": 338,
-            "hits": 288,
-            "crits": 33,
-            "taken": 1550,
+            "swings": 428,
+            "hits": 364,
+            "crits": 49,
+            "taken": 1770,
             "blocked": 7,
             "heroic": 0
           },
           "trials": {
-            "n": 10,
-            "dealt": 2005,
-            "healed": 4524,
-            "faced": 1009,
-            "kills": 5,
+            "n": 13,
+            "dealt": 2966,
+            "healed": 6768,
+            "faced": 1439,
+            "kills": 6,
             "downed": 2,
-            "swings": 227,
-            "hits": 192,
-            "crits": 21,
-            "taken": 914,
-            "blocked": 0,
+            "swings": 317,
+            "hits": 268,
+            "crits": 37,
+            "taken": 1134,
+            "blocked": 1,
             "heroic": 0
           }
         },
-        "currentAbility": 103.472,
+        "currentAbility": 103.47200000000018,
         "potentialAbility": 123,
         "abilityStars": 2.5,
         "potentialStars": 3,
@@ -1255,7 +1287,11 @@
         },
         "origin": "youth",
         "aspirant": false,
-        "age": 21
+        "age": 21,
+        "ratingAtJoin": 62,
+        "lastYearRating": 76,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "Yvaldo_512x512.webp"
       },
       {
         "id": "adv_efelp4o01ks4",
@@ -1331,31 +1367,31 @@
         "record": {
           "since": 58,
           "all": {
-            "n": 4,
+            "n": 7,
             "dealt": 1272,
             "healed": 0,
             "faced": 9107,
             "kills": 5,
             "downed": 1,
-            "swings": 272,
-            "hits": 249,
-            "crits": 12,
-            "taken": 1621,
+            "swings": 499,
+            "hits": 459,
+            "crits": 21,
+            "taken": 3406,
             "blocked": 124,
             "heroic": 0
           },
           "trials": {
-            "n": 2,
-            "dealt": 244,
+            "n": 5,
+            "dealt": 923,
             "healed": 0,
-            "faced": 2522,
-            "kills": 2,
+            "faced": 8108,
+            "kills": 3,
             "downed": 1,
-            "swings": 119,
-            "hits": 106,
-            "crits": 1,
-            "taken": 1104,
-            "blocked": 37,
+            "swings": 346,
+            "hits": 316,
+            "crits": 10,
+            "taken": 2889,
+            "blocked": 109,
             "heroic": 0
           }
         },
@@ -1409,7 +1445,11 @@
           }
         },
         "origin": "recruited",
-        "age": 19
+        "age": 19,
+        "ratingAtJoin": 70,
+        "lastYearRating": 70,
+        "lastYearRated": 1,
+        "ingamePortraitFile": "iligar_512x512.webp"
       },
       {
         "id": "adv_3yrkzbvzvfzu",
@@ -1470,12 +1510,12 @@
             "text": "Guarda un nombre salido de Las Marcas Cenicientas que se propone encontrar, vivo o no.",
             "resolved": {
               "line": "El trabajo del gremio le hizo cruzar Las Marcas Cenicientas otra vez, y salió de ello más cerca del nombre que fue a buscar.",
-              "day": 137
+              "day": 136
             }
           },
           "flaw": "pride"
         },
-        "currentAbility": 117.728,
+        "currentAbility": 117.72800000000002,
         "potentialAbility": 135,
         "abilityStars": 3,
         "potentialStars": 3.5,
@@ -1496,7 +1536,11 @@
             "faced": 33,
             "blocked": 0
           }
-        }
+        },
+        "ratingAtJoin": 68,
+        "lastYearRating": null,
+        "lastYearRated": null,
+        "ingamePortraitFile": "grosco_512x512.webp"
       }
     ],
     "fallen": [
@@ -1546,7 +1590,7 @@
         "value": 17
       },
       "adv_hpzq2ixhvxtq|adv_nmu0cr5oezjw": {
-        "value": 11.081
+        "value": 11.08125
       },
       "adv_dvyb6kaxgy9l|adv_xsny2mf20dv6": {
         "value": 28
@@ -1609,7 +1653,7 @@
         "value": 17
       },
       "adv_efelp4o01ks4|adv_nmu0cr5oezjw": {
-        "value": 30.137
+        "value": 30.1375
       },
       "adv_ge28ylm26r9p|adv_vir5cr755mej": {
         "value": 8
@@ -1624,7 +1668,7 @@
         "value": 8
       },
       "adv_efelp4o01ks4|adv_hpzq2ixhvxtq": {
-        "value": 10.387
+        "value": 10.3875
       },
       "adv_efelp4o01ks4|adv_xsny2mf20dv6": {
         "value": 38
@@ -1645,7 +1689,7 @@
         "value": 4
       },
       "adv_3yrkzbvzvfzu|adv_efelp4o01ks4": {
-        "value": 4.458
+        "value": 4.458333333333333
       },
       "adv_3yrkzbvzvfzu|adv_hpzq2ixhvxtq": {
         "value": 14.25
@@ -1869,6 +1913,120 @@
       }
     ],
     "goldLog": [
+      {
+        "day": 148,
+        "kind": "delve",
+        "delta": 621,
+        "gold": 1589
+      },
+      {
+        "day": 148,
+        "kind": "other",
+        "delta": 92,
+        "gold": 968
+      },
+      {
+        "day": 144,
+        "kind": "payroll",
+        "delta": -475,
+        "gold": 876
+      },
+      {
+        "day": 143,
+        "kind": "other",
+        "delta": 120,
+        "gold": 1351
+      },
+      {
+        "day": 141,
+        "kind": "other",
+        "delta": -300,
+        "gold": 1231
+      },
+      {
+        "day": 139,
+        "kind": "sale",
+        "delta": 386,
+        "gold": 1531
+      },
+      {
+        "day": 138,
+        "kind": "delve",
+        "delta": 583,
+        "gold": 1145
+      },
+      {
+        "day": 138,
+        "kind": "reserve",
+        "delta": 25,
+        "gold": 562
+      },
+      {
+        "day": 138,
+        "kind": "sale",
+        "delta": 57,
+        "gold": 537
+      },
+      {
+        "day": 138,
+        "kind": "delve",
+        "delta": 467,
+        "gold": 480
+      },
+      {
+        "day": 138,
+        "kind": "other",
+        "delta": -475,
+        "gold": 13
+      },
+      {
+        "day": 136,
+        "kind": "other",
+        "delta": 218,
+        "gold": 488
+      },
+      {
+        "day": 133,
+        "kind": "prize",
+        "delta": 80,
+        "gold": 270
+      },
+      {
+        "day": 132,
+        "kind": "other",
+        "delta": -475,
+        "gold": 190
+      },
+      {
+        "day": 128,
+        "kind": "sale",
+        "delta": 37,
+        "gold": 665
+      },
+      {
+        "day": 128,
+        "kind": "delve",
+        "delta": 384,
+        "gold": 628
+      },
+      {
+        "day": 126,
+        "kind": "event",
+        "delta": -120,
+        "gold": 244
+      },
+      {
+        "day": 126,
+        "kind": "other",
+        "delta": -475,
+        "gold": 364
+      },
+      {
+        "day": 125,
+        "kind": "sale",
+        "delta": 196,
+        "gold": 839
+      },
       {
         "day": 120,
         "kind": "signing",
@@ -2114,120 +2272,6 @@
         "kind": "payroll",
         "delta": -258,
         "gold": 1289
-      },
-      {
-        "day": 53,
-        "kind": "building",
-        "delta": -600,
-        "gold": 1547
-      },
-      {
-        "day": 53,
-        "kind": "other",
-        "delta": 250,
-        "gold": 2147
-      },
-      {
-        "day": 48,
-        "kind": "delve",
-        "delta": 396,
-        "gold": 1897
-      },
-      {
-        "day": 48,
-        "kind": "payroll",
-        "delta": -233,
-        "gold": 1501
-      },
-      {
-        "day": 47,
-        "kind": "event",
-        "delta": -180,
-        "gold": 1734
-      },
-      {
-        "day": 45,
-        "kind": "signing",
-        "delta": -133,
-        "gold": 1914
-      },
-      {
-        "day": 44,
-        "kind": "delve",
-        "delta": 484,
-        "gold": 2047
-      },
-      {
-        "day": 42,
-        "kind": "payroll",
-        "delta": -212,
-        "gold": 1563
-      },
-      {
-        "day": 41,
-        "kind": "event",
-        "delta": -70,
-        "gold": 1775
-      },
-      {
-        "day": 39,
-        "kind": "delve",
-        "delta": 315,
-        "gold": 1845
-      },
-      {
-        "day": 39,
-        "kind": "building",
-        "delta": -1000,
-        "gold": 1530
-      },
-      {
-        "day": 38,
-        "kind": "delve",
-        "delta": 344,
-        "gold": 2530
-      },
-      {
-        "day": 36,
-        "kind": "payroll",
-        "delta": -198,
-        "gold": 2186
-      },
-      {
-        "day": 34,
-        "kind": "gift",
-        "delta": -520,
-        "gold": 2384
-      },
-      {
-        "day": 33,
-        "kind": "other",
-        "delta": 640,
-        "gold": 2904
-      },
-      {
-        "day": 33,
-        "kind": "payroll",
-        "delta": -221,
-        "gold": 2264
-      },
-      {
-        "day": 28,
-        "kind": "delve",
-        "delta": 522,
-        "gold": 2485
-      },
-      {
-        "day": 24,
-        "kind": "payroll",
-        "delta": -204,
-        "gold": 1963
-      },
-      {
-        "day": 23,
-        "kind": "delve",
-        "delta": 160,
-        "gold": 2167
       }
     ],
     "honours": [
@@ -2291,6 +2335,53 @@
       "adv_neqeupnrhpgg": "La pobre está muy verde, aun no sabe ni lanzar una bola de fuego... Intentará sorprender para que al acepten en cualquier gremio.",
       "adv_efelp4o01ks4": "Me parece un roco honorable, alguien de honor, justicia y sentido comñun. Hará todo por los demás."
     },
-    "mascot": "La Reina Zarigüeya"
+    "mascot": "La Reina Zarigüeya",
+    "portraitFiles": {
+      "adv_xvecyci8knko": "Luna_512x512.webp",
+      "adv_vir5cr755mej": "Belzar_512x512.webp",
+      "adv_xsny2mf20dv6": "Ulf_512x512.webp",
+      "adv_hpzq2ixhvxtq": "Velasco_512x512.webp",
+      "adv_agorapai6eaw": "Jaro_512x512.webp",
+      "adv_ge28ylm26r9p": "Inigo_512x512.webp",
+      "adv_dw6dpd5sh7jc": "Ruc_512x512.webp",
+      "adv_dvyb6kaxgy9l": "Xara_512x512.webp",
+      "adv_nmu0cr5oezjw": "Yvaldo_512x512.webp",
+      "adv_efelp4o01ks4": "iligar_512x512.webp",
+      "adv_3yrkzbvzvfzu": "grosco_512x512.webp"
+    },
+    "portraitPickedIds": [
+      "adv_xvecyci8knko",
+      "adv_vir5cr755mej",
+      "adv_xsny2mf20dv6",
+      "adv_agorapai6eaw",
+      "adv_ge28ylm26r9p",
+      "adv_dvyb6kaxgy9l",
+      "adv_nmu0cr5oezjw",
+      "adv_efelp4o01ks4",
+      "adv_3yrkzbvzvfzu"
+    ],
+    "personalCrestIds": [
+      "adv_vir5cr755mej"
+    ],
+    "watchShapes": {
+      "secondWatch": {
+        "tank": 2,
+        "dps": 1,
+        "healer": 1
+      }
+    },
+    "shapeLines": [
+      {
+        "squad": "watch_secondWatch",
+        "shape": "1-2-1",
+        "heroIds": [
+          "adv_xvecyci8knko",
+          "adv_xsny2mf20dv6",
+          "adv_ge28ylm26r9p",
+          "adv_efelp4o01ks4"
+        ]
+      }
+    ],
+    "notepadPresent": true
   }
 }
