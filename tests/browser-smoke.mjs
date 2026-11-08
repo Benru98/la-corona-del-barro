@@ -4,6 +4,9 @@ const campaign=vm.createContext({});
 vm.runInContext(fs.readFileSync(new URL('../data/campaign.js',import.meta.url),'utf8'),campaign,{timeout:10000});
 const expectedEdition=vm.runInContext('BOOK.editions.at(-1).id',campaign);
 const sourceBook=JSON.parse(vm.runInContext('JSON.stringify(BOOK)',campaign));
+vm.runInContext(fs.readFileSync(new URL('../annual/summaries.js',import.meta.url),'utf8'),campaign,{timeout:10000});
+vm.runInContext(fs.readFileSync(new URL('../home-summary.js',import.meta.url),'utf8'),campaign,{timeout:10000});
+const expectedHome=JSON.parse(vm.runInContext('JSON.stringify(HomeSummary.build(BOOK,ANNUAL_SUMMARIES))',campaign));
 import {chromium} from 'playwright';
 import assert from 'node:assert/strict';
 const base=process.env.BASE_URL||'http://127.0.0.1:8765/';
@@ -31,8 +34,14 @@ async function audit(page,kind){
  }
  assert.deepEqual(errors,[],kind+' errores JavaScript');
  await page.locator('#sideNav [data-nav="home"]').click();
- assert.equal(await page.locator('.new-era-home').count(),1,'Falta la portada del Año II');
- assert.ok((await page.locator('.new-era-home').innerText()).includes(sourceBook.world.division));
+ assert.equal(await page.locator('.new-era-home').count(),1,'Falta la portada dinámica');
+ const homeText=await page.locator('.new-era-home').innerText();
+ assert.ok(homeText.includes(expectedHome.title)&&homeText.includes(sourceBook.world.division),'La portada no coincide con la edición actual');
+ assert.ok(homeText.includes(String(sourceBook.stats.members)),'La plantilla no coincide con la portada');
+ const highlighted=await page.locator('.panel[aria-label="Acontecimiento destacado de la edición"]').innerText();
+ assert.ok(highlighted.includes(expectedHome.feature.title),'El destacado de portada está caducado');
+ if(expectedHome.annual)assert.ok((await page.locator('.annual-home-link').innerText()).includes(expectedHome.annual.title),'No aparece el último cierre anual');
+ if(sourceBook.world.finance?.asOfVisibleDay===sourceBook.meta.day)assert.equal(await page.locator('.finance-home-strip').count(),1,'Falta la previsión económica vigente');
  assert.equal(await page.locator('.home-memorial').count(),sourceBook.stats.dead?1:0,'El memorial no coincide con el guardado');
  assert.equal(await page.locator('.featured-card.is-fallen').count(),sourceBook.stats.dead,'No aparecen todos los caídos');
  await page.locator('#sideNav [data-nav="heroes"]').click();

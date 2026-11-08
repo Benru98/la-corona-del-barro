@@ -54,3 +54,10 @@ Meta: **una actualizacion = una lectura inicial, cambios agrupados, preflight lo
 - El registro de crónicas usa `scripts/chapter-index.mjs` y respeta el token de caché del índice.
 - Cada nueva campaña debe superar `tests/update-pipeline.test.mjs`, las pruebas de campaña y patrullas y las de navegador cuando cambie su interfaz. Evitar tests atados a nombres o días concretos.
 - `compare-saves.mjs` es diagnóstico opcional: no duplicar `prepare-next`.
+
+## Portada viva y nuevas ediciones
+- La cabecera y el acontecimiento destacado se calculan en `home-summary.js` desde `BOOK.meta`, `BOOK.stats`, `BOOK.world.systemEvents`, las ausencias y la última edición.
+- Los cierres anuales se seleccionan por año desde `ANNUAL_SUMMARIES.years`; nunca introducir textos de una temporada específica en `app.js`.
+- Solo se destacan acontecimientos de la fecha visible actual. Si no hay, recurrir a notas de la edición actual o a la crónica más reciente, sin convertir ficción en hechos del juego.
+- La previsión financiera de portada solo aparece si `world.finance.asOfVisibleDay === BOOK.meta.day`. Conservar los importes aprobados.
+- Ejecutar `tests/home-summary.test.mjs` tras cambios de campaña, portada, índice o cierres anuales; cubrir salto de año y retirada de anuncios caducados.
