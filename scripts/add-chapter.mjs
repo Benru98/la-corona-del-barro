@@ -5,6 +5,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import vm from 'node:vm';
+import {insertChapterScript} from './chapter-index.mjs';
 const root=path.resolve(import.meta.dirname,'..');
 const argv=process.argv.slice(2);
 function fail(message){throw Error(message);}
@@ -28,8 +29,7 @@ try{
  const script=path.join(root,'novel','chapters',c.id+'.js');
  if(fs.existsSync(script))fail('El capítulo ya existe y no puede sobrescribirse');
  const htmlPath=path.join(root,'index.html'),html=fs.readFileSync(htmlPath,'utf8');
- const anchor='<script src="novel/relationships.js"></script>';
- if(!html.includes(anchor))fail('No se reconoce el punto de inserción de capítulos');
+ // El índice versiona cada recurso (?v=...): la inserción hereda el token vigente.
  const ctx=vm.createContext({});
  vm.runInContext(fs.readFileSync(path.join(root,'data/campaign.js'),'utf8'),ctx);
  const book=JSON.parse(vm.runInContext('JSON.stringify(BOOK)',ctx));
@@ -43,9 +43,7 @@ try{
  }
  for(let i=0;i<c.paragraphs.length;i++)if(c.paragraphs[i].trim().startsWith('—')&&!c.speakers?.[String(i)])fail('Falta speaker en diálogo '+i);
  if(c.id.includes('..'))fail('Ruta no permitida');
- const nextScript='<script src="novel/chapters/'+c.id+'.js"></script>\n';
- if(html.includes('novel/chapters/'+c.id+'.js'))fail('Capítulo ya registrado en index.html');
- const nextHtml=html.replace(anchor,nextScript+anchor);
+ const nextHtml=insertChapterScript(html,c.id);
  const chapterText='/* Capítulo editorial aprobado: '+c.id+' */\nBOOK.chapters.push('+JSON.stringify(c)+');\n';
  if(args.dryRun){
   console.log('Vista previa validada: '+c.id+' ('+c.paragraphs.length+' párrafos); no se cambiaron archivos.');

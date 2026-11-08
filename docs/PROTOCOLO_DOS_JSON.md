@@ -26,7 +26,7 @@
 
 ## Estructura mínima de `home/dispatches.js`
 
-`HOUSE_DISPATCHES={schemaVersion:1,bookId:'la-corona-de-barro',latestDay:85,latestEdition:'E0022',issues:[{id,year,day,edition,headline,eye:[],news:[]}]}`.
+`HOUSE_DISPATCHES={schemaVersion:1,bookId:'la-corona-de-barro',latestDay:<día aprobado>,latestEdition:'<edición aprobada>',issues:[{id,year,day,edition,headline,eye:[],news:[]}]}` (sustituir los marcadores por valores literales de la campaña vigente).
 
 Cada noticia incluye `id,rubric,title,body,sourceType,source,editorialNote` y opcionalmente `relatedChapterId`.
 

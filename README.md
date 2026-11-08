@@ -49,21 +49,13 @@ Ver `AGENTS.md` para el procedimiento de publicación con un único commit, sin 
 
 No subir guardados de partida originales, credenciales o datos personales al repositorio público. Solo se publica información revisada. Véase `docs/IMPORTADOR.md` y `docs/SISTEMA_EDITORIAL.md`.
 
-## Protocolo de actualización con dos JSON
+## Flujo vigente de actualización con dos JSON
 
-En la **Mesa del Escriba**, seleccionar el número de crónicas (0 a 3), su extensión, las instrucciones personales y el número de noticias (1 a 3). Descargar «JSON del encargo». Enviar a ChatGPT **únicamente ese JSON y el nuevo JSON de Dungeons & Dynasties**.
+En la Mesa del Escriba se elige cuántas crónicas y noticias crear, su extensión y las instrucciones narrativas. Se descarga el **JSON del encargo** y se adjunta junto al **guardado nuevo de Dungeons & Dynasties**. No hace falta ZIP, HTML ni guardar en el chat el JSON anterior.
 
-El paquete contiene Motor 3.1, fichas y relaciones literarias, el índice de capítulos, últimas ediciones de noticias y un procedimiento de actualización. **Nunca sustituye el guardado nuevo:** ChatGPT debe consultar la versión vigente de GitHub y comparar antes de escribir.
+El encargo solo contiene preferencias y contexto editorial abreviado; el estado vigente se consulta siempre en GitHub. El guardado define los hechos, y el asistente completa la narrativa y una nueva edición del Ojo del Escriba y de la Gaceta.
 
-Un cambio en `data/campaign.js` debe modificar también `home/dispatches.js` en el mismo commit. Una validación selectiva comprueba fecha, edición, IDs y la procedencia de noticias del Ojo y la Gaceta sin ejecutar navegador ni batería de tests.
-
-- `home/dispatches.js` conserva el historial de ediciones más nuevas primero.
-- Las entradas del Ojo tienen hechos del juego y fuente explícita; su interpretación va aparte.
-- La Gaceta alterna sátira ficticia, acontecimientos del entorno y hechos literarios aprobados con `sourceType`.
-- No se inventan resultados mecánicos ni se generan imágenes automáticamente.
-
-Ver `docs/PROTOCOLO_DOS_JSON.md`.
-
+Si cambia `data/campaign.js`, actualizar también `home/dispatches.js` en el mismo commit. Jamás subir el JSON bruto; no atribuir resultados de misiones pendientes. Véase `docs/PROTOCOLO_DOS_JSON.md`.
 ## Actualizaciones rápidas (formato v2)
 
 El JSON exportado por la Mesa incluye solo el número y extensión de crónicas, tus instrucciones y noticias solicitadas; ya no incrusta Motor 3.1, todas las fichas, crónicas y vínculos. El contexto vigente se consulta en GitHub.

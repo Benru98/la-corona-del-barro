@@ -40,3 +40,10 @@ Meta: **una actualizacion = una lectura inicial, cambios agrupados, preflight lo
 - Tras cada guardado aprobado, revisar cobertura por rol, fichajes, ausencias, bajas, lesiones, entrenamiento y afinidades. Ejecutar tests/patrol-advisor.test.mjs dentro del preflight.
 - No confundir valoración histórica (última captura) con CA o PA del guardado. Afinidad entre héroes no confirma beneficios de combate.
 - No modificar importes ni sustituir cifras económicas por cálculos editoriales.
+
+## Segunda auditoría: futuros guardados y pruebas sin datos caducados
+- Los personajes antiguos se conservan en BOOK.characters; el importador valida los IDs del guardado anterior, sin exigir igualdad con el total histórico.
+- `scripts/prepare-next.mjs` mantiene `world.guildRosterAlive` como lista de IDs y distingue incursión, cesión, viaje de incorporación y encargo.
+- El registro de crónicas usa `scripts/chapter-index.mjs` y respeta el token de caché del índice.
+- Cada nueva campaña debe superar `tests/update-pipeline.test.mjs`, las pruebas de campaña y patrullas y las de navegador cuando cambie su interfaz. Evitar tests atados a nombres o días concretos.
+- `compare-saves.mjs` es diagnóstico opcional: no duplicar `prepare-next`.

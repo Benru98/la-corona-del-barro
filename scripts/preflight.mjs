@@ -26,7 +26,7 @@ else if(args[0]==='--staged'&&args.length===1){
  catch(e){fail('No se pudo leer el indice: '+e.message)}
 }
 else if(args[0]==='--all'&&args.length===1){
- paths=['data/campaign.js','home/dispatches.js','data/house-state.js','index.html','novel/chapters/index.js','novel/relationships.js','data/save-baseline.json','data/approved-save-projection.json','tests/current-campaign.test.mjs'];
+ paths=['data/campaign.js','home/dispatches.js','data/house-state.js','index.html','novel/chapters/index.js','novel/relationships.js','data/save-baseline.json','data/approved-save-projection.json','patrol-advisor.js','scripts/chapter-index.mjs','scripts/prepare-next.mjs','scripts/save-core.mjs','tests/update-pipeline.test.mjs','tests/current-campaign.test.mjs'];
 }
 else fail('Uso: node scripts/preflight.mjs --changed "a.js,b.js" | --staged | --base SHA | --all');
 paths=[...new Set(paths.map(x=>x.replace(/^\.\//,'')))];
@@ -46,6 +46,7 @@ const includes=fn=>paths.some(fn);
 if(includes(p=>p==='index.html'||/^novel\/chapters\/.*\.js$/.test(p)))run('node',['scripts/check-chapter-order.mjs']);
 if(includes(p=>p==='data/campaign.js'||p==='data/house-state.js'||p==='novel/relationships.js'))run('node',['scripts/audit-house.mjs']);
 if(changed.has('data/campaign.js')||changed.has('home/dispatches.js'))run('node',['scripts/check-dispatches.mjs']);
+if(includes(p=>['scripts/prepare-next.mjs','scripts/save-core.mjs','scripts/project-save.mjs','scripts/add-chapter.mjs','scripts/chapter-index.mjs','data/campaign.js','data/approved-save-projection.json','data/save-baseline.json','index.html','tests/update-pipeline.test.mjs'].includes(p)))run('node',['--test','tests/update-pipeline.test.mjs']);
 if(includes(p=>['patrol-advisor.js','data/campaign.js','app.js','tests/patrol-advisor.test.mjs'].includes(p)))run('node',['--test','tests/patrol-advisor.test.mjs']);
 if(includes(p=>/^(data\/campaign\.js|data\/save-baseline\.json|data\/approved-save-projection\.json|home\/dispatches\.js|data\/house-state\.js|tests\/current-campaign\.test\.mjs)$/.test(p))){
  run('node',['--test','tests/current-campaign.test.mjs']);

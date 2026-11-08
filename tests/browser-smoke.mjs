@@ -22,12 +22,10 @@ async function audit(page,kind){
    await page.locator('#sideNav [data-nav="'+section+'"]').click();
    const text=await page.locator('#content').innerText();
    assert.ok(text.trim().length>60,kind+' '+section+' vacía');
+   // Validar imágenes ya cargadas sin volver a descargarlas por fetch().
    const broken=await page.locator('#content img[src]').evaluateAll(async images=>{
-     const urls=[...new Set(images.map(i=>i.currentSrc||i.src).filter(Boolean))];
-     return (await Promise.all(urls.map(async url=>{
-       try {const r=await fetch(url); return r.ok&&r.headers.get('content-type')?.startsWith('image/')?null:url+' HTTP '+r.status;}
-       catch(e){return url+': '+String(e)}
-     }))).filter(Boolean);
+     await Promise.all(images.map(img=>img.decode().catch(()=>{})));
+     return images.filter(img=>img.naturalWidth===0).map(img=>img.currentSrc||img.src);
    });
    assert.deepEqual(broken,[],kind+' imágenes rotas en '+section);
  }
@@ -35,46 +33,54 @@ async function audit(page,kind){
  await page.locator('#sideNav [data-nav="home"]').click();
  assert.equal(await page.locator('.new-era-home').count(),1,'Falta la portada del Año II');
  assert.ok((await page.locator('.new-era-home').innerText()).includes(sourceBook.world.division));
- assert.equal(await page.locator('.home-memorial').count(),1,'Brugo debe seguir en el memorial');
- assert.equal(await page.locator('.featured-card.is-fallen').count(),1,'Falta el retrato memorial');
+ assert.equal(await page.locator('.home-memorial').count(),sourceBook.stats.dead?1:0,'El memorial no coincide con el guardado');
+ assert.equal(await page.locator('.featured-card.is-fallen').count(),sourceBook.stats.dead,'No aparecen todos los caídos');
  await page.locator('#sideNav [data-nav="heroes"]').click();
  assert.equal(await page.locator('.hero-card').count(),sourceBook.characters.length,'El archivo debe incluir todos los personajes canónicos');
- assert.ok((await page.locator('#content').innerText()).includes('Grosco del Puño de Piedra'));
- await page.locator('.hero-card[data-hero="adv_3yrkzbvzvfzu"]').click();
- const groscoText=await page.locator('#content').innerText();
- const grosco=sourceBook.characters.find(c=>c.id==='adv_3yrkzbvzvfzu');
- assert.ok(groscoText.includes('VALORACIÓN DE INGRESO')&&groscoText.includes(String(grosco.ratingAtJoin))&&groscoText.includes('HABILIDAD ACTUAL (CA)')&&groscoText.includes(String(Math.round(grosco.currentAbility))),'Grosco no muestra puntuaciones correctas');
+ const sampleHero=sourceBook.characters.find(c=>c.currentAbility!=null&&!['caído','vendida','retirada'].includes(c.status));
+ assert.ok(sampleHero,'No hay un aventurero activo para comprobar');
+ await page.locator('.hero-card[data-hero="'+sampleHero.id+'"]').click();
+ const heroText=await page.locator('#content').innerText();
+ assert.ok(heroText.includes(sampleHero.name)&&heroText.includes('HABILIDAD ACTUAL (CA)')&&heroText.includes(String(Math.round(sampleHero.currentAbility))),
+  'La ficha no muestra las estadísticas actuales del personaje');
  await page.locator('[data-action="back-heroes"]').click();
- const rocAvatar=page.locator('.hero-card[data-hero="adv_xhgcncku9qpi"] img');
- assert.ok((await rocAvatar.getAttribute('src')).includes('roc-guardalmena-codice.webp'),'El retrato de Roc no se ha actualizado');
- await page.locator('.hero-card[data-hero="adv_xhgcncku9qpi"]').click();
- assert.ok((await page.locator('#content').innerText()).includes('Roc Guardalmena'),'La ficha de Roc no abre');
- await page.locator('[data-action="back-heroes"]').click();
- await page.locator('.hero-card[data-hero="adv_dvyb6kaxgy9l"]').click();
- assert.ok((await page.locator('#content').innerText()).toLocaleLowerCase('es').includes('vendida'),'La ficha de Xara no conserva su salida');
- await page.locator('[data-action="back-heroes"]').click();
- await page.locator('.hero-card[data-hero="adv_efelp4o01ks4"]').click();
- assert.ok((await page.locator('#content').innerText()).includes('Iligar el Rompehuesos'),'No abre ficha de Iligar');
+ const departed=sourceBook.characters.find(c=>['vendida','retirada'].includes(c.status));
+ if(departed){
+  await page.locator('.hero-card[data-hero="'+departed.id+'"]').click();
+  assert.ok((await page.locator('#content').innerText()).includes(departed.name),'Falta el antiguo integrante');
+  await page.locator('[data-action="back-heroes"]').click();
+ }
  await page.locator('#sideNav [data-nav="patrols"]').click();
  assert.equal(await page.locator('.patrol-row').count(),sourceBook.stats.members,'Patrullas incompletas: deben aparecer los miembros vivos');
  const patrolContent=(await page.locator('#content').innerText());
  if(sourceBook.characters.some(x=>x.potentialGap>=45&&x.status!=='caído'&&x.status!=='retirada'))assert.ok(patrolContent.includes('Gran margen'),'Patrullas no presenta oportunidades de crecimiento');
- const yvaldo=page.locator('.patrol-row[data-hero="adv_nmu0cr5oezjw"]');
- assert.ok((await yvaldo.innerText()).includes(String(sourceBook.characters.find(x=>x.id==='adv_nmu0cr5oezjw').gameRating)),'Yvaldo no muestra su valoración de clase');
- assert.equal(await page.locator('.patrol-row[data-hero="adv_dvyb6kaxgy9l"]').count(),0,'Xara vendida no puede aparecer en Patrullas');
- const roc=page.locator('.patrol-row[data-hero="adv_xhgcncku9qpi"]');
- assert.equal(await roc.count(),1,'Roc debe figurar entre los once nuevos integrantes');
- assert.ok((await roc.innerText()).includes('En camino'),'Roc todavía viaja hacia la Casa');
- assert.equal(await page.locator('.patrol-row.patrol-away').count(),sourceBook.characters.filter(c=>c.away&&c.status!=='caído'&&c.status!=='retirada'&&c.status!=='vendida').length,'Desajuste de ausencias entre encargo, incursión y llegada');
+ for(const c of sourceBook.characters.filter(c=>!['caído','vendida','retirada'].includes(c.status))){
+  const row=page.locator('.patrol-row[data-hero="'+c.id+'"]');
+  assert.equal(await row.count(),1,'No figura en Patrullas: '+c.name);
+  if(c.gameRating!=null)assert.ok((await row.innerText()).includes(String(c.gameRating)),'Falta la valoración de '+c.name);
+ }
+ for(const c of sourceBook.characters.filter(c=>['caído','vendida','retirada'].includes(c.status)))
+  assert.equal(await page.locator('.patrol-row[data-hero="'+c.id+'"]').count(),0,'Persona inactiva en Patrullas: '+c.name);
+ assert.equal(await page.locator('.patrol-row.patrol-away').count(),
+  sourceBook.characters.filter(c=>c.away&&!['caído','vendida','retirada'].includes(c.status)).length,'Ausencias inconsistentes');
+ await page.locator('[data-action="open-patrol-advisor"]').click();
+ const advisor=page.locator('#patrolAdvisorDialog');
+ await advisor.waitFor({state:'visible'});
+ const advisorText=await advisor.innerText();
+ assert.ok(advisorText.includes('DÍA '+sourceBook.meta.day)&&advisorText.includes('Entrenamientos sugeridos'),
+  'Consejo de patrullas no actualizado');
+ for(const c of sourceBook.characters.filter(c=>['caído','vendida','retirada'].includes(c.status)))
+  assert.ok(!advisorText.includes(c.name),'El consejo recomienda a alguien que no está en plantilla: '+c.name);
+ await advisor.locator('[data-action="close-patrol-advisor"]').click();
+ assert.equal(await advisor.isVisible(),false,'El consejo no se ha cerrado');
  const patrolText=await page.locator('#content').innerText();
  if(sourceBook.world.activeExpedition)assert.ok(patrolText.includes(String(sourceBook.world.activeExpedition.returnsDay)),'Falta el día de regreso');
  for(const dead of sourceBook.characters.filter(x=>x.status==='caído'))assert.ok(!patrolText.includes(dead.name),'Un fallecido no puede aparecer en patrullas: '+dead.name);
  await page.locator('#sideNav [data-nav="annual"]').click();
- assert.ok((await page.locator('#content').innerText()).includes('El año que hicimos casa'),'Falta el cierre anual del Año I');
+ assert.ok((await page.locator('#content').innerText()).length>80,'No aparece el archivo anual');
  await page.locator('#sideNav [data-nav="archive"]').click();
  const archive=await page.locator('#content').innerText();
  assert.ok(archive.includes(sourceBook.world.division)&&archive.includes(String(sourceBook.stats.renown)),'Archivo desactualizado');
- assert.ok(archive.toLocaleLowerCase('es').includes('retratos asignados')&&archive.toLocaleLowerCase('es').includes('récords revisados'),'Falta la auditoría del guardado v26');
  if(sourceBook.world.finance){const fin=sourceBook.world.finance;
   assert.ok(archive.includes(String(Math.abs(fin.current.netBeforeDelves)))&&archive.includes(String(Math.abs(fin.lastPayroll.net)))&&archive.includes(String(fin.avgDelvesGoldPerPay)),'La economía no refleja paga real y previsión');
  }

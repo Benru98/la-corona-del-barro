@@ -121,8 +121,10 @@ export function prepareCampaignUpdate(book, previous, next, sourceName='guardado
   assert(book.meta.day===base.day+1,'El libro publicado no coincide con el guardado anterior (día)');
   const bookIds=new Set((book.characters??[]).map(x=>x.id));
   const oldIds=new Set([...base.roster,...base.fallen].map(x=>x.id));
-  assert(oldIds.size===bookIds.size && [...oldIds].every(id=>bookIds.has(id)),
-    'El libro no coincide con la plantilla anterior de personajes. Revisión manual requerida');
+  // El libro conserva vendidos y retirados que ya no figuran en el guardado activo.
+  const missing=[...oldIds].filter(id=>!bookIds.has(id));
+  assert(!missing.length,
+    'Faltan identidades del guardado anterior en el libro (revisión manual): '+missing.join(', '));
   const result=structuredClone(book);
   const changes=[];
   function replace(obj,key,value,path) {

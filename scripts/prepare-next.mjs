@@ -27,7 +27,7 @@ function buildProposal(book,old,save,source){
  const diff=compareSaves(old,save),p=prepareCampaignUpdate(book,old,save,source);
  const b=p.campaign;
  const heroById=new Map(g.roster.map(h=>[h.id,h]));
- const positions={vanguard:'Vanguardia',secondWatch:'Segunda Guardia',thirdWatch:'Tercera Guardia'};
+ const positions={vanguard:'Vanguardia',secondWatch:'Segunda Guardia',thirdWatch:'Tercera Guardia',reserve:'Reserva'};
  for(const h of b.characters){
   const v=heroById.get(h.id);if(!v)continue;
   for(const k of ['age','level','experience','morale','condition','stress','fatigue','attributes','equipment','currentAbility','abilityStars','potentialStars','traitIds'])
@@ -35,9 +35,11 @@ function buildProposal(book,old,save,source){
   h.traitsIds=v.traitIds||h.traitsIds||[];
   h.salary=v.oathWage;h.post=positions[v.post]||h.post;
   h.injury=v.injury||null;
+  const onRoad=!!v.away?.jobId&&String(v.away.jobId).startsWith('road_');
+  const awayKind=onRoad?'viaje de incorporación':v.away?.delve?'incursión':v.away?.loan?'cesión':'encargo';
   h.away=v.away?{jobId:v.away.jobId,returnsDay:Number.isInteger(v.away.returnsDay)?v.away.returnsDay+1:null,
-   kind:v.away.delve?'incursión':'encargo',region:v.away.region||null}:null;
-  if(!h.death)h.status=h.away?(v.away.delve?'en incursión':'en cesión'):'en la Casa';
+   kind:awayKind,region:v.away.region||null}:null;
+  if(!h.death)h.status=onRoad?'en camino':h.away?(v.away.delve?'en incursión':v.away.loan?'en cesión':'en encargo'):(h.injury?.daysLeft>0?'herido':'en la Casa');
   h.incursions=v.delves??h.incursions;
   if(v.record?.all)h.statistics={...h.statistics,level:v.level,incursions:v.delves,
     kills:v.record.all.kills||0,dealt:v.record.all.dealt||0,
@@ -46,7 +48,7 @@ function buildProposal(book,old,save,source){
     measuredAt:'Año '+b.meta.year+' · día '+(g.day+1)+' (valor de ingreso histórico conservado)'};
   h.source='Estado mecánico: '+source+'; biografía, retratos y memorias preservados.';
  }
- b.world.guildRosterAlive=g.roster.length;
+ b.world.guildRosterAlive=g.roster.map(h=>h.id);
  const div=g.league.divisions?.find(d=>d.tier===g.league.playerTier);
  const ranks=div?[...div.guilds].sort((x,y)=>y.points-x.points||y.won-x.won):[];
  const own=ranks.find(x=>x.id==='player');
