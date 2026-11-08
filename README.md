@@ -32,13 +32,18 @@ El comando comprueba que no exista ya, valida personajes, secundarios literarios
 
 ## Validaciones ligeras
 
-GitHub Actions ejecuta verificaciones **solo sobre los archivos cambiados**: sintaxis de JS/JSON; índice de capítulos si se modifica el HTML o una crónica; estado derivado si cambia la campaña o las relaciones. No se ejecutan pruebas móviles ni de navegador automáticamente. Si se modifican únicamente Markdown, CSS o imágenes, GitHub Actions ni siquiera arranca.
-
-Comprobación local puntual:
+El punto de entrada es `scripts/preflight.mjs`: revisa sintaxis de los archivos cambiados, integridad de capítulos, estado vital, Gaceta y coherencia de campaña, sin iniciar navegador. Es el **mismo script** que invoca el workflow rápido de GitHub.
 
 ```bash
-node scripts/check-chapter-order.mjs
+node scripts/preflight.mjs --changed "data/campaign.js,home/dispatches.js,app.js"   # antes del commit
+node scripts/preflight.mjs --staged                                  # cambios preparados
+node scripts/preflight.mjs --base HEAD~1                             # revisión del último commit
+node scripts/preflight.mjs --all                                     # validación completa del estado
 ```
+
+La auditoría en navegador sigue ejecutándose en GitHub al cambiar código o datos relevantes, **una sola vez contra un servidor local**. La segunda auditoría contra Cloudflare Pages es ahora manual (`workflow_dispatch`), evitando ejecutar el mismo recorrido dos veces en cada publicación. Solo cambios de Markdown, CSS o imágenes no arrancan la validación rápida.
+
+Ver `AGENTS.md` para el procedimiento de publicación con un único commit, sin esperas ni ediciones parciales.
 
 ## Privacidad
 

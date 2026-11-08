@@ -25,7 +25,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Sintaxis y comprobaciones puntuales
+      - name: Preflight unico de sintaxis y coherencia
         env:
           BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
         run: |
@@ -35,27 +35,4 @@ jobs:
           else
             BASE="$(git rev-parse HEAD^)"
           fi
-          git diff --name-only --diff-filter=ACMRT "$BASE" HEAD > /tmp/corona-changed
-          echo "Archivos modificados:"
-          cat /tmp/corona-changed
-          while IFS= read -r file; do
-            case "$file" in
-              *.js|*.mjs) if [ -f "$file" ]; then node --check "$file"; fi ;;
-              *.json) if [ -f "$file" ]; then node -e 'JSON.parse(require("fs").readFileSync(process.argv[1],"utf8"))' "$file"; fi ;;
-            esac
-          done < /tmp/corona-changed
-          if grep -Eq '^index\.html$|^novel/chapters/.*\.js$' /tmp/corona-changed; then
-            node scripts/check-chapter-order.mjs
-          fi
-          if grep -Eq '^data/(campaign|house-state)\.js$|^novel/relationships\.js$' /tmp/corona-changed; then
-            node scripts/audit-house.mjs
-          fi
-          if grep -Fxq 'data/campaign.js' /tmp/corona-changed && ! grep -Fxq 'home/dispatches.js' /tmp/corona-changed; then
-            echo "Una actualización de campaña debe incluir la Gaceta."
-            exit 1
-          fi
-          if grep -Fxq 'data/campaign.js' /tmp/corona-changed || grep -Fxq 'home/dispatches.js' /tmp/corona-changed; then
-            node scripts/check-dispatches.mjs
-          fi
-          node --test tests/year-two.test.mjs
-          echo "Comprobación selectiva y pruebas del Año II completadas."
+          node scripts/preflight.mjs --base "$BASE"

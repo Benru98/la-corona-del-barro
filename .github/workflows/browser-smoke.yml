@@ -29,8 +29,8 @@ jobs:
           sleep 2
       - name: Recorrer interfaz, imágenes y controles móviles
         run: node tests/browser-smoke.mjs
-      - name: Comprobar la versión pública de Cloudflare Pages
-        if: github.event_name != 'pull_request'
+      - name: Verificación pública a petición (evita doble navegador por push)
+        if: github.event_name == 'workflow_dispatch'
         env:
           BASE_URL: https://la-corona-del-barro.pages.dev/
         run: node tests/browser-smoke.mjs
