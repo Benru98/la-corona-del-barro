@@ -3,11 +3,11 @@
   "game": "Dungeons & Dynasties",
   "guild": "La Corona de Barro",
   "gameVersion": 26,
-  "lastApprovedVisibleDay": 150,
-  "lastApprovedInternalDay": 149,
-  "lastApprovedSaveSignature": "lmc4sv.8q7cd",
-  "lastApprovedSource": "La Corona de Barro 2026-11-08 08-35.json",
-  "note": "E0029 · Año II, día visible 150. Auditoría mecánica del parche 0.301: puntuaciones, retratos, registros y formaciones. No se publica el guardado original.",
+  "lastApprovedVisibleDay": 164,
+  "lastApprovedInternalDay": 163,
+  "lastApprovedSaveSignature": "1b100vs.1ql2me",
+  "lastApprovedSource": "La Corona de Barro 2026-11-08 10-09.json",
+  "note": "E0031 · venta Xara y fichaje Roc, día visible 164; sin guardado original",
   "projectionFile": "data/approved-save-projection.json",
-  "comparisonMethod": "published-campaign-to-next-save-and-schema-audit"
+  "comparisonMethod": "approved-diff-2026-11-08-08-35-to-10-09"
 }

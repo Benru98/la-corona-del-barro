@@ -13,7 +13,7 @@ const book=load('data/campaign.js','BOOK');
 const dispatch=load('home/dispatches.js','HOUSE_DISPATCHES');
 const base=JSON.parse(read('data/save-baseline.json'));
 const projection=JSON.parse(read('data/approved-save-projection.json'));
-const active=book.characters.filter(c=>c.status!=='caído'&&c.status!=='retirada');
+const active=book.characters.filter(c=>c.status!=='caído'&&c.status!=='retirada'&&c.status!=='vendida');
 const fallen=book.characters.filter(c=>c.status==='caído');
 
 test('Fuente, baseline, proyeccion y edicion coinciden sin version escrita a mano',()=>{

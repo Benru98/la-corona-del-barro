@@ -45,6 +45,14 @@ async function audit(page,kind){
  const grosco=sourceBook.characters.find(c=>c.id==='adv_3yrkzbvzvfzu');
  assert.ok(groscoText.includes('VALORACIÓN DE INGRESO')&&groscoText.includes(String(grosco.ratingAtJoin))&&groscoText.includes('HABILIDAD ACTUAL (CA)')&&groscoText.includes(String(Math.round(grosco.currentAbility))),'Grosco no muestra puntuaciones correctas');
  await page.locator('[data-action="back-heroes"]').click();
+ const rocAvatar=page.locator('.hero-card[data-hero="adv_xhgcncku9qpi"] img');
+ assert.ok((await rocAvatar.getAttribute('src')).includes('roc-guardalmena-codice.webp'),'El retrato de Roc no se ha actualizado');
+ await page.locator('.hero-card[data-hero="adv_xhgcncku9qpi"]').click();
+ assert.ok((await page.locator('#content').innerText()).includes('Roc Guardalmena'),'La ficha de Roc no abre');
+ await page.locator('[data-action="back-heroes"]').click();
+ await page.locator('.hero-card[data-hero="adv_dvyb6kaxgy9l"]').click();
+ assert.ok((await page.locator('#content').innerText()).includes('Vendida'),'La ficha de Xara no conserva su salida');
+ await page.locator('[data-action="back-heroes"]').click();
  await page.locator('.hero-card[data-hero="adv_efelp4o01ks4"]').click();
  assert.ok((await page.locator('#content').innerText()).includes('Iligar el Rompehuesos'),'No abre ficha de Iligar');
  await page.locator('#sideNav [data-nav="patrols"]').click();
@@ -53,9 +61,11 @@ async function audit(page,kind){
  if(sourceBook.characters.some(x=>x.potentialGap>=45&&x.status!=='caído'&&x.status!=='retirada'))assert.ok(patrolContent.includes('Gran margen'),'Patrullas no presenta oportunidades de crecimiento');
  const yvaldo=page.locator('.patrol-row[data-hero="adv_nmu0cr5oezjw"]');
  assert.ok((await yvaldo.innerText()).includes(String(sourceBook.characters.find(x=>x.id==='adv_nmu0cr5oezjw').gameRating)),'Yvaldo no muestra su valoración de clase');
- const xara=page.locator('.patrol-row[data-hero="adv_dvyb6kaxgy9l"]');
- assert.ok((await xara.innerText()).includes(String(sourceBook.characters.find(x=>x.id==='adv_dvyb6kaxgy9l').gameRating)),'Xara no muestra su valoración de clase');
- assert.equal(await page.locator('.patrol-row.patrol-away').count(),sourceBook.world.activeExpedition?.heroIds?.length||0,'Desajuste entre expedición y patrullas');
+ assert.equal(await page.locator('.patrol-row[data-hero="adv_dvyb6kaxgy9l"]').count(),0,'Xara vendida no puede aparecer en Patrullas');
+ const roc=page.locator('.patrol-row[data-hero="adv_xhgcncku9qpi"]');
+ assert.equal(await roc.count(),1,'Roc debe figurar entre los once nuevos integrantes');
+ assert.ok((await roc.innerText()).includes('En camino'),'Roc todavía viaja hacia la Casa');
+ assert.equal(await page.locator('.patrol-row.patrol-away').count(),sourceBook.characters.filter(c=>c.away&&c.status!=='caído'&&c.status!=='retirada'&&c.status!=='vendida').length,'Desajuste de ausencias entre encargo, incursión y llegada');
  const patrolText=await page.locator('#content').innerText();
  if(sourceBook.world.activeExpedition)assert.ok(patrolText.includes(String(sourceBook.world.activeExpedition.returnsDay)),'Falta el día de regreso');
  for(const dead of sourceBook.characters.filter(x=>x.status==='caído'))assert.ok(!patrolText.includes(dead.name),'Un fallecido no puede aparecer en patrullas: '+dead.name);
@@ -78,7 +88,7 @@ async function audit(page,kind){
  await latest.click();
  assert.ok((await page.locator('.reader-hero h2').innerText()).trim().length>5,'El lector no muestra el título');
  assert.ok((await page.locator('.prose').innerText()).trim().length>100,'La última crónica no tiene contenido');
- notes.push({kind,sections:sections.length,edition:summary,patrols:11,expedition:4,latest:'Las piedras saben escuchar',errors:0});
+ notes.push({kind,sections:sections.length,edition:summary,patrols:sourceBook.stats.members,expedition:sourceBook.world.activeExpedition?.heroIds?.length||0,latest:sourceBook.chapters?.at(-1)?.title||'último interludio',errors:0});
 }
 try{
  const desktop=await browser.newPage({viewport:{width:1440,height:900}});
