@@ -51,7 +51,7 @@ async function audit(page,kind){
  assert.ok((await page.locator('#content').innerText()).includes('Roc Guardalmena'),'La ficha de Roc no abre');
  await page.locator('[data-action="back-heroes"]').click();
  await page.locator('.hero-card[data-hero="adv_dvyb6kaxgy9l"]').click();
- assert.ok((await page.locator('#content').innerText()).includes('Vendida'),'La ficha de Xara no conserva su salida');
+ assert.ok((await page.locator('#content').innerText()).toLocaleLowerCase('es').includes('vendida'),'La ficha de Xara no conserva su salida');
  await page.locator('[data-action="back-heroes"]').click();
  await page.locator('.hero-card[data-hero="adv_efelp4o01ks4"]').click();
  assert.ok((await page.locator('#content').innerText()).includes('Iligar el Rompehuesos'),'No abre ficha de Iligar');
