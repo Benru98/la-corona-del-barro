@@ -34,3 +34,9 @@ Meta: **una actualizacion = una lectura inicial, cambios agrupados, preflight lo
 - `tests/browser-smoke.mjs` debe leer la edicion esperada de `data/campaign.js` en vez de tener `E0030` fijo.
 - No duplicar navegacion local y publica en el mismo push. Las imagenes nuevas deben comprobarse en la prueba de navegador si afectan a retratos o portada.
 - Si se edita una guia Markdown, no iniciar compilaciones o navegadores sin razon.
+
+## Consejo táctico — revisión obligatoria en cada actualización
+- El modal de Patrullas lee BOOK.characters, BOOK.relationships y BOOK.meta en cada apertura, sin datos fijos de una edición.
+- Tras cada guardado aprobado, revisar cobertura por rol, fichajes, ausencias, bajas, lesiones, entrenamiento y afinidades. Ejecutar tests/patrol-advisor.test.mjs dentro del preflight.
+- No confundir valoración histórica (última captura) con CA o PA del guardado. Afinidad entre héroes no confirma beneficios de combate.
+- No modificar importes ni sustituir cifras económicas por cálculos editoriales.

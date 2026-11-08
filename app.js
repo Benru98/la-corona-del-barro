@@ -224,22 +224,12 @@ function patrols(){
  const count=title=>groups.find(g=>g.title===title)?.people.length||0;
  const out=house().expedition;
  const status=c=>c.away||awayIds.has(c.id)?'<span class="patrol-status away">'+(c.away?.kind==='viaje de incorporación'?'⌛ En camino':c.away?.kind==='encargo'?'🧭 En encargo':'⚔ En incursión')+' · regreso día '+esc(c.away?.returnsDay??out?.returnsDay??'—')+'</span>':c.injury?.incapacitated||c.injury?.daysLeft?'<span class="patrol-status">⚕ En recuperación · '+esc(c.injury?.daysLeft??'—')+' días</span>':'<span class="patrol-status ready">✓ En la Casa</span>';
- const sortedGrowth=[...living].sort((a,b)=>(b.potentialGap??0)-(a.potentialGap??0));
  const titleFor=c=>(c.gameRating==null?'Sin valoración de clase verificada':c.gameRating+' puntos: última captura día visible 150, no valor actual');
  const money=BOOK.world.finance;
- return `${heading('LOS TURNOS DE LA CASA','Las patrullas','Plantilla completa del Año II. Ahora distinguimos la valoración real del juego, la habilidad y la posibilidad de mejora de cada persona.')}
+ return `${heading('LOS TURNOS DE LA CASA','Las patrullas','Composición según el último guardado. El consejo táctico permite revisar las prioridades de mejora.')}
  <div class="patrol-summary">${statCard(count('Vanguardia'),'Vanguardia')}${statCard(count('Segunda Guardia'),'Segunda Guardia')}${statCard(count('Reserva'),'Reserva')}${statCard(BOOK.stats.salaryCycle+' g','Sueldos / 6 días')}</div>
  <div class="patrol-live-summary"><strong>${living.length} miembros vivos</strong><span>${available.length} disponibles en la Casa</span><span>${living.length-available.length} fuera o no disponibles</span>${out?'<span>Incursión pendiente · día '+esc(out.returnsDay)+'</span>':''}</div>
- <section class="patrol-guide panel" aria-label="Cómo leer las valoraciones">
-  <div class="eyebrow">NO SON LA MISMA PUNTUACIÓN</div><h3>Valoración, habilidad y techo</h3>
-  <div class="patrol-guide-grid">
-   <div><strong>Valoración</strong><p>La nota que ves en la plantilla del juego: calcula el encaje de sus 30 atributos con su clase. Las valoraciones son la última lectura visual del día 150, no recalculadas con el JSON actual. CA y PA sí corresponden al día 164.</p></div>
-   <div><strong>CA / PA</strong><p>Habilidad actual y potencial en una escala hasta 200. La diferencia PA − CA muestra margen bajo el techo <em>actual</em>, no una predicción de mejora inmediata.</p></div>
-   <div><strong>Etapa</strong><p>«En sus inicios», «Ascendiendo» o «En su apogeo». Un personaje que asciende puede tener CA = PA: edad y techo son conceptos distintos.</p></div>
-  </div>
-  <div class="patrol-guide-notice">✦ <b>Mayor margen actual:</b> ${sortedGrowth.slice(0,4).map(c=>esc(c.name)+' (+'+esc(Math.round(c.potentialGap))+' CA)').join(' · ')}. <b>Techo CA alcanzado:</b> ${living.filter(c=>(c.potentialGap??0)<0.5).map(c=>esc(c.name)).join(', ')}.</div>
-  <p class="source-note">Las valoraciones de clase son referencias históricas de la captura del día 150. CA y PA y el margen sí vienen del guardado actual. Para una nueva valoración exacta hará falta otra captura o la fórmula oficial.</p>
- </section>
+ <div class="patrol-advisor-teaser"><div><span class="eyebrow">CONSEJO DE LA CASA · AÑO ${esc(BOOK.meta.year)}, DÍA ${esc(BOOK.meta.day)}</span><strong>¿A quién alinear, entrenar o fichar?</strong><p>Consejos sobre capacidades, afinidades, entrenamientos y necesidades de cada patrulla basados en el guardado actual.</p></div><button type="button" class="btn gold" data-action="open-patrol-advisor">✦ Abrir consejo de patrullas</button></div>
  ${money?`<div class="patrol-finance-hint"><div><strong>💰 Paga actual: ${esc(money.current.netBeforeDelves)} g / 6 días</strong><span>Las incursiones recientes compensan unos ${esc(money.avgDelvesGoldPerPay)} g por ciclo; saldo medio estimado ${esc(money.netWithAvgDelves>0?'+':'')}${esc(money.netWithAvgDelves)} g.</span></div><button type="button" class="btn secondary small" data-nav="archive">Ver por qué cuesta tanto ↗</button></div>`:''}
  ${groups.map(({title,people})=>`<section class="patrol-panel"><div class="section-heading-row"><div><div class="eyebrow">PLANTILLA DEL GREMIO</div><h2>${esc(title)} · ${people.length}</h2><p class="source-note">Puestos según el último guardado. Los aventureros de expedición conservan su asignación.</p></div></div><div class="patrol-list">${people.map(c=>`<button type="button" class="patrol-row ${c.away||awayIds.has(c.id)?'patrol-away':''}" data-hero="${esc(c.id)}" title="${esc(titleFor(c))} · ${esc(growthAdvice(c))}">
  <img src="${portrait(c)}" alt="Retrato de ${esc(c.name)}"/>
@@ -545,6 +535,8 @@ body.reading-night .atlas-panel{background:#2c4439;color:#eedbb8}body.reading-ni
 document.addEventListener('click',ev=>{const annualYear=ev.target.closest('[data-year]');if(annualYear){state.annualYear=Number(annualYear.getAttribute('data-year'));render();return;}const x=ev.target.closest('[data-open-bond],[data-nav],[data-chapter],[data-hero],[data-filter],[data-era],[data-action],[data-bondfocus],[data-bondtype],[data-bondview],[data-rel-detail]');if(!x)return;
  if(x.hasAttribute('data-rel-detail')){openRelationDetail(x.getAttribute('data-rel-detail'),x);return}
  if(x.getAttribute('data-action')==='close-relation'){closeRelationDetail();return}
+ if(x.getAttribute('data-action')==='open-patrol-advisor'){PatrolAdvisor.open(BOOK,livingMembers(),x);return}
+ if(x.getAttribute('data-action')==='close-patrol-advisor'){PatrolAdvisor.close();return}
  if(x.hasAttribute('data-open-bond')){state.bond=x.getAttribute('data-open-bond');state.bondType='all';state.reader=false;state.hero=null;go('bonds');return}
  if(x.hasAttribute('data-bondfocus')){state.bond=x.getAttribute('data-bondfocus');state.bondType='all';render();return}
  if(x.hasAttribute('data-bondview')){state.bondView=x.getAttribute('data-bondview');state.bondType='all';render();return}

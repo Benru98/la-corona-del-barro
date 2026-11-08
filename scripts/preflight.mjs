@@ -46,6 +46,7 @@ const includes=fn=>paths.some(fn);
 if(includes(p=>p==='index.html'||/^novel\/chapters\/.*\.js$/.test(p)))run('node',['scripts/check-chapter-order.mjs']);
 if(includes(p=>p==='data/campaign.js'||p==='data/house-state.js'||p==='novel/relationships.js'))run('node',['scripts/audit-house.mjs']);
 if(changed.has('data/campaign.js')||changed.has('home/dispatches.js'))run('node',['scripts/check-dispatches.mjs']);
+if(includes(p=>['patrol-advisor.js','data/campaign.js','app.js','tests/patrol-advisor.test.mjs'].includes(p)))run('node',['--test','tests/patrol-advisor.test.mjs']);
 if(includes(p=>/^(data\/campaign\.js|data\/save-baseline\.json|data\/approved-save-projection\.json|home\/dispatches\.js|data\/house-state\.js|tests\/current-campaign\.test\.mjs)$/.test(p))){
  run('node',['--test','tests/current-campaign.test.mjs']);
 }
